@@ -1,5 +1,5 @@
 ﻿# README #
-Sistema medico de consultas y registros de pacientes en linea.
+Sistema médico de consultas y registros de pacientes en línea.
 Basado en sistemas open source.
 Posibilidad de crear odontograma.
 
