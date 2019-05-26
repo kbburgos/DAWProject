@@ -11,14 +11,20 @@ This README would normally document whatever steps are necessary to get your app
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
 
-### How do I get set up? ###
+### Integrantes ###
 
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
+* Karla Burgos Gayrey
+* Jonathan Quintana Solorzano
+* Carlos Sesme Vera
+* Tony Veas Cervantes
+
+### Estructura de los commit ###
+
+* ADD-F nuevo archivo
+* ADD nuevas funcionalidades
+* UPDATE actualizacion
+* DELETE eliminar funcionalidades
+* DELETE-F eliminar archivos
 
 ### Contribution guidelines ###
 
@@ -30,3 +36,4 @@ This README would normally document whatever steps are necessary to get your app
 
 * Repo owner or admin
 * Other community or team contact
+
