@@ -6,12 +6,13 @@
   <meta name="author" content="Tech Brain Solutions">
   <link rel="icon" href="resources/favicon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/style-home.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" media="screen">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   <script src="https://kit.fontawesome.com/52540fbc5c.js"></script>
+  <link rel="stylesheet" type="text/css" href="css/style-home.css" media="screen">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <?php
@@ -54,7 +55,7 @@ if (file_exists( $path_modulo )) {
   }
 ?>
 
-<footer class="fixed-bottom text-center bg-dark text-info"><p class="mt-2">Sistema de gestión de pacientes <a href="index.php">Sis Medic - TBS </a>
+<footer class="fixed-bottom text-center bg-dark" id="footer-text"><p class="mt-2">Sistema de gestión de pacientes <a href="index.php">Sis Medic - TBS </a>
   &copy; 2019 Todos los derechos reservados para <a target="_blank" href="https://www.facebook.com/TECHBRAIN.EC/"> Tech Brain SOlutions</a></p></footer>
 </body>
 </html>
