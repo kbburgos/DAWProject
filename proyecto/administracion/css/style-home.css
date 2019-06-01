@@ -1,0 +1,22 @@
+.fakeimg {
+  height: 200px;
+  background: #aaa;
+}
+
+.li-ocultar {
+  display: none;
+}
+
+#foto-perfil {
+  width: 2em;
+}
+
+#perfil {
+  margin-right: 105px;
+}
+
+@media screen and (max-width: 600px) {
+  .li-ocultar {
+    display: inline;
+  }
+}
