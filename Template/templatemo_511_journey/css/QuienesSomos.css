@@ -10,10 +10,16 @@ Highlight color (pink)      : #c66995
 */
 body {
     font-family: 'Open Sans', Helvetica, Arial, sans-serif;
-    font-size: 13px;
+    font-size: 20px;
     font-weight: 300;
     background: #e6e6e6;
 }
+
+
+.container:hover .overlay {
+  opacity: 1;
+}
+
 
 a, button { transition: all 0.3s ease; }
 a:hover,
@@ -797,6 +803,98 @@ border-radius: 35px 0px 35px 0px;
 -moz-border-radius: 35px 0px 35px 0px;
 -webkit-border-radius: 35px 0px 35px 0px;
 border: 2px solid #007EA7;
+ }
+
+ .banner-1{
+ 	width: 100%;
+ 	background: darkblue;
+ 	clear: both;
+ 	padding-top: 30px;
+ 	padding-left: 50px;
+ 	padding-right: 50px;
+ 	padding-bottom: 50px;
+ 	text-align: center;
+ 	box-sizing: border-box;
+ 	transition: 0.4s;
+ }
+ .banner-1:hover{
+ 	background: #444;
+ 	transition: .4s;
+ }
+ .banner-1 h3{
+ 	color: #fff;
+ 	font-size: 32px;
+ }
+ .banner-1 a{
+ 	text-decoration: none;
+ 	margin-left: 20px;
+ 	font-weight: bold;
+ 	color: #fff;
+ 	border-bottom: 2px solid #fff;
+ }
+ *{
+ 	margin: 0;
+ 	padding: 0;
+ 	font-family: rale;
+ }
+
+ header{
+ 	width: 100%;
+ 	background: rgba(0,0,0,.8);
+ 	height: 70px;
+ 	position: fixed;
+ 	z-index: 10;
+ }
+ /* aquí estamos modificando el ancho */
+ .ancho{
+ 	width: 80%;
+ 	height: 70px;
+ 	/*background: red;*/
+ 	margin: auto;
+ }
+ .logo{
+ 	width: 30%;
+ 	height: 70px;
+ 	/*background: blue;*/
+ 	float: left;
+ 	padding-top: 10px;
+ 	box-sizing: border-box;
+ }
+ .logo p a{
+ 	color: #fff;
+ 	font-size: 40px;
+ 	text-decoration: none;
+ 	font-weight: bold;
+ 	font-family: rale;
+ }
+ nav{
+ 	width: 70%;
+ 	height: 70px;
+ 	/*background: olive;*/
+ 	float: left;
+ 	text-align: right;
+ 	padding-top: 24px;
+ 	box-sizing: border-box;
+ }
+ nav ul li{
+ 	display: inline;
+ }
+ nav ul li a{
+ 	color: #fff;
+ 	font-size: 13px;
+ 	text-decoration: none;
+ 	text-transform: uppercase;
+ 	padding-left: 15px;
+ 	font-weight: bold;
+ 	letter-spacing: 1px;
+ 	font-family: rale;
+ }
+ nav ul li a:hover{
+ 	color: #444;
+ }
+ @font-face{
+ 	font-family: rale;
+ 	src: url(fuentes/Raleway-Regular.ttf);
  }
 
 
