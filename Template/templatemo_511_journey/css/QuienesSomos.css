@@ -658,17 +658,21 @@ footer p {
   }
 }
 
-#mapa h2{
+h2{
   padding: 50px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 30px;
+  font-weight: bold;
 }
+
 #framegoogle {
   align: center;
-  padding: 10px;
-  width: 85%;
+  padding: px;
+  width: 100%;
   height: 500px;
   frameborder: 0;
   allowfullscreen;
-  margin-left: 100px;
 }
 
 @media screen and (max-width: 1080px) {
@@ -899,11 +903,6 @@ footer p {
   transition: .4s;
 }
 
-.banner-1 h3 {
-  color: #fff;
-  font-size: 32px;
-}
-
 .banner-1 a {
   text-decoration: none;
   margin-left: 20px;
@@ -986,8 +985,8 @@ nav ul li a:hover {
 }
 
 .form {
-  width: 1000px;
-  height: 440px;
+  width: 600px;
+  height: 600px;
   background: #e6e6e6;
   border-radius: 8px;
   box-shadow: 0 0 40px -10px #000;
@@ -1027,7 +1026,7 @@ input:focus {
 #divparrafos p:before {
   content: attr(type);
   display: block;
-  margin: 28px 0 0;
+  margin: 20px 0 0;
   font-size: 20px;
   color: #5a5a5a
 }
