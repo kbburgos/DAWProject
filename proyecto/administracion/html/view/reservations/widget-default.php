@@ -1,0 +1,46 @@
+<div class="row mt-2 ml-2 mr-2 mx-auto">
+	<div class="col-sm-12">
+		<a href="#" class="btn btn-outline-primary float-right">Citas Anteriores</a>
+				<h1>Citas</h1>
+	</div>
+	<div class="col-sm-12">
+		<form class="form-inline" action="#" method="post">
+			<div class="input-group mb-3">
+		    <div class="input-group-prepend">
+		      <span class="input-group-text"><i class="fas fa-search"></i></span>
+					 <input type="text" class="form-control mr-4" placeholder="Palabra clave">
+					 <span class="input-group-text"><i class="fas fa-life-ring"></i></span>
+ 						<select name="medic_id" class="form-control mr-4" value="Medico">
+ 						<option value="" disabled selected >MEDICO</option>
+ 						</select>
+						<button type="submit" class="btn btn-outline-primary">Buscar</button>
+		    </div>
+		  </div>
+		</form>
+	</div>
+	<div class="col-sm-11 mx-auto">
+		<table class="table table-bordered">
+    <thead class="thead-dark text-center">
+			<th>Asunto</th>
+			<th>Paciente</th>
+			<th>Medico</th>
+			<th>Fecha</th>
+			<th>Operaciones</th>
+    </thead>
+    <tbody class="text-center">
+			<tr class="text-center">
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
+			<td class="text-center mx-auto"><center>
+			<a href="#" class="btn btn-warning float-left mr-4">Editar</a>
+			<a href="#" class="btn btn-danger float-left">Eliminar</a>
+		</center>
+			</td>
+			</tr>
+
+    </tbody>
+
+	</div>
+</div>

@@ -13,6 +13,7 @@
   <script src="https://kit.fontawesome.com/52540fbc5c.js"></script>
   <link rel="stylesheet" type="text/css" href="css/style-home.css" media="screen">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 </head>
 
 <?php
@@ -45,7 +46,9 @@ if (file_exists($path_layout)) {
 else {
   die('Error al cargar');
 }
+?>
 
+<?php
 if (file_exists( $path_modulo )) {
     include( $path_modulo );
   }

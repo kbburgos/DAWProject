@@ -12,16 +12,16 @@
             <a class="nav-link" href="index.php"><i class="fas fa-home"></i> Home</a>
           </li>
           <li class="nav-item li-ocultar">
-            <a class="nav-link" href="#"><i class="fas fa-calendar-alt"></i> Citas</a>
+            <a class="nav-link" href="?mod=citas"><i class="fas fa-calendar-alt"></i> Citas</a>
           </li>
           <li class="nav-item li-ocultar">
-            <a class="nav-link" href="#"><i class="fas fa-male"></i> Pacientes</a>
+            <a class="nav-link" href="?mod=pacientes"><i class="fas fa-male"></i> Pacientes</a>
           </li>
           <li class="nav-item li-ocultar">
-            <a class="nav-link" href="#"><i class="fas fa-user-md"></i> Medicos</a>
+            <a class="nav-link" href="?mod=medicos"><i class="fas fa-user-md"></i> Medicos</a>
           </li>
           <li class="nav-item li-ocultar">
-            <a class="nav-link" href="#"><i class="fas fa-users"></i> Usuarios</a>
+            <a class="nav-link" href="?mod=usuarios"><i class="fas fa-users"></i> Usuarios</a>
           </li>
           <li class="nav-item li-ocultar">
             <div class="dropdown">
@@ -88,20 +88,20 @@
         <div class="modal-body">
 
           <div class="card card-menu w3-hover-sepia float-left mr-4" >
-              <a class="mt-2 text-center text-menu" href="#"><i class="fas fa-calendar-alt fa-5x"></i> <h6>Citas</h6></a>
+              <a class="mt-2 text-center text-menu" href="?mod=citas"><i class="fas fa-calendar-alt fa-5x"></i> <h6>Citas</h6></a>
           </div>
 
           <div class="card card-menu w3-hover-sepia float-left mr-4" >
-              <a class="mt-2 text-center text-menu" href="#"><i class="fas fa-male fa-5x"></i> <h6>Pacientes</h6></a>
+              <a class="mt-2 text-center text-menu" href="?mod=pacientes"><i class="fas fa-male fa-5x"></i> <h6>Pacientes</h6></a>
           </div>
 
           <div class="card card-menu w3-hover-sepia float-left mr-4" >
-              <a class="mt-2 text-center text-menu" href="#"><i class="fas fa-user-md fa-5x"></i> <h6>Medicos</h6></a>
+              <a class="mt-2 text-center text-menu" href="?mod=medicos"><i class="fas fa-user-md fa-5x"></i> <h6>Medicos</h6></a>
 
           </div>
 
           <div class="card card-menu w3-hover-sepia float-left mr-4" >
-              <a class="mt-2 text-center text-menu" href="#"><i class="fas fa-users fa-5x"></i> <h6>Usuarios</h6></a>
+              <a class="mt-2 text-center text-menu" href="?mod=usuarios"><i class="fas fa-users fa-5x"></i> <h6>Usuarios</h6></a>
           </div>
 
           <div class="card card-menu float-left mr-4" >
