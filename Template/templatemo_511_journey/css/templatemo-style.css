@@ -1,4 +1,4 @@
-/* 
+/* tm-a
 
 Journey Template 
 http://www.templatemo.com/tm-511-journey
@@ -31,8 +31,8 @@ p:last-child { margin-bottom: 0; }
 }
 
 .tm-container-outer {
-    max-width: 1400px;
-    margin: 0 auto;    
+    max-width: 1350px;
+    margin: 0 auto;   
 }
 
 .tm-content-box { box-shadow: 0 0 3px rgba(0, 0, 0, 0.15); }
@@ -43,8 +43,14 @@ p:last-child { margin-bottom: 0; }
     font-weight: 600;
 }
 
-.tm-bg-primary { background: #69c6ba; }
-.tm-bg-highlight { background: #c66995; }
+
+
+
+.tm-bg-primary { background: #00A8E8; }
+.tm-bg-highlight { background: #003459; }
+
+
+
 
 .btn-primary {
     background: #69c6ba;
@@ -53,7 +59,7 @@ p:last-child { margin-bottom: 0; }
     outline: none;
 }
 
-.btn-primary:hover { background: #c66995; }
+.btn-primary:hover { background: #1D0BE6; }
 .tm-top-bar .navbar-expand-lg .navbar-nav .nav-link { padding: 50px 35px; }
 
 .tm-top-bar {
@@ -97,14 +103,14 @@ p:last-child { margin-bottom: 0; }
     padding-bottom: 0;
 }
 
-.nav-link.active, .nav-link:hover {	color: #69c6ba;	}
+.nav-link.active, .nav-link:hover {	color: #00A8E8;	} /*Al seleccionar elementos del nav*/
 
 .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgb(104, 199, 187)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
 }
 
 .navbar-toggler { 
-    border-color: rgb(104, 199, 187);
+    border-color: #007EA7; /*Cuadro menú*/
     border-radius: 0;
     cursor: pointer;
 }
@@ -154,7 +160,7 @@ p:last-child { margin-bottom: 0; }
 .tm-down-arrow-link:hover,
 .tm-down-arrow-link:focus {
     color: white;
-    background-color: #c66995;
+    background-color: #FF0000;
 }
 
 /* Search form */
@@ -189,20 +195,20 @@ label { font-weight: 700; }
 }
 
 .tm-btn-white { background: white; }
-.tm-btn-white-primary { color: #69c6ba; }
-.tm-btn-white-highlight { color: #c66995; }
+.tm-btn-white-primary { color: #00171F ; } /*Color 1 button*/
+.tm-btn-white-highlight { color: #00171F; }/*Color 2 botón continuar leyendo*/
 
 .tm-btn-white-primary:hover,
 .tm-btn-white-primary:focus,
 .tm-btn-white-primary:active {
-    background: #c66995;
+    background: #003459; /*Al pasar por encima del boton*/
     color: white;
 }
 
 .tm-btn-white-highlight:hover,
 .tm-btn-white-highlight:focus,
 .tm-btn-white-highlight:active {
-    background: #69c6ba;
+    background: #00A8E8;
     color: white;
 }
 
@@ -214,13 +220,15 @@ label { font-weight: 700; }
     background: #c66995;
 }
 
-.tm-bg-gray { background-color: #efefef; }
-.tm-about-text-wrap { max-width: 830px; }
+.tm-bg-gray { background-color: #E5F4F5; } /*Texto inicial*/
+.tm-about-text-wrap { max-width: 530px; }
 
 .tm-right {
     display: inline-block;
     float: right;
 }
+
+
 
 .tm-slideshow-section {
     display: -webkit-box;
@@ -301,7 +309,7 @@ label { font-weight: 700; }
     left: 94px;
 }
 
-/* Tabs */
+/* Tabs ---------------------------------------------- */
 .tm-tabs-links {
     display: -webkit-box;
     display: -webkit-flex;
@@ -426,6 +434,14 @@ label { font-weight: 700; }
     font-weight: 600;
 }
 
+/*
+#row{
+
+    margin: 10px 10px 10px 10px;
+    padding: 20px 20px 20px 20px;
+
+}*/
+
 .tm-recommended-price-link {
     color: white;
     font-size: 0.8rem;
@@ -436,18 +452,18 @@ label { font-weight: 700; }
 .tm-d-table { display: table; }
 
 footer {
-    background: #69c6ba;
+    background: #00171F;
     padding-top: 40px;
     padding-bottom: 40px;
     text-align: center;    
     font-size: 0.8rem;
 }
 
-footer a { color: #fff; }
+footer a { color: #fff; } /*Color Template*/
 
-footer a:hover { color: #900; }
+footer a:hover { color: #900; } /*Color al pasar por el footer*/
 
-footer p { color: white; }
+footer p { color: white; } /*Color de copyright*/
 
 .tm-footer-text-highlight {
     color: white;
@@ -493,6 +509,16 @@ footer p { color: white; }
     font-weight: 600;
 }
 
+@media screen and (max-width:767.98px){
+    .carousel-indicators{
+        display: none;
+    }
+
+    .tm-top-bar{
+        position:sticky;
+    }
+}
+
 #google-map { height: 600px; }
 
 @media screen and (max-width: 1080px) {
@@ -506,7 +532,7 @@ footer p { color: white; }
 @media screen and (max-width: 991px) {
     .tm-top-bar .navbar-expand-lg .navbar-nav .nav-link {
         padding: 15px 20px;
-        background: white;
+        background: white; /**Menú celular*/
     }
 
     .tm-top-bar, .tm-top-bar-bg { height: auto; }
