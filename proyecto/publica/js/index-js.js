@@ -53,22 +53,22 @@ var map = '';
         });
 
         // Smooth scroll to search form
-        $('.tm-down-arrow-link').click(function(){
-            $.scrollTo('#tm-section-search', 300, {easing:'linear'});
-        });
+        // $('.tm-down-arrow-link').click(function(){
+        //     $.scrollTo('#tm-section-search', 300, {easing:'linear'});
+        // });
 
 
 
         // Update nav links on scroll
-        $('#tm-top-bar').singlePageNav({
-            currentClass:'active',
-            offset: 60
-        });
+        // $('#tm-top-bar').singlePageNav({
+        //     currentClass:'active',
+        //     offset: 60
+        // });
 
         // Close navbar after clicked
-        $('.nav-link').click(function(){
-            $('#mainNav').removeClass('show');
-        });
+        // $('.nav-link').click(function(){
+        //     $('#mainNav').removeClass('show');
+        // });
 
         //Slick Carousel
         // $('.tm-slideshow').slick({
