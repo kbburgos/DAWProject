@@ -34,8 +34,8 @@
 			<td></td>
 			<td></td>
 			<td class="text-center mx-auto"><center>
-			<a href="#" class="btn btn-warning float-left mr-4">Editar</a>
-			<a href="#" class="btn btn-danger float-left">Eliminar</a>
+			<a href="#" class="btn btn-warning">Editar</a>
+			<a href="#" class="btn btn-danger">Eliminar</a>
 		</center>
 			</td>
 			</tr>

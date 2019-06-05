@@ -2,7 +2,7 @@
   <div class="col-sm-10">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark clearfix">
       <a class="navbar-brand" href="index.php">Sis Medic TBS <span class="badge badge-info">V 1.0</span></a>
-      <a href="#" class="navbar-brand"><span class="badge badge-warning"> <i class="fas fa-plus-circle"></i> Nueva Cita </span></a>
+      <a href="#" class="navbar-brand"><span class="btn btn-outline-info"> <i class="fas fa-plus-circle"></i> Nueva Cita </span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
       </button>
