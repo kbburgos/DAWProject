@@ -1,6 +1,6 @@
 <div class="row mt-2 ml-2 mr-2 mx-auto">
 	<div class="col-sm-12">
-		<a href="#" class="btn btn-outline-primary float-right">Citas Anteriores</a>
+		<a href="?mod=oldreservations" class="btn btn-outline-primary float-right">Citas Anteriores</a>
 				<h1>Citas</h1>
 	</div>
 	<div class="col-sm-12">

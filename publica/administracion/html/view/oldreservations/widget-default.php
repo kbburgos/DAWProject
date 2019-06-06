@@ -1,16 +1,16 @@
-<div class="row">
-	<div class="col-md-12">
-
-		<h1>Citas</h1>
+</div>
+<div class="row mt-2 ml-2 mr-2 mx-auto">
+	<div class="col-sm-12">
+		<h1>Historico de Citas</h1>
 <br>
-			<table class="table table-bordered table-hover">
+			<table class="table table-bordered table-hover text-center">
 			<thead>
         <tr>
 			<th>Asunto</th>
 			<th>Paciente</th>
 			<th>Medico</th>
 			<th>Fecha</th>
-			<th></th>
+			<th>Operaciones</th>
     </tr>
 			</thead>
       <tbody>
@@ -19,14 +19,13 @@
 				<td></td>
 				<td></td>
 				<td></td>
-				<td style="width:130px;">
-				<a href="" class="btn btn-warning btn-xs">Editar</a>
-				<a href="" class="btn btn-danger btn-xs">Eliminar</a>
+				<td>
+				<a href="" class="btn btn-outline-warning btn-sm">Editar</a>
+				<a href="" class="btn btn-outline-danger btn-sm">Eliminar</a>
 				</td>
 				</tr>
       </tbody>
     </table>
-
 
 	</div>
 </div>
