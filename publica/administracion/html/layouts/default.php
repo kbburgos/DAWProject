@@ -41,7 +41,7 @@
                   <i class="fas fa-teeth-open"></i> Odontograma
                 </a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="#"> <i class="fas fa-search"></i> Ver </a>
+                  <a class="dropdown-item" href=""> <i class="fas fa-search"></i> Ver </a>
                   <a class="dropdown-item" href="#"> <i class="fas fa-plus-square"></i> Registrar Datos </a>
                   <a class="dropdown-item" href="#"> <i class="fas fa-plus-circle"></i> Registrar Nuevo Paciente </a>
                 </div>
