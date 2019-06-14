@@ -1,0 +1,58 @@
+.nav-link.active, .nav-link:hover {	color: #00A8E8;	} /*Al seleccionar elementos del nav*/
+
+.navbar-toggler { 
+    border-color: #007EA7; /*Cuadro menú*/
+    border-radius: 0;
+    cursor: pointer;
+}
+
+.tm-down-arrow-link:focus {
+    color: white;
+    background-color: #FF0000;
+}
+
+.tm-btn-white-primary:active {
+    background: #003459; /*Al pasar por encima del boton*/
+    color: white;
+}
+
+#img2 {
+  display: block; 
+  margin: 0 auto;
+  max-width: 100%;
+  width: 80%;
+}
+
+.imgEfecto{
+border: 5px solid #ccc;
+    float: left;
+    margin: 15px;
+    -webkit-transition: margin 0.5s ease-out;
+    -moz-transition: margin 0.5s ease-out;
+    -o-transition: margin 0.5s ease-out;
+}
+
+.imgEfecto:hover {
+    margin-top: 2px;
+}
+
+
+
+.temp:hover {
+-webkit-transform: rotateY(180deg);
+-webkit-transform-style: preserve-3d;
+transform: rotateY(180deg);
+transform-style: preserve-3d;
+
+
+
+}
+
+
+footer {
+    background: #00171F;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    text-align: center;    
+    font-size: 0.8rem;
+}
