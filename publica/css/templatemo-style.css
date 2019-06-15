@@ -270,7 +270,7 @@ label { font-weight: 700; }
 }
 */
 
-
+/*
 .imgEfecto{
 border: 5px solid #ccc;
     float: left;
@@ -283,14 +283,11 @@ border: 5px solid #ccc;
 .imgEfecto:hover {
     margin-top: 2px;
 }
-<<<<<<< HEAD
 
-=======
 */
 
 
 /*
->>>>>>> 9255426e253f86634eb050227e883f0a5cfe5a0d
 
 
 .temp:hover {
@@ -306,14 +303,9 @@ transform-style: preserve-3d;
 
 /*
 .cont:hover .imgEfecto {-webkit-transform:scale(1.3);transform:scale(1.3);}
-<<<<<<< HEAD
-.cont {overflow:hidden;}
-*/
-=======
 .cont {overflow:hidden;
 }*/
 
->>>>>>> 9255426e253f86634eb050227e883f0a5cfe5a0d
 
 
 .tm-slideshow-section {

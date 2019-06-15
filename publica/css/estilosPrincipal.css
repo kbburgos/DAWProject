@@ -7,8 +7,9 @@
 .carousel-caption{
   background-color: hsl(197, 100%, 45%,0.6);
   margin-bottom: 5%;
-  width: 35%;
+  width: 40%;
   padding-left: 15px;
+  padding-right: 15px;
   border-radius: 10px;
   text-align: left;
   color: #00171F;

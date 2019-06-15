@@ -58,13 +58,13 @@ function startIntro(){
       },
 
     {
-      element:'#slide-atencion',
+      element:'#slide-tratamiento',
       intro: "<p class= 'text-center'>Descubre todo acerca de nuestro grupo de profecionales medicos y nuestro historial de atención</p>",
       position: 'bottom'
     },
     
     {
-      element:'#slide-tecnologia',
+      element:'#slide-instalaciones',
       intro: "<p class= 'text-center'>Nuestros pacientes siempre son lo mas importante, usamos tecnologia de punta</p>",
       position: 'bottom'
     },
