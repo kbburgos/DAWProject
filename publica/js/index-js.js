@@ -59,7 +59,7 @@ function startIntro(){
 
     {
       element:'#slide-atencion',
-      intro: "<p class= 'text-center'>Descubre todo acerca de nuestro grupo de profecionales medicos y nuestro historial de atencion</p>",
+      intro: "<p class= 'text-center'>Descubre todo acerca de nuestro grupo de profecionales medicos y nuestro historial de atención</p>",
       position: 'bottom'
     },
     
@@ -70,7 +70,7 @@ function startIntro(){
     },
     {
       element: '#card-1',
-      intro: "<p class= 'text-center'>Puedes descubrir las mejores protesis </p>",
+      intro: "<p class= 'text-center'>Puedes descubrir las mejores prótesis </p>",
       position: 'auto'
     },
     {
@@ -82,6 +82,9 @@ function startIntro(){
       element: '#card-3',
       intro: "<p class= 'text-center'>Aprende como cuidar tu sonrisa </p>",
       position: 'auto'
+    },
+    {
+      intro: "<p class= 'text-center'>Gracias por visitarnos, disfruta de nuestros servicios!<img src='./resources/img/logotipo.png' alt='Site logo'></p>"
     }
         ]
   });
@@ -110,7 +113,7 @@ function startIntro(){
           $("html,body").animate({scrollTop: $(codigo).offset().top}, 2000);
         });
 
-        
+
         $('.toast').toast('show');
         $('#btn-intro').on('click',function(){
           $('.toast').toast('hide');
