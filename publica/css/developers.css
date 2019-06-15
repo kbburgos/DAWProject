@@ -1,0 +1,13 @@
+.imagen-card {
+  width: 100%;
+}
+.desaparecer{
+  display: none;
+}
+.row-ocultar {
+  /*display: none;*/
+  visibility: hidden;
+}
+#logo {
+  width: 30px;
+}
