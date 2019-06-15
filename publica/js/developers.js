@@ -30,37 +30,40 @@ function cambiar() {
   var img = $("#img-principal");
   if(contador == 0){
     cardP.animate({
-      opacity: 0
+      opacity: 0,
+      right: 0
     },4000);
   }
   else if(contador == 1){
     cardP.animate({
       opacity: 1
     },1000);
-    img.attr("src","../resources/img-developers/kb.jpeg");
+    img.attr("src","../resources/img-developers/kb.png");
     cardP.animate({
-      opacity: 0
+      opacity: 0,
+      left: 300
     },3000);
-    //img[0].style.filter = "opacity(.5)";
     h3.text("Karla Burgos");
   }
   else if (contador == 2) {
     cardP.animate({
       opacity: 1
     },1000);
-    img.attr("src","../resources/img-developers/tv.jpg");
-    h3.text("Tony Veas");
+    img.attr("src","../resources/img-developers/tv.png");
     cardP.animate({
-      opacity: 0
+      opacity: 0,
+      right: 0
     },3000);
+    h3.text("Tony Veas");
   }
   else if (contador == 3) {
     cardP.animate({
       opacity: 1
     },1000);
-    img.attr("src","../resources/img-developers/cs.jpg");
+    img.attr("src","../resources/img-developers/cs.png");
     cardP.animate({
-      opacity: 0
+      opacity: 0,
+      left: 0
     },3000);
     h3.text("Carlos Sesme");
   }
