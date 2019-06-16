@@ -1,71 +1,107 @@
-#formboton {
-  float: right;
-  padding: 8px 12px;
-  margin: 8px 0 0;
-  font-family: 'Montserrat', sans-serif;
-  border: 2px solid #78788c;
-  background: 0;
-  color: #5a5a6e;
-  cursor: pointer;
-  transition: all .3s
+#img1{
+	border-radius: 50%
 }
 
-#formboton:hover {
-  background: #78788c;
-  color: #fff
+#Nosotros{
+	background-color: #d2edf7;
+	color: #101213;
 }
 
-#cont {
-  margin: 10px 0;
-  padding-bottom: 10px;
-  width: 180px;
-  color: #78788c;
-  border-bottom: 3px solid #78788c
+#Nosotros p{
+	font-size: 25px;
+	text-align: justify;
 }
 
-input {
+#titulo1{
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#esteSi{
+	justify-content: center;
+}
+/* Create three equal columns that floats next to each other */
+.column {
+ float: left;
+ width: 25%;
+ padding: 10px;
+ margin: 5px;
+ height: 250px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+ content: "";
+ display: table;
+ clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+ .column {
+	 width: 100%;
+ }
+}
+
+
+
+/* Style inputs, select elements and textareas */
+input[type=text], select, textarea{
   width: 100%;
-  padding: 10px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   box-sizing: border-box;
-  background: none;
-  outline: none;
-  resize: none;
-  border: 0;
-  font-family: 'Montserrat', sans-serif;
-  transition: all .3s;
-  border-bottom: 2px solid #bebed2
+  resize: vertical;
 }
 
-input:focus {
-  border-bottom: 2px solid #78788c
+
+/* Style the label to display next to the inputs */
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
 }
 
-#divparrafos p:before {
-  content: attr(type);
-  display: block;
-  margin: 20px 0 0;
-  font-size: 20px;
-  color: #5a5a5a
+/* Style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
 }
 
-@font-face {
-  font-family: rale;
-  src: url(fuentes/Raleway-Regular.ttf);
+
+/* Style the container */
+#formulariocon {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
 }
 
-.form {
-  width: 600px;
-  height: 600px;
-  background: #e6e6e6;
-  border-radius: 8px;
-  box-shadow: 0 0 40px -10px #000;
-  margin: calc(10vh - 20px) auto;
-  padding: 20px 30px;
-  max-width: calc(100vw - 40px);
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif;
-  position: relative
+/* Floating column for labels: 25% width */
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
 }
+
+/* Floating column for inputs: 75% width */
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
 
 nav ul li a:hover {
   color: #444;
@@ -78,6 +114,24 @@ nav ul li a:hover {
   height: 500px;
   frameborder: 0;
   allowfullscreen;
+}
+
+#paginacion {
+  border: 1px solid #CCC;
+  background-color: #E0E0E0;
+  padding: .5em;
+}
+
+article{
+	flex-direction: column;
+	flex-wrap: wrap
+	position:relative;
+	padding: 10px 5px;
+	text-align: center;
+	width: 25%;
+	display: block;
+	text-rendering: optimizeLegibility;
+	float: right;
 }
 
 body {
