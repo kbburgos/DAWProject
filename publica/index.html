@@ -5,14 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Sis Medic TBS</title>
-    <link rel="icon" type="img/png" href="./resources/img/favicon.png">
+    <link rel="icon" type="img/png" href="./resources/img/logotipo.png">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700">  <!-- Google web font "Open Sans" -->
-    <link rel="stylesheet" href="./resources/font-awesome-4.7.0/css/font-awesome.min.css">                <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" media ="screen">                                      <!-- Bootstrap style -->
+    <link rel="stylesheet" href="./resources/font-awesome-4.7.0/css/font-awesome.min.css">                <!-- Font Awesome -->     
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+                                   <!-- Bootstrap style -->
     <link rel="stylesheet" type="text/css" href="./css/datepicker.css"/>
     <link rel="stylesheet" type="text/css" href="./resources/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="./resources/slick/slick-theme.css"/>
     <link rel="stylesheet" href="./css/templatemo-style.css">
+    <link rel="stylesheet" href="./css/introjs.min.css">
     <link rel="stylesheet" href="./css/estilosPrincipal.css">                                   <!-- Templatemo style -->
                              <!-- Templatemo style -->
 </head>
@@ -21,10 +23,10 @@
             <div class="tm-top-bar-bg"></div>
             <div class="tm-top-bar" id="tm-top-bar">
                 <div class="container">
-                    <div class="row">
-                        <nav class="navbar navbar-expand-lg narbar-light fixed">
-                            <a class="navbar-brand mr-auto" href="./index.html">
-                                <img src="./resources/img/favicon.png" alt="Site logo">
+                    <div class="row" >
+                        <nav class="navbar navbar-expand-lg narbar-light fixed" >
+                            <a class="navbar-brand mr-auto" href="./index.html" id="nav-bar">
+                                <img src="./resources/img/logotipo.png" alt="Site logo">
                                 Sis Medic TBS
                             </a>
                             <button type="button" id="nav-toggle" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#mainNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,8 +38,8 @@
                                     <a class="nav-link active external"  href="./index.html">Inicio <span class="sr-only">(current)</span></a>
                                 </li>
 
-                                <li class="nav-item">
-                                    <a class="nav-link" href="./html/QuienesSomos.html">¿Quienes Somos?</a>
+                                <li class="nav-item" >
+                                    <a class="nav-link" href="./html/QuienesSomos.html" >¿Quienes Somos?</a>
                                 </li>
                                 <li class="nav-item">
                                   <a class="nav-link" href="./html/noticias.html">Noticias</a>
@@ -61,12 +63,13 @@
                     <li data-target="#carousel" data-slide-to="0" class="active"></li>
                     <li data-target="#carousel" data-slide-to="1"></li>
                     <li data-target="#carousel" data-slide-to="2"></li>
+                    
                   </ol>
 
                   <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item active" >
+                    <div class="carousel-item active " >
                       <div class="view ">
-                        <a href="#" class = "ancla" data-ancla='cardGroup'>
+                        <a href="#  " class = "ancla" data-ancla='cardGroup'>
                           <img class="d-block w-100" src="https://as1.ftcdn.net/jpg/02/46/18/78/500_F_246187812_D7A1GzXLISKxcKr24TpH095qPeumMv6Q.jpg"
                           alt="First slide">
                           <!-- https://image.freepik.com/foto-gratis/modelo-mandibula-dental-clinica-dentista_53876-39339.jpg -->
@@ -76,41 +79,46 @@
                         <div class="mask rgba-black-light"></div>
                       </div>
                       <div class="carousel-caption d-none d-md-block">
-                        <h3 class="h3-responsive">Cuida tu Sonrisa</h3>
-                        <p>Una buena higiene dental te dara una sonrisa fresca y hermosa!</p>
+                        <h3 class="h3-responsive">Clínica Odontológica Infantil (Odontopediatría) </h3>
+                        <p class="text-justify">Una clínica destinada para la atención de los más pequeños con docentes calificados para la atención de los más chiquitos.</p>
                       </div>
                     </div>
-                    <div class="carousel-item">
-                      <!--Mask color-->
-                      <div class="view">
-                        <a href="./html/noticias.html">
-                            <img class="d-block w-100" src="http://santident.com/wp-content/uploads/2015/09/higiene-dental-con-brackets.jpg"
-                            alt="Second slide">
 
-                        </a>
-                        
-                        <div class="mask rgba-black-strong"></div>
-                      </div>
-                      <div class="carousel-caption d-none d-md-block">
-                        <h3 class="h3-responsive">Noticias y Tratamientos Dentales</h3>
-                        <p>Entereta de los mejores tratamientos para tus Dientes!</p>
-                      </div>
-                    </div>
                     <div class="carousel-item">
-                      <!--Mask color-->
-                      <div class="view">
-                        <a href="./html/QuienesSomos.html">
-                            <img class="d-block w-100" src="https://dlior9lx1k7r2.cloudfront.net/coverphoto/d0037137-c621-4d6c-b7ae-c762433a3dba.jpg"
-                            alt="Third slide">
-                        </a>
-                       
-                        <div class="mask rgba-black-slight"></div>
+                        <!--Mask color-->
+                        <div class="view">
+                          <a href="./html/QuienesSomos.html">
+                              <img class="d-block w-100" src="https://dlior9lx1k7r2.cloudfront.net/coverphoto/d0037137-c621-4d6c-b7ae-c762433a3dba.jpg"
+                              alt="Third slide">
+                          </a>
+                         
+                          <div class="mask rgba-black-slight"></div>
+                        </div>
+                        <div class="carousel-caption d-none d-md-block" >
+                          <h3 class="h3-responsive">¿Qué Hacemos?</h3>
+                          <p class="text-justify"> Conoce mas sobre nuestro trabajo!</p>
+                        </div>
                       </div>
-                      <div class="carousel-caption d-none d-md-block">
-                        <h3 class="h3-responsive">¿Qué Hacemos?</h3>
-                        <p>Conoce mas sobre nuestro trabajo!</p>
-                      </div>
-                    </div>
+
+                      <div class="carousel-item">
+                          <!--Mask color-->
+                          <div class="view">
+                            <a href="./html/noticias.html">
+                                <img class="d-block w-100" src="http://santident.com/wp-content/uploads/2015/09/higiene-dental-con-brackets.jpg"
+                                alt="Second slide">
+    
+                            </a>
+                            
+                            <div class="mask rgba-black-strong"></div>
+                          </div>
+                          <div class="carousel-caption d-none d-md-block">
+                            <h3 class="h3-responsive">Noticias y Tratamientos Dentales</h3>
+                            <p class="text-justify">Entereta de los mejores tratamientos para tus Dientes!</p>
+                          </div>
+                        </div>
+
+                   
+                    
                   </div>
 
                 </div>
@@ -118,16 +126,19 @@
                   <hr class="my-4">
                 </div>
             </section>
-              <section class="tm-slideshow-section">
+              </section>
+              <section class="tm-slideshow-section" >
                   <div class="tm-slideshow">
 
-                      <img src="https://image.freepik.com/foto-gratis/dentista-explicando-dientes-cepillando-al-paciente_79405-5052.jpg" class="d-block w-100" alt="Image">
-
+                      <img src="./resources/img/img_tratamiento.jpeg" class="d-block w-100" alt="Image">
+<!-- https://image.freepik.com/foto-gratis/dentista-explicando-dientes-cepillando-al-paciente_79405-5052.jpg -->
                   </div>
-                  <div class="tm-slideshow-description tm-bg-primary">
-                      <h2 class="">La Mejor Atención</h2>
-                      <p>Brindamos atención de calidad a nuestros pacientes con el mejor Equipo medico.</p>
-                      <a href="#" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">Leer Más</a>
+                  <div class="tm-slideshow-description tm-bg-primary" id="slide-tratamiento">
+                      <h2 class="">Tratamientos</h2>
+                      <p class="text-justify">Los 3 tratamientos, profilaxis, curacion de caries, protesis removibles, 
+                        protesis fijas, coronas, puentes, carillas,
+                         extracciones, tratamientos periodontales, etc.</p>
+                      <!-- <a href="#" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">Leer Más</a> -->
                   </div>
               </section>
               <br>
@@ -135,13 +146,14 @@
               <section class=" tm-slideshow-section tm-slideshow-section-reverse">
 
                   <div class="tm-right tm-slideshow tm-slideshow-highlight">
-                      <img src="https://image.freepik.com/foto-gratis/consultorio-dental-moderno_10069-621.jpg" class="d-block w-100" alt="Image">
+                      <img src="./resources/img/img_instalaciones.jpeg" class="d-block w-100" alt="Image">
                   </div>
-
-                  <div class="tm-slideshow-description tm-slideshow-description-left tm-bg-primary">
-                      <h2 class="">Tecnología de Punta</h2>
-                      <p>Contamos con lo ultimo en tecnologia para cuidar a nuestros pacientes y brindarles el mejor servicio dental que puedan encontrar.</p>
-                      <a href="#" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">Leer Más</a>
+                  <!-- https://image.freepik.com/foto-gratis/consultorio-dental-moderno_10069-621.jpg -->
+                  <div class="tm-slideshow-description tm-slideshow-description-left tm-bg-primary" id="slide-instalaciones">
+                      <h2 class="">Instalaciones</h2>
+                      <p>En la actualidad la Facultad piloto de odontología cuenta con once clínicas habilitadas para realizar los tratamientos respectivos en las 
+                        distintas áreas para brindarles a nuestros pacientes la mejor atención y la mejor comodidad. </p>
+                      <!-- <a href="#" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">Leer Más</a> -->
                   </div>
 
               </section>
@@ -154,7 +166,7 @@
                   <div class="card-deck">
                    
                     <!-- Card -->
-                    <div class="card mb-4">
+                    <div class="card mb-4" id = 'card-1'>
 
                       <!--Card image-->
                       <div class="view overlay">
@@ -168,7 +180,7 @@
                       <div class="card-body">
 
                         <!--Title-->
-                        <h4 class="card-title">Protesis</h4>
+                        <h4 class="card-title">Prótesis</h4>
                         <!--Text-->
                         <p class="card-text">Encuentra las mejores protesis dentales aquí y nunca dejes de sonreir.</p>
                         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
@@ -180,7 +192,7 @@
                     <!-- Card -->
 
                     <!-- Card -->
-                    <div class="card mb-4">
+                    <div class="card mb-4" id = 'card-2'>
 
                       <!--Card image-->
                       <div class="view overlay">
@@ -206,7 +218,7 @@
                     <!-- Card -->
 
                     <!-- Card -->
-                    <div class="card mb-4">
+                    <div class="card mb-4" id = 'card-3'>
 
                       <!--Card image-->
                       <div class="view overlay">
@@ -237,7 +249,8 @@
 
 
           </div>
-
+          
+          <br>
 
                 <!-- <div class="tm-container-outer tm-position-relative" id="tm-section-4">
                   <p class="textMap">Estamos Ubicados en: </p>
@@ -249,20 +262,43 @@
 
                 . Designed by <a rel="nofollow" href="http://www.google.com/+templatemo" target="_parent">Template Mo</a></p>
             </footer>
+
+            <div id = "notify" class="conatainner-fluid fixed-bottom mb-1" >
+           <div class="row justify-content-lg-end justify-content-md-end justify-content-center  ">
+              <div class="col-lg-4 col-md-5 col-11">
+                  <div class="toast mx-auto" data-autohide="false"  role="alert" aria-live="assertive" aria-atomic="true">
+                      <div class="toast-header">
+                        <strong class="mr-auto text-primary">Bienvenido a Sis Medic TBS!</strong>
+                    
+                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+                      </div>
+                      <div class="toast-body text-center">
+                        <p>Quieres un recorrido por nuestra pagina para saber lo que tenemos para ti y tu sonrisa?</p>
+                       
+                        <button type="button" class=" btn btn-info btn-sm" id="btn-intro">Vamos!</button>
+                      </div>
+                    </div>
+              </div>
+           </div>
+            
+          </div>
         </div>
     </div> <!-- .main-content -->
 
     <!-- load JS files -->
-
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- load JS files -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script> 
 
-    <script src="./js/jquery-1.11.3.min.js"></script>             <!-- jQuery (https://jquery.com/download/) -->
-    <script src="./js/popper.min.js"></script>                    <!-- https://popper.js.org/ -->
-    <script src="./js/bootstrap.min.js"></script>                 <!-- https://getbootstrap.com/ -->
-    <script src="./js/datepicker.min.js"></script>                <!-- https://github.com/qodesmith/datepicker -->
-    <script src="./js/jquery.singlePageNav.min.js"></script>      <!-- Single Page Nav (https://github.com/ChrisWojcik/single-page-nav) -->
-    <script src="./resources/slick/slick.min.js"></script>                  <!-- http://kenwheeler.github.io/slick/ -->
-    <script src="./js/jquery.scrollTo.min.js"></script>           <!-- https://github.com/flesler/jquery.scrollTo -->
+    <script src="./js/popper.min.js"></script>    
+    <script src="./js/intro.min.js"></script>
+
+    <script src="./js/datepicker.min.js"></script>                
+    <script src="./js/jquery.singlePageNav.min.js"></script>     
+    <script src="./resources/slick/slick.min.js"></script>                
+ 
     <script src="./js/index-js.js"></script>
 
     </body></html>

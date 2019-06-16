@@ -729,7 +729,7 @@ footer p { color: white; } /*Color de copyright*/
     }
 }
 
-#google-map { height: 600px; }
+#mapa { height: 600px; }
 
 @media screen and (max-width: 1080px) {
     .tm-tab-link-li { width: 25%; }
