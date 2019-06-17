@@ -1,42 +1,5 @@
 //MAP INICIALIZADOR
-var map = '';
-      var center;
 
-      function initialize() {
-          var mapOptions = {
-              zoom: 16,
-              center: new google.maps.LatLng(-2.147733, -79.964542),
-              scrollwheel: false
-          };
-
-          map = new google.maps.Map(document.getElementById('google-map'),  mapOptions);
-
-          google.maps.event.addDomListener(map, 'idle', function() {
-            calculateCenter();
-            console.log("calculo centro")
-        });
-
-          google.maps.event.addDomListener(window, 'resize', function() {
-            map.setCenter(center);
-           
-        });
-      }
-
-      function calculateCenter() {
-          center = map.getCenter();
-          var marker = new google.maps.Marker({
-            position: center,
-            map: map,
-            title: 'Escuela Superior Politecnica del Litoral - ESPOL'
-          });
-      }
-
-      function loadGoogleMap(){
-          var script = document.createElement('script');
-          script.type = 'text/javascript';
-          script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB_uM0BgDIiri-RlGCU49uXY7IRqMpcfcY&v=3.exp&' + 'callback=initialize';
-          document.body.appendChild(script);
-      }
 /* ----------------------------------------------------------------------------------------------------------------------------------------*/
 
 //intro.js inicializador
@@ -48,9 +11,9 @@ function startIntro(){
     overlayOpacity:1,
     keyboardNavigation: true,
     tooltipPosition:'auto',
-    nextLabel: 'Siguiente >', 
-		prevLabel: '< Anterior', 
-		skipLabel: 'Salir', 
+    nextLabel: 'Siguiente >',
+		prevLabel: '< Anterior',
+		skipLabel: 'Salir',
 		doneLabel: 'Hecho',
     steps: [
       {
@@ -62,7 +25,7 @@ function startIntro(){
       intro: "<p class= 'text-center'>Descubre todo acerca de nuestro grupo de profecionales medicos y nuestro historial de atención</p>",
       position: 'bottom'
     },
-    
+
     {
       element:'#slide-instalaciones',
       intro: "<p class= 'text-center'>Nuestros pacientes siempre son lo mas importante, usamos tecnologia de punta</p>",
@@ -120,11 +83,11 @@ function startIntro(){
           startIntro();
         });
 
-        //loadGoogleMap();    
+        //loadGoogleMap();
        // Google Map
 
         //animacion scroll
-    
+
 
         $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright
     });
