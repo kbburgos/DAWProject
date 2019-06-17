@@ -5,6 +5,17 @@
 body {
   background-image: url("../resources/img/fondo-d.jpg");
 }
+.icon-back {
+  width: 25px;
+  height: 25px;
+  float: left;
+}
+
+.shadow-perfil {
+  -webkit-box-shadow: -1px 0px 21px 3px rgba(129,230,169,1);
+  -moz-box-shadow: -1px 0px 21px 3px rgba(129,230,169,1);
+  box-shadow: -1px 0px 21px 3px rgba(129,230,169,1);
+}
 
 .ml11 {
   font-weight: 900;
@@ -68,3 +79,34 @@ body {
   border-radius: 10px;
   z-index: 500;
 }
+/*efecti de texto equipo de desarrollo */
+.ml12 {
+  font-weight: 900;
+  font-size: 3.5em;
+}
+
+.ml12 .letter2 {
+  display: inline-block;
+  line-height: 1em;
+}
+
+.ml12 .text-wrapper2 {
+  position: relative;
+  display: inline-block;
+  padding-top: 0.1em;
+  padding-right: 0.05em;
+  padding-bottom: 0.15em;
+}
+
+.ml12 .line2 {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+  transform-origin: 0 0;
+}
+
+.ml12 .line12 { top: 0; }
+.ml12 .line22 { bottom: 0; }
