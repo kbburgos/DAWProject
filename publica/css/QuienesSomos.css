@@ -17,16 +17,27 @@
 	text-transform: uppercase;
 }
 
-#esteSi{
+#esteSi {
 	justify-content: center;
 }
+
+#esteSi h2{
+	text-align: center;
+	font-size: 2rem;
+	font-weight: bold;
+	color: #002395;
+}
+
 /* Create three equal columns that floats next to each other */
 .column {
  float: left;
- width: 25%;
+ width: 70%;
  padding: 10px;
  margin: 5px;
- height: 250px;
+ height: 300px;
+ justify-content: center;
+ text-align:justify;
+ font-size: 13px;
 }
 
 /* Clear floats after the columns */
@@ -44,7 +55,6 @@
 }
 
 
-
 /* Style inputs, select elements and textareas */
 input[type=text], select, textarea{
   width: 100%;
@@ -55,6 +65,23 @@ input[type=text], select, textarea{
   resize: vertical;
 }
 
+input[type=date]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+input[type=email]{
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  resize: vertical;
+}
 
 /* Style the label to display next to the inputs */
 label {
@@ -62,23 +89,54 @@ label {
   display: inline-block;
 }
 
-/* Style the submit button */
+input[type=button] {
+  background-color: #002395;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+	right: auto;
+  text-decoration: none;
+  margin: 5px 2px;
+  cursor: pointer;
+	align-self: center;
+
+}
+
+
+
+/* Style the submit button
 input[type=submit] {
-  background-color: #4CAF50;
+  background-color: #002395;
   color: white;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   float: right;
-}
+}*/
+
+
+/*#botoncito {
+  background-color: #002395;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+	margin-left: 500px;
+	width: 100%;
+}*/
 
 
 /* Style the container */
 #formulariocon {
+	width: 50%;
   border-radius: 5px;
   background-color: #f2f2f2;
-  padding: 20px;
+  padding: 50px;
 }
 
 /* Floating column for labels: 25% width */
