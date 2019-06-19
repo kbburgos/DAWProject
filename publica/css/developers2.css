@@ -3,8 +3,9 @@
 }
 
 body {
-  background-image: url("../resources/img/fondo-d.jpg");
+  background-color: #e6e6e6;
 }
+
 .icon-back {
   width: 25px;
   height: 25px;
@@ -36,7 +37,7 @@ body {
   left: 0;
   height: 100%;
   width: 3px;
-  background-color: #ffffff;
+  background-color: black;
   transform-origin: 0 50%;
 }
 
@@ -48,6 +49,7 @@ body {
 .ml11 .letter {
   display: inline-block;
   line-height: 1em;
+  color: black;
 }
 
 #btnStart {
@@ -104,9 +106,33 @@ body {
   left: 0;
   height: 3px;
   width: 100%;
-  background-color: #fff;
+  background-color: black;
   transform-origin: 0 0;
 }
 
 .ml12 .line12 { top: 0; }
 .ml12 .line22 { bottom: 0; }
+
+@media screen and (max-width: 700px) {
+  .h3-principal {
+    background-color: #00A8E8;
+    color: #ffffff;
+    box-sizing: border-box;
+    left: 20px;
+    position: absolute;
+    font-size: 2.5em;
+    border-radius: 10px;
+  }
+
+  .h3-principal-2 {
+    background-color: #00A8E8;
+    color: #ffffff;
+    box-sizing: border-box;
+    right: 25px;
+    position: absolute;
+    font-size: 2.5em;
+    border-radius: 10px;
+    z-index: 500;
+  }
+
+}
