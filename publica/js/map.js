@@ -3,7 +3,38 @@
 	var divMapa=document.getElementById('mapa');
 	navigator.geolocation.getCurrentPosition(fn_ok,fn_error);
 	function fn_error() {
-		// body...
+		// body...		
+		
+		var lat2='-2.180865';
+		var lon2='-79.898463';
+
+		var gLatLon2=new google.maps.LatLng(lat2,lon2);
+		
+		var objConfig={
+			zoom:17,
+			center: gLatLon2
+		}
+		var gMapa=new google.maps.Map(divMapa,objConfig); //A donde se va a renderizar, Una configuración de ese mapa
+
+
+		var config={				
+			position: gLatLon2,
+			map: gMapa,
+			animation:google.maps.Animation.DROP,
+			title: 'Facultad de Odontología'
+			}
+		
+		var gMarkerDV= new google.maps.Marker(config);
+		var objHTML={    
+				content:'<div style="height: 80px; width: 240px"><h2>Facultad de Odontología</h2><p>El mejor lugar para tratar tu dientes.</p></div>'
+			}
+
+			var gInfW = new google.maps.InfoWindow(objHTML);
+			google.maps.event.addListener(gMarkerDV,'click',function(){
+				gInfW.open(gMapa,gMarkerDV);
+			});
+
+
 	}
 	function fn_ok(respuesta){
 		var lat=respuesta.coords.latitude;
