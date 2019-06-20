@@ -47,7 +47,7 @@ function startIntro(){
     scrollToElement:true,
     overlayOpacity:1,
     keyboardNavigation: true,
-    tooltipPosition:'auto',
+    
     nextLabel: 'Siguiente >', 
 		prevLabel: '< Anterior', 
 		skipLabel: 'Salir', 
@@ -71,17 +71,17 @@ function startIntro(){
     {
       element: '#card-1',
       intro: "<p class= 'text-center'>Puedes descubrir las mejores prótesis </p>",
-      position: 'auto'
+      position: 'left'
     },
     {
       element: '#card-2',
       intro: "<p class= 'text-center'>Aprende como evitar la caries y sus tratamientos </p>",
-      position: 'auto'
+      position: 'left'
     },
     {
       element: '#card-3',
       intro: "<p class= 'text-center'>Aprende como cuidar tu sonrisa </p>",
-      position: 'auto'
+      position: 'rigth'
     },
     {
       intro: "<p class= 'text-center'>Gracias por visitarnos, disfruta de nuestros servicios!<img src='./resources/img/logotipo.png' alt='Site logo'></p>"
