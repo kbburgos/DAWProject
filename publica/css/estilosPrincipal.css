@@ -23,8 +23,15 @@
 }
 .carousel-indicators li{
   background-color: hsl(197, 100%, 45%,1);
-
+  z-index: 1010;
 }
+#toast-container > .toast-info {
+  color: hsl(197, 100%, 45%,1);
+background-image: url("../resources/img/send.png") !important;
+  background-color: white; 
+   /* background-color: hsl(197, 100%, 45%,1); */
+}
+
 .carousel-indicators li.active{
   background-color: #00171F;
 
@@ -68,5 +75,5 @@ p.card-text+a{
     .textMap{
       text-align: center;
     }
-
+    
  }

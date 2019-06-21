@@ -10,17 +10,11 @@ function startIntro(){
     scrollToElement:true,
     overlayOpacity:1,
     keyboardNavigation: true,
-<<<<<<< HEAD
-    
-    nextLabel: 'Siguiente >', 
-		prevLabel: '< Anterior', 
-		skipLabel: 'Salir', 
-=======
     tooltipPosition:'auto',
     nextLabel: 'Siguiente >',
 		prevLabel: '< Anterior',
 		skipLabel: 'Salir',
->>>>>>> 74a267be113fa9bea1e9a69bf9ba3cff2075688b
+
 		doneLabel: 'Hecho',
     steps: [
       {
@@ -60,6 +54,28 @@ function startIntro(){
   });
   intro.start();
 }
+
+
+function showToast(){
+
+  toastr.options = {
+    "closeButton": true,
+    "positionClass": "toast-bottom-right",
+    "showDuration": "100000",
+    "hideDuration": "10000",
+    "timeOut": "8000",
+    "extendedTimeOut": "10000",
+    "showEasing": "swing",
+    "hideEasing": "linear",
+    "showMethod": "fadeIn",
+    "hideMethod": "fadeOut"
+  } 
+  toastr.options.onclick=function(){
+    startIntro();
+  };
+  toastr["info"]("<p class='text-justify'>¿Quieres un recorrido por nuestra pagina para saber lo que tenemos para ti y tu sonrisa? <i> Dame Click</i></p> ", "Bienvenido a Sis Medic TBS!");
+
+};
 //startIntro();
 
     /* DOM is ready
@@ -82,19 +98,25 @@ function startIntro(){
           //Funcionalidad de scroll lento para el enlace ancla en 2 segundos
           $("html,body").animate({scrollTop: $(codigo).offset().top}, 2000);
         });
+       
 
-
-        $('.toast').toast('show');
-        $('#btn-intro').on('click',function(){
-          $('.toast').toast('hide');
-          startIntro();
-        });
+        // $('.toast').toast('show');
+        // $('#btn-intro').on('click',function(){
+        //   $('.toast').toast('hide');
+        //   startIntro();
+        // });
 
         //loadGoogleMap();
        // Google Map
 
         //animacion scroll
 
-
+        // setTimeout(function() {
+        //   $("#notify").fadeOut(2500);
+        // },4000);
+        showToast();
         $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright
+
+       
+
     });
