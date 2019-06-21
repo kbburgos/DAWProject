@@ -15,6 +15,8 @@
     <link rel="stylesheet" href="../css/fonts.css">
     <link rel="stylesheet" type="text/css" href="../resources/slick/slick.css" />
     <link rel="stylesheet" type="text/css" href="../resources/slick/slick-theme.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <!--link rel="stylesheet" href="../css/templatemo-style.css"-->
     <link rel="stylesheet" href="../css/estilosNoticias.css">                          <!-- Templatemo style -->
       </head>
@@ -62,14 +64,77 @@
 
                 </div-->           
 
-                <div class="main">
+
+                
+            <div class="w3-container">
+              <p id="clic">Clic en la imagen para visualizar:</p>
+            </div>
+
+            <div class="w3-row-padding">
+              <div class="w3-col s3 w3-container">
+              <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('Nature');">
+                <img src="../resources/img/light-noticiap1.jpg" alt="Nature" style="width:50%">
+              </a>
+              </div>
+              <div class="w3-col s3 w3-container">
+                <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('Snow');">
+                  <img src="../resources/img/noticiap11.jpg" alt="Snow" style="width:50%">
+                </a>
+              </div>
+              <div class="w3-col s3 w3-container">
+                <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('Mountains');">
+                  <img src="../resources/img/noticiap12.jpg" alt="Mountains" style="width:50%">
+                </a>
+              </div>
+              <div class="w3-col s3 w3-container">
+                <a href="javascript:void(0)" class="w3-hover-opacity" onclick="openImg('Lights');">
+                  <img src="../resources/img/noticiap13.jpg" alt="Lights" style="width:50%">
+                </a>
+              </div>
+            </div><br>
+
+            <div id="Nature" class="picture w3-display-container" style="display:none">
+              <img src="../resources/img/noticiap1.jpg" alt="Nature" style="width:100%">
+              <span onclick="this.parentElement.style.display='none'" 
+              class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span>
+              <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">Nature</div>
+            </div>
+
+            <div id="Snow" class="picture w3-display-container" style="display:none">
+              <img src="../resources/img/noticiap11.jpg" alt="Snow" style="width:100%">
+              <span onclick="this.parentElement.style.display='none'" 
+              class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span>
+              <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">Snow</div>
+            </div>
+
+            <div id="Mountains" class="picture w3-display-container" style="display:none">
+              <img src="../resources/img/noticiap12.jpg" alt="Mountains" style="width:100%">
+              <span onclick="this.parentElement.style.display='none'" 
+              class="w3-display-topright w3-button w3-transparent">&times;</span>
+              <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">Mountains</div>
+            </div>
+
+            <div id="Lights" class="picture w3-display-container" style="display:none">
+              <img src="../resources/img/noticiap13.jpg" alt="Lights" style="width:100%">
+              <span onclick="this.parentElement.style.display='none'" 
+              class="w3-display-topright w3-button w3-transparent w3-text-white">&times;</span>
+              <div class="w3-display-bottomleft w3-container w3-padding w3-text-white">Northern Lights</div>
+            </div>
+
+            <p id="nt1" class="caja2">Se notifica a los estudiantes del décimo semestre de la carrera de odontología, que las fechas de inscripción al examen de habilitación para el ejercicio profesional (ehep), son desde el lunes 10 al viernes 28 de junio del 2019. Y la fecha de aplicación es el 4 de agosto del 2019. Para mantenerte actualizado visita este <a id="enlace" target="_blank" href="https://www.facebook.com/fpo.ug.edu.ec/posts/626695991178671?__xts__[0]=68.ARAFvtd5ysrHV0iDbjrji_Oj9PPKm-hD0iaOQkbRos5J3AHeB2M-bAA3nhJcBTzPNcwe6R5UoQtRCSfLvffiVn_06NGYmjjlsI_Ty4xTeK3FQXTryCLbh8_d6wSXmgtbKgY4BN4Sp_NQl5UccWnaAJfaop0bm3CSwXHW4wYgNEo2OTlkulADUdy9A16nkpM8WEIR9vyzyd9NrEgB72bjGgwVrjPUHKmFN2cKcXRKonR1AelBZXYDogy8ESseuE-LcxBWB25coyQ55jTuhCTOE9MpsuLLMW_aoeixHuOaRhEw3Sfn5M6QQC21kmpN9J7fBm__2EZyksZqZh5CtFrMSCU&__tn__=-R"><b>enlace.</b></a></p>
+
+
+
+
+
+                <!--div class="main">
                     <div class="slides">
-                        <img src="../resources/img/noticiap1.jpg" alt="">
+                        <img src="../resources/img/noticiap1.jpg"  alt="">
                         <img src="../resources/img/noticiap1.jpg" alt="">
                         <img src="../resources/img/noticiap1.jpg" alt="">
                     </div>
                     <p>Se notifica a los estudiantes del décimo semestre de la carrera de odontología, que las fechas de inscripción al examen de habilitación para el ejercicio profesional (ehep), son desde el lunes 10 al viernes 28 de junio del 2019. Y la fecha de aplicación es el 4 de agosto del 2019.</p>
-                </div>
+                </div-->
 
                 <!--div class="main">
                     <div class="slides">
@@ -257,6 +322,17 @@
   });
     });
     </script>
+
+    <script>
+function openImg(imgName) {
+  var i, x;
+  x = document.getElementsByClassName("picture");
+  for (i = 0; i < x.length; i++) {
+    x[i].style.display = "none";
+  }
+  document.getElementById(imgName).style.display = "block";
+}
+</script>
 
 </body>
 </html>
