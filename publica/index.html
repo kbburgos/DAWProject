@@ -17,8 +17,8 @@
     <link rel="stylesheet" type="text/css" href="./resources/slick/slick-theme.css"/>
     <link rel="stylesheet" href="./css/templatemo-style.css">
     <link rel="stylesheet" href="./css/introjs.min.css">
-    <link rel="stylesheet" href="./css/estilosPrincipal.css">                                   <!-- Templatemo style -->
-                             <!-- Templatemo style -->
+    <link rel="stylesheet" href="./css/estilosPrincipal.css">                                
+                            
 </head>
       <body>
         <div class="tm-main-content" id="top">
@@ -41,7 +41,7 @@
                                 </li>
 
                                 <li class="nav-item" >
-                                    <a class="nav-link" href="./html/QuienesSomos.html" >¿Quienes Somos?</a>
+                                    <a class="nav-link" href="./html/QuienesSomos.html" >¿Quiénes Somos?</a>
                                 </li>
                                 <li class="nav-item">
                                   <a class="nav-link" href="./html/noticias.html">Noticias</a>
@@ -186,9 +186,9 @@
                         <!--Title-->
                         <h4 class="card-title">Prótesis</h4>
                         <!--Text-->
-                        <p class="card-text">Encuentra las mejores protesis dentales aquí y nunca dejes de sonreir.</p>
+                        <p class="card-text">Encuentra las mejores prótesis dentales aquí y nunca dejes de sonreir.</p>
                         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                        <a href="#" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Más</a>
+                        <a href="#" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight" data-toggle="modal" data-target="#Modal1">Más</a>
 
                       </div>
 
@@ -214,7 +214,7 @@
                         <!--Text-->
                         <p class="card-text">Encuentra los mejores tratamientos contra las caries y como prevenirlas.</p>
                         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                        <a href="#" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Más</a>
+                        <a href="#" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight" data-toggle="modal" data-target="#Modal2">Más</a>
 
                       </div>
 
@@ -236,11 +236,13 @@
                       <div class="card-body">
 
                         <!--Title-->
-                        <h4 class="card-title">Limpieza Dental</h4>
+                        <h4 class="card-title">Clínica Odontológica Infantil</h4>
                         <!--Text-->
-                        <p class="card-text">Encuentra los mejores tratamientos para mantener una sonrisa blanca.</p>
+                        <p class="card-text text-justify">Profesionales calificados 
+                          para la atención de los más chiquitos y detectar a tiempo prudente anomalías con los dientes de 
+                          niños.</p>
                         <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
-                        <a href="#" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight">Más</a>
+                        <a href="#" class="text-uppercase tm-btn tm-btn-white tm-btn-white-highlight" data-toggle="modal" data-target="#Modal3">Más</a>
 
                       </div>
 
@@ -267,27 +269,83 @@
                 . Designed by <a rel="nofollow" href="http://www.google.com/+templatemo" target="_parent">Template Mo</a></p>
             </footer>
 
-            <!-- <div  id = "notify" class="conatainner-fluid fixed-bottom mb-1" >
-           <div class="row justify-content-lg-end justify-content-md-end justify-content-center  ">
-              <div class="col-lg-4 col-md-5 col-11">
-                  <div class="toast mx-auto" data-autohide="false"  role="alert" aria-live="assertive" aria-atomic="true">
-                      <div class="toast-header">
-                        <strong class="mr-auto text-primary">Bienvenido a Sis Medic TBS!</strong>
-                    
-                        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
-                      </div>
-                      <div class="toast-body text-center">
-                        <p>¿Quieres un recorrido por nuestra pagina para saber lo que tenemos para ti y tu sonrisa?</p>
-                       
-                        <button type="button" class=" btn btn-info btn-sm" id="btn-intro">Vamos!</button>
-                      </div>
-                    </div>
-              </div>
-           </div>
-            
-          </div> -->
+
         </div>
     </div> <!-- .main-content -->
+
+    <div class="modal fade" id="Modal1" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title " id="ModalLongTitle">Prótesis</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="text-justify">
+                  Está técnica dental está desarrollada mediante un profundo análisis del 
+                  caso especifico de cada paciente. Es un tratamiento que utiliza avanzadas 
+                  técnicas con materiales de última generación.
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn tm-btn-white-primary" data-dismiss="modal">Cerrar</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="modal fade" id="Modal2" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="ModalLongTitle">Tratamientos para Caries</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+
+              <p class="text-justify">
+                Trabajamos con tecnología de punta para lograr la sonrisa que te acompañe en tus mejores momentos y nunca 
+                sufras por las caries. 
+              </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn tm-btn-white-primary" data-dismiss="modal">Cerrar</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+<!--  -->
+<div class="modal fade" id="Modal3" tabindex="-1" role="dialog" aria-labelledby="ModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="ModalLongTitle">Odontopediatría</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p class="text-justify">
+              Una clínica destinada para la atención de los más pequeños con docentes calificados para la atención de 
+              los más chiquitos, con el fin de explorar y detectar en tiempo prudente anomalías con los dientes de niños y poder 
+              determinar el tratamiento más adecuado para cada uno de ellos, y básicamente mantener boquitas sanas mediante la 
+              aplicación de flúor como prevención, curaciones de caries, aplicación de sellantes y fisuras, exodoncias entre otros. 
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn tm-btn-white-primary" data-dismiss="modal">Cerrar</button>
+          
+        </div>
+      </div>
+    </div>
+  </div>
 
     <!-- load JS files -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

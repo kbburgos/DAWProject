@@ -18,6 +18,10 @@
 
   cursor: pointer;
 }
+.modal-title{
+  font-weight: bold;
+  color: hsl(197, 100%, 45%,1);
+}
 .nav-link{
   pointer-events:auto
 }

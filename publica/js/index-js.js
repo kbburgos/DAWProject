@@ -100,20 +100,6 @@ function showToast(){
         });
        
 
-        // $('.toast').toast('show');
-        // $('#btn-intro').on('click',function(){
-        //   $('.toast').toast('hide');
-        //   startIntro();
-        // });
-
-        //loadGoogleMap();
-       // Google Map
-
-        //animacion scroll
-
-        // setTimeout(function() {
-        //   $("#notify").fadeOut(2500);
-        // },4000);
         showToast();
         $('.tm-current-year').text(new Date().getFullYear());  // Update year in copyright
 
