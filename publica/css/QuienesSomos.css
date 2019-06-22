@@ -1,14 +1,17 @@
-#img1{
+
+
+/*#img1{
 	border-radius: 50%
-}
+}*/
 
 #Nosotros{
 	background-color: #d2edf7;
 	color: #101213;
+	width: 80%;
 }
 
 #Nosotros p{
-	font-size: 25px;
+	font-size: 19px;
 	text-align: justify;
 }
 
@@ -19,6 +22,8 @@
 
 #esteSi {
 	justify-content: center;
+	width: 100%;
+	float: right;
 }
 
 #esteSi h2{
@@ -28,23 +33,26 @@
 	color: #002395;
 }
 
+#esteSi p{
+	font-size: 19px;
+}
+
+h2{
+	margin-left: 3%;
+}
+
 /* Create three equal columns that floats next to each other */
 .column {
  float: left;
- width: 70%;
+ width: 100%;
  padding: 10px;
  margin: 5px;
  height: 300px;
+ margin-left: 2%;
+ margin-right: 4%;
  justify-content: center;
  text-align:justify;
  font-size: 13px;
-}
-
-/* Clear floats after the columns */
-.row:after {
- content: "";
- display: table;
- clear: both;
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
@@ -55,15 +63,6 @@
 }
 
 
-/* Style inputs, select elements and textareas */
-input[type=text], select, textarea{
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-  resize: vertical;
-}
 
 input[type=date]{
   width: 100%;
@@ -83,27 +82,23 @@ input[type=email]{
   resize: vertical;
 }
 
-/* Style the label to display next to the inputs */
+/** {
+  box-sizing: border-box;
+}
+*/
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
 label {
   padding: 12px 12px 12px 0;
   display: inline-block;
 }
 
-input[type=button] {
-  background-color: #002395;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-	right: auto;
-  text-decoration: none;
-  margin: 5px 2px;
-  cursor: pointer;
-	align-self: center;
-}
-
-
-
-/* Style the submit button
 input[type=submit] {
   background-color: #002395;
   color: white;
@@ -112,40 +107,27 @@ input[type=submit] {
   border-radius: 4px;
   cursor: pointer;
   float: right;
-}*/
-
-
-/*#botoncito {
-  background-color: #002395;
-  border: none;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
-	margin-left: 500px;
-	width: 100%;
-}*/
-
-
-/* Style the container */
-#formulariocon {
-	width: 50%;
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 50px;
 }
 
-/* Floating column for labels: 25% width */
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+form{
+	padding: 15px;
+}
+#formulariocon {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+
+}
+
 .col-25 {
   float: left;
   width: 25%;
   margin-top: 6px;
 }
 
-/* Floating column for inputs: 75% width */
 .col-75 {
   float: left;
   width: 75%;
@@ -158,6 +140,28 @@ input[type=submit] {
   display: table;
   clear: both;
 }
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+
+/*
+input[type=button] {
+  background-color: #002395;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+	right: auto;
+  text-decoration: none;
+  margin: 5px 2px;
+  cursor: pointer;
+	align-self: center;
+}
+*/
 
 
 nav ul li a:hover {
@@ -786,7 +790,11 @@ footer p { color: white; } /*Color de copyright*/
     }
 }
 
-#mapa { height: 600px; }
+#mapa { height: 600px;
+margin-left: 3.2%;
+margin-right: 3.5%}
+
+
 
 @media screen and (max-width: 1080px) {
     .tm-tab-link-li { width: 25%; }
