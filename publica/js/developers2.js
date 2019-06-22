@@ -19,6 +19,7 @@ $("body").ready(function(){
 });
 var cont = 0;
 
+
 anime.timeline({loop: false})
   .add({
     targets: '.ml11 .line',
