@@ -18,7 +18,7 @@ function startIntro(){
 		doneLabel: 'Hecho',
     steps: [
       {
-        intro: "<p class= 'text-center'>Comencemos con nuestro recorrido!<img src='./resources/img/logotipo.png' alt='Site logo'></p>"
+        intro: "<p class= 'text-center'>Comencemos con nuestro recorrido!</p> <br><center><img src='./resources/img/logotipo.png' alt='Site logo'></center>"
       },
 
     {
