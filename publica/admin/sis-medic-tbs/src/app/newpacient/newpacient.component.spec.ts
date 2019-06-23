@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NewPacientComponent } from './newpacient.component';
 
-describe('NewpacientComponent', () => {
+describe('NewPacientComponent', () => {
   let component: NewPacientComponent;
   let fixture: ComponentFixture<NewPacientComponent>;
 
@@ -16,7 +16,8 @@ describe('NewpacientComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(NewPacientComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture.detectChanges(); 
+    
   });
 
   it('should create', () => {
