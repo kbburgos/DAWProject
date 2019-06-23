@@ -17,6 +17,8 @@ import { ViewExaComponent } from './view-exa/view-exa.component';
 import { MedicComponent } from './medic/medic.component';
 import { NewmedicComponent } from './newmedic/newmedic.component';
 import { OldReservationsComponent } from './oldreservations/oldreservations.component';
+import { NewUserComponent } from './newuser/newuser.component';
+import { NewPacientComponent } from './newpacient/newpacient.component';
 
 
 
@@ -32,7 +34,9 @@ import { OldReservationsComponent } from './oldreservations/oldreservations.comp
     ViewExaComponent,
     MedicComponent,
     NewmedicComponent,
-    OldReservationsComponent
+    OldReservationsComponent,
+    NewUserComponent,
+    NewPacientComponent
   ],
   imports: [
     BrowserModule,

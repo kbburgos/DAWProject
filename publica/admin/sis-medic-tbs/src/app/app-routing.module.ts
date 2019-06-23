@@ -7,13 +7,19 @@ import { ViewExaComponent } from './view-exa/view-exa.component';
 import { MedicComponent } from './medic/medic.component';
 import { NewmedicComponent } from './newmedic/newmedic.component';
 import { OldReservationsComponent } from './oldreservations/oldreservations.component';
+import { NewUserComponent } from './newuser/newuser.component';
+import { NewPacientComponent } from './newpacient/newpacient.component';
+
 const routes: Routes = [
   {path: '', component: LoginComponent},
   {path: 'view_exa', component: ViewExaComponent},
   {path: 'medic', component: MedicComponent},
   {path: 'newmedic', component: NewmedicComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'newuser', component: NewUserComponent},
   {path: 'oldreservations', component: OldReservationsComponent},
+  {path: 'newpacient', component: NewPacientComponent}
+
 
 ];
 
