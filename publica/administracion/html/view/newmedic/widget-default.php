@@ -1,63 +1,55 @@
-<div class="container">
-	<div class="row">
-		<div class="col-md-12">
-		<h1>Nuevo Medico</h1>
-		<br>
-			<form class="form-horizontal" method="post" id="addproduct" action="#" role="form">
 
 
-	  <div class="form-group">
-	    <label for="inputEmail1" class="col-lg-2 control-label">Nombre*</label>
-	    <div class="col-md-12">
-	      <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" required>
-	    </div>
-	  </div>
-	  <div class="form-group">
-	    <label for="inputEmail1" class="col-lg-2 control-label">Apellido*</label>
-	    <div class="col-md-12">
-	      <input type="text" name="lastname" required class="form-control" id="lastname" placeholder="Apellido" required>
-	    </div>
-	  </div>
-	  <div class="form-group">
-	    <label for="inputEmail1" class="col-lg-2 control-label">ci*</label>
-	    <div class="col-md-12">
-	      <input type="text" name="ci" required class="form-control" id="ci" placeholder="C.I." required>
-	    </div>
-	  </div>
-	  <div class="form-group">
-	    <label for="inputEmail1" class="col-lg-2 control-label">Dirección*</label>
-	    <div class="col-md-12">
-	      <input type="text" name="address" class="form-control"  id="address" placeholder="Dirección" required>
-	    </div>
-	  </div>
-	  <div class="form-group">
-	    <label for="inputEmail1" class="col-lg-2 control-label">Email*</label>
-	    <div class="col-md-12">
-	      <input type="email" name="email" class="form-control" id="email" placeholder="Email" required>
-	    </div>
-	  </div>
-
-	  <div class="form-group">
-	    <label for="inputEmail1" class="col-lg-2 control-label">Teléfono*</label>
-	    <div class="col-md-12">
-	      <input type="number" name="phone" class="form-control" id="phone" placeholder="Teléfono" required>
-	    </div>
+<div class="container-fluid">
+<div class="col-md-12">
+		<h1 class="text-center">Nuevo Medico</h1>
 		
-	  </div>
-	  <div class="form-group">
-		<p class="alert alert-info">* Campos obligatorios</p>
-		</div>
+</div>
+<br>
+<form>
+  <div class="form-row">
+    <div class="col-md-6 mb-4">
+      <label for="validationDefault01">Nombres</label>
+      <input type="text" class="form-control" id="validationDefault01" placeholder="Nombres" value="" required>
+    </div>
+    <div class="col-md-6 mb-4">
+      <label for="validationDefault02">Apellidos</label>
+      <input type="text" class="form-control" id="validationDefault02" placeholder="Apellidos" value="" required>
+    </div>
+    
+  </div>
+  <div class="form-row">
+  <div class="col-md-12 mb-4">
+      <label for="validationDefaultUsername">Email</label>
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupPrepend2">@</span>
+        </div>
+        <input type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
+      </div>
+    </div>
+	<div class="col-md-12 mb-4">
+      <label for="validationDefault02">Identificacion</label>
+      <input type="text" class="form-control" id="validationDefault02" placeholder="Identificacion" value="" required>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-6 mb-4">
+      <label for="validationDefault03">Direccion</label>
+      <input type="text" class="form-control" id="validationDefault03" placeholder="Direccion" required>
+    </div>
+    <div class="col-md-6 mb-4">
+      <label for="validationDefault04">Telefono</label>
+      <input type="text" class="form-control" id="validationDefault04" placeholder="Telefono" required>
+    </div>
+   
+  </div>
 
-
-	 
-
-	  <div class="form-group">
-	    <div class="col-lg-offset-2 col-lg-10">
-	      <button type="submit" class="btn btn-primary">Agregar Medico</button>
-	    </div>
-	  </div>
-	</form>
-		</div>
-	</div>
+  <button class="btn btn-primary" type="submit">Agregar Medico</button>
+</form>
 
 </div>
+
+</div>
+
+	
