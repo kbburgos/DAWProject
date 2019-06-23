@@ -27,7 +27,7 @@ import { NewmedicComponent } from './newmedic/newmedic.component';
     FooterComponent,
     HomeComponent,
     EstadisticasComponent,
-    EstadisticaDonaComponent
+    EstadisticaDonaComponent,
     ViewExaComponent,
     MedicComponent,
     NewmedicComponent
