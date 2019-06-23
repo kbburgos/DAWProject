@@ -9,6 +9,8 @@ import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { EstadisticasComponent } from './estadisticas/estadisticas.component';
+import { EstadisticaDonaComponent } from './estadistica-dona/estadistica-dona.component';
 
 
 @NgModule({
@@ -17,7 +19,9 @@ import { HomeComponent } from './home/home.component';
     MenuComponent,
     LoginComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    EstadisticasComponent,
+    EstadisticaDonaComponent
   ],
   imports: [
     BrowserModule,

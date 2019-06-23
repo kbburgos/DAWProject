@@ -1,5 +1,20 @@
 <div class="row">
-<div class="col-md-12 ml-5 mt-3">
+	<div class="col-md-5 ml-3">
+		<div class="col-md-10 mx-auto">
+			<h4 class="text-center">Datos semanales.</h4>
+			<div class="card">
+  <div class="card-body">Basic card</div>
+</div>
+		</div>
+		<br>
+		<div class="col-md-10 mx-auto">
+			<h4 class="text-center">Datos diarios.</h4>
+			<div class="card">
+  <div class="card-body">Basic card</div>
+</div>
+		</div>
+	</div>
+<div class="col-md-6 mt-3">
 <h1>Sistema de Citas Medicas</h1>
 <p>Bienvenido a <b>SIS Medic TBS</b> un Sistema de Citas Médicas útil para consultorios médicos y/o médicos independientes.</p>
 <p>Características:</p>
