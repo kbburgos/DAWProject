@@ -18,6 +18,8 @@ import { MedicComponent } from './medic/medic.component';
 import { NewmedicComponent } from './newmedic/newmedic.component';
 import { UserComponent } from './user/user.component';
 import { OldReservationsComponent } from './oldreservations/oldreservations.component';
+import { ReservationsComponent } from './reservations/reservations.component';
+import { PatientsComponent } from './patients/patients.component';
 
 
 @NgModule({
@@ -31,6 +33,8 @@ import { OldReservationsComponent } from './oldreservations/oldreservations.comp
     EstadisticaDonaComponent,
     ViewExaComponent,
     MedicComponent,
+    PatientsComponent,
+    ReservationsComponent,
     UserComponent,
     NewmedicComponent,
     OldReservationsComponent
