@@ -58,7 +58,7 @@ if (file_exists( $path_modulo )) {
   }
 ?>
 
-<footer class="fixed-bottom text-center bg-dark" id="footer-text"><p class="mt-2">Sistema de gestión de pacientes <a href="index.php">Sis Medic - TBS </a>
+<footer class="text-center bg-dark" id="footer-text"><p class="mt-2">Sistema de gestión de pacientes <a href="index.php">Sis Medic - TBS </a>
   &copy; 2019 Todos los derechos reservados para <a target="_blank" href="https://www.facebook.com/TECHBRAIN.EC/"> Tech Brain SOlutions</a></p></footer>
 </body>
 </html>

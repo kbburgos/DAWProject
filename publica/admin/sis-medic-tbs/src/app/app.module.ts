@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
 import { ViewExaComponent } from './view-exa/view-exa.component';
 import { MedicComponent } from './medic/medic.component';
+import { NewmedicComponent } from './newmedic/newmedic.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { MedicComponent } from './medic/medic.component';
     FooterComponent,
     HomeComponent,
     ViewExaComponent,
-    MedicComponent
+    MedicComponent,
+    NewmedicComponent
   ],
   imports: [
     BrowserModule,
