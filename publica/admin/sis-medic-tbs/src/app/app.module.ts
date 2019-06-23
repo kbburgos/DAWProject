@@ -26,7 +26,7 @@ import { MedicComponent } from './medic/medic.component';
     FooterComponent,
     HomeComponent,
     EstadisticasComponent,
-    EstadisticaDonaComponent
+    EstadisticaDonaComponent,
     ViewExaComponent,
     MedicComponent
   ],
