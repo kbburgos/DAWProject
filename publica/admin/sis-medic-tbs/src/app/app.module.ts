@@ -16,10 +16,10 @@ import { EstadisticaDonaComponent } from './estadistica-dona/estadistica-dona.co
 import { ViewExaComponent } from './view-exa/view-exa.component';
 import { MedicComponent } from './medic/medic.component';
 import { NewmedicComponent } from './newmedic/newmedic.component';
+import { UserComponent } from './user/user.component';
 import { OldReservationsComponent } from './oldreservations/oldreservations.component';
 import { NewUserComponent } from './newuser/newuser.component';
 import { NewPacientComponent } from './newpacient/newpacient.component';
-
 
 
 @NgModule({
@@ -33,6 +33,7 @@ import { NewPacientComponent } from './newpacient/newpacient.component';
     EstadisticaDonaComponent,
     ViewExaComponent,
     MedicComponent,
+    UserComponent,
     NewmedicComponent,
     OldReservationsComponent,
     NewUserComponent,
