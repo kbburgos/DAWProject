@@ -37,7 +37,9 @@ import { PatientsComponent } from './patients/patients.component';
     ReservationsComponent,
     UserComponent,
     NewmedicComponent,
-    OldReservationsComponent
+    OldReservationsComponent,
+    NewUserComponent,
+    NewPacientComponent
   ],
   imports: [
     BrowserModule,

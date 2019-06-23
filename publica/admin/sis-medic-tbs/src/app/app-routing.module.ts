@@ -20,6 +20,7 @@ const routes: Routes = [
   {path: 'user', component: UserComponent},
   {path: 'reservations', component: ReservationsComponent},
   {path: 'home', component: HomeComponent},
+  {path: 'newuser', component: NewUserComponent},
   {path: 'oldreservations', component: OldReservationsComponent},
   {path: 'patients', component: PatientsComponent},
 
