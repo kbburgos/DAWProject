@@ -16,6 +16,7 @@ import { EstadisticaDonaComponent } from './estadistica-dona/estadistica-dona.co
 import { ViewExaComponent } from './view-exa/view-exa.component';
 import { MedicComponent } from './medic/medic.component';
 import { NewmedicComponent } from './newmedic/newmedic.component';
+import { OldReservationsComponent } from './oldreservations/oldreservations.component';
 
 
 
@@ -30,7 +31,8 @@ import { NewmedicComponent } from './newmedic/newmedic.component';
     EstadisticaDonaComponent,
     ViewExaComponent,
     MedicComponent,
-    NewmedicComponent
+    NewmedicComponent,
+    OldReservationsComponent
   ],
   imports: [
     BrowserModule,
