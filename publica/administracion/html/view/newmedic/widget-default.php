@@ -42,11 +42,14 @@
 	    <div class="col-md-12">
 	      <input type="number" name="phone" class="form-control" id="phone" placeholder="Teléfono" required>
 	    </div>
+		
 	  </div>
+	  <div class="form-group">
+		<p class="alert alert-info">* Campos obligatorios</p>
+		</div>
 
 
-
-	  <p class="alert alert-info">* Campos obligatorios</p>
+	 
 
 	  <div class="form-group">
 	    <div class="col-lg-offset-2 col-lg-10">
