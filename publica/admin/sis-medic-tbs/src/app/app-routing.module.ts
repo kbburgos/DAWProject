@@ -9,6 +9,7 @@ import { NewmedicComponent } from './newmedic/newmedic.component';
 import { UserComponent } from './user/user.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { OldReservationsComponent } from './oldreservations/oldreservations.component';
+import { NewUserComponent } from './newuser/newuser.component';
 import { PatientsComponent } from './patients/patients.component';
 
 
