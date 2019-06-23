@@ -2,8 +2,28 @@
   <app-menu></app-menu>
   <div class="row">
     <div class="col-md-5 ml-3">
-      <app-estadisticas></app-estadisticas>
-      <app-estadistica-dona></app-estadistica-dona>
+
+
+      <div id="demo" class="carousel slide" data-ride="carousel">
+        <ul class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+        </ul>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <app-estadisticas></app-estadisticas>
+          </div>
+          <div class="carousel-item">
+            <app-estadistica-dona></app-estadistica-dona>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
     </div>
     <div class="col-md-6 mt-3">
       <h1>Sistema de Citas Medicas</h1>
