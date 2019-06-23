@@ -20,6 +20,8 @@ import { UserComponent } from './user/user.component';
 import { OldReservationsComponent } from './oldreservations/oldreservations.component';
 import { ReservationsComponent } from './reservations/reservations.component';
 import { PatientsComponent } from './patients/patients.component';
+import { NewUserComponent } from './newuser/newuser.component';
+
 
 
 @NgModule({
@@ -39,7 +41,7 @@ import { PatientsComponent } from './patients/patients.component';
     NewmedicComponent,
     OldReservationsComponent,
     NewUserComponent,
-    NewPacientComponent
+    
   ],
   imports: [
     BrowserModule,
