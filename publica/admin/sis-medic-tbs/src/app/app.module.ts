@@ -22,6 +22,7 @@ import { ReservationsComponent } from './reservations/reservations.component';
 import { PatientsComponent } from './patients/patients.component';
 import { NewUserComponent } from './newuser/newuser.component';
 import { NewPacientComponent } from './newpacient/newpacient.component';
+import { AddExaComponent } from './add-exa/add-exa.component';
 
 
 
@@ -42,7 +43,8 @@ import { NewPacientComponent } from './newpacient/newpacient.component';
     NewmedicComponent,
     OldReservationsComponent,
     NewUserComponent,
-    NewPacientComponent
+    NewPacientComponent,
+    AddExaComponent
     
   ],
   imports: [
