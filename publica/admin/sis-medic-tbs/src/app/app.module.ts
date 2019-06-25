@@ -1,6 +1,7 @@
 //imports de modulos de angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 //imports de modulos
 import { AppRoutingModule } from './app-routing.module';
@@ -45,11 +46,13 @@ import { AddExaComponent } from './add-exa/add-exa.component';
     NewUserComponent,
     NewPacientComponent,
     AddExaComponent
-    
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

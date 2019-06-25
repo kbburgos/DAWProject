@@ -1,3 +1,4 @@
+<ng-container>
 <div class="row bg-dark">
   <div class="col-sm-12">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
@@ -25,10 +26,10 @@
           </li>
           <li class="nav-item li-ocultar">
             <div class="dropdown">
-                <a class="nav-link text-muted dropdown-toggle bg-dark" data-toggle="dropdown">
+                <a class="nav-link text-muted dropdown-toggle bg-dark" data-toggle="dropdown" (click)="DropExamen()">
                   <i class="fas fa-book"></i> Exámenes
                 </a>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu"  [ngClass]="{ 'show': dropExamen }">
                   <a class="dropdown-item" href="./view_exa"> <i class="fas fa-search"></i> Buscar </a>
                   <a class="dropdown-item" href="?mod=add_exa"> <i class="fas fa-plus"></i> Nuevo </a>
                 </div>
@@ -37,10 +38,10 @@
 
           <li class="nav-item li-ocultar">
             <div class="dropdown">
-                <a class="nav-link text-muted dropdown-toggle bg-dark" data-toggle="dropdown">
+                <a class="nav-link text-muted dropdown-toggle bg-dark" data-toggle="dropdown" (click)="DropOdonto()">
                   <i class="fas fa-teeth-open"></i> Odontograma
                 </a>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu"  [ngClass]="{ 'show': dropOdonto }">
                   <a class="dropdown-item" href=""> <i class="fas fa-search"></i> Ver </a>
                   <a class="dropdown-item" href="#"> <i class="fas fa-plus-square"></i> Registrar Datos </a>
                   <a class="dropdown-item" href="#"> <i class="fas fa-plus-circle"></i> Registrar Nuevo Paciente </a>
@@ -49,10 +50,10 @@
           </li>
         </ul>
         <div class="nav-item dropdown">
-            <a class="nav-link text-light dropdown-toggle bg-dark" id="navbardrop" data-toggle="dropdown">
+            <a class="nav-link text-light dropdown-toggle bg-dark" id="navbardrop" data-toggle="dropdown" (click)="DropPerfil()">
               <img src="./assets/resources/img/people-icon.png" alt="foto-perfil" id="foto-perfil"> Nombre de usuario
             </a>
-            <div class="dropdown-menu">
+            <div class="dropdown-menu"  [ngClass]="{ 'show': dropPerfil }">
               <a class="dropdown-item" href="#"> <i class="fas fa-key"></i> Cambiar contraseña </a>
               <a class="dropdown-item" href="#"> <i class="fas fa-sign-out-alt"></i> Cerrar Sesión </a>
             </div>
@@ -63,6 +64,7 @@
 
   </div>
 </div>
+</ng-container>
 <div id="menu" class="clearfix">
   <button type="button" class="btn btn-primary float-right mt-3 mr-3" data-toggle="modal" data-target="#myModal">
     <i class="fas fa-bars"></i>
