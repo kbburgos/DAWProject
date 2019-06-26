@@ -1,0 +1,50 @@
+<div class="container-fluid" id="container-height">
+  <app-menu></app-menu>
+  <center>
+    <h1 id="datos">Modificar datos del examen </h1>
+  </center>
+  <center>
+    <form action="" method="post" enctype="multipart/form-data">
+      <table width="70%" border="0">
+        <tbody>
+          <tr>
+            <td width="10%"></td>
+            <td width="25%"><label class="titulo">Nombre: </label></td>
+            <td width="60%"><input type="text" name="nombre" required placeholder="Nombre...." value="" class="inp" /></td>
+          </tr>
+          <tr>
+            <td />
+            <td><label class="titulo">C.I.: </label></td>
+            <td><input class="inp" type="text" name="ci" required placeholder="C.I...." value=""></td>
+          </tr>
+          <tr>
+            <td />
+            <td><label class="titulo">Fecha de Ingreso: </label></td>
+            <td><input type="date" name="fecha" value="Seleccione la fecha.." class="inp"></td>
+          </tr>
+          <tr>
+            <td />
+            <td><label class="titulo"> Seleccione el tipo de examen: </label></td>
+            <td><select name="tipos" class="listas">
+                <option value="bandera">Seleccione un tipo de examen</option>
+                <option value="radiografia">Radiografía</option>
+                <option value="examen">Exagemen General.</option>
+              </select></td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <center><img height="150" src="" /></center>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <center><input type="file" name="imagen" id="btn_file"></center><br>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <input type="submit" value="aceptar" id="btn_enviar">
+    </form>
+  </center>
+</div>
+<app-footer></app-footer>

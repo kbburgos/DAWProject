@@ -22,6 +22,14 @@ import { PatientsComponent } from './patients/patients.component';
 import { NewUserComponent } from './newuser/newuser.component';
 import { NewPacientComponent } from './newpacient/newpacient.component';
 import { AddExaComponent } from './add-exa/add-exa.component';
+import { NewReservationComponent } from './new-reservation/new-reservation.component';
+import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import { EditPacientComponent } from './edit-pacient/edit-pacient.component';
+import { EditmedicComponent } from './editmedic/editmedic.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+import { EditExamenComponent } from './edit-examen/edit-examen.component';
+import { VerExamenComponent } from './ver-examen/ver-examen.component';
 
 
 
@@ -43,7 +51,15 @@ import { AddExaComponent } from './add-exa/add-exa.component';
     OldReservationsComponent,
     NewUserComponent,
     NewPacientComponent,
-    AddExaComponent
+    AddExaComponent,
+    NewReservationComponent,
+    EditReservationComponent,
+    ConfigurationComponent,
+    EditPacientComponent,
+    EditmedicComponent,
+    EditUserComponent,
+    EditExamenComponent,
+    VerExamenComponent
 
   ],
   imports: [

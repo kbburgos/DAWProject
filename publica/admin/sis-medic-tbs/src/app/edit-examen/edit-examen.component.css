@@ -1,0 +1,93 @@
+/* CSS Document */
+table {
+	color: white;
+	font: italic;
+	font-family: Times New Roman, Times;
+	overflow: auto;
+	box-sizing: border-box;
+}
+table a {
+	color: red;
+	text-decoration: none;
+}
+table a:visited {
+	color: white;
+	text-decoration: none;
+}
+h1#datos {
+	color: red;
+	font: italic;
+	font-family: Times New Roman, Times;
+	margin-top: 25px;
+
+}
+input.inp {
+	border-radius: 5px;
+	color: black;
+	background-color: white;
+	height: 20px;
+	width: 40%;
+	margin-bottom: 10px;
+	font-family: Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif;
+	font-size: 15px;
+	transition: all 1s;
+}
+
+label.titulo{
+	color: red;
+	height: 20px;
+	width: auto;
+	margin-bottom: 10px;
+	font-family: Times New Roman, serif;
+	font-size: 15px;
+	transition: all 1s;
+}
+input.inp:focus {
+	background-color: black;
+	color: white;
+	border: none;
+	border-radius: 10px;
+	border-bottom: 2px dashed red;
+	overflow: auto;
+	box-sizing: border-box;
+	font-size: 25px;
+	height: auto;
+	transition: all 1s;
+
+}
+#form {
+	margin-top: 50px;
+	box-sizing: border-box;
+	overflow: auto;
+	width: 80%;
+	height: auto;
+}
+
+
+#btn_file {
+	color: red;
+	border-radius: 10px;
+	height: 25px;
+	overflow: auto;
+	box-sizing: border-box;
+	font-family: Cambria, Hoefler Text, Liberation Serif, Times, Times New Roman, serif;
+	font-size: 15;
+}
+
+#btn_enviar{
+	overflow: auto;
+	box-sizing: border-box;
+	height: 35px;
+	border-radius: 5px;
+	background-color: black;
+	border: solid red 1px;
+	color: white;
+	width: 75px;
+	transition: all 1s;
+}
+
+#btn_enviar:hover {
+	border-radius: 10px;
+	border: 1px dashed white;
+	color: red;
+}
