@@ -1,57 +1,50 @@
-
-<app-menu></app-menu>
-
-<div class="container-fluid">
-	<div class="col-md-12">
-		<h1 class="text-center">Nuevo Paciente</h1>
-	</div>
-	<br>
-	<form>
-		<div class="form-row">
-			<div class="col-md-6 mb-4">
-			  <label for="validationDefault01">Nombres</label>
-			  <input type="text" class="form-control" id="validationDefault01" placeholder="Nombres" value="" required>
-			</div>
-			<div class="col-md-6 mb-4">
-			  <label for="validationDefault02">Apellidos</label>
-			  <input type="text" class="form-control" id="validationDefault02" placeholder="Apellidos" value="" required>
-			</div>
-					
-		 </div>
-		 <div class="form-row">
-				<div class="col-md-12 mb-4">
-				  <label for="validationDefault03">CI*</label>
-				  <input type="text" class="form-control" id="validationDefault03" placeholder="C.I." required>
+<div class="container-fluid" id="container-height">
+	<app-menu></app-menu>
+	<div class="container-fluid">
+		<div class="col-md-12">
+			<h1 class="text-center">Nuevo Paciente</h1>
+		</div>
+		<br>
+		<form>
+			<div class="form-row">
+				<div class="col-md-6 mb-4">
+					<label for="validationDefault01">Nombres</label>
+					<input type="text" class="form-control" id="validationDefault01" placeholder="Nombres" value="" required>
 				</div>
-				
-		 </div>
-		 <div class="form-row">
-				<div class="col-md-12 mb-4">
-						<label for="validationDefaultUsername">Email</label>
-							<div class="input-group">
-							  <div class="input-group-prepend">
-								<span class="input-group-text" id="inputGroupPrepend2">@</span>
-							  </div>
-							  <input type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
-							</div>
+				<div class="col-md-6 mb-4">
+					<label for="validationDefault02">Apellidos</label>
+					<input type="text" class="form-control" id="validationDefault02" placeholder="Apellidos" value="" required>
 				</div>
-		 </div>
-
-		 <div class="form-row">
-			<div class="col-md-6 mb-4">
-								<label for="validationDefault04">Dirección</label>
-								<input type="text" class="form-control" id="validationDefault04" placeholder="Dirección" required>
-			</div> 
-			<div class="col-md-6 mb-4">
+			</div>
+			<div class="form-row">
+				<div class="col-md-12 mb-4">
+					<label for="validationDefault03">CI*</label>
+					<input type="text" class="form-control" id="validationDefault03" placeholder="C.I." required>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-12 mb-4">
+					<label for="validationDefaultUsername">Email</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="inputGroupPrepend2">@</span>
+						</div>
+						<input type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
+					</div>
+				</div>
+			</div>
+			<div class="form-row">
+				<div class="col-md-6 mb-4">
+					<label for="validationDefault04">Dirección</label>
+					<input type="text" class="form-control" id="validationDefault04" placeholder="Dirección" required>
+				</div>
+				<div class="col-md-6 mb-4">
 					<label for="validationDefault05">Teléfono</label>
 					<input type="text" class="form-control" id="validationDefault05" placeholder="Teléfono" required>
 				</div>
-		 </div>
-		 <button class="btn btn-primary" type="submit">Agregar paciente</button>
-	</form>
+			</div>
+			<button class="btn btn-primary mx-auto justify-content-center d-flex" type="submit">Agregar paciente</button>
+		</form>
+	</div>
 </div>
-
-
-
 <app-footer></app-footer>
-<router-outlet></router-outlet>

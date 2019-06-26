@@ -1,49 +1,36 @@
-<app-menu></app-menu>
-
-<div class="row ml-1 mr-1 ">
-	<div class="col-sm-12">
-		<h1 class = "text-center" id="datos">Histórico de citas</h1>
+<div class="container-fluid" id="container-height">
+	<app-menu></app-menu>
+	<div class="row ml-1 mr-1 ">
+		<div class="col-sm-12">
+			<h1 class="text-center" id="datos">Histórico de citas</h1>
+		</div>
+		<div class="col-sm-12">
+		</div>
 	</div>
-	<div class="col-sm-12">
-
-		
+	<br>
+	<div class="container-fluid">
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover text-center">
+				<thead>
+					<tr>
+						<th> Asunto </th>
+						<th> Paciente </th>
+						<th> Médico</th>
+						<th> Fecha </th>
+						<th> Operaciones </th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td> </td>
+						<td> </td>
+						<td> </td>
+						<td> </td>
+						<th><a class="btn btn-danger btn-xs" href=""> Eliminar </a> </th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
 	</div>
-	</div>
-<br>
-
-<div class="container-fluid">
-<div class="table-responsive">
-		
-		<table class="table table-bordered table-hover text-center">
-			<thead>
-				<tr>
-					<th> Asunto </th>
-					<th> Paciente </th>
-					<th> Médico</th>
-					<th> Fecha </th>
-					<th colspan="2"> Operaciones  </th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td> </td>
-					<td> </td>
-					<td> </td>
-					<td> </td>
-					<th><a class="btn btn-warning btn-xs" href=""> Modificar </a> </th>
-					<th><a class="btn btn-danger btn-xs" href=""> Eliminar </a> </th>
-				</tr>
-			</tbody>
-		</table>
-	
 </div>
-</div>
-
-
-
-
-
-
-
 <app-footer></app-footer>
-<router-outlet></router-outlet>

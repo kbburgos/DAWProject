@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 //rutas personalizadas
 import { MenuComponent } from './menu/menu.component';
-
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { ViewExaComponent } from './view-exa/view-exa.component';
@@ -14,7 +13,7 @@ import { OldReservationsComponent } from './oldreservations/oldreservations.comp
 import { NewUserComponent } from './newuser/newuser.component';
 import { PatientsComponent } from './patients/patients.component';
 import { NewPacientComponent } from './newpacient/newpacient.component';
-
+import { AddExaComponent } from './add-exa/add-exa.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -28,7 +27,8 @@ const routes: Routes = [
   {path: 'newuser', component: NewUserComponent},
   {path: 'oldreservations', component: OldReservationsComponent},
   {path: 'patients', component: PatientsComponent},
-  {path: 'newpacient',component:NewPacientComponent}
+  {path: 'newpacient',component:NewPacientComponent},
+  {path: 'add-exa',component:AddExaComponent}
 ];
 
 @NgModule({

@@ -2,7 +2,7 @@
 <div class="row bg-dark">
   <div class="col-sm-12">
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-      <a class="navbar-brand" href="/">Sis Medic TBS <span class="badge badge-info">V 1.0</span></a>
+      <a class="navbar-brand" routerLink="/">Sis Medic TBS <span class="badge badge-info">V 1.0</span></a>
       <a href="#" class="navbar-brand"><span class="btn btn-outline-info"> <i class="fas fa-plus-circle"></i> Nueva Cita </span></a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -10,19 +10,19 @@
       <div class="collapse navbar-collapse" id="collapsibleNavbar">
         <ul class="navbar-nav mr-auto">
           <li class="nav-item">
-            <a class="nav-link" href="home"><i class="fas fa-home"></i> Home</a>
+            <a class="nav-link" routerLink="/home"><i class="fas fa-home"></i> Home</a>
           </li>
           <li class="nav-item li-ocultar">
-            <a class="nav-link" href="reservations"><i class="fas fa-calendar-alt"></i> Citas</a>
+            <a class="nav-link" routerLink="/reservations"><i class="fas fa-calendar-alt"></i> Citas</a>
           </li>
           <li class="nav-item li-ocultar">
-            <a class="nav-link" href="patients"><i class="fas fa-male"></i> Pacientes</a>
+            <a class="nav-link" routerLink="/patients"><i class="fas fa-male"></i> Pacientes</a>
           </li>
           <li class="nav-item li-ocultar">
-            <a class="nav-link" href="medic"><i class="fas fa-user-md"></i> Medicos</a>
+            <a class="nav-link" routerLink="/medic"><i class="fas fa-user-md"></i> Medicos</a>
           </li>
           <li class="nav-item li-ocultar">
-            <a class="nav-link" href="user"><i class="fas fa-users"></i> Usuarios</a>
+            <a class="nav-link" routerLink="/user"><i class="fas fa-users"></i> Usuarios</a>
           </li>
           <li class="nav-item li-ocultar">
             <div class="dropdown">
@@ -30,8 +30,8 @@
                   <i class="fas fa-book"></i> Exámenes
                 </a>
                 <div class="dropdown-menu"  [ngClass]="{ 'show': dropExamen }">
-                  <a class="dropdown-item" href="./view_exa"> <i class="fas fa-search"></i> Buscar </a>
-                  <a class="dropdown-item" href="?mod=add_exa"> <i class="fas fa-plus"></i> Nuevo </a>
+                  <a class="dropdown-item" routerLink="/view-exa"> <i class="fas fa-search"></i> Buscar </a>
+                  <a class="dropdown-item" routerLink="/add-exa"> <i class="fas fa-plus"></i> Nuevo </a>
                 </div>
               </div>
           </li>
@@ -43,8 +43,8 @@
                 </a>
                 <div class="dropdown-menu"  [ngClass]="{ 'show': dropOdonto }">
                   <a class="dropdown-item" href=""> <i class="fas fa-search"></i> Ver </a>
-                  <a class="dropdown-item" href="#"> <i class="fas fa-plus-square"></i> Registrar Datos </a>
-                  <a class="dropdown-item" href="#"> <i class="fas fa-plus-circle"></i> Registrar Nuevo Paciente </a>
+                  <a class="dropdown-item" routerLink="#"> <i class="fas fa-plus-square"></i> Registrar Datos </a>
+                  <a class="dropdown-item" routerLink="#"> <i class="fas fa-plus-circle"></i> Registrar Nuevo Paciente </a>
                 </div>
               </div>
           </li>
@@ -85,26 +85,26 @@
         <div class="modal-body">
 
           <div class="card card-menu w3-hover-sepia float-left mr-4" >
-              <a class="mt-2 text-center text-menu"  href="reservations"><i class="fas fa-calendar-alt fa-5x"></i> <h6>Citas</h6></a>
+              <a class="mt-2 text-center text-menu"  routerLink="/reservations"><i class="fas fa-calendar-alt fa-5x"></i> <h6>Citas</h6></a>
           </div>
 
           <div class="card card-menu w3-hover-sepia float-left mr-4" >
-              <a class="mt-2 text-center text-menu"href="patients"><i class="fas fa-male fa-5x"></i> <h6>Pacientes</h6></a>
+              <a class="mt-2 text-center text-menu"routerLink="/patients"><i class="fas fa-male fa-5x"></i> <h6>Pacientes</h6></a>
           </div>
 
           <div class="card card-menu w3-hover-sepia float-left mr-4" >
-              <a class="mt-2 text-center text-menu" href="medic"><i class="fas fa-user-md fa-5x"></i> <h6>Medicos</h6></a>
+              <a class="mt-2 text-center text-menu" routerLink="/medic"><i class="fas fa-user-md fa-5x"></i> <h6>Medicos</h6></a>
 
           </div>
 
           <div class="card card-menu w3-hover-sepia float-left mr-4" >
-              <a class="mt-2 text-center text-menu" href="user"><i class="fas fa-users fa-5x"></i> <h6>Usuarios</h6></a>
+              <a class="mt-2 text-center text-menu" routerLink="/user"><i class="fas fa-users fa-5x"></i> <h6>Usuarios</h6></a>
           </div>
 
           <div class="card card-menu float-left mr-4" >
               <a class="mt-2 text-center text-menu w3-hover-sepia" href="#"><i class="fas fa-book fa-5x"></i> <h6>Exámenes</h6></a>
-              <a href="./view_exa"><div class="card-body"> <i class="fas fa-search"></i> Buscar</div></a>
-              <a href="?mod=add_exa"><div class="card-body"><i class="fas fa-plus"></i> Nuevo</div></a>
+              <a routerLink="/view-exa"><div class="card-body"> <i class="fas fa-search"></i> Buscar</div></a>
+              <a routerLink="/add-exa"><div class="card-body"><i class="fas fa-plus"></i> Nuevo</div></a>
           </div>
 
           <div class="card card-menu float-left mr-4" id="card-odontograma">
