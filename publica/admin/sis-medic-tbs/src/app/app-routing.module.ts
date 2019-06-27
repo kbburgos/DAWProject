@@ -16,6 +16,9 @@ import { NewPacientComponent } from './newpacient/newpacient.component';
 import { AddExaComponent } from './add-exa/add-exa.component';
 import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
+import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
+
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -32,7 +35,10 @@ const routes: Routes = [
   {path: 'newpacient',component:NewPacientComponent},
   {path: 'add-exa',component:AddExaComponent},
   {path: 'edit-exa',component:EditExamenComponent},
-  {path: 'ver-examen',component:VerExamenComponent}
+  {path: 'ver-examen',component:VerExamenComponent},
+  {path: 'configuration',component:ConfigurationComponent},
+  {path: 'edit-reservation',component:EditReservationComponent},
+  {path: 'add-exa',component:AddExaComponent}
 ];
 
 @NgModule({
