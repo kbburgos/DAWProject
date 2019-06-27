@@ -14,6 +14,8 @@ import { NewUserComponent } from './newuser/newuser.component';
 import { PatientsComponent } from './patients/patients.component';
 import { NewPacientComponent } from './newpacient/newpacient.component';
 import { AddExaComponent } from './add-exa/add-exa.component';
+import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -28,6 +30,8 @@ const routes: Routes = [
   {path: 'oldreservations', component: OldReservationsComponent},
   {path: 'patients', component: PatientsComponent},
   {path: 'newpacient',component:NewPacientComponent},
+  {path: 'configuration',component:ConfigurationComponent},
+  {path: 'edit-reservation',component:EditReservationComponent},
   {path: 'add-exa',component:AddExaComponent}
 ];
 
