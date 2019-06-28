@@ -18,6 +18,7 @@ import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 const routes: Routes = [
@@ -38,7 +39,9 @@ const routes: Routes = [
   {path: 'ver-examen',component:VerExamenComponent},
   {path: 'configuration',component:ConfigurationComponent},
   {path: 'edit-reservation',component:EditReservationComponent},
-  {path: 'add-exa',component:AddExaComponent}
+  {path: 'add-exa',component:AddExaComponent},  
+  {path: 'edit-user',component:EditUserComponent}
+
 ];
 
 @NgModule({
