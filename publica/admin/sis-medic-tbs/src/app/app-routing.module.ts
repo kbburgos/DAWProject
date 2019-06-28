@@ -19,6 +19,7 @@ import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { NewReservationComponent} from './new-reservation/new-reservation.component';
 
 
 const routes: Routes = [
@@ -40,7 +41,8 @@ const routes: Routes = [
   {path: 'configuration',component:ConfigurationComponent},
   {path: 'edit-reservation',component:EditReservationComponent},
   {path: 'add-exa',component:AddExaComponent},  
-  {path: 'edit-user',component:EditUserComponent}
+  {path: 'edit-user',component:EditUserComponent},
+  {path: 'new-reservation', component:NewReservationComponent}
 
 ];
 
