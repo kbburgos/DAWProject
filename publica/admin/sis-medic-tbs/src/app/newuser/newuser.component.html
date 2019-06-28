@@ -1,60 +1,50 @@
-<app-menu></app-menu>
-<div class="container-fluid">
-	<div class="col-md-12">
-		<h1 class="text-center">Agregar Usuario</h1>
-	</div>
-	<br>
-	<form>
-		<div class="form-row">
-			<div class="col-md-6 mb-4">
-			  <label for="validationDefault01">Nombres*</label>
-			  <input type="text" class="form-control" id="validationDefault01" placeholder="Nombres" value="" required>
+<div class="container-fluid" id="container-height">
+	<app-menu></app-menu>
+	<div class="container-fluid">
+		<div class="col-md-12">
+			<h1 class="text-center">Agregar Usuario</h1>
+		</div>
+		<br>
+		<form>
+			<div class="form-row">
+				<div class="col-md-6 mb-4">
+					<label for="validationDefault01">Nombres*</label>
+					<input type="text" class="form-control" id="validationDefault01" placeholder="Nombres" value="" required>
+				</div>
+				<div class="col-md-6 mb-4">
+					<label for="validationDefault02">Apellidos*</label>
+					<input type="text" class="form-control" id="validationDefault02" placeholder="Apellidos" value="" required>
+				</div>
 			</div>
-			<div class="col-md-6 mb-4">
-			  <label for="validationDefault02">Apellidos*</label>
-			  <input type="text" class="form-control" id="validationDefault02" placeholder="Apellidos" value="" required>
-			</div>
-					
-		 </div>
-		 <div class="form-row">
-			<div class="col-md-6 mb-4">
-				<label for="validationDefault03">Nombre de usuario</label>
-				<input type="text" class="form-control" id="validationDefault03" placeholder="Nombre de usuario" value="" required>
-			</div>
-			<div class="col-md-6 mb-4">
-				<label for="validationDefaultUsername">Email</label>
-				<div class="input-group">
-					  <div class="input-group-prepend">
-						<span class="input-group-text" id="inputGroupPrepend2">@</span>
-					  </div>
-					  <input type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
+			<div class="form-row">
+				<div class="col-md-6 mb-4">
+					<label for="validationDefault03">Nombre de usuario</label>
+					<input type="text" class="form-control" id="validationDefault03" placeholder="Nombre de usuario" value="" required>
+				</div>
+				<div class="col-md-6 mb-4">
+					<label for="validationDefaultUsername">Email</label>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text" id="inputGroupPrepend2">@</span>
+						</div>
+						<input type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
 					</div>
+				</div>
 			</div>
-		 </div>
-
-		 <div class="form-row">
-			<div class="col-md-12 mb-4">
+			<div class="form-row">
+				<div class="col-md-12 mb-4">
 					<label for="validationDefault04">Contrase&ntilde;a</label>
 					<input type="password" name="password" class="form-control" id="validationDefault04" placeholder="Contrase&ntilde;a" required>
+				</div>
 			</div>
-		 </div>
- 
-		<div class="form-row">
-			<div class="col-md-12 text-center">
-				<label for="validationDefault05">Es administrador <input type="checkbox" id="validationDefault05"  name="is_admin"></label>
+			<div class="form-row">
+				<div class="col-md-12">
+					<label for="validationDefault05">Es administrador <input type="checkbox" id="validationDefault05" name="is_admin"></label>
+				</div>
 			</div>
-		</div>
-
-		 <button class="btn btn-primary" type="submit">Agregar usuario</button>
-	</form>
+			<button class="btn btn-primary mx-auto d-flex justify-content-center" type="submit">Agregar usuario</button>
+		</form>
+	</div>
 </div>
-
-
-
-<app-footer></app-footer>
-<router-outlet></router-outlet>
-
-
-
 <app-footer></app-footer>
 <router-outlet></router-outlet>

@@ -37,12 +37,12 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input class="input100" type="text" name="username" placeholder="Usuario">
+						<input required class="input100" type="text" name="username" placeholder="Usuario">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input class="input100" type="password" name="pass" placeholder="Contraseña">
+						<input required class="input100" type="password" name="pass" placeholder="Contraseña">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
 					</div>
 
@@ -54,9 +54,10 @@
 					</div>
 
 					<div class="container-login100-form-btn">
-						<button class="login100-form-btn">
+            <a routerLink="/home">
+						<button type="submit" class="login100-form-btn">
 							Login
-						</button>
+						</button></a>
 					</div>
 <!--
 					<div class="text-center p-t-90">
