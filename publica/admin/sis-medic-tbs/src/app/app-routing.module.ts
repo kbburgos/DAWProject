@@ -14,6 +14,9 @@ import { NewUserComponent } from './newuser/newuser.component';
 import { PatientsComponent } from './patients/patients.component';
 import { NewPacientComponent } from './newpacient/newpacient.component';
 import { AddExaComponent } from './add-exa/add-exa.component';
+import { EditmedicComponent } from './editmedic/editmedic.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
+
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -28,7 +31,9 @@ const routes: Routes = [
   {path: 'oldreservations', component: OldReservationsComponent},
   {path: 'patients', component: PatientsComponent},
   {path: 'newpacient',component:NewPacientComponent},
-  {path: 'add-exa',component:AddExaComponent}
+  {path: 'add-exa',component:AddExaComponent},
+  {path: 'editpacient',component:EditUserComponent},
+  {path: 'editmedic',component:EditmedicComponent}
 ];
 
 @NgModule({
