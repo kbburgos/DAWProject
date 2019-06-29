@@ -30,6 +30,7 @@ import { EditmedicComponent } from './editmedic/editmedic.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
+import { ProximamenteComponent } from './proximamente/proximamente.component';
 
 
 
@@ -59,7 +60,8 @@ import { VerExamenComponent } from './ver-examen/ver-examen.component';
     EditmedicComponent,
     EditUserComponent,
     EditExamenComponent,
-    VerExamenComponent
+    VerExamenComponent,
+    ProximamenteComponent
 
   ],
   imports: [

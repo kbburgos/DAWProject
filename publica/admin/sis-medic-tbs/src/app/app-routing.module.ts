@@ -14,16 +14,15 @@ import { NewUserComponent } from './newuser/newuser.component';
 import { PatientsComponent } from './patients/patients.component';
 import { NewPacientComponent } from './newpacient/newpacient.component';
 import { AddExaComponent } from './add-exa/add-exa.component';
-
+import { EditPacientComponent } from './edit-pacient/edit-pacient.component';
 import { EditmedicComponent } from './editmedic/editmedic.component';
-
-
 import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { NewReservationComponent} from './new-reservation/new-reservation.component';
+import { ProximamenteComponent } from './proximamente/proximamente.component';
 
 
 
@@ -41,19 +40,18 @@ const routes: Routes = [
   {path: 'patients', component: PatientsComponent},
   {path: 'newpacient',component:NewPacientComponent},
   {path: 'add-exa',component:AddExaComponent},
-
- 
+  {path: "edit-patient", component:EditPacientComponent},
   {path: 'editmedic',component:EditmedicComponent},
-
+  {path: "proximamente", component: ProximamenteComponent},
   {path: 'edit-exa',component:EditExamenComponent},
   {path: 'ver-examen',component:VerExamenComponent},
   {path: 'configuration',component:ConfigurationComponent},
   {path: 'edit-reservation',component:EditReservationComponent},
-  {path: 'add-exa',component:AddExaComponent},  
+  {path: 'add-exa',component:AddExaComponent},
   {path: 'edit-user',component:EditUserComponent},
-  {path: 'new-reservation', component:NewReservationComponent}
-
-
+  {path: 'new-reservation', component:NewReservationComponent},
+  {path: 'not-found',component: ProximamenteComponent},
+  {path: '#',redirectTo: 'not-found'}
 ];
 
 @NgModule({
