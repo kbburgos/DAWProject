@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
+import * as $ from 'jquery';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -18,6 +19,11 @@ export class MenuComponent implements OnInit {
     });
   }
   ngOnInit() {
+    $(document).ready(() =>{
+      $("body").removeClass("modal-open");
+      $(".modal-backdrop.show").removeClass("modal-backdrop show");
+    });
+
   }
   DropExamen() {
     this.dropExamen = !this.dropExamen;
