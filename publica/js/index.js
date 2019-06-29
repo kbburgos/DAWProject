@@ -23,7 +23,7 @@ function startIntro(){
 
     {
       element:'#slide-tratamiento',
-      intro: "<p class= 'text-center'>Descubre todo acerca de nuestro grupo de profecionales medicos y nuestro historial de atención</p>",
+      intro: "<p class= 'text-center'>Descubre todo acerca de los mejores tratamientos dentales correctivos y preventivos</p>",
       position: 'bottom'
     },
 
@@ -34,7 +34,7 @@ function startIntro(){
     },
     {
       element: '#card-1',
-      intro: "<p class= 'text-center'>Puedes descubrir las mejores prótesis </p>",
+      intro: "<p class= 'text-center'>Puedes descubrir las mejores prótesis de calidad y al mejor costo </p>",
       position: 'left'
     },
     {
@@ -44,7 +44,7 @@ function startIntro(){
     },
     {
       element: '#card-3',
-      intro: "<p class= 'text-center'>Aprende como cuidar tu sonrisa </p>",
+      intro: "<p class= 'text-center'>La sonrisa de un niño no tiene comparación, nos preocupamos por ellos y les damos la mejor de las atenciones</p>",
       position: 'rigth'
     },
     {
