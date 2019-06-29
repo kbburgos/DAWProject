@@ -1,50 +1,32 @@
 <div class="container-fluid" id="container-height">
   <app-menu></app-menu>
-  <center>
-    <h1 id="datos">Modificar datos del examen </h1>
-  </center>
-  <center>
-    <form action="" method="post" enctype="multipart/form-data">
-      <table width="70%" border="0">
-        <tbody>
-          <tr>
-            <td width="10%"></td>
-            <td width="25%"><label class="titulo">Nombre: </label></td>
-            <td width="60%"><input type="text" name="nombre" required placeholder="Nombre...." value="" class="inp" /></td>
-          </tr>
-          <tr>
-            <td />
-            <td><label class="titulo">C.I.: </label></td>
-            <td><input class="inp" type="text" name="ci" required placeholder="C.I...." value=""></td>
-          </tr>
-          <tr>
-            <td />
-            <td><label class="titulo">Fecha de Ingreso: </label></td>
-            <td><input type="date" name="fecha" value="Seleccione la fecha.." class="inp"></td>
-          </tr>
-          <tr>
-            <td />
-            <td><label class="titulo"> Seleccione el tipo de examen: </label></td>
-            <td><select name="tipos" class="listas">
-                <option value="bandera">Seleccione un tipo de examen</option>
-                <option value="radiografia">Radiografía</option>
-                <option value="examen">Exagemen General.</option>
-              </select></td>
-          </tr>
-          <tr>
-            <td colspan="3">
-              <center><img height="150" src="" /></center>
-            </td>
-          </tr>
-          <tr>
-            <td colspan="3">
-              <center><input type="file" name="imagen" id="btn_file"></center><br>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-      <input type="submit" value="aceptar" id="btn_enviar">
-    </form>
-  </center>
+  <h1 class="text-center">Modificar datos del examen </h1>
+  <form action="#" class="mb-3">
+    <div class="form-group">
+      <label for="uname">Nombre:</label>
+      <input type="text" class="form-control" placeholder="Ingrese el nombre.." name="uname" required>
+    </div>
+    <div class="form-group">
+      <label for="uname">CI.:</label>
+      <input type="text" class="form-control" placeholder="Ingrese la cédula..." name="uname" required pattern="[0-9]{10}">
+    </div>
+    <div class="form-group">
+      <label for="uname">Fecha de Ingreso:</label>
+      <input type="date" class="form-control" value="Seleccione la fecha.." name="uname" required>
+    </div>
+    <div class="form-group">
+      <label> Seleccione el tipo de examen: </label>
+      <select name="tipos" class="form-control mr-2" required>
+        <option value="bandera" disabled>Seleccione un tipo de examen</option>
+        <option value="radiografia">Radiografía</option>
+        <option value="examen">Exagemen General.</option>
+      </select>
+    </div>
+    <img class="d-flex justify-content-center mx-auto img-thumbnail mb-2" id="img-exa" src="https://irp-cdn.multiscreensite.com/519ccbfc/dms3rep/multi/mobile/form+i-693.jpg">
+    <div class="form-group">
+      <input type="file" class="form-control-file border" required>
+    </div>
+    <button type="submit" class="btn btn-info d-flex mx-auto justify-content-center">Actualizar.</button>
+  </form>
 </div>
 <app-footer></app-footer>
