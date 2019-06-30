@@ -24,13 +24,10 @@
               "src/assets"
             ],
             "styles": [
+              "src/custom-theme.scss",
               "src/styles.css"
             ],
-
-            "scripts": [
-      ]
-
-
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -119,6 +116,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "sis-medic-tbs"
 }

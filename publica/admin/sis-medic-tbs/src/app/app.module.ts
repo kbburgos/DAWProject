@@ -2,6 +2,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule} from '@angular/material'
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+
 
 //imports de modulos
 import { AppRoutingModule } from './app-routing.module';
@@ -68,7 +71,8 @@ import { ProximamenteComponent } from './proximamente/proximamente.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule,BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
