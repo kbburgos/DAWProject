@@ -1,0 +1,52 @@
+[
+    {
+        "id":"1",
+        "ci":"0934215678",
+        "nombre":"Juan Guerrero",
+        "fecha":"12-09-2018",
+        "tipo_exa": "operacio"
+    },
+    {
+        "id":"2",
+        "ci":"0934215679",
+        "nombre":"Julio Martinez",
+        "fecha":"12-09-2018",
+        "tipo_exa": "operacio"
+    },
+    {
+        "id":"3",
+        "ci":"0934215620",
+        "nombre":"Juan Lopez",
+        "fecha":"12-09-2018",
+        "tipo_exa": "operacio"
+    },
+    {
+        "id":"4",
+        "ci":"0934215623",
+        "nombre":"Luis Vera",
+        "fecha":"12-09-2018",
+        "tipo_exa": "operacio"
+    },
+    {
+        "id":"5",
+        "ci":"0934215609",
+        "nombre":"Pablo Perez",
+        "fecha":"12-09-2018",
+        "tipo_exa": "operacio"
+    },
+    {
+        "id":"6",
+        "ci":"0934215645",
+        "nombre":"Luis Toledo",
+        "fecha":"12-09-2018",
+        "tipo_exa": "operacio"
+    },
+    {
+        "id":"7",
+        "ci":"0934212309",
+        "nombre":"Pablo Sanchez",
+        "fecha":"12-09-2018",
+        "tipo_exa": "operacio"
+    }
+
+]

@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule} from '@angular/material'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 
 //imports de modulos
@@ -35,7 +36,8 @@ import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { ProximamenteComponent } from './proximamente/proximamente.component';
 
-
+import { ConfigService } from './view-exa/config.json';
+import { FilterExamPipe } from './pipers/filter-exam.pipe';
 
 @NgModule({
   declarations: [
@@ -64,7 +66,8 @@ import { ProximamenteComponent } from './proximamente/proximamente.component';
     EditUserComponent,
     EditExamenComponent,
     VerExamenComponent,
-    ProximamenteComponent
+    ProximamenteComponent,
+    FilterExamPipe
 
   ],
   imports: [
@@ -72,9 +75,10 @@ import { ProximamenteComponent } from './proximamente/proximamente.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    HttpClientModule,
     MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule,BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
