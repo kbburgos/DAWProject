@@ -1,19 +1,21 @@
 <div class="container-fluid" id="container-height">
   <app-menu></app-menu>
   <div class="row">
-    <div class="col-md-8">
-      <h1>Editar Cita</h1>
+    <div class="col-md-12">
+      <div class="col-md-6">
+        <h1>Editar Cita</h1>
+      </div>
       <br>
-      <form class="form-horizontal" role="form" method="post" action="">
+      <form class="form-horizontal" method="post" id="addproduct" action="" role="form">
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-2 control-label">Asunto</label>
-          <div class="col-lg-10">
+          <label for="inputEmail1" class="col-lg-2 control-label">Asunto*</label>
+          <div class="col-md-6">
             <input type="text" name="title" value="" required class="form-control" id="inputEmail1" placeholder="Asunto">
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-2 control-label">Paciente</label>
-          <div class="col-lg-10">
+          <label for="inputEmail1" class="col-lg-2 control-label">Paciente*</label>
+          <div class="col-md-6">
             <select name="pacient_id" class="form-control" required>
               <option value="">-- SELECCIONE --</option>
               <option value=""></option>
@@ -21,8 +23,8 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-2 control-label">Medico</label>
-          <div class="col-lg-10">
+          <label for="inputEmail1" class="col-lg-2 control-label">Medico*</label>
+          <div class="col-md-6">
             <select name="medic_id" class="form-control" required>
               <option value="">-- SELECCIONE --</option>
               <option value=""></option>
@@ -30,24 +32,27 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="inputEmail1" class="col-lg-2 control-label">Fecha/Hora</label>
-          <div class="col-lg-5">
+          <label for="inputEmail1" class="col-lg-2 control-label">Fecha/Hora*</label>
+          <div class="col-md-6">
             <input type="date" name="date_at" value="" required class="form-control" id="inputEmail1" placeholder="Fecha">
           </div>
-          <div class="col-lg-5">
+          <div class="col-md-6">
             <input type="time" name="time_at" value="" required class="form-control" id="inputEmail1" placeholder="Hora">
           </div>
         </div>
         <div class="form-group">
           <label for="inputEmail1" class="col-lg-2 control-label">Nota</label>
-          <div class="col-lg-10">
+          <div class="col-md-6">
             <textarea class="form-control" name="note" placeholder="Nota"></textarea>
           </div>
+        </div>
+        <div class="col-md-6">
+          <p class="alert alert-info">* Campos obligatorios</p>
         </div>
         <div class="form-group">
           <div class="col-lg-offset-2 col-lg-10">
             <input type="hidden" name="id" value="">
-            <button type="submit" class="btn btn-default">Actualizar Cita</button>
+            <button type="submit" class="btn btn-primary">Actualizar Cita</button>
           </div>
         </div>
       </form>
