@@ -1,10 +1,7 @@
 <div class="container-fluid" id="container-height">
   <app-menu></app-menu>
-  <div class="row">
-    <div class="col-md-10">
-      <h1>Nueva Cita</h1>
-      <!-- paso a paso -->
-      <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+  <!-- paso a paso -->
+      <!--button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
         {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
       </button>
       <mat-horizontal-stepper [linear]="isLinear" #stepper>
@@ -39,56 +36,62 @@
             <button mat-button (click)="stepper.reset()">Reset</button>
           </div>
         </mat-step>
-      </mat-horizontal-stepper>
+      </mat-horizontal-stepper-->
       <!-- fin paso a paso -->
+	<div class="container-fluid">
+		<div class="col-md-12">
+			<h1 class="text-center">Nueva Cita</h1>
+		</div>
+		<br>
+		<form>
+			<div class="form-row">
+				<div class="col-md-12 mb-4">
+					<label for="validationDefault01">Asunto</label>
+					<input type="text" class="form-control" id="validationDefault01" placeholder="Asunto" value="" required>
+				</div>
 
-      <form class="form-horizontal" role="form" method="post" action="#">
-        <div class="form-group">
-          <label for="inputEmail1" class="col-lg-2 control-label">Asunto</label>
-          <div class="col-lg-10">
-            <input type="text" name="title" required class="form-control" id="inputEmail1" placeholder="Asunto">
-          </div>
+        
+      </div>
+      
+      
+      <div class="form-row">
+          <div class="col-md-12 mb-4">
+              <label for="validationDefault02">Paciente</label>
+              <select name="pacient_id" id="validationDefault02" class="form-control" required>
+                <option value="">-- SELECCIONE --</option>
+                <option value=""></option>
+              </select>
+            </div>
+
+        
+			</div>
+
+      <div class="form-row">
+
+				<div class="col-md-12 mb-4">
+          <label for="validationDefault03">Médico</label>
+          <select name="medico_id" id="validationDefault03" class="form-control" required>
+            <option value="">-- SELECCIONE --</option>
+            <option value=""></option>
+          </select>
         </div>
-        <div class="form-group">
-          <label for="inputEmail1" class="col-lg-2 control-label">Paciente</label>
-          <div class="col-lg-10">
-            <select name="pacient_id" class="form-control" required>
-              <option value="">-- SELECCIONE --</option>
-              <option value=""></option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputEmail1" class="col-lg-2 control-label">Medico</label>
-          <div class="col-lg-10">
-            <select name="medic_id" class="form-control" required>
-              <option value="">-- SELECCIONE --</option>
-              <option value=""></option>
-            </select>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputEmail1" class="col-lg-2 control-label">Fecha/Hora</label>
-          <div class="col-lg-5">
-            <input type="date" name="date_at" required class="form-control" id="inputEmail1" placeholder="Fecha">
-          </div>
-          <div class="col-lg-5">
-            <input type="time" name="time_at" required class="form-control" id="inputEmail1" placeholder="Hora">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="inputEmail1" class="col-lg-2 control-label">Nota</label>
-          <div class="col-lg-10">
-            <textarea class="form-control" name="note" placeholder="Nota"></textarea>
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="col-lg-offset-2 col-lg-10">
-            <button type="submit" class="btn btn-default">Agregar Cita</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
+        
+			</div>
+			<div class="form-row">
+				<div class="col-md-6 mb-4">
+					<label for="validationDefault04">Fecha</label>
+          <input type="date" id="validationDefault04" name="date_at" required class="form-control"  placeholder="Fecha">
+				</div>
+				<div class="col-md-6 mb-4">
+					<label for="validationDefault05">Hora</label>
+          <input type="time" id="validationDefault05" name="time_at" required class="form-control"  placeholder="Hora">
+				</div>
+      </div>
+      <br>
+			<button class="btn btn-primary mx-auto d-flex justify-content-center" type="submit">Guardar Cita</button>
+		</form>
+	</div>
 </div>
+<br>
 <app-footer></app-footer>
+<router-outlet></router-outlet>

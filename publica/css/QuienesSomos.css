@@ -1,8 +1,6 @@
-
-
-/*#img1{
-	border-radius: 50%
-}*/
+.button{
+	background: #4CAF50;
+}
 
 #Nosotros{
 	background-color: #d2edf7;
@@ -15,6 +13,7 @@
 	text-align: justify;
 }
 
+
 #titulo1{
 	text-align: center;
 	text-transform: uppercase;
@@ -22,8 +21,9 @@
 
 #esteSi {
 	justify-content: center;
-	width: 100%;
+	width: 50%;
 	float: right;
+	background-color: #FFFFFF;
 }
 
 #esteSi h2{
@@ -33,12 +33,17 @@
 	color: #002395;
 }
 
-#esteSi p{
+
+p{
 	font-size: 19px;
+	padding: : 50px;
+	justify-content: center;
 }
+
 
 h2{
 	margin-left: 3%;
+	font-weight: bold;
 }
 
 /* Create three equal columns that floats next to each other */
@@ -199,7 +204,7 @@ body {
 	font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 	font-size: 13px;
 	font-weight: 300;
-  background: #e6e6e6;
+  background: #FFFFFF;
 }
 
 a, button { transition: all 0.3s ease; }
@@ -425,12 +430,6 @@ label { font-weight: 700; }
 
 
 
-#img2 {
-  display: block;
-  margin: 0 auto;
-  max-width: 100%;
-  width: 80%;
-}
 
 /*
 .temp:hover {filter: opacity(.5);}*/
@@ -951,20 +950,7 @@ margin-right: 3.5%}
     .tm-recommended-description-box { width: 270px; }
 }
 
-@media screen and (max-width: 767px) {
-    .tm-banner-row {
-        padding-top: 80px;
-        padding-bottom: 50px;
-    }
 
-    .tm-banner-header { margin-top: 100px; }
-
-    .tm-form-group-1,
-    .tm-form-group-2,
-    .tm-form-group-3 {
-        width: 100%;
-    }
-}
 
 
 
@@ -972,15 +958,14 @@ margin-right: 3.5%}
 font-family: sans-serif;
 font-size: 18px;
 font-weight: 400;
-color: #ffffff;
-background: #00A8E8;
+color: #00171F;
+background: #CFFFFF;
 margin: 0 0 25px;
 overflow: hidden;
 padding: 20px;
 border-radius: 35px 0px 35px 0px;
 -moz-border-radius: 35px 0px 35px 0px;
 -webkit-border-radius: 35px 0px 35px 0px;
-border: 2px solid #007EA7;
  }
 
 

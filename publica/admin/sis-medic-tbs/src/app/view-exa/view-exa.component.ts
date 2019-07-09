@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Config} from "./interface.json";
+import {ConfigService} from "./config.json";
 
 @Component({
   selector: 'app-view-exa',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewExaComponent implements OnInit {
 
-  constructor() { }
+  examenes:Config[]= [];
+ // error;
+ searchText = "";
+  constructor(  private configJson: ConfigService) { }
 
   ngOnInit() {
+    console.log("hoola")
+    this.configJson.getConfig().subscribe(data=> this.examenes = data);
+
   }
 
 }

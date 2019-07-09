@@ -40,6 +40,9 @@ import { TallerComponent } from './taller/taller.component';
 //servicios
 import { DataService } from './data.service';
 
+import { ConfigService } from './view-exa/config.json';
+import { FilterExamPipe } from './pipers/filter-exam.pipe';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -68,8 +71,8 @@ import { DataService } from './data.service';
     EditExamenComponent,
     VerExamenComponent,
     ProximamenteComponent,
-    TallerComponent
-
+    TallerComponent,
+    FilterExamPipe
   ],
   imports: [
     BrowserModule,
@@ -79,7 +82,7 @@ import { DataService } from './data.service';
     MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule,BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [DataService],
+  providers: [DataService,ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
