@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule} from '@angular/material'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 
 
 //imports de modulos
@@ -34,8 +35,10 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { ProximamenteComponent } from './proximamente/proximamente.component';
+import { TallerComponent } from './taller/taller.component';
 
-
+//servicios
+import { DataService } from './data.service';
 
 @NgModule({
   declarations: [
@@ -64,7 +67,8 @@ import { ProximamenteComponent } from './proximamente/proximamente.component';
     EditUserComponent,
     EditExamenComponent,
     VerExamenComponent,
-    ProximamenteComponent
+    ProximamenteComponent,
+    TallerComponent
 
   ],
   imports: [
@@ -72,9 +76,10 @@ import { ProximamenteComponent } from './proximamente/proximamente.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule,BrowserAnimationsModule
+    MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule,BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [DataService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
