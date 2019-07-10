@@ -7,38 +7,157 @@
       <mat-horizontal-stepper [linear]="isLinear" #stepper>
         <mat-step [stepControl]="firstFormGroup">
           <form [formGroup]="firstFormGroup">
-            <ng-template matStepLabel>Fill out your name</ng-template>
+            <ng-template matStepLabel>Asunto</ng-template>
             <mat-form-field>
-              <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
+              <input matInput placeholder="Asunto" formControlName="firstCtrl" required>
             </mat-form-field>
             <div>
-              <button mat-button matStepperNext>Next</button>
+              <button mat-button matStepperNext>Siguiente</button>
             </div>
           </form>
         </mat-step>
         <mat-step [stepControl]="secondFormGroup">
           <form [formGroup]="secondFormGroup">
-            <ng-template matStepLabel>Fill out your address</ng-template>
+            <ng-template matStepLabel>Paciente</ng-template>
             <mat-form-field>
-              <input matInput placeholder="Address" formControlName="secondCtrl" required>
+              <input matInput placeholder="Nombre Paciente" formControlName="secondCtrl" required>
             </mat-form-field>
             <div>
-              <button mat-button matStepperPrevious>Back</button>
-              <button mat-button matStepperNext>Next</button>
+              <button mat-button matStepperPrevious>Atrás</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Doctor</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Doctor" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Atrás</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fecha</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Fecha" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Atrás</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Hora</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Hora" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Atrás</button>
+              <button mat-button matStepperNext>Siguiente</button>
             </div>
           </form>
         </mat-step>
         <mat-step>
-          <ng-template matStepLabel>Done</ng-template>
-          You are now done.
+          <ng-template matStepLabel>Hecho</ng-template>
+          Completo
           <div>
-            <button mat-button matStepperPrevious>Back</button>
-            <button mat-button (click)="stepper.reset()">Reset</button>
+            <button mat-button matStepperPrevious>Atrás</button>
+            <button mat-button (click)="stepper.reset()">Enviar</button>
           </div>
         </mat-step>
-      </mat-horizontal-stepper-->
+      </mat-horizontal-stepper--->
       <!-- fin paso a paso -->
-	<div class="container-fluid">
+
+
+      <div class="container-fluid">
+          <div class="form-row">
+              <div class="col-md-12 mb-4">
+      <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+        {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+      </button>
+      <mat-horizontal-stepper [linear]="isLinear" #stepper>
+        <mat-step [stepControl]="firstFormGroup">
+          <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Asunto</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Asunto" formControlName="firstCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Paciente</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Nombre Paciente" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Atrás</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Doctor</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Doctor" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Atrás</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Fecha</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Fecha" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Atrás</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="secondFormGroup">
+          <form [formGroup]="secondFormGroup">
+            <ng-template matStepLabel>Hora</ng-template>
+            <mat-form-field>
+              <input matInput placeholder="Hora" formControlName="secondCtrl" required>
+            </mat-form-field>
+            <div>
+              <button mat-button matStepperPrevious>Atrás</button>
+              <button mat-button matStepperNext>Siguiente</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <ng-template matStepLabel>Hecho</ng-template>
+          Completo
+          <div>
+            <button mat-button matStepperPrevious>Atrás</button>
+            <button mat-button (click)="stepper.reset()">Enviar</button>
+          </div>
+        </mat-step>
+      </mat-horizontal-stepper>
+      </div>
+      </div>
+      </div>
+      
+
+
+	<!--div class="container-fluid">
 		<div class="col-md-12">
 			<h1 class="text-center">Nueva Cita</h1>
 		</div>
@@ -91,7 +210,7 @@
 			<button class="btn btn-primary mx-auto d-flex justify-content-center" type="submit">Guardar Cita</button>
 		</form>
 	</div>
-</div>
+</div-->
 <br>
 <app-footer></app-footer>
 <router-outlet></router-outlet>
