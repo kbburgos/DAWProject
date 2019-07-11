@@ -35,6 +35,10 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { ProximamenteComponent } from './proximamente/proximamente.component';
+import { TallerComponent } from './taller/taller.component';
+
+//servicios
+import { DataService } from './data.service';
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
@@ -67,18 +71,18 @@ import { FilterExamPipe } from './pipers/filter-exam.pipe';
     EditExamenComponent,
     VerExamenComponent,
     ProximamenteComponent,
+    TallerComponent,
     FilterExamPipe
-
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule,BrowserAnimationsModule
+    MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule,BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [ConfigService],
+  providers: [DataService,ConfigService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

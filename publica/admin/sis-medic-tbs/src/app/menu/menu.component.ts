@@ -17,13 +17,14 @@ export class MenuComponent implements OnInit {
       'top': 0,
       'bottom': 0,
     });
-  }
-  ngOnInit() {
     $(document).ready(() =>{
       $("body").removeClass("modal-open");
       $(".modal-backdrop.show").removeClass("modal-backdrop show");
+      $("body").removeAttr("style");
     });
 
+  }
+  ngOnInit() {
   }
   DropExamen() {
     this.dropExamen = !this.dropExamen;
@@ -34,4 +35,5 @@ export class MenuComponent implements OnInit {
   DropPerfil() {
     this.dropPerfil = !this.dropPerfil;
   }
+
 }
