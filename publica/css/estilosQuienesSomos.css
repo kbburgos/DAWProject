@@ -185,3 +185,9 @@ form{
   align-items: center;
 
 }
+
+#titulo{
+  text-align: center;
+  color: hsl(197, 100%, 45%,1);
+  font-weight: bold;
+}
