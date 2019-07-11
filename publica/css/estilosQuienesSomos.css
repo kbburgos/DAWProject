@@ -172,3 +172,16 @@ form{
   font-size: 1rem;
   text-align: justify;
 }
+
+#referencia{
+  align-items: center;
+  align-content: center;
+  font-weight: bold;
+}
+
+
+#referenciacontenedor{
+
+  align-items: center;
+
+}
