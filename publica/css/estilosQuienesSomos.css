@@ -32,7 +32,7 @@ img {
   margin-left: 3.2%;
   margin-right: 3.5%;
   background-color: rgba(0, 164,230, 06);
-  opacity: 0.2;
+  >/*opacity: 0.2;*/
 }
 
 input[type=date]{
