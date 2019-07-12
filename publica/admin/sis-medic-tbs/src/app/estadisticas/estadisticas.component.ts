@@ -32,7 +32,7 @@ export class EstadisticasComponent implements OnInit {
           categories: [
               'Lunes',
               'Martes',
-              'Miercoles',
+              'Miércoles',
               'Jueves',
               'Viernes'
           ],
