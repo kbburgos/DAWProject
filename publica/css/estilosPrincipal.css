@@ -2,7 +2,9 @@
   border : none;
   text-align: center;
 }
-
+.text-cont{
+  font-size: 1rem;
+}
 
 .carousel-caption{
   background-color: hsl(197, 100%, 45%,0.6);
