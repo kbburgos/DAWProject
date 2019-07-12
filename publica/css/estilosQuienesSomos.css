@@ -2,10 +2,6 @@ body{
   background-color: white;
 }
 
-/*
-../resources/img/1.jpg
-
-*/
 img {
   width: 100%;
   height: auto;
@@ -183,6 +179,7 @@ form{
 #referenciacontenedor{
 
   align-items: center;
+  align-items: center;
 
 }
 
@@ -190,4 +187,22 @@ form{
   text-align: center;
   color: hsl(197, 100%, 45%,1);
   font-weight: bold;
+}
+
+#dia{
+  box-sizing: border-box;
+  width: 150px;
+  margin-right: 5%;
+  margin-top: 3%;
+}
+
+#mes{
+
+  width: 150px;
+  margin-right: 5%;
+}
+
+#año{
+
+  width: 150px;
 }

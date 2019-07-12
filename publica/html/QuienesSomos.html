@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
+  <title>Sistema de gestión médica</title>
   <link href='https://fonts.googleapis.com/css?family=Josefin+Sans' rel='stylesheet' type='text/css'>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,7 +19,7 @@
 </head>
 
 <body>
-  <div class="tm-main-content" id="top">
+  <div class="tm-main-content">
     <div class="tm-top-bar-bg"></div>
     <div class="tm-top-bar" id="tm-top-bar">
       <div class="container">
@@ -45,7 +46,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="https://sis-medic-tbs-admin.herokuapp.com" target="_blank">Ingresar</a>
                 </li>
-                <div class="tm-main-content" id="top">
+
 
               </ul>
             </div>
@@ -58,18 +59,18 @@
     <div class="tm-page-wrap mx-auto">
       <div>
         <div class="w3-container">
-          <img src="https://clinicadentalvelasquez.pe/wp-content/uploads/2018/08/banner-cirugia-bucal.jpg" alt=">_lights.jpg" alt="Lights" class="w3-image" width="100%" height="400">
+          <img src="https://clinicadentalvelasquez.pe/wp-content/uploads/2018/08/banner-cirugia-bucal.jpg" alt="Lights" class="w3-image" width="100" height="400">
         </div>
 
         <br>
-        <section>
+        <div>
           <div class="container" id="nosotros">
             <p class="text-justify">En las clínicas de la facultad piloto de odontología de la universidad de Guayaquil, realizamos tratamientos dentales integrales, considerando una serie de condiciones para determinar un diagnóstico certero
               mediante el uso de exámenes y análisis complementarios y poder realizar el mejor tratamiento para cada paciente. Entre los cuales destacamos: profilaxis, curación de caries, tratamientos de conducto (endodoncias), exodoncias,
               elaboración de prótesis fijas, prótesis removibles totales y parciales, incrustaciones, carillas estéticas, restauraciones, coronas, tratamientos para gingivitis y periodontitis, entre otros.</p>
             <!-- <a href="#" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">Leer Más</a> -->
           </div>
-        </section>
+       </div>
         <br>
         <br>
         <section class="tm-slideshow-section">
@@ -79,7 +80,7 @@
             <!-- https://image.freepik.com/foto-gratis/dentista-explicando-dientes-cepillando-al-paciente_79405-5052.jpg -->
           </div>
           <div class="tm-slideshow-description tm-bg-primary" id="slide-tratamiento">
-            <h2 align="center">Misión</h2>
+            <h2 id="titmision" >Misión</h2>
             <p id="mision" class="text-justify">La Facultad de Odontología de la Universidad de Guayaquil, es la entidad con alto grado de excelencia académica y formación interdisciplinaria en salud, que a través de la docencia, investigación y su
               vinculación con la comunidad, se encarga de la formación integral de profesionales con alta capacidad científica y humanista para la resolución de los problemas de salud buco dental y con la coordinación de los programas de salud y para mejorar la
               calidad de vida de toda la comunidad.</p>
@@ -94,7 +95,7 @@
             <img src="https://www.laopinion.com.co/sites/default/files/styles/640x370/public/2016/02/20/imagen/odontologo.jpg" class="d-block w-100" alt="Image">
           </div>
           <div class="tm-slideshow-description tm-slideshow-description-left tm-bg-primary">
-            <h2 align="center">Visión</h2>
+            <h2 id="titvision" >Visión</h2>
             <p id="vision" class="text-justify">La Facultad de Odontología de la Universidad de Guayaquil, será la Institución líder en el manejo de los conocimientos específicos del sistema Estomatognático y en relación con el resto del organismo. A
               través de la formación de recursos humanos mediante programas de educación continua, postgrado, investigación y extensión para la prevención, promoción, protección de la salud y resolución de los problemas que allí se presenten, con los valores
               éticos y con alto compromiso social.</p>
@@ -112,7 +113,7 @@
             <br>
             <div>
               <div id="mapa" class="">
-                <script type="text/javascript" src="../js/map.js">
+                <script src="../js/map.js">
                 </script>
               </div>
             </div>
@@ -149,7 +150,54 @@
                   <label for="lname">FECHA DE NACIMIENTO</label>
                 </div>
                 <div class="col-75" id="fecha">
-                  <input type="date" name="bday">
+                  <select id="dia">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+                    <option value="21">21</option>
+                    <option value="22">22</option>
+                    <option value="23">23</option>
+                    <option value="24">24</option>
+                    <option value="25">25</option>
+                    <option value="26">26</option>
+                    <option value="27">27</option>
+                    <option value="28">28</option>
+                    <option value="29">29</option>
+                    <option value="30">30</option>
+                    <option value="31">31</option>
+                  </select>
+                  <select id="mes">
+                    <option value="Enero">Enero</option>
+                    <option value="Febrero">Febrero</option>
+                    <option value="Marzo">Marzo</option>
+                    <option value="Abril">Abril</option>
+                    <option value="Mayo">Mayo</option>
+                    <option value="Junio">Junio</option>
+                    <option value="Julio">Julio</option>
+                    <option value="Agosto">Agosto</option>
+                    <option value="Septiembre">Septiembre</option>
+                    <option value="Octubre">Octubre</option>
+                    <option value="Noviembre">Noviembre</option>
+                    <option value="Diciembre">Diciembre</option>
+                  </select>
+                  <input type="text" id="año" name="lastname" placeholder="año">
                 </div>
               </div>
               <div class="row">
@@ -197,13 +245,13 @@
         <hr>
         <section >
           <div class="container" id="developers">
-            <h2 id="titulo" align="center">Developers</h2>
+            <h2 id="titulo" >Developers</h2>
             <p class="text-justify">Desarrolladores de aplicaciones web, estudiantes de la Escuela Superior Politécnica del Litoral de la carrera Ingeniería en Ciencias Computacionales.</p>
-            <center>
+
               <div class="" id="referenciacontenedor">
                 <a id="referencia" href="../html/developers.html" target="_blank">Conoce más...</a>
               </div>
-            </center>
+
 
             <!-- <a href="#" class="text-uppercase tm-btn tm-btn-white tm-btn-white-primary">Leer Más</a> -->
           </div>
@@ -298,7 +346,7 @@
         $('.tm-current-year').text(new Date().getFullYear()); // Update year in copyright
       });
     </script>
-
+</div>
 </body>
 
 </html>
