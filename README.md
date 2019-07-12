@@ -2,10 +2,10 @@
 Sistema médico de consultas y registros de pacientes en línea.
 Basado en sistemas open source.
 Posibilidad de crear odontograma.
+Los pacientes pueden contactarse con la facultad y hacer consultas rápidas de guía.
 
-This README would normally document whatever steps are necessary to get your application up and running.
 
-### What is this repository for? ###
+### Para qué es el repositorio? ###
 
 * Quick summary
 * Version
@@ -32,7 +32,7 @@ This README would normally document whatever steps are necessary to get your app
 * Code review
 * Other guidelines
 
-### Who do I talk to? ###
+### A quién se dirige? ###
 
 * Repo owner or admin
 * Other community or team contact
