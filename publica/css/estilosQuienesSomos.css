@@ -191,18 +191,16 @@ form{
 
 #dia{
   box-sizing: border-box;
-  width: 150px;
-  margin-right: 5%;
-  margin-top: 3%;
+  width: 272px;
+  margin-bottom: 2.5%;
 }
 
 #mes{
-
-  width: 150px;
-  margin-right: 5%;
+  width: 272px;
+  margin-bottom: 2.5%;
 }
 
 #año{
-
-  width: 150px;
+  width: 272px;
+  margin-bottom: 2.5%;
 }
