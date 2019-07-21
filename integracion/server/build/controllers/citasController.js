@@ -8,7 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-class AppController {
+class CitasController {
     newCita(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { datos, token } = req.params;
@@ -67,4 +67,4 @@ class AppController {
 //let rows = await pool.query("select * from medic");
 //req.params.nombre
 //res,status(404).json({aqui el json})
-exports.default = new AppController();
+exports.default = new CitasController();

@@ -1,11 +1,11 @@
 create database SistemMedico;
 use SistemMedico;
-
-
+CREATE USER 'medicina'@'localhost' identified by 'medicina';
+GRANT ALL PRIVILEGES ON SistemMedico.* TO medicina@localhost;
+FLUSH PRIVILEGES;
 
 create table userSist(
-	id_user int primary key,
-    username varchar(50),
+    cedula varchar(10) primary key,
     pasword varchar(50),
     nameuser varchar(50),
     lastname varchar(50),
@@ -18,7 +18,7 @@ create table userSist(
     
 
 create table paciente(
-	id_paciente int primary key,
+	cedula varchar(10) primary key,
     namepaciente varchar(50),
     lastname varchar(50),
     email varchar(100),
@@ -28,35 +28,35 @@ create table paciente(
 	);
     
 create table examenes(
-	id_examenes int primary key,
+	id_examenes int primary key auto_increment,
     image longblob,
     tipo text,
     create_at timestamp,
-    id_paciente int,
-    constraint fkexamenpaciente foreign key (id_paciente) references paciente(id_paciente));
+    id_paciente varchar(10),
+    constraint fkexamenpaciente foreign key (id_paciente) references paciente(cedula));
 
 
 create table cita(
-	id_cita int primary key,
+	id_cita int primary key auto_increment,
     title varchar(50),
     node text,
     create_at text,
     is_active tinyint,
-    id_paciente int,
-    id_medico int,
-    constraint fkcitapaciente foreign key (id_paciente) references paciente(id_paciente),
-    constraint fkcitamedico foreign key (id_medico) references userSist(id_user)
+    id_paciente varchar(10),
+    id_medico varchar(10),
+    constraint fkcitapaciente foreign key (id_paciente) references paciente(cedula),
+    constraint fkcitamedico foreign key (id_medico) references userSist(cedula)
 	);
     
     
 create table odontograma(
-	id_odontograma int primary key,
+	id_odontograma int primary key auto_increment,
     cara varchar(30),
     tratamiento varchar(30),
     pos int,
     create_at timestamp,
-    id_paciente int,
-    constraint fkodontogramapaciente foreign key (id_paciente) references paciente(id_paciente)
+    cedula varchar(10),
+    constraint fkodontogramapaciente foreign key (cedula) references paciente(cedula)
     );
     
 
@@ -64,6 +64,6 @@ create table tratamiento(
 	id_tratamiento int primary key,
     descripcion text,
     tipo varchar(50),
-    id_paciente int,
-    constraint fktratamientopaciente foreign key (id_paciente) references paciente(id_paciente)
+    cedula varchar(10),
+    constraint fktratamientopaciente foreign key (cedula) references paciente(cedula)
 );

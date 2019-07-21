@@ -3,6 +3,6 @@ export default  {
      host: "localhost",
      user: 'medicina',
      password: 'medicina',
-     database: 'bookmedik'
+     database: 'SistemMedico'
   }
 }

@@ -1,7 +1,7 @@
 import {Request, Response } from "express";
 import pool from "../database";
 
-class AppController {
+class ExamenController {
 
   public async top10(req: Request,res: Response): Promise<void>{
   const {token} = req.params;
@@ -44,4 +44,4 @@ class AppController {
 //let rows = await pool.query("select * from medic");
 //req.params.nombre
 //res,status(404).json({aqui el json})
-export default new AppController();
+export default new ExamenController();

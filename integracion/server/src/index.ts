@@ -26,13 +26,13 @@ class Server {
 
   router():void {
     this.app.use("/",indexRoutes);
-    this.app.use("/app/",appRoutes);
-    this.app.use("/api/login/",loginRouter);
-    this.app.use("/api/citas/consultar/",citasRouter);
-    this.app.use("/api/pacientes/consultar/",pacientesRouter);
-    this.app.use("/api/medicos/consultar/",medicosRouter);
-    this.app.use("/api/usuarios/consultar/",usuariosRouter);
-    this.app.use("/api/examenes/consultar/",examenesRouter);
+    this.app.use("/app",appRoutes);
+    this.app.use("/api/login",loginRouter);
+    this.app.use("/api/citas/consultar",citasRouter);
+    this.app.use("/api/pacientes/consultar",pacientesRouter);
+    this.app.use("/api/medicos/consultar",medicosRouter);
+    this.app.use("/api/usuarios/consultar",usuariosRouter);
+    this.app.use("/api/examenes/consultar",examenesRouter);
   }
 
   start(): void {

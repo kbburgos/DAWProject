@@ -29,13 +29,13 @@ class Server {
     }
     router() {
         this.app.use("/", indexRoutes_1.default);
-        this.app.use("/app/", appRoutes_1.default);
-        this.app.use("/api/login/", loginRoutes_1.default);
-        this.app.use("/api/citas/consultar/", citasRoutes_1.default);
-        this.app.use("/api/pacientes/consultar/", pacientesRoutes_1.default);
-        this.app.use("/api/medicos/consultar/", medicosRoutes_1.default);
-        this.app.use("/api/usuarios/consultar/", usuariosRoutes_1.default);
-        this.app.use("/api/examenes/consultar/", examenesRoutes_1.default);
+        this.app.use("/app", appRoutes_1.default);
+        this.app.use("/api/login", loginRoutes_1.default);
+        this.app.use("/api/citas/consultar", citasRoutes_1.default);
+        this.app.use("/api/pacientes/consultar", pacientesRoutes_1.default);
+        this.app.use("/api/medicos/consultar", medicosRoutes_1.default);
+        this.app.use("/api/usuarios/consultar", usuariosRoutes_1.default);
+        this.app.use("/api/examenes/consultar", examenesRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get("port"), () => {
