@@ -8,6 +8,12 @@ const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const appRoutes_1 = __importDefault(require("./routes/appRoutes"));
+const loginRoutes_1 = __importDefault(require("./routes/loginRoutes"));
+const citasRoutes_1 = __importDefault(require("./routes/citasRoutes"));
+const pacientesRoutes_1 = __importDefault(require("./routes/pacientesRoutes"));
+const medicosRoutes_1 = __importDefault(require("./routes/medicosRoutes"));
+const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
+const examenesRoutes_1 = __importDefault(require("./routes/examenesRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -22,8 +28,14 @@ class Server {
         this.app.use(express_1.default.urlencoded({ extended: false }));
     }
     router() {
-        this.app.use(indexRoutes_1.default);
+        this.app.use("/", indexRoutes_1.default);
         this.app.use("/app/", appRoutes_1.default);
+        this.app.use("/api/login/", loginRoutes_1.default);
+        this.app.use("/api/citas/consultar/", citasRoutes_1.default);
+        this.app.use("/api/pacientes/consultar/", pacientesRoutes_1.default);
+        this.app.use("/api/medicos/consultar/", medicosRoutes_1.default);
+        this.app.use("/api/usuarios/consultar/", usuariosRoutes_1.default);
+        this.app.use("/api/examenes/consultar/", examenesRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get("port"), () => {

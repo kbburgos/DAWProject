@@ -2,11 +2,11 @@ import {Request, Response } from "express";
 import pool from "../database";
 
 class AppController {
-  public index(req: Request,res: Response){
-  pool.query("select * from medic",(err,rows) => {
-    res.json(rows);
-  });
-  //  res.send("games")
+  public async index(req: Request,res: Response): Promise<void>{
+  let rows = await pool.query("select * from medic");
+  res.json(rows);
   }
 }
+//req.params.nombre
+//res,status(404).json({aqui el json})
 export default new AppController();
