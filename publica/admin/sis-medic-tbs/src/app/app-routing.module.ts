@@ -23,6 +23,9 @@ import { ConfigurationComponent } from './configuration/configuration.component'
 import { EditUserComponent } from './edit-user/edit-user.component';
 import { NewReservationComponent} from './new-reservation/new-reservation.component';
 import { ProximamenteComponent } from './proximamente/proximamente.component';
+import { OdontogramaComponent } from './odontograma/odontograma.component';
+import { OdontogramanewComponent } from './odontogramanew/odontogramanew.component';
+import {CitasmedicoComponent} from './citasmedico/citasmedico.component';
 
 
 
@@ -51,6 +54,9 @@ const routes: Routes = [
   {path: 'edit-user',component:EditUserComponent},
   {path: 'new-reservation', component:NewReservationComponent},
   {path: 'not-found',component: ProximamenteComponent},
+  {path: 'odontograma',component: OdontogramaComponent},
+  {path: 'odontogramanew',component:OdontogramanewComponent},
+  {path: 'citasmedico',component:CitasmedicoComponent},
   {path: '#',redirectTo: 'not-found'}
 ];
 

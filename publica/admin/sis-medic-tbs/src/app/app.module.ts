@@ -30,8 +30,10 @@ import { NewReservationComponent } from './new-reservation/new-reservation.compo
 import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { EditPacientComponent } from './edit-pacient/edit-pacient.component';
+
 import { EditmedicComponent } from './editmedic/editmedic.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+
 import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { ProximamenteComponent } from './proximamente/proximamente.component';
@@ -42,6 +44,9 @@ import { DataService } from './data.service';
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
+import { OdontogramaComponent } from './odontograma/odontograma.component';
+import { OdontogramanewComponent } from './odontogramanew/odontogramanew.component';
+import { CitasmedicoComponent } from './citasmedico/citasmedico.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +77,10 @@ import { FilterExamPipe } from './pipers/filter-exam.pipe';
     VerExamenComponent,
     ProximamenteComponent,
     TallerComponent,
-    FilterExamPipe
+    FilterExamPipe,
+    OdontogramaComponent,
+    OdontogramanewComponent,
+    CitasmedicoComponent,
   ],
   imports: [
     BrowserModule,
