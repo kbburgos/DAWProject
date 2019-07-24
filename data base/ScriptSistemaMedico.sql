@@ -18,8 +18,8 @@ create table userSistems(
     apellidoUser varchar(50),
     email varchar(100),
     phone varchar(50),
-    is_active tinyint,
-    rol int,
+    is_active tinyint default 1,
+    rol int default 2,
     image longblob,
     createdAt datetime,
     updatedAt datetime,
@@ -48,7 +48,7 @@ create table tipoExamenes(
     
 create table examen_Pacientes(
 	codigo int primary key auto_increment,
-    tipoExamen int,
+    tipoExamen int not null,
     image longblob,
     createdAt datetime,
     updatedAt datetime,
@@ -63,7 +63,7 @@ create table citas(
     node text,
     createdAt datetime,
     updatedAt datetime,
-    is_active tinyint,
+    is_active tinyint default 1,
     id_paciente varchar(10),
     id_medico varchar(10),
     constraint fkcitapaciente foreign key (id_paciente) references pacientes(cedula),
@@ -86,7 +86,7 @@ create table caraDientes(
 create table odontogramas(
 	codigo int primary key auto_increment,
     cara int,
-    tratamiento int,
+    tratamiento int not null,
     pos int,
     createdAt datetime,
     updatedAt datetime,
@@ -105,9 +105,9 @@ create table tipoTratamientos(
     
     
 create table tratamientos(
-	codigo int primary key,
+	codigo int primary key auto_increment,
     descripcion text,
-    tipo int,
+    tipo int not null,
     cedula varchar(10),
     createdAt datetime,
     updatedAt datetime,
