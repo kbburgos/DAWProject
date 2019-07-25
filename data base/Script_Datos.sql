@@ -1,32 +1,52 @@
 use sistemmedico;
-/*
-rol
-
-0= administrador
-1= medico
-2= recepcion
-
-*/
-Insert into usersist values ('0952669661', 'DAW20191S', 'jorah', 'mormont','jorahmormont@gmail.com','0910786615',1, 1, null, now());
-Insert into usersist values ('0915628478', 'DAW20191S2', 'sansa', 'stark','sansastark@gmail.com','0910786612',1, 2, null, now());
 
 
-Insert into paciente values ('0325874169', 'Galo Angres', 'Bustamante', 'gbustament@gmail.com', '0952669661', null, now());
-Insert into paciente values ('0124789563', 'Maria', 'Burgos', 'mb@gmail.com', '0952669662', null, now());
+insert into caradientes (nombre, createdAt, updatedAt) values('diente1',now(),now());
+insert into caradientes (nombre, createdAt, updatedAt) values('diente2',now(),now());
+insert into caradientes (nombre, createdAt, updatedAt) values('diente3',now(),now());
+insert into caradientes (nombre, createdAt, updatedAt) values('diente4',now(),now());
+
+insert into tipoexamenes(nombre, descripcion, createdAt, updatedAt) values('Examen de sangre','se le saca sangre al paciente y se la analiza',now(),now());
+insert into tipoexamenes(nombre, descripcion, createdAt, updatedAt) values('Rayos x','rayos x a la dentadura',now(),now());
+
+insert into tipotratamientos(nombre, descripcion, createdAt, updatedAt) values('blanqueamiento','con tus dientes',now(),now());
+insert into tipotratamientos(nombre, descripcion, createdAt, updatedAt) values('profilagsis','tambien con tus dientes',now(),now());
+
+insert into pacientes values('0213654789','Jonathan','Sesme','jp@gmail.com','123456789',null,now(),now());
+insert into pacientes values('8523697412','Karla','Burgos','kb@gmail.com','123456755',null,now(),now());
+insert into pacientes values('0214785963','Tony','Veas','tv@gmail.com','123456744',null,now(),now());
+insert into pacientes values('2014777458','Carlos','Quintana','cq@gmail.com','123456745',null,now(),now());
 
 
-Insert into examenes (image, tipo, create_at, id_paciente)values (null, 'examen de sangre', now(),'0325874169');
-Insert into examenes (image, tipo, create_at, id_paciente)values (null, 'rayos x', now(),'0124789563');
+insert into roles (nombre, descripcion, createdAt, updatedAt) values ('administrador','administra el sistema',now(),now());
+insert into roles (nombre, descripcion, createdAt, updatedAt) values ('medico','estudiante que atiende a paciente',now(),now());
 
 
-Insert into cita (title, node, create_at, is_active, id_paciente, id_medico)values ('control','', now(),1,'0325874169','0952669661');
-Insert into cita (title, node, create_at, is_active, id_paciente, id_medico)values ('blanqueo','', now(),1,'0124789563','0915628478');
+insert into usersistems values('8854796625','daw2019','Travis','Maddox','tm@gmail.com','47588',1,1,null,now(),now());
+insert into usersistems values('8854777455','daw2019','Liam','James','lj@gmail.com','47558',1,2,null,now(),now());
 
 
-Insert into odontograma (cara, tratamiento, pos, create_at, cedula)values ('', '', 1, now(), '0325874169');
-Insert into odontograma (cara, tratamiento, pos, create_at, cedula)values ('', '', 1, now(), '0124789563');
+insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico)values('titulo1','node1',now(),now(),1,'0213654789','8854777455');
+insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico)values('titulo2','node2',now(),now(),1,'8523697412','8854777455');
+insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico)values('titulo3','node3',now(),now(),1,'0214785963','8854777455');
+insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico)values('titulo4','node4',now(),now(),1,'2014777458','8854777455');
 
 
+insert into examen_pacientes (tipoExamen, image, createdAt, updatedAt, id_paciente) values (1,null,now(),now(),'0213654789');
+insert into examen_pacientes (tipoExamen, image, createdAt, updatedAt, id_paciente) values (2,null,now(),now(),'0214785963');
+insert into examen_pacientes (tipoExamen, image, createdAt, updatedAt, id_paciente) values (1,null,now(),now(),'8523697412');
 
-Insert into tratamiento values (1,'', '', '0325874169');
-Insert into tratamiento values (2,'', '', '0124789563');
+
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('calce','ruta1',now(),now());
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('limpieza','ruta2',now(),now());
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('extraccion','ruta3',now(),now());
+
+insert into odontogramas (cara,tratamiento,pos,createdAt,updatedAt, cedula) values(1,1,1,now(),now(),'2014777458');
+insert into odontogramas (cara,tratamiento,pos,createdAt,updatedAt, cedula) values(2,2,3,now(),now(),'0214785963');
+insert into odontogramas (cara,tratamiento,pos,createdAt,updatedAt, cedula) values(3,3,4,now(),now(),'8523697412');
+
+
+insert into tratamientos (descripcion, tipo, cedula, createdAt, updatedAt)values('descpt1',1,'2014777458',now(),now());
+insert into tratamientos (descripcion, tipo, cedula, createdAt, updatedAt)values('descpt2',2,'8523697412',now(),now());
+
+
