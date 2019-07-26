@@ -33,7 +33,8 @@ create table pacientes(
     apellido varchar(50),
     email varchar(100),
     phone varchar(50),
-    image longblob,
+    fechaAtencion date,
+    horaAtencion time,
     createdAt datetime,
     updatedAt datetime
 	);

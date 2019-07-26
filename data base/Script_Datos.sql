@@ -9,10 +9,10 @@ insert into caradientes (nombre, createdAt, updatedAt) values('diente4',now(),no
 insert into tipotratamientos(nombre, descripcion, createdAt, updatedAt) values('blanqueamiento','con tus dientes',now(),now());
 insert into tipotratamientos(nombre, descripcion, createdAt, updatedAt) values('profilagsis','tambien con tus dientes',now(),now());
 
-insert into pacientes values('0213654789','Jonathan','Sesme','jp@gmail.com','123456789',null,now(),now());
-insert into pacientes values('8523697412','Karla','Burgos','kb@gmail.com','123456755',null,now(),now());
-insert into pacientes values('0214785963','Tony','Veas','tv@gmail.com','123456744',null,now(),now());
-insert into pacientes values('2014777458','Carlos','Quintana','cq@gmail.com','123456745',null,now(),now());
+insert into pacientes values('0213654789','Jonathan','Sesme','jp@gmail.com','123456789','2019/07/25','05:05:05',now(),now());
+insert into pacientes values('8523697412','Karla','Burgos','kb@gmail.com','123456755','2019/07/25','05:05:05',now(),now());
+insert into pacientes values('0214785963','Tony','Veas','tv@gmail.com','123456744','2019/07/25','05:05:05',now(),now());
+insert into pacientes values('2014777458','Carlos','Quintana','cq@gmail.com','123456745','2019/07/25','05:05:05',now(),now());
 
 
 insert into roles (nombre, descripcion, createdAt, updatedAt) values ('administrador','administra el sistema',now(),now());
