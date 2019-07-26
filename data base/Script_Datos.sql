@@ -23,10 +23,10 @@ insert into usersistems values('8854796625','daw2019','Travis','Maddox','tm@gmai
 insert into usersistems values('8854777455','daw2019','Liam','James','lj@gmail.com','47558',1,2,null,now(),now());
 
 
-insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico, fecha, hora)values('titulo1','node1',now(),now(),1,'0213654789','8854777455', '2019/07/25','05:05:05');
-insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico, fecha, hora)values('titulo2','node2',now(),now(),1,'8523697412','8854777455', '2019/07/25','05:05:05');
-insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico, fecha, hora)values('titulo3','node3',now(),now(),1,'0214785963','8854777455', '2019/07/25','05:05:05');
-insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico, fecha, hora)values('titulo4','node4',now(),now(),1,'2014777458','8854777455', '2019/07/25','05:05:05');
+insert into citas (titulo, nota, createdAt, updatedAt, is_active, id_paciente, id_medico, fecha, hora)values('titulo1','node1',now(),now(),1,'0213654789','8854777455', '2019/07/25','05:05:05');
+insert into citas (titulo, nota, createdAt, updatedAt, is_active, id_paciente, id_medico, fecha, hora)values('titulo2','node2',now(),now(),1,'8523697412','8854777455', '2019/07/25','05:05:05');
+insert into citas (titulo, nota, createdAt, updatedAt, is_active, id_paciente, id_medico, fecha, hora)values('titulo3','node3',now(),now(),1,'0214785963','8854777455', '2019/07/25','05:05:05');
+insert into citas (titulo, nota, createdAt, updatedAt, is_active, id_paciente, id_medico, fecha, hora)values('titulo4','node4',now(),now(),1,'2014777458','8854777455', '2019/07/25','05:05:05');
 
 
 insert into examen_pacientes (descripExamen, image, createdAt, updatedAt, id_paciente) values ('examen de sangre',null,now(),now(),'0213654789');

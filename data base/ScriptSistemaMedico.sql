@@ -53,7 +53,7 @@ create table examen_Pacientes(
 create table citas(
 	codigo int primary key auto_increment,
     titulo varchar(50),
-    node text,
+    nota text,
     createdAt datetime,
     updatedAt datetime,
     is_active tinyint default 1,
