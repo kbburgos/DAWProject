@@ -6,9 +6,6 @@ insert into caradientes (nombre, createdAt, updatedAt) values('diente2',now(),no
 insert into caradientes (nombre, createdAt, updatedAt) values('diente3',now(),now());
 insert into caradientes (nombre, createdAt, updatedAt) values('diente4',now(),now());
 
-insert into tipoexamenes(nombre, descripcion, createdAt, updatedAt) values('Examen de sangre','se le saca sangre al paciente y se la analiza',now(),now());
-insert into tipoexamenes(nombre, descripcion, createdAt, updatedAt) values('Rayos x','rayos x a la dentadura',now(),now());
-
 insert into tipotratamientos(nombre, descripcion, createdAt, updatedAt) values('blanqueamiento','con tus dientes',now(),now());
 insert into tipotratamientos(nombre, descripcion, createdAt, updatedAt) values('profilagsis','tambien con tus dientes',now(),now());
 
@@ -26,15 +23,15 @@ insert into usersistems values('8854796625','daw2019','Travis','Maddox','tm@gmai
 insert into usersistems values('8854777455','daw2019','Liam','James','lj@gmail.com','47558',1,2,null,now(),now());
 
 
-insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico)values('titulo1','node1',now(),now(),1,'0213654789','8854777455');
-insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico)values('titulo2','node2',now(),now(),1,'8523697412','8854777455');
-insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico)values('titulo3','node3',now(),now(),1,'0214785963','8854777455');
-insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico)values('titulo4','node4',now(),now(),1,'2014777458','8854777455');
+insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico, fecha, hora)values('titulo1','node1',now(),now(),1,'0213654789','8854777455', '2019/07/25','05:05:05');
+insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico, fecha, hora)values('titulo2','node2',now(),now(),1,'8523697412','8854777455', '2019/07/25','05:05:05');
+insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico, fecha, hora)values('titulo3','node3',now(),now(),1,'0214785963','8854777455', '2019/07/25','05:05:05');
+insert into citas (titulo, node, createdAt, updatedAt, is_active, id_paciente, id_medico, fecha, hora)values('titulo4','node4',now(),now(),1,'2014777458','8854777455', '2019/07/25','05:05:05');
 
 
-insert into examen_pacientes (tipoExamen, image, createdAt, updatedAt, id_paciente) values (1,null,now(),now(),'0213654789');
-insert into examen_pacientes (tipoExamen, image, createdAt, updatedAt, id_paciente) values (2,null,now(),now(),'0214785963');
-insert into examen_pacientes (tipoExamen, image, createdAt, updatedAt, id_paciente) values (1,null,now(),now(),'8523697412');
+insert into examen_pacientes (descripExamen, image, createdAt, updatedAt, id_paciente) values ('examen de sangre',null,now(),now(),'0213654789');
+insert into examen_pacientes (descripExamen, image, createdAt, updatedAt, id_paciente) values ('examen de VIH, rayos X',null,now(),now(),'0214785963');
+insert into examen_pacientes (descripExamen, image, createdAt, updatedAt, id_paciente) values ('examen de sangre, prueba de azucar',null,now(),now(),'8523697412');
 
 
 insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('calce','ruta1',now(),now());

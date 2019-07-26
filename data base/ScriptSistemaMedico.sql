@@ -11,6 +11,7 @@ create table roles(
     createdAt datetime,
     updatedAt datetime);
     
+    
 create table userSistems(
     cedula varchar(10) primary key,
     pasword varchar(64),
@@ -38,23 +39,14 @@ create table pacientes(
 	);
     
     
-create table tipoExamenes(
-	codigo int primary key auto_increment,
-    nombre varchar(30),
-    descripcion varchar(30),
-    createdAt datetime,
-    updatedAt datetime);
-    
-    
 create table examen_Pacientes(
 	codigo int primary key auto_increment,
-    tipoExamen int not null,
+    descripExamen text not null,
     image longblob,
     createdAt datetime,
     updatedAt datetime,
     id_paciente varchar(10),
-    constraint fkexamenpaciente foreign key (id_paciente) references pacientes(cedula),
-    constraint fktipoExamen foreign key (tipoExamen) references tipoExamenes(codigo));
+    constraint fkexamenpaciente foreign key (id_paciente) references pacientes(cedula));
 
 
 create table citas(
@@ -66,6 +58,8 @@ create table citas(
     is_active tinyint default 1,
     id_paciente varchar(10),
     id_medico varchar(10),
+    fecha date,
+    hora time,
     constraint fkcitapaciente foreign key (id_paciente) references pacientes(cedula),
     constraint fkcitamedico foreign key (id_medico) references userSistems(cedula)
 	);
