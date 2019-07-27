@@ -11,7 +11,7 @@ class IndexRoutes {
         this.config();
     }
     config() {
-        this.router.get("/ingresar/:cedula&:pass&:token", loginController_1.default.ingresar);
+        this.router.get("/ingresar/:cedula&:pass", loginController_1.default.ingresar);
         this.router.put("/chancePass/:actual&:nueva&:token", loginController_1.default.changePass);
         this.router.post("/newUser/:cifrado&:token", loginController_1.default.newUser);
         this.router.delete("/deleteUser/:user&:pass&:token", loginController_1.default.deleteUser);

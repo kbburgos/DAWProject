@@ -9,6 +9,7 @@ import pacientesRouter from "./routes/pacientesRoutes";
 import medicosRouter from "./routes/medicosRoutes";
 import usuariosRouter from "./routes/usuariosRoutes";
 import examenesRouter from "./routes/examenesRoutes";
+const db = require('./../models');
 class Server {
   public app:Application;
   constructor() {
@@ -38,6 +39,7 @@ class Server {
   start(): void {
     this.app.listen(this.app.get("port"), () => {
       console.log("server on port: ", this.app.get("port"));
+      db.sequelize.sync();
     });
   }
 }

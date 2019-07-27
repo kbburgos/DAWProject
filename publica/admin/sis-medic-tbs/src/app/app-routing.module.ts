@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {AuthGuard} from './services/loginUtils/auth.guard';
+import {AuthGuardLogin} from './services/loginUtils/auth.guard.login';
 //rutas personalizadas
 import { MenuComponent } from './menu/menu.component';
 import { HomeComponent } from './home/home.component';
@@ -30,34 +32,31 @@ import {CitasmedicoComponent} from './citasmedico/citasmedico.component';
 
 
 const routes: Routes = [
-  {path: '', component: LoginComponent},
-  {path: 'view-exa', component: ViewExaComponent},
-  {path: 'medic', component: MedicComponent},
-  {path: 'newmedic', component: NewmedicComponent},
-  {path: 'user', component: UserComponent},
-  {path: 'reservations', component: ReservationsComponent},
-  {path: 'menu', component: MenuComponent},
-  {path: 'home', component: HomeComponent},
-  {path: 'newuser', component: NewUserComponent},
-  {path: 'oldreservations', component: OldReservationsComponent},
-  {path: 'patients', component: PatientsComponent},
-  {path: 'newpacient',component:NewPacientComponent},
-  {path: 'add-exa',component:AddExaComponent},
-  {path: "edit-patient", component:EditPacientComponent},
-  {path: 'editmedic',component:EditmedicComponent},
-  {path: "proximamente", component: ProximamenteComponent},
-  {path: 'edit-exa',component:EditExamenComponent},
-  {path: 'ver-examen',component:VerExamenComponent},
-  {path: 'configuration',component:ConfigurationComponent},
-  {path: 'edit-reservation',component:EditReservationComponent},
-  {path: 'add-exa',component:AddExaComponent},
-  {path: 'edit-user',component:EditUserComponent},
-  {path: 'new-reservation', component:NewReservationComponent},
-  {path: 'not-found',component: ProximamenteComponent},
-  {path: 'odontograma',component: OdontogramaComponent},
-  {path: 'odontogramanew',component:OdontogramanewComponent},
-  {path: 'citasmedico',component:CitasmedicoComponent},
-  {path: '#',redirectTo: 'not-found'}
+  {path: '',canActivate:[AuthGuardLogin], component: LoginComponent},
+  {path: 'view-exa',canActivate:[AuthGuard], component: ViewExaComponent},
+  {path: 'medic', canActivate:[AuthGuard],component: MedicComponent},
+  {path: 'newmedic',canActivate:[AuthGuard], component: NewmedicComponent},
+  {path: 'user', canActivate:[AuthGuard],component: UserComponent},
+  {path: 'reservations',canActivate:[AuthGuard], component: ReservationsComponent},
+  {path: 'menu', canActivate:[AuthGuard],component: MenuComponent},
+  {path: 'home',canActivate:[AuthGuard], component: HomeComponent},
+  {path: 'newuser',canActivate:[AuthGuard], component: NewUserComponent},
+  {path: 'oldreservations',canActivate:[AuthGuard], component: OldReservationsComponent},
+  {path: 'patients', canActivate:[AuthGuard],component: PatientsComponent},
+  {path: 'newpacient',canActivate:[AuthGuard],component:NewPacientComponent},
+  {path: 'add-exa',canActivate:[AuthGuard],component:AddExaComponent},
+  {path: "edit-patient", canActivate:[AuthGuard],component:EditPacientComponent},
+  {path: 'editmedic',canActivate:[AuthGuard],component:EditmedicComponent},
+  {path: "proximamente",canActivate:[AuthGuard], component: ProximamenteComponent},
+  {path: 'edit-exa',canActivate:[AuthGuard],component:EditExamenComponent},
+  {path: 'ver-examen',canActivate:[AuthGuard],component:VerExamenComponent},
+  {path: 'configuration',canActivate:[AuthGuard],component:ConfigurationComponent},
+  {path: 'edit-reservation',canActivate:[AuthGuard],component:EditReservationComponent},
+  {path: 'add-exa',canActivate:[AuthGuard],component:AddExaComponent},
+  {path: 'edit-user',canActivate:[AuthGuard], component:EditUserComponent},
+  {path: 'new-reservation',canActivate:[AuthGuard], component:NewReservationComponent},
+  {path: 'not-found',canActivate:[AuthGuard],component: ProximamenteComponent},
+  {path: '#',canActivate:[AuthGuard],redirectTo: 'not-found'}
 ];
 
 @NgModule({

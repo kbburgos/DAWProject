@@ -1,5 +1,5 @@
 import constantes from './constantes';
-import pool from "./database";
+// import pool from "./database";
 var AES = require("crypto-js/aes");
 var CryptoJS = require("crypto-js");
 export default class util {
@@ -18,24 +18,27 @@ export default class util {
 
   public static crearToken(user:String):String {
     const fecha= new Date();
-    return fecha.getTime()+","+this.cifrar(1,user);
+    return this.cifrar(1,fecha.getTime()+","+user);
   }
 
   public static async validarToken(token:String):Promise<any> {
     let tiempo_actual = new Date();
-    let arreglo = token.split(",");
-    let users = this.cifrar(2,arreglo[1]);
-    if((parseInt(arreglo[0])-tiempo_actual.getTime()) <= constantes.tiempoDoctor.tiempo){
-      let rows = await pool.query("select cedula from usersist where cedula=?",[users]);
-      if(rows.length == 1){
-        return true;
-      }
-      else{
-        return false;
-      }
-    }
-    else{
-      return false;
-    }
+   
+    let users = this.cifrar(2,token);
+    let arreglo = users.split(",");
+    // if((parseInt(arreglo[0])-tiempo_actual.getTime()) <= constantes.tiempoDoctor.tiempo){
+    //   // let rows = await pool.query("select cedula from usersist where cedula=?",[users]);
+    //   // let rows = []
+    //   // if(rows.length == 1){
+    //   //   return true;
+    //   // }
+    //   // else{
+    //   //   return false;
+    //   // }
+    // }
+    // else{
+    //   return false;
+    // }
+    return ((parseInt(arreglo[0])-tiempo_actual.getTime()) <= constantes.tiempoDoctor.tiempo);
   }
 }

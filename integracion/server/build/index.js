@@ -14,6 +14,7 @@ const pacientesRoutes_1 = __importDefault(require("./routes/pacientesRoutes"));
 const medicosRoutes_1 = __importDefault(require("./routes/medicosRoutes"));
 const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
 const examenesRoutes_1 = __importDefault(require("./routes/examenesRoutes"));
+const db = require('./../models');
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -40,6 +41,7 @@ class Server {
     start() {
         this.app.listen(this.app.get("port"), () => {
             console.log("server on port: ", this.app.get("port"));
+            db.sequelize.sync();
         });
     }
 }

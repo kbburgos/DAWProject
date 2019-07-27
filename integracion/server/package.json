@@ -15,7 +15,9 @@
     "crypto-js": "^3.1.9-1",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
-    "promise-mysql": "^3.3.1"
+    "mysql2": "^1.6.5",
+    "promise-mysql": "^3.3.1",
+    "sequelize": "^5.10.3"
   },
   "devDependencies": {
     "@types/cors": "^2.8.5",

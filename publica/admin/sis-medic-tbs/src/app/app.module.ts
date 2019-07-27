@@ -4,8 +4,12 @@ import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule} from '@angular/material'
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthService } from './services/loginUtils/auth.service';
+import {AuthGuard} from './services/loginUtils/auth.guard';
+import {AuthGuardLogin} from './services/loginUtils/auth.guard.login';
 
+import { TokenInterceptorService } from './services/loginUtils/token-interceptor';
 
 //imports de modulos
 import { AppRoutingModule } from './app-routing.module';
@@ -90,7 +94,12 @@ import { CitasmedicoComponent } from './citasmedico/citasmedico.component';
     MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule,BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [DataService,ConfigService],
+  providers: [DataService,ConfigService,AuthService,TokenInterceptorService,AuthGuard,AuthGuardLogin,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

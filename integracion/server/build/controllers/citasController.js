@@ -8,6 +8,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+// import pool from "../database";
 class CitasController {
     newCita(req, res) {
         return __awaiter(this, void 0, void 0, function* () {

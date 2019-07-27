@@ -11,13 +11,16 @@
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate = "Enter username">
-						<input required class="input100" type="text" name="username" placeholder="Usuario">
+						<input required class="input100" type="text" name="username" placeholder="Usuario" #user (keyup.enter)='login(user.value,password.value)'>
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
-						<input required class="input100" type="password" name="pass" placeholder="Contraseña">
+						<input required class="input100" type="password" name="pass" placeholder="Contraseña" #password  (keyup.enter)='login(user.value,password.value)'>
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+					</div>
+					<div  [ngClass]= "{ 'visible': isvisible }" class="text-center">
+						<p class ="text-white">{{log}}</p>
 					</div>
 
 					<div class="contact100-form-checkbox">
@@ -29,9 +32,9 @@
 
 					<div class="container-login100-form-btn">
             <a routerLink="/home">
-						<button type="submit" class="login100-form-btn">
-							Login
-						</button></a>
+				<button type="submit" class="login100-form-btn" (click)='login(user.value,password.value)'>
+					Login
+				</button></a>
 					</div>
 <!--
 					<div class="text-center p-t-90">

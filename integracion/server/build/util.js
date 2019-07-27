@@ -12,7 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const constantes_1 = __importDefault(require("./constantes"));
-const database_1 = __importDefault(require("./database"));
+// import pool from "./database";
 var AES = require("crypto-js/aes");
 var CryptoJS = require("crypto-js");
 class util {
@@ -30,25 +30,27 @@ class util {
     }
     static crearToken(user) {
         const fecha = new Date();
-        return fecha.getTime() + "," + this.cifrar(1, user);
+        return this.cifrar(1, fecha.getTime() + "," + user);
     }
     static validarToken(token) {
         return __awaiter(this, void 0, void 0, function* () {
             let tiempo_actual = new Date();
-            let arreglo = token.split(",");
-            let users = this.cifrar(2, arreglo[1]);
-            if ((parseInt(arreglo[0]) - tiempo_actual.getTime()) <= constantes_1.default.tiempoDoctor.tiempo) {
-                let rows = yield database_1.default.query("select cedula from usersist where cedula=?", [users]);
-                if (rows.length == 1) {
-                    return true;
-                }
-                else {
-                    return false;
-                }
-            }
-            else {
-                return false;
-            }
+            let users = this.cifrar(2, token);
+            let arreglo = users.split(",");
+            // if((parseInt(arreglo[0])-tiempo_actual.getTime()) <= constantes.tiempoDoctor.tiempo){
+            //   // let rows = await pool.query("select cedula from usersist where cedula=?",[users]);
+            //   // let rows = []
+            //   // if(rows.length == 1){
+            //   //   return true;
+            //   // }
+            //   // else{
+            //   //   return false;
+            //   // }
+            // }
+            // else{
+            //   return false;
+            // }
+            return ((parseInt(arreglo[0]) - tiempo_actual.getTime()) <= constantes_1.default.tiempoDoctor.tiempo);
         });
     }
 }
