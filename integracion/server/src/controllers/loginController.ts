@@ -9,8 +9,16 @@ class LoginController {
 
   public async ingresar(req: Request,resp: Response): Promise<void>{
   const {cedula,pass} = req.params
+  users.findAll({include: [{model: roles,
+    where : {nombre : "administrador"}
+  }] }).then((data:any) => {
+    //console.log(data[0]);
+    //console.log(users.getRoles());
+    resp.json(data);
+  })
+  //resp.json("{dato : 'hola mundo'}");
 
-  users.findAll({
+  /*users.findAll({
     where: {
       cedula:cedula,
       pasword: pass
@@ -26,7 +34,7 @@ class LoginController {
       let token = util.crearToken(res[0].cedula+","+res[0].rol);
       resp.status(200).json({Nombre:res[0].nombreUser,Apellido:res[0].apellidoUser,Token:token})
     }
-  });
+  });*/
   }
 
   public async changePass(req: Request, res: Response): Promise<void> {

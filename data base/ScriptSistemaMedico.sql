@@ -1,8 +1,8 @@
 create database SistemMedico;
 use SistemMedico;
-/*CREATE USER 'medicina'@'localhost' identified by 'medicina';
+CREATE USER 'medicina'@'localhost' identified by 'medicina';
 GRANT ALL PRIVILEGES ON SistemMedico.* TO medicina@localhost;
-FLUSH PRIVILEGES;*/
+FLUSH PRIVILEGES;
 
 create table roles(
 	codigo int primary key auto_increment,

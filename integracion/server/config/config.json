@@ -1,24 +1,24 @@
 {
   "development": {
-    "username": "root",
-    "password": "root",
+    "username": "medicina",
+    "password": "medicina",
     "database": "sistemmedico",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "test": {
-    "username": "root",
-    "password": null,
-    "database": "database_test",
+    "username": "medicina",
+    "password": "medicina",
+    "database": "sistemmedico",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "username": "medicina",
+    "password": "medicina",
+    "database": "sistemmedico",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
