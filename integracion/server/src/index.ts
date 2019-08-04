@@ -10,6 +10,7 @@ import medicosRouter from "./routes/medicosRoutes";
 import usuariosRouter from "./routes/usuariosRoutes";
 import examenesRouter from "./routes/examenesRoutes";
 const db = require('./../models');
+const bodyParser =  require("body-parser");
 class Server {
   public app:Application;
   constructor() {
@@ -34,6 +35,8 @@ class Server {
     this.app.use("/api/medicos/consultar",medicosRouter);
     this.app.use("/api/usuarios/consultar",usuariosRouter);
     this.app.use("/api/examenes/consultar",examenesRouter);
+    this.app.use(bodyParser.urlencoded({ extended: false }));
+    this.app.use(bodyParser.json());
   }
 
   start(): void {

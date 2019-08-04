@@ -15,7 +15,7 @@ export class TokenInterceptorService implements HttpInterceptor {
       }
     )
     console.log( authService.getToken())
-    console.log("header")
+    
     return next.handle(tokenizedReq)
   }
 

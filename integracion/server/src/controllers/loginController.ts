@@ -8,57 +8,177 @@ const users = db.usersistems
 class LoginController {
 
   public async ingresar(req: Request,resp: Response): Promise<void>{
-  const {cedula,pass} = req.params
-  users.findAll({include: [{model: roles,
-    where : {nombre : "administrador"}
-  }] }).then((data:any) => {
-    //console.log(data[0]);
-    //console.log(users.getRoles());
-    resp.json(data);
-  })
-  //resp.json("{dato : 'hola mundo'}");
-
-  /*users.findAll({
+  let cedula = req.body.username
+  let pass = req.body.pass;
+    if(cedula===undefined||pass===undefined){
+      resp.status(400).json({log:"Debe ingresar datos validos"});
+      return
+    }
+  users.findOne({
+    include:[{ 
+      model: roles,
+      required: true
+    }],
     where: {
       cedula:cedula,
       pasword: pass
     }
   }).then(function(res:any){
-    if(res[0]===undefined){
+    if(res===null){
       resp.status(401).json({log:"Su usuario no existe, verifique sus credenciales"});
+      return
 
-    }else if(res[0].is_active!=1){
+    } 
+    if(res.is_active!=1){
       resp.status(401).json({log:"Su usuario no esta activo"});
+      return
     }
     else{
-      let token = util.crearToken(res[0].cedula+","+res[0].rol);
-      resp.status(200).json({Nombre:res[0].nombreUser,Apellido:res[0].apellidoUser,Token:token})
+      let token = util.crearToken(res.cedula+","+res.role.nombre);
+      resp.status(200).json({Nombre:res.nombreUser,Apellido:res.apellidoUser, Rol:res.role.nombre,Token:token})
+      return
     }
-  });*/
+  }, (err:any)=>{
+    console.log(err)
+  });
   }
 
   public async changePass(req: Request, res: Response): Promise<void> {
-    const {actual, nueva, token} = req.params;
-    res.json({rows : "respuesta"});
+    let id = req.params.id;
+    let newpass = req.body.newpass
+    
+    let token = req.header("Authorization");
+    if(id===undefined||newpass===undefined){
+      res.status(400).json({log:"Debe ingresar datos validos"})
+      return
+    }
+    if(token===undefined){
+      res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
+      return
+    } if(!util.validarToken(token)){
+      res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
+      return
+    }
+    users.update({
+    pasword:newpass
+  },{where:{
+    cedula: id
+  }
+}).then((rs:any)=>{
+    if(rs[0]===1){
+      res.status(200).json({log:"El usuario actualizo su Password"})
+    return
+    }
+    res.status(400).json({log:"El usuario ingresado no existe"})
+    return
+  })
   }
 
   public async newUser(req: Request, res: Response): Promise<void> {
-    const {cifrado, token} = req.params;
-    res.json({rows : "respuesta"});
+    let token = req.header("Authorization");
+    if(req.body.cedula===undefined||req.body.password===undefined||req.body.nombreUser===undefined||req.body.apellidoUser===undefined||req.body.rol===undefined){
+      res.status(400).json({log:"Debe ingresar datos validos"})
+      return
+    }
+    if(token===undefined){
+      res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
+      return
+    } if(!util.validarToken(token)){
+      res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
+      return
+    }
+    users.create({
+      cedula:req.body.cedula,
+      pasword:req.body.password, 
+      nombreUser:req.body.nombreUser,
+      apellidoUser:req.body.apellidoUser,
+      email:req.body.email,
+      phone:req.body.phone,
+      rol:req.body.rol,
+      image:null,
+      createdAt:new Date(),
+      updatedAt:new Date()
+    }).then((rs:any)=>{console.log(rs)
+      res.status(200).json(rs)
+      return
+    })
   }
 
   public async deleteUser(req: Request, res: Response): Promise<void> {
-    const {user, pass, token} = req.params;
-    res.json({rows : "respuesta"});
+    let id = req.params.id;
+    let token = req.header("Authorization");
+    if(id===undefined){
+      res.status(400).json({log:"Debe ingresar datos validos"})
+      return
+    }
+    if(token===undefined){
+      res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
+      return
+    } if(!util.validarToken(token)){
+      res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
+      return
+    }
+      users.destroy({
+        where:{
+          cedula:id
+        }
+      }).then((d:any)=>{
+        if(d===1){
+          res.status(200).json({log:"El usuario se elimino con exito"})
+          return
+        }
+        res.status(400).json({log:"El usuario no se elimino, no existe usuarios registrados con esas credenciales"})
+        return
+      },(err:any)=>{
+        console.log(err)
+      })
+    
+    
   }
 
   public async getById(req: Request, res: Response): Promise<void> {
-    const {id, token} = req.params;
-    res.json({rows : "respuesta"});
+    console.log(req.params)
+    let token = req.header("Authorization");
+    let id = req.params.id;
+    if(id===undefined){
+      res.status(400).json({log:"Debe ingresar datos validos"})
+      return
+    }
+    if(token===undefined){
+      res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
+      return
+    } if(!util.validarToken(token)){
+      res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
+      return
+    }
+    users.findOne({include:[{ 
+      model: roles,
+      required: true
+    }],where: {
+      cedula:id
+    }}).then((rs:any)=>{
+      
+      if(rs===null){
+        res.status(401).json({log:"Usuario no existe, verifique la informacion enviada"});
+        return
+      } if(rs.is_active!=1){
+        res.status(401).json({log:"Su usuario no esta activo"});
+        return
+      }
+     
+       
+        res.status(200).json(rs)
+        return
+      
+
+    }, (err:any)=>{
+      console.log(err)
+      return
+    })
+    
+    
   }
 
 }
-//let rows = await pool.query("select * from medic");
-//req.params.nombre
-//res,status(404).json({aqui el json})
+
 export default new LoginController();

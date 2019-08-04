@@ -2,6 +2,7 @@ import constantes from './constantes';
 // import pool from "./database";
 var AES = require("crypto-js/aes");
 var CryptoJS = require("crypto-js");
+
 export default class util {
   public static cifrar(tipo:number, cadena:String):String {
     let clave = "71bec6b99ebd7fbd65d44410eeaf17852de12204f176635b200c17986534d8cfbbab73a34baf7f91f567b90f76d74d61ab6e30f097ed4f49f24d11581527b89a"
@@ -21,24 +22,15 @@ export default class util {
     return this.cifrar(1,fecha.getTime()+","+user);
   }
 
-  public static async validarToken(token:String):Promise<any> {
+  public static validarToken(token:String):boolean {
     let tiempo_actual = new Date();
    
     let users = this.cifrar(2,token);
     let arreglo = users.split(",");
-    // if((parseInt(arreglo[0])-tiempo_actual.getTime()) <= constantes.tiempoDoctor.tiempo){
-    //   // let rows = await pool.query("select cedula from usersist where cedula=?",[users]);
-    //   // let rows = []
-    //   // if(rows.length == 1){
-    //   //   return true;
-    //   // }
-    //   // else{
-    //   //   return false;
-    //   // }
-    // }
-    // else{
-    //   return false;
-    // }
+    
     return ((parseInt(arreglo[0])-tiempo_actual.getTime()) <= constantes.tiempoDoctor.tiempo);
+  }
+  public static cifrarSha256(pass:String):String{
+    return CryptoJS.SHA256(pass).toString(CryptoJS.enc.Hex)
   }
 }

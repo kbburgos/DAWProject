@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AuthService } from "../services/loginUtils/auth.service";
 import { Router } from "@angular/router";
-
+import Encrypt from './../services/serealUtils/encrypt'
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -29,6 +29,8 @@ export class LoginComponent implements OnInit {
   };
   ngOnInit() {}
 
+ 
+
   login(user: string, pass: string) {
     //generar token por medio del password
     if (user === "" || pass === "") {
@@ -36,9 +38,9 @@ export class LoginComponent implements OnInit {
       this.isvisible = true;
       this.log = "Debe ingresar credenciales validas";
     } else {
-      console.log(user);
+      
       this.loginUserData.username = user;
-      this.loginUserData.pass = pass;
+      this.loginUserData.pass = Encrypt.cifrar( pass);
       this._auth.loginUser(this.loginUserData).subscribe(
         data => {
           localStorage.setItem("login", JSON.stringify(data.body));

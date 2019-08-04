@@ -8,11 +8,11 @@ class IndexRoutes {
     this.config();
   }
   config():void {
-    this.router.get("/ingresar/:cedula&:pass", appController.ingresar);
-    this.router.put("/chancePass/:actual&:nueva&:token", appController.changePass);
-    this.router.post("/newUser/:cifrado&:token",appController.newUser);
-    this.router.delete("/deleteUser/:user&:pass&:token",appController.deleteUser);
-    this.router.get("/perfil/:id&:token",appController.getById);
+    this.router.post("/ingresar", appController.ingresar);
+    this.router.put("/chancePass/:id", appController.changePass);
+    this.router.post("/newUser",appController.newUser);
+    this.router.delete("/deleteUser/:id",appController.deleteUser);
+    this.router.get("/perfil/:id",appController.getById);
   }
 }
 const indexRoutes = new IndexRoutes();

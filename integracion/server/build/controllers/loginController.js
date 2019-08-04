@@ -7,67 +7,187 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+// import pool from "../database";
+const util_1 = __importDefault(require("./../util"));
 const db = require('./../../models');
 const roles = db.roles;
 const users = db.usersistems;
 class LoginController {
     ingresar(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { cedula, pass } = req.params;
-            users.findAll({ include: [{ model: roles,
-                        where: { nombre: "administrador" }
-                    }] }).then((data) => {
-                //console.log(data[0]);
-                //console.log(users.getRoles());
-                resp.json(data);
+            let cedula = req.body.username;
+            let pass = req.body.pass;
+            if (cedula === undefined || pass === undefined) {
+                resp.status(400).json({ log: "Debe ingresar datos validos" });
+                return;
+            }
+            users.findOne({
+                include: [{
+                        model: roles,
+                        required: true
+                    }],
+                where: {
+                    cedula: cedula,
+                    pasword: pass
+                }
+            }).then(function (res) {
+                if (res === null) {
+                    resp.status(401).json({ log: "Su usuario no existe, verifique sus credenciales" });
+                    return;
+                }
+                if (res.is_active != 1) {
+                    resp.status(401).json({ log: "Su usuario no esta activo" });
+                    return;
+                }
+                else {
+                    let token = util_1.default.crearToken(res.cedula + "," + res.role.nombre);
+                    resp.status(200).json({ Nombre: res.nombreUser, Apellido: res.apellidoUser, Rol: res.role.nombre, Token: token });
+                    return;
+                }
+            }, (err) => {
+                console.log(err);
             });
-            //resp.json("{dato : 'hola mundo'}");
-            /*users.findAll({
-              where: {
-                cedula:cedula,
-                pasword: pass
-              }
-            }).then(function(res:any){
-              if(res[0]===undefined){
-                resp.status(401).json({log:"Su usuario no existe, verifique sus credenciales"});
-          
-              }else if(res[0].is_active!=1){
-                resp.status(401).json({log:"Su usuario no esta activo"});
-              }
-              else{
-                let token = util.crearToken(res[0].cedula+","+res[0].rol);
-                resp.status(200).json({Nombre:res[0].nombreUser,Apellido:res[0].apellidoUser,Token:token})
-              }
-            });*/
         });
     }
     changePass(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { actual, nueva, token } = req.params;
-            res.json({ rows: "respuesta" });
+            let id = req.params.id;
+            let newpass = req.body.newpass;
+            let token = req.header("Authorization");
+            if (id === undefined || newpass === undefined) {
+                res.status(400).json({ log: "Debe ingresar datos validos" });
+                return;
+            }
+            if (token === undefined) {
+                res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
+                return;
+            }
+            if (!util_1.default.validarToken(token)) {
+                res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+                return;
+            }
+            users.update({
+                pasword: newpass
+            }, { where: {
+                    cedula: id
+                }
+            }).then((rs) => {
+                if (rs[0] === 1) {
+                    res.status(200).json({ log: "El usuario actualizo su Password" });
+                    return;
+                }
+                res.status(400).json({ log: "El usuario ingresado no existe" });
+                return;
+            });
         });
     }
     newUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { cifrado, token } = req.params;
-            res.json({ rows: "respuesta" });
+            let token = req.header("Authorization");
+            if (req.body.cedula === undefined || req.body.password === undefined || req.body.nombreUser === undefined || req.body.apellidoUser === undefined || req.body.rol === undefined) {
+                res.status(400).json({ log: "Debe ingresar datos validos" });
+                return;
+            }
+            if (token === undefined) {
+                res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
+                return;
+            }
+            if (!util_1.default.validarToken(token)) {
+                res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+                return;
+            }
+            users.create({
+                cedula: req.body.cedula,
+                pasword: req.body.password,
+                nombreUser: req.body.nombreUser,
+                apellidoUser: req.body.apellidoUser,
+                email: req.body.email,
+                phone: req.body.phone,
+                rol: req.body.rol,
+                image: null,
+                createdAt: new Date(),
+                updatedAt: new Date()
+            }).then((rs) => {
+                console.log(rs);
+                res.status(200).json(rs);
+                return;
+            });
         });
     }
     deleteUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { user, pass, token } = req.params;
-            res.json({ rows: "respuesta" });
+            let id = req.params.id;
+            let token = req.header("Authorization");
+            if (id === undefined) {
+                res.status(400).json({ log: "Debe ingresar datos validos" });
+                return;
+            }
+            if (token === undefined) {
+                res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
+                return;
+            }
+            if (!util_1.default.validarToken(token)) {
+                res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+                return;
+            }
+            users.destroy({
+                where: {
+                    cedula: id
+                }
+            }).then((d) => {
+                if (d === 1) {
+                    res.status(200).json({ log: "El usuario se elimino con exito" });
+                    return;
+                }
+                res.status(400).json({ log: "El usuario no se elimino, no existe usuarios registrados con esas credenciales" });
+                return;
+            }, (err) => {
+                console.log(err);
+            });
         });
     }
     getById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { id, token } = req.params;
-            res.json({ rows: "respuesta" });
+            console.log(req.params);
+            let token = req.header("Authorization");
+            let id = req.params.id;
+            if (id === undefined) {
+                res.status(400).json({ log: "Debe ingresar datos validos" });
+                return;
+            }
+            if (token === undefined) {
+                res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
+                return;
+            }
+            if (!util_1.default.validarToken(token)) {
+                res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+                return;
+            }
+            users.findOne({ include: [{
+                        model: roles,
+                        required: true
+                    }], where: {
+                    cedula: id
+                } }).then((rs) => {
+                if (rs === null) {
+                    res.status(401).json({ log: "Usuario no existe, verifique la informacion enviada" });
+                    return;
+                }
+                if (rs.is_active != 1) {
+                    res.status(401).json({ log: "Su usuario no esta activo" });
+                    return;
+                }
+                res.status(200).json(rs);
+                return;
+            }, (err) => {
+                console.log(err);
+                return;
+            });
         });
     }
 }
-//let rows = await pool.query("select * from medic");
-//req.params.nombre
-//res,status(404).json({aqui el json})
 exports.default = new LoginController();

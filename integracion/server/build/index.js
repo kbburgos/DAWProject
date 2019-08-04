@@ -15,6 +15,7 @@ const medicosRoutes_1 = __importDefault(require("./routes/medicosRoutes"));
 const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
 const examenesRoutes_1 = __importDefault(require("./routes/examenesRoutes"));
 const db = require('./../models');
+const bodyParser = require("body-parser");
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -37,6 +38,8 @@ class Server {
         this.app.use("/api/medicos/consultar", medicosRoutes_1.default);
         this.app.use("/api/usuarios/consultar", usuariosRoutes_1.default);
         this.app.use("/api/examenes/consultar", examenesRoutes_1.default);
+        this.app.use(bodyParser.urlencoded({ extended: false }));
+        this.app.use(bodyParser.json());
     }
     start() {
         this.app.listen(this.app.get("port"), () => {

@@ -20,7 +20,7 @@ export class AuthService {
     localStorage.removeItem('login');
     this._isLog=true;
     console.log(user)
-    return this.http.get<any>(this._urlAPI+'ingresar/'+user.username+'&'+user.pass,{observe: 'response'})
+    return this.http.post<any>(this._urlAPI+'ingresar',user,{observe: 'response'});
   }
 
   logoutUser(){
