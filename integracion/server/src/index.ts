@@ -9,7 +9,7 @@ import pacientesRouter from "./routes/pacientesRoutes";
 import medicosRouter from "./routes/medicosRoutes";
 import usuariosRouter from "./routes/usuariosRoutes";
 import examenesRouter from "./routes/examenesRoutes";
-const db = require('./../models');
+//const db = require('./../models');
 const bodyParser =  require("body-parser");
 class Server {
   public app:Application;

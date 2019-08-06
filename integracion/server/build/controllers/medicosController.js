@@ -7,13 +7,40 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 // import pool from "../database";
+const users = require("./../../models").usersistems;
+const roles = require("./../../models").roles;
+const util_1 = __importDefault(require("./../util"));
 class MedicosController {
     top10(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { token } = req.params;
-            res.json({ rows: "respuesta" });
+            let token = req.header("Authorization");
+            if (token == null) {
+                res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
+                return;
+            }
+            let tokenjson = util_1.default.validarToken(token);
+            if (!tokenjson.valido) {
+                res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+                return;
+            }
+            users.findAll({ include: [{ model: roles, required: true,
+                        where: { nombre: "medico" } }], limit: 10, order: [['createdAt', 'DESC']]
+            }).then((data) => {
+                if (data == null) {
+                    res.status(401).json({ log: "No hay datos de medicos para mostrat" });
+                    return;
+                }
+                res.status(200).json(data);
+                return;
+            }, (err) => {
+                console.log(err);
+                return;
+            });
         });
     }
     filtroParametro(req, res) {

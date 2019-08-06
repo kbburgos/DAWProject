@@ -8,7 +8,7 @@ class IndexRoutes {
     this.config();
   }
   config():void {
-    this.router.get("/top10/:token",appController.top10);
+    this.router.get("/top10/",appController.top10);
     this.router.get("/filtro/:parametro&:token",appController.filtroParametro);
     this.router.put("/update/:datos&:token",appController.update);
     this.router.delete("/delete/:id&:token",appController.delete);

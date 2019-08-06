@@ -17,6 +17,7 @@ const db = require('./../../models');
 const roles = db.roles;
 const users = db.usersistems;
 class LoginController {
+    //no admin
     ingresar(req, resp) {
         return __awaiter(this, void 0, void 0, function* () {
             let cedula = req.body.username;
@@ -50,9 +51,11 @@ class LoginController {
                 }
             }, (err) => {
                 console.log(err);
+                resp.status(500).json({ log: err });
             });
         });
     }
+    //no admin
     changePass(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let id = req.params.id;
@@ -66,7 +69,7 @@ class LoginController {
                 res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
                 return;
             }
-            if (!util_1.default.validarToken(token)) {
+            if (!util_1.default.validarToken(token).valido) {
                 res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
@@ -85,6 +88,7 @@ class LoginController {
             });
         });
     }
+    //si admin
     newUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let token = req.header("Authorization");
@@ -96,10 +100,16 @@ class LoginController {
                 res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
                 return;
             }
-            if (!util_1.default.validarToken(token)) {
+            let validador = util_1.default.validarToken(token);
+            if (!validador.valido) {
                 res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
+            if (validador.rol != "administrador") {
+                res.status(401).json({ log: "Su usuario no permite la transacción" });
+                return;
+            }
+            //verificar sha debe coincidir, en el body enviar el sha del json
             users.create({
                 cedula: req.body.cedula,
                 pasword: req.body.password,
@@ -118,6 +128,7 @@ class LoginController {
             });
         });
     }
+    //si admin
     deleteUser(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let id = req.params.id;
@@ -130,8 +141,13 @@ class LoginController {
                 res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
                 return;
             }
-            if (!util_1.default.validarToken(token)) {
+            let validador = util_1.default.validarToken(token);
+            if (!validador.valido) {
                 res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+                return;
+            }
+            if (validador.rol != "administrador") {
+                res.status(401).json({ log: "Su usuario no permite la transacción" });
                 return;
             }
             users.destroy({
@@ -150,6 +166,7 @@ class LoginController {
             });
         });
     }
+    //no admin
     getById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             console.log(req.params);
@@ -163,7 +180,7 @@ class LoginController {
                 res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
                 return;
             }
-            if (!util_1.default.validarToken(token)) {
+            if (!util_1.default.validarToken(token).valido) {
                 res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }

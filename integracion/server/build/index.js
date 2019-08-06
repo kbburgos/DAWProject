@@ -14,7 +14,7 @@ const pacientesRoutes_1 = __importDefault(require("./routes/pacientesRoutes"));
 const medicosRoutes_1 = __importDefault(require("./routes/medicosRoutes"));
 const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
 const examenesRoutes_1 = __importDefault(require("./routes/examenesRoutes"));
-const db = require('./../models');
+//const db = require('./../models');
 const bodyParser = require("body-parser");
 class Server {
     constructor() {

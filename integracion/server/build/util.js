@@ -26,9 +26,12 @@ class util {
     }
     static validarToken(token) {
         let tiempo_actual = new Date();
-        let users = this.cifrar(2, token);
-        let arreglo = users.split(",");
-        return ((parseInt(arreglo[0]) - tiempo_actual.getTime()) <= constantes_1.default.tiempoDoctor.tiempo);
+        let tokenC = this.cifrar(2, token);
+        let arreglo = tokenC.split(",");
+        if ((parseInt(arreglo[0]) - tiempo_actual.getTime()) <= constantes_1.default.tiempoDoctor.tiempo) {
+            return { valido: true, rol: arreglo[2] };
+        }
+        return ({ valido: false });
     }
     static cifrarSha256(pass) {
         return CryptoJS.SHA256(pass).toString(CryptoJS.enc.Hex);
