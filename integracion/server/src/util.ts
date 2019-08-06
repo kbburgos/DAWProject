@@ -22,13 +22,15 @@ export default class util {
     return this.cifrar(1,fecha.getTime()+","+user);
   }
 
-  public static validarToken(token:String):boolean {
+  public static validarToken(token:String):any {
     let tiempo_actual = new Date();
-   
-    let users = this.cifrar(2,token);
-    let arreglo = users.split(",");
-    
-    return ((parseInt(arreglo[0])-tiempo_actual.getTime()) <= constantes.tiempoDoctor.tiempo);
+
+    let tokenC = this.cifrar(2,token);
+    let arreglo = tokenC.split(",");
+    if((parseInt(arreglo[0])-tiempo_actual.getTime()) <= constantes.tiempoDoctor.tiempo){
+      return {valido : true, rol: arreglo[2]}
+    }
+    return ({valido : false});
   }
   public static cifrarSha256(pass:String):String{
     return CryptoJS.SHA256(pass).toString(CryptoJS.enc.Hex)

@@ -6,16 +6,16 @@ const roles = db.roles;
 const users = db.usersistems
 
 class LoginController {
-
+  //no admin
   public async ingresar(req: Request,resp: Response): Promise<void>{
-  let cedula = req.body.username
+  let cedula = req.body.username;
   let pass = req.body.pass;
     if(cedula===undefined||pass===undefined){
       resp.status(400).json({log:"Debe ingresar datos validos"});
       return
     }
   users.findOne({
-    include:[{ 
+    include:[{
       model: roles,
       required: true
     }],
@@ -28,7 +28,7 @@ class LoginController {
       resp.status(401).json({log:"Su usuario no existe, verifique sus credenciales"});
       return
 
-    } 
+    }
     if(res.is_active!=1){
       resp.status(401).json({log:"Su usuario no esta activo"});
       return
@@ -40,13 +40,14 @@ class LoginController {
     }
   }, (err:any)=>{
     console.log(err)
+    resp.status(500).json({log: err});
   });
   }
-
+  //no admin
   public async changePass(req: Request, res: Response): Promise<void> {
     let id = req.params.id;
     let newpass = req.body.newpass
-    
+
     let token = req.header("Authorization");
     if(id===undefined||newpass===undefined){
       res.status(400).json({log:"Debe ingresar datos validos"})
@@ -55,7 +56,7 @@ class LoginController {
     if(token===undefined){
       res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
       return
-    } if(!util.validarToken(token)){
+    } if(!util.validarToken(token).valido){
       res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
       return
     }
@@ -73,7 +74,7 @@ class LoginController {
     return
   })
   }
-
+  //si admin
   public async newUser(req: Request, res: Response): Promise<void> {
     let token = req.header("Authorization");
     if(req.body.cedula===undefined||req.body.password===undefined||req.body.nombreUser===undefined||req.body.apellidoUser===undefined||req.body.rol===undefined){
@@ -83,13 +84,20 @@ class LoginController {
     if(token===undefined){
       res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
       return
-    } if(!util.validarToken(token)){
+    }
+    let validador = util.validarToken(token);
+    if(!validador.valido){
       res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
       return
     }
+    if(validador.rol != "administrador"){
+      res.status(401).json({log:"Su usuario no permite la transacción"})
+      return
+    }
+    //verificar sha debe coincidir, en el body enviar el sha del json
     users.create({
       cedula:req.body.cedula,
-      pasword:req.body.password, 
+      pasword:req.body.password,
       nombreUser:req.body.nombreUser,
       apellidoUser:req.body.apellidoUser,
       email:req.body.email,
@@ -103,7 +111,7 @@ class LoginController {
       return
     })
   }
-
+  //si admin
   public async deleteUser(req: Request, res: Response): Promise<void> {
     let id = req.params.id;
     let token = req.header("Authorization");
@@ -114,8 +122,14 @@ class LoginController {
     if(token===undefined){
       res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
       return
-    } if(!util.validarToken(token)){
+    }
+    let validador = util.validarToken(token);
+    if(!validador.valido){
       res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
+      return
+    }
+    if(validador.rol != "administrador"){
+      res.status(401).json({log:"Su usuario no permite la transacción"})
       return
     }
       users.destroy({
@@ -132,10 +146,10 @@ class LoginController {
       },(err:any)=>{
         console.log(err)
       })
-    
-    
-  }
 
+
+  }
+  //no admin
   public async getById(req: Request, res: Response): Promise<void> {
     console.log(req.params)
     let token = req.header("Authorization");
@@ -147,17 +161,17 @@ class LoginController {
     if(token===undefined){
       res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
       return
-    } if(!util.validarToken(token)){
+    } if(!util.validarToken(token).valido){
       res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
       return
     }
-    users.findOne({include:[{ 
+    users.findOne({include:[{
       model: roles,
       required: true
     }],where: {
       cedula:id
     }}).then((rs:any)=>{
-      
+
       if(rs===null){
         res.status(401).json({log:"Usuario no existe, verifique la informacion enviada"});
         return
@@ -165,18 +179,18 @@ class LoginController {
         res.status(401).json({log:"Su usuario no esta activo"});
         return
       }
-     
-       
+
+
         res.status(200).json(rs)
         return
-      
+
 
     }, (err:any)=>{
       console.log(err)
       return
     })
-    
-    
+
+
   }
 
 }
