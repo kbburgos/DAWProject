@@ -11,8 +11,8 @@ class IndexRoutes {
     this.router.get("/top10/",appController.top10);
     this.router.get("/filtro/:parametro",appController.filtroParametro);
     this.router.put("/update/:datos&:token",appController.update);
-    this.router.delete("/delete/:id&:token",appController.delete);
-    this.router.post("/new/:datos&:token",appController.new);
+    this.router.delete("/delete/:id",appController.delete);
+    this.router.post("/new/:shaJSON",appController.new);
   }
 }
 const indexRoutes = new IndexRoutes();

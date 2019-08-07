@@ -14,8 +14,8 @@ class IndexRoutes {
         this.router.get("/top10/", medicosController_1.default.top10);
         this.router.get("/filtro/:parametro", medicosController_1.default.filtroParametro);
         this.router.put("/update/:datos&:token", medicosController_1.default.update);
-        this.router.delete("/delete/:id&:token", medicosController_1.default.delete);
-        this.router.post("/new/:datos&:token", medicosController_1.default.new);
+        this.router.delete("/delete/:id", medicosController_1.default.delete);
+        this.router.post("/new/:shaJSON", medicosController_1.default.new);
     }
 }
 const indexRoutes = new IndexRoutes();
