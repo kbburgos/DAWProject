@@ -32,7 +32,9 @@ export default class util {
     }
     return ({valido : false});
   }
+
   public static cifrarSha256(pass:String):String{
     return CryptoJS.SHA256(pass).toString(CryptoJS.enc.Hex)
   }
+
 }
