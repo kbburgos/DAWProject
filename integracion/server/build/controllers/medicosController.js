@@ -30,10 +30,11 @@ class MedicosController {
                 res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
-            users.findAll({ include: [{ model: roles, required: true,
-                        where: { nombre: "medico" } }], limit: 10, order: [['createdAt', 'DESC']]
+            users.findAll({ attributes: ["cedula", "nombreUser", "apellidoUser", "email", "phone"], include: [{ model: roles, required: true,
+                        where: { nombre: "medico" }, attributes: ["codigo", "nombre"] }], limit: 10, order: [['createdAt', 'DESC']]
             }).then((data) => {
-                if (data == null) {
+                //ci, nomcbre completo, direccion, email, telefono
+                if (data.length == 0) {
                     res.status(401).json({ log: "No hay datos de medicos para mostrar" });
                     return;
                 }
@@ -67,8 +68,8 @@ class MedicosController {
                 res.status(401).json({ log: "Su usuario no permite la transacción" });
                 return;
             }
-            users.findAll({ include: [{ model: roles, required: true,
-                        where: { nombre: "medico" } }], where: { [Op.or]: [
+            users.findAll({ attributes: ["cedula", "nombreUser", "apellidoUser", "email", "phone"], include: [{ model: roles, required: true,
+                        where: { nombre: "medico" }, attributes: ["codigo", "nombre"] }], where: { [Op.or]: [
                         { cedula: { [Op.like]: '%' + parametro + '%' } },
                         { nombreUser: { [Op.like]: '%' + parametro + '%' } },
                         { apellidoUser: { [Op.like]: '%' + parametro + '%' } }
@@ -176,7 +177,11 @@ class MedicosController {
             }
             users.create(usuario).then((rs) => {
                 console.log(rs);
-                res.status(200).json(rs);
+                if (rs.cedula == null) {
+                    res.status(200).json({ log: "No se pudo crear el usuario." });
+                    return;
+                }
+                res.status(200).json({ log: "Se creo el usuario correctamente." });
                 return;
             }, (err) => {
                 console.log(err);
