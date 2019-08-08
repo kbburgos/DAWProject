@@ -150,7 +150,7 @@ class MedicosController {
     apellidoUser:req.body.apellidoUser,
     email:req.body.email,
     phone:req.body.phone,
-    rol:2,
+    rol:req.body.rol,
     image:null,
     createdAt:new Date(),
     updatedAt:new Date()

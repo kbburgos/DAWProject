@@ -14,6 +14,7 @@ const pacientesRoutes_1 = __importDefault(require("./routes/pacientesRoutes"));
 const medicosRoutes_1 = __importDefault(require("./routes/medicosRoutes"));
 const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
 const examenesRoutes_1 = __importDefault(require("./routes/examenesRoutes"));
+const odontogramaRoutes_1 = __importDefault(require("./routes/odontogramaRoutes"));
 //const db = require('./../models');
 const bodyParser = require("body-parser");
 class Server {
@@ -38,6 +39,7 @@ class Server {
         this.app.use("/api/medicos/consultar", medicosRoutes_1.default);
         this.app.use("/api/usuarios/consultar", usuariosRoutes_1.default);
         this.app.use("/api/examenes/consultar", examenesRoutes_1.default);
+        this.app.use("/api/odontograma/consultar", odontogramaRoutes_1.default);
         this.app.use(bodyParser.urlencoded({ extended: false }));
         this.app.use(bodyParser.json());
     }

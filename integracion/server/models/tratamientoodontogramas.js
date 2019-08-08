@@ -12,6 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {});
     tratamientoodontogramas.associate = function (models) {
         // associations can be defined here
+        tratamientoodontogramas.hasMany(models.odontograma,{foreignKey: 'tratamiento',  targetKey: 'codigo'});
     };
     return tratamientoodontogramas;
 };

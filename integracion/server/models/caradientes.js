@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {});
     caradientes.associate = function (models) {
         // associations can be defined here
+        caradientes.hasMany(models.odontograma,{foreignKey: 'cara', sourceKey: 'codigo'});
     };
     return caradientes;
 };
