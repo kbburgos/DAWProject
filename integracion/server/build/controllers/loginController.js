@@ -51,7 +51,8 @@ class LoginController {
                 }
             }, (err) => {
                 console.log(err);
-                resp.status(500).json({ log: err });
+                resp.status(500).json({ log: "Error del servidor" });
+                return;
             });
         });
     }
@@ -85,6 +86,10 @@ class LoginController {
                     return;
                 }
                 res.status(400).json({ log: "El usuario ingresado no existe" });
+                return;
+            }, (err) => {
+                console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
                 return;
             });
         });
@@ -126,6 +131,10 @@ class LoginController {
                 console.log(rs);
                 res.status(200).json(rs);
                 return;
+            }, (err) => {
+                console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
+                return;
             });
         });
     }
@@ -164,6 +173,8 @@ class LoginController {
                 return;
             }, (err) => {
                 console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
+                return;
             });
         });
     }
@@ -203,6 +214,7 @@ class LoginController {
                 return;
             }, (err) => {
                 console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
                 return;
             });
         });

@@ -38,10 +38,11 @@ class LoginController {
       resp.status(200).json({Nombre:res.nombreUser,Apellido:res.apellidoUser, Rol:res.role.nombre,Token:token})
       return
     }
-  }, (err:any)=>{
-    console.log(err)
-    resp.status(500).json({log: err});
-  });
+  },
+  (err: any) => {
+    console.log(err);
+    resp.status(500).json({ log: "Error del servidor" });
+    return;});
   }
   //no admin
   public async changePass(req: Request, res: Response): Promise<void> {

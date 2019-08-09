@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
             primaryKey: true
         },
         titulo: DataTypes.STRING,
-        note: DataTypes.TEXT,
+        nota: DataTypes.TEXT,
         is_active: DataTypes.BOOLEAN,
         id_paciente: {
             type: DataTypes.STRING,

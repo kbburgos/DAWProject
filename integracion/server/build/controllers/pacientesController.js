@@ -124,19 +124,27 @@ class PacientesController {
                     .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
-            pacientes.create({
+            pacientes.update({
                 cedula: req.body.cedula,
                 nombre: req.body.nombre,
                 apellido: req.body.apellido,
                 email: req.body.email,
                 phone: req.body.phone,
                 updatedAt: new Date()
+            }, {
+                where: {
+                    cedula: id
+                }
             }).then((rs) => {
                 if (rs[0] === 1) {
                     res.status(200).json({ log: "El usuario se actualizo" });
                     return;
                 }
                 res.status(400).json({ log: "El usuario ingresado no existe" });
+                return;
+            }, (err) => {
+                console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
                 return;
             });
         });
@@ -171,6 +179,8 @@ class PacientesController {
                 return;
             }, (err) => {
                 console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
+                return;
             });
         });
     }
@@ -207,6 +217,10 @@ class PacientesController {
             }).then((rs) => {
                 console.log(rs);
                 res.status(200).json(rs);
+                return;
+            }, (err) => {
+                console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
                 return;
             });
         });

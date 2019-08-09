@@ -135,6 +135,10 @@ class UsuariosController {
                 }
                 res.status(400).json({ log: "El usuario ingresado no existe" });
                 return;
+            }, (err) => {
+                console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
+                return;
             });
         });
     }

@@ -22,42 +22,20 @@ class MedicosController {
         return __awaiter(this, void 0, void 0, function* () {
             let token = req.header("Authorization");
             if (token == null) {
-                res
-                    .status(400)
-                    .json({
-                    log: "La informacion enviada no es valida, el token de autenticacion no fue enviado"
-                });
+                res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
                 return;
             }
             let tokenjson = util_1.default.validarToken(token);
             if (!tokenjson.valido) {
-                res
-                    .status(401)
-                    .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+                res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
-<<<<<<< HEAD
-            users
-                .findAll({
-                include: [
-                    { model: roles, required: true, where: { nombre: "medico" } }
-                ],
-                limit: 10,
-                order: [["createdAt", "DESC"]]
-            })
-                .then((data) => {
-                if (data == null) {
-                    res
-                        .status(401)
-                        .json({ log: "No hay datos de medicos para mostrar" });
-=======
             users.findAll({ attributes: ["cedula", "nombreUser", "apellidoUser", "email", "phone"], include: [{ model: roles, required: true,
                         where: { nombre: "medico" }, attributes: ["codigo", "nombre"] }], limit: 10, order: [['createdAt', 'DESC']]
             }).then((data) => {
                 //ci, nomcbre completo, direccion, email, telefono
                 if (data.length == 0) {
                     res.status(401).json({ log: "No hay datos de medicos para mostrar" });
->>>>>>> aaba17fe206f6562b1de52c7191cf1da2860dc80
                     return;
                 }
                 res.status(200).json(data);
@@ -96,30 +74,14 @@ class MedicosController {
                 res.status(401).json({ log: "Su usuario no permite la transacción" });
                 return;
             }
-<<<<<<< HEAD
-            users
-                .findAll({
-                include: [
-                    { model: roles, required: true, where: { nombre: "medico" } }
-                ],
-                where: {
-                    [Op.or]: [
-                        { cedula: { [Op.like]: "%" + parametro + "%" } },
-                        { nombreUser: { [Op.like]: "%" + parametro + "%" } },
-                        { apellidoUser: { [Op.like]: "%" + parametro + "%" } }
-                    ]
-                }
-            })
-                .then((data) => {
-=======
             users.findAll({ attributes: ["cedula", "nombreUser", "apellidoUser", "email", "phone"], include: [{ model: roles, required: true,
                         where: { nombre: "medico" }, attributes: ["codigo", "nombre"] }], where: { [Op.or]: [
                         { cedula: { [Op.like]: '%' + parametro + '%' } },
                         { nombreUser: { [Op.like]: '%' + parametro + '%' } },
                         { apellidoUser: { [Op.like]: '%' + parametro + '%' } }
                     ] }
-            }).then((data) => {
->>>>>>> aaba17fe206f6562b1de52c7191cf1da2860dc80
+            })
+                .then((data) => {
                 if (data == null) {
                     res
                         .status(401)
@@ -127,10 +89,10 @@ class MedicosController {
                     return;
                 }
                 if (data.length == 0) {
-                    res.status(200).json({ log: "No hay datos para mostrar" });
+                    res.status(400).json({ log: "No hay datos para mostrar" });
                     return;
                 }
-                res.status(200).json(data);
+                res.status(400).json(data);
                 return;
             }, (err) => {
                 console.log(err);
@@ -196,32 +158,21 @@ class MedicosController {
             });
         });
     }
-    new(req, res) {
+    newMedic(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { shaJSON } = req.params;
             let token = req.header("Authorization");
-            if (shaJSON == null ||
-                req.body.cedula === undefined ||
-                req.body.password === undefined ||
-                req.body.nombreUser === undefined ||
-                req.body.apellidoUser === undefined ||
-                req.body.rol === undefined) {
+            if (shaJSON == null || req.body.cedula === undefined || req.body.password === undefined || req.body.nombreUser === undefined || req.body.apellidoUser === undefined || req.body.rol === undefined) {
                 res.status(400).json({ log: "Debe ingresar datos validos" });
                 return;
             }
             if (token === undefined) {
-                res
-                    .status(400)
-                    .json({
-                    log: "La informacion enviada no es valida, el token de autenticacion no fue enviado"
-                });
+                res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
                 return;
             }
             let validador = util_1.default.validarToken(token);
             if (!validador.valido) {
-                res
-                    .status(401)
-                    .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+                res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
             if (validador.rol != "administrador") {
@@ -235,18 +186,14 @@ class MedicosController {
                 apellidoUser: req.body.apellidoUser,
                 email: req.body.email,
                 phone: req.body.phone,
-                rol: 2,
+                rol: req.body.rol,
                 image: null,
                 createdAt: new Date(),
                 updatedAt: new Date()
             };
             let sha = CryptoJS.SHA256(usuario).toString(CryptoJS.enc.Hex);
             if (sha != shaJSON) {
-                res
-                    .status(401)
-                    .json({
-                    log: "Los datos enviados fueron adulterados, intente nuevamente."
-                });
+                res.status(401).json({ log: "Los datos enviados fueron adulterados, intente nuevamente." });
                 return;
             }
             users.create(usuario).then((rs) => {
