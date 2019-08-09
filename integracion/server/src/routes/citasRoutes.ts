@@ -8,15 +8,15 @@ class IndexRoutes {
     this.config();
   }
   config():void {
-    this.router.post("/new/:datos&:token", appController.newCita);
-    this.router.get("/:token",appController.listarCitas);
-    this.router.get("/fecha/:finicio&:ffin&:token",appController.filtrarPorfecha);
-    this.router.get("/usuario/:cedula&:token",appController.listarHistoricoUsuario);
-    this.router.get("/doctor/:cedDoctor&:token",appController.filtrarDoctorViejas);
-    this.router.get("/cita/:id&:token",appController.citaById);
-    this.router.get("/historial/:cedDoctor&:token",appController.citasDelDoctor);
-    this.router.delete("/delete/:id&:token",appController.deleteCita);
-    this.router.put("/update/:datos&:id&:token",appController.updateCita);
+    this.router.post("/newcita", appController.newCita);
+    this.router.get("/",appController.listarCitas);
+    this.router.get("/fecha/:finicio&:ffin",appController.filtrarPorfecha);
+    this.router.get("/usuario/:cedula",appController.listarHistoricoUsuario);
+    this.router.get("/doctor/:cedDoctor",appController.filtrarDoctorViejas);
+    this.router.get("/cita/:id",appController.citaById);
+    this.router.get("/historial/:cedDoctor",appController.citasDelDoctor);
+    this.router.delete("/delete/:id",appController.deleteCita);
+    this.router.put("/update/:id",appController.updateCita);
 
   }
 }

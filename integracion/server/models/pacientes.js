@@ -15,6 +15,7 @@ module.exports = (sequelize, DataTypes) => {
     }, {});
     pacientes.associate = function (models) {
         // associations can be defined here
+        pacientes.hasMany(models.citas,{foreignKey: 'id_paciente', sourceKey: 'cedula'});
     };
     return pacientes;
 };

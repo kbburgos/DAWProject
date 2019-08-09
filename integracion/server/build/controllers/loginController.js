@@ -51,7 +51,8 @@ class LoginController {
                 }
             }, (err) => {
                 console.log(err);
-                resp.status(500).json({ log: err });
+                resp.status(500).json({ log: "Error del servidor" });
+                return;
             });
         });
     }
@@ -74,7 +75,8 @@ class LoginController {
                 return;
             }
             users.update({
-                pasword: newpass
+                pasword: newpass,
+                updatedAt: new Date()
             }, { where: {
                     cedula: id
                 }
@@ -84,6 +86,10 @@ class LoginController {
                     return;
                 }
                 res.status(400).json({ log: "El usuario ingresado no existe" });
+                return;
+            }, (err) => {
+                console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
                 return;
             });
         });
@@ -120,10 +126,14 @@ class LoginController {
                 rol: req.body.rol,
                 image: null,
                 createdAt: new Date(),
-                updatedAt: new Date()
+                updatedAt: null
             }).then((rs) => {
                 console.log(rs);
                 res.status(200).json(rs);
+                return;
+            }, (err) => {
+                console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
                 return;
             });
         });
@@ -163,6 +173,8 @@ class LoginController {
                 return;
             }, (err) => {
                 console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
+                return;
             });
         });
     }
@@ -202,6 +214,7 @@ class LoginController {
                 return;
             }, (err) => {
                 console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
                 return;
             });
         });
