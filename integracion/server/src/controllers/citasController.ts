@@ -1,10 +1,31 @@
 import {Request, Response } from "express";
+import util from "./../util"
+const citas =require("./../../models").citas;
+
 // import pool from "../database";
 
 class CitasController {
 
   public async newCita(req: Request,res: Response): Promise<void>{
-  const {datos, token} = req.params;
+  let token = req.header("Authorization");
+  if(req.body.titulo==null ||req.body.nota==null || req.body.id_paciente==null || req.body.id_medico==null || req.body.fecha==null || req.body..hora==null){
+    res.status(400).json({log:"Debe ingresar datos validos"})
+    return
+  }
+  if(token == null){
+    res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
+    return;
+  }
+  let tokenjson = util.validarToken(token);
+  if(!tokenjson.valido){
+    res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
+    return;
+  }
+  let cita = {
+    titulo: req.body.titulo,
+    nota: req.body.titulonota
+  }
+
   res.json({rows : "respuesta"});
   }
 
