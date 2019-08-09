@@ -36,7 +36,11 @@ class CitasController {
       id_medico: req.body.id_medico,
       createdAt: new Date()
     }).then((data:any)=>{
-      res.status(200).json(data);
+      if(data.titulo == null){
+        res.status(401).json({log: "No se insertaron los datos"});
+        return;
+      }
+      res.status(200).json({log: "se insertaron con exito los datos."});
         return;
     },
     (err: any) => {
@@ -373,9 +377,6 @@ class CitasController {
     })
 
   }
-
-
-
 }
 
 export default new CitasController();
