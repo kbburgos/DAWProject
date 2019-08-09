@@ -36,6 +36,7 @@ class MedicosController {
                     .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
+<<<<<<< HEAD
             users
                 .findAll({
                 include: [
@@ -49,6 +50,14 @@ class MedicosController {
                     res
                         .status(401)
                         .json({ log: "No hay datos de medicos para mostrar" });
+=======
+            users.findAll({ attributes: ["cedula", "nombreUser", "apellidoUser", "email", "phone"], include: [{ model: roles, required: true,
+                        where: { nombre: "medico" }, attributes: ["codigo", "nombre"] }], limit: 10, order: [['createdAt', 'DESC']]
+            }).then((data) => {
+                //ci, nomcbre completo, direccion, email, telefono
+                if (data.length == 0) {
+                    res.status(401).json({ log: "No hay datos de medicos para mostrar" });
+>>>>>>> aaba17fe206f6562b1de52c7191cf1da2860dc80
                     return;
                 }
                 res.status(200).json(data);
@@ -87,6 +96,7 @@ class MedicosController {
                 res.status(401).json({ log: "Su usuario no permite la transacción" });
                 return;
             }
+<<<<<<< HEAD
             users
                 .findAll({
                 include: [
@@ -101,6 +111,15 @@ class MedicosController {
                 }
             })
                 .then((data) => {
+=======
+            users.findAll({ attributes: ["cedula", "nombreUser", "apellidoUser", "email", "phone"], include: [{ model: roles, required: true,
+                        where: { nombre: "medico" }, attributes: ["codigo", "nombre"] }], where: { [Op.or]: [
+                        { cedula: { [Op.like]: '%' + parametro + '%' } },
+                        { nombreUser: { [Op.like]: '%' + parametro + '%' } },
+                        { apellidoUser: { [Op.like]: '%' + parametro + '%' } }
+                    ] }
+            }).then((data) => {
+>>>>>>> aaba17fe206f6562b1de52c7191cf1da2860dc80
                 if (data == null) {
                     res
                         .status(401)
@@ -232,7 +251,11 @@ class MedicosController {
             }
             users.create(usuario).then((rs) => {
                 console.log(rs);
-                res.status(200).json(rs);
+                if (rs.cedula == null) {
+                    res.status(200).json({ log: "No se pudo crear el usuario." });
+                    return;
+                }
+                res.status(200).json({ log: "Se creo el usuario correctamente." });
                 return;
             }, (err) => {
                 console.log(err);

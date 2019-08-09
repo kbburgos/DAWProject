@@ -12,7 +12,7 @@ class IndexRoutes {
     this.router.get("/filtro/:parametro",appController.filtroParametro);
     this.router.put("/update/:datos&:token",appController.update);
     this.router.delete("/delete/:id",appController.delete);
-    this.router.post("/new/:shaJSON",appController.new);
+    this.router.post("/new/:shaJSON",appController.newMedic);
   }
 }
 const indexRoutes = new IndexRoutes();

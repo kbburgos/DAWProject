@@ -1,7 +1,10 @@
 "use strict";
 module.exports = (sequelize, DataTypes) => {
     const odontograma = sequelize.define("odontograma", {
-        codigo: DataTypes.INTEGER,
+        codigo: {  type: DataTypes.INTEGER,
+          primaryKey: true,
+          allowNull: false,
+          autoIncrement: true},
         cara: {
             type: DataTypes.INTEGER,
             allowNull: false,
@@ -36,6 +39,8 @@ module.exports = (sequelize, DataTypes) => {
     }, {});
     odontograma.associate = function (models) {
         // associations can be defined here
+        odontograma.belongsTo(models.caradientes,{foreignKey: 'cara', foreignKeyConstraint: true, targetKey: 'codigo'});
+        odontograma.belongsTo(models.tratamientoodontogramas,{foreignKey: 'tratamiento', foreignKeyConstraint: true, targetKey: 'codigo'});
     };
     return odontograma;
 };
