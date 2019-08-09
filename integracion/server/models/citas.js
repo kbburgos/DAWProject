@@ -35,6 +35,9 @@ module.exports = (sequelize, DataTypes) => {
     }, {});
     citas.associate = function (models) {
         // associations can be defined here
+        citas.belongsTo(models.usersistems, {foreignKey: 'id_medico', foreignKeyConstraint: true, targetKey: 'cedula'});
+        citas.belongsTo(models.pacientes, {foreignKey: 'id_paciente', foreignKeyConstraint: true, targetKey: 'cedula'});
+
     };
     return citas;
 };

@@ -74,7 +74,8 @@ class LoginController {
                 return;
             }
             users.update({
-                pasword: newpass
+                pasword: newpass,
+                updatedAt: new Date()
             }, { where: {
                     cedula: id
                 }
@@ -120,7 +121,7 @@ class LoginController {
                 rol: req.body.rol,
                 image: null,
                 createdAt: new Date(),
-                updatedAt: new Date()
+                updatedAt: null
             }).then((rs) => {
                 console.log(rs);
                 res.status(200).json(rs);

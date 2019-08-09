@@ -61,7 +61,9 @@ class LoginController {
       return
     }
     users.update({
-    pasword:newpass
+    pasword:newpass,
+    updatedAt:new Date()
+
   },{where:{
     cedula: id
   }
@@ -72,6 +74,11 @@ class LoginController {
     }
     res.status(400).json({log:"El usuario ingresado no existe"})
     return
+  },
+  (err: any) => {
+    console.log(err);
+    res.status(500).json({ log: "Error del servidor" });
+    return;
   })
   }
   //si admin
@@ -105,10 +112,15 @@ class LoginController {
       rol:req.body.rol,
       image:null,
       createdAt:new Date(),
-      updatedAt:new Date()
+      updatedAt:null
     }).then((rs:any)=>{console.log(rs)
       res.status(200).json(rs)
       return
+    },
+    (err: any) => {
+      console.log(err);
+      res.status(500).json({ log: "Error del servidor" });
+      return;
     })
   }
   //si admin
@@ -143,8 +155,11 @@ class LoginController {
         }
         res.status(400).json({log:"El usuario no se elimino, no existe usuarios registrados con esas credenciales"})
         return
-      },(err:any)=>{
-        console.log(err)
+      },
+      (err: any) => {
+        console.log(err);
+        res.status(500).json({ log: "Error del servidor" });
+        return;
       })
 
 
@@ -185,9 +200,11 @@ class LoginController {
         return
 
 
-    }, (err:any)=>{
-      console.log(err)
-      return
+    },
+    (err: any) => {
+      console.log(err);
+      res.status(500).json({ log: "Error del servidor" });
+      return;
     })
 
 

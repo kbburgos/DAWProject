@@ -11,11 +11,11 @@ class IndexRoutes {
         this.config();
     }
     config() {
-        this.router.get("/top10/:token", pacientesController_1.default.top10);
-        this.router.get("/filtro/:parametro&:token", pacientesController_1.default.filtroParametro);
-        this.router.put("/update/:datos&:token", pacientesController_1.default.update);
-        this.router.delete("/delete/:id&:token", pacientesController_1.default.delete);
-        this.router.post("/new/:datos&:token", pacientesController_1.default.new);
+        this.router.get("/top10", pacientesController_1.default.top10);
+        this.router.get("/filtro/:parametro", pacientesController_1.default.filtroParametro);
+        this.router.put("/update/:id", pacientesController_1.default.update);
+        this.router.delete("/delete/:id", pacientesController_1.default.delete);
+        this.router.post("/newPacient", pacientesController_1.default.newPacient);
     }
 }
 const indexRoutes = new IndexRoutes();

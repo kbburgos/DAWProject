@@ -27,6 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     usersistems.associate = function (models) {
         // associations can be defined here
         usersistems.belongsTo(models.roles, {foreignKey: 'rol', foreignKeyConstraint: true, targetKey: 'codigo'});
+        usersistems.hasMany(models.citas,{foreignKey: 'id_medico', sourceKey: 'cedula'});
     };
     return usersistems;
 };

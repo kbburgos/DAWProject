@@ -8,8 +8,8 @@ class IndexRoutes {
     this.config();
   }
   config():void {
-    this.router.post("/new/:datos&:token", appController.newCita);
-    this.router.get("/:token",appController.listarCitas);
+    this.router.post("/newcita", appController.newCita);
+    this.router.get("/",appController.listarCitas);
     this.router.get("/fecha/:finicio&:ffin&:token",appController.filtrarPorfecha);
     this.router.get("/usuario/:cedula&:token",appController.listarHistoricoUsuario);
     this.router.get("/doctor/:cedDoctor&:token",appController.filtrarDoctorViejas);
