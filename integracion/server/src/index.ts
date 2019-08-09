@@ -10,7 +10,7 @@ import medicosRouter from "./routes/medicosRoutes";
 import usuariosRouter from "./routes/usuariosRoutes";
 import examenesRouter from "./routes/examenesRoutes";
 import odontogramaRouter from "./routes/odontogramaRoutes";
-//const db = require('./../models');
+import tratamientosRouter from "./routes/tratamientosRoutes";
 const bodyParser =  require("body-parser");
 class Server {
   public app:Application;
@@ -37,6 +37,7 @@ class Server {
     this.app.use("/api/usuarios/consultar",usuariosRouter);
     this.app.use("/api/examenes/consultar",examenesRouter);
     this.app.use("/api/odontograma/consultar", odontogramaRouter);
+    this.app.use("/api/tratamientos/consultar", tratamientosRouter);
     this.app.use(bodyParser.urlencoded({ extended: false }));
     this.app.use(bodyParser.json());
   }
