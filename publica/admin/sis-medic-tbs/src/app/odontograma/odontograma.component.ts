@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-declare var jQuery:any;
-declare var $:any;
+//declare var jQuery:any;
+//declare var $:any;
 
 @Component({
   selector: 'app-odontograma',
@@ -25,13 +25,14 @@ export class OdontogramaComponent implements OnInit {
       $('#entrada').val($(this).attr('id'));
     });
 
-    $("#customCheck1").click(function() {
-      if($("#customCheck1").prop("checked")){
-        $("#id1").show();
-        $("#id2").hide();
-      }else{
-        $("#id1").hide();
-        $("#id2").show();
+    // tslint:disable-next-line:only-arrow-functions
+    $('#customCheck1').click(function() {
+      if ($('#customCheck1').prop('checked')) {
+        $('#id1').show();
+        $('#id2').hide();
+      } else {
+        $('#id1').hide();
+        $('#id2').show();
       }
 
     });
