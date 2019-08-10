@@ -54,6 +54,7 @@ const routes: Routes = [
   {path: 'edit-reservation',canActivate:[AuthGuard],component:EditReservationComponent},
   {path: 'add-exa',canActivate:[AuthGuard],component:AddExaComponent},
   {path: 'edit-user',canActivate:[AuthGuard], component:EditUserComponent},
+  {path: 'odontograma',canActivate:[AuthGuard], component:OdontogramaComponent},
   {path: 'new-reservation',canActivate:[AuthGuard], component:NewReservationComponent},
   {path: 'not-found',canActivate:[AuthGuard],component: ProximamenteComponent},
   {path: '#',canActivate:[AuthGuard],redirectTo: 'not-found'}
