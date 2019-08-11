@@ -1,0 +1,81 @@
+.diente {
+  width: 50px;
+  height: 50px;
+}
+
+.col-odonto {
+  width: 12.5%;
+  height: auto;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.col-g {
+  width: 47%;
+  height: auto;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.odo-d {
+  right: 20px;
+  position: absolute;
+}
+
+@media (max-width: 500px) {
+  .col-odonto {
+    width: 50%;
+    height: auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    clear: left;
+  }
+
+  .col-g {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    overflow: hidden;
+    clear: left;
+  }
+}
+
+
+.col-odonto:hover .diente {-webkit-transform:scale(1.3);transform:scale(0.8);}
+.col-odonto {overflow:hidden;}
+
+
+
+.w3-modal{
+    width: 100%;
+    height: 100%;
+    alignment: center;
+    justify-self: center;
+    vertical-align: center;
+    text-align: center;
+}
+.w3-container{
+    width: 100%;
+    height: 100%;
+    alignment: center;
+    justify-self: center;
+    vertical-align: center;
+    text-align: center;
+    align-items: center;
+}
+
+.w3-modal-content{
+    border-radius: 20px;
+    height: 30%;
+    alignment: center;
+    justify-self: center;
+    vertical-align: center;
+    text-align: center;
+}
+
+p{
+    width: 100%;
+    height: 100%;
+    padding: 12px;
+    text-align: left;
+}

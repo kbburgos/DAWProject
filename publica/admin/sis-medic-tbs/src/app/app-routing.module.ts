@@ -27,7 +27,9 @@ import { NewReservationComponent} from './new-reservation/new-reservation.compon
 import { ProximamenteComponent } from './proximamente/proximamente.component';
 import { OdontogramaComponent } from './odontograma/odontograma.component';
 import { OdontogramanewComponent } from './odontogramanew/odontogramanew.component';
+import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
 import {CitasmedicoComponent} from './citasmedico/citasmedico.component';
+
 
 
 
@@ -56,6 +58,7 @@ const routes: Routes = [
   {path: 'edit-user',canActivate:[AuthGuard], component:EditUserComponent},
   {path: 'odontograma',canActivate:[AuthGuard], component:OdontogramaComponent},
   {path: 'new-reservation',canActivate:[AuthGuard], component:NewReservationComponent},
+  {path: 'odontograma-ver',canActivate:[AuthGuard], component:OdontogramaVerComponent},
   {path: 'not-found',canActivate:[AuthGuard],component: ProximamenteComponent},
   {path: '#',canActivate:[AuthGuard],redirectTo: 'not-found'}
 ];

@@ -1,17 +1,17 @@
-//imports de modulos de angular
+// imports de modulos de angular
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule} from '@angular/material'
+import {MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { HttpClientModule,HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/loginUtils/auth.service';
 import {AuthGuard} from './services/loginUtils/auth.guard';
 import {AuthGuardLogin} from './services/loginUtils/auth.guard.login';
 
 import { TokenInterceptorService } from './services/loginUtils/token-interceptor';
 
-//imports de modulos
+// imports de modulos
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
@@ -43,14 +43,16 @@ import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { ProximamenteComponent } from './proximamente/proximamente.component';
 import { TallerComponent } from './taller/taller.component';
 
-//servicios
+// servicios
 import { DataService } from './data.service';
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
 import { OdontogramaComponent } from './odontograma/odontograma.component';
 import { OdontogramanewComponent } from './odontogramanew/odontogramanew.component';
+import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
 import { CitasmedicoComponent } from './citasmedico/citasmedico.component';
+
 
 @NgModule({
   declarations: [
@@ -85,16 +87,17 @@ import { CitasmedicoComponent } from './citasmedico/citasmedico.component';
     OdontogramaComponent,
     OdontogramanewComponent,
     CitasmedicoComponent,
+    OdontogramaVerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule,BrowserAnimationsModule,
+    MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule, BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [DataService,ConfigService,AuthService,TokenInterceptorService,AuthGuard,AuthGuardLogin,
+  providers: [DataService, ConfigService, AuthService, TokenInterceptorService, AuthGuard, AuthGuardLogin,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
