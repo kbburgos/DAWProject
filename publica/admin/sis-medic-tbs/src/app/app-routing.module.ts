@@ -29,6 +29,7 @@ import { OdontogramaComponent } from './odontograma/odontograma.component';
 import { OdontogramanewComponent } from './odontogramanew/odontogramanew.component';
 import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
 import {CitasmedicoComponent} from './citasmedico/citasmedico.component';
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 
 
 
@@ -60,6 +61,7 @@ const routes: Routes = [
   {path: 'new-reservation',canActivate:[AuthGuard], component:NewReservationComponent},
   {path: 'odontograma-ver',canActivate:[AuthGuard], component:OdontogramaVerComponent},
   {path: 'not-found',canActivate:[AuthGuard],component: ProximamenteComponent},
+  {path: 'page-not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
   {path: '#',canActivate:[AuthGuard],redirectTo: 'not-found'}
 ];
 

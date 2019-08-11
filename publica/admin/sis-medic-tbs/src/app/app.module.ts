@@ -52,6 +52,7 @@ import { OdontogramaComponent } from './odontograma/odontograma.component';
 import { OdontogramanewComponent } from './odontogramanew/odontogramanew.component';
 import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
 import { CitasmedicoComponent } from './citasmedico/citasmedico.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -88,6 +89,7 @@ import { CitasmedicoComponent } from './citasmedico/citasmedico.component';
     OdontogramanewComponent,
     CitasmedicoComponent,
     OdontogramaVerComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
