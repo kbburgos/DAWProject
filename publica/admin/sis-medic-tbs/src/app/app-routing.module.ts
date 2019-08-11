@@ -60,7 +60,7 @@ const routes: Routes = [
   {path: 'odontograma',canActivate:[AuthGuard], component:OdontogramaComponent},
   {path: 'new-reservation',canActivate:[AuthGuard], component:NewReservationComponent},
   {path: 'odontograma-ver',canActivate:[AuthGuard], component:OdontogramaVerComponent},
-  {path: 'not-found',canActivate:[AuthGuard],component: ProximamenteComponent},
+  {path: 'not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
   {path: 'page-not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
   {path: '#',canActivate:[AuthGuard],redirectTo: 'not-found'}
 ];

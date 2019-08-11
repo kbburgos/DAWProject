@@ -10,13 +10,10 @@ export class PageNotFoundComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    /*function principal(){
-      window.open('./home/home.component', 'Diseño Web', "width=300, height=200")
-    };
-*/
+/*
     $('#diente').on('click', function() {
-      window.open('./home/home.component' , 'Diseño Web', "width=300, height=200")
+      this._router.navigate(['/home']);
     });
-  }
+*/  }
 
 }

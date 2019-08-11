@@ -1,3 +1,39 @@
+/*a:link { color: white; text-decoration: none }
+a:active { color: red; text-decoration: none }*/
+a:visited { color: white; text-decoration: none }
+a:hover { color: blue; text-decoration: underline }
+
+
+
+.parallelogram{
+  background: #2d303a;
+}
+.button {
+  background:#2d303a;
+  color: white;
+  text-shadow: 4px 4px 4px black;
+
+  display:inline-block;
+  font-size:2em;
+  padding:.5em 2em;
+  /*text-decoration:none;*/
+  align-self: center;
+}
+
+.button:hover {
+
+  box-shadow: 0 0 0 ;
+}
+
+.parallelogram{
+  transform: skew(-20deg);
+}
+
+.skew-fix{
+  display:inline-block;
+  transform: skew(20deg);
+}
+
 
 div {
   width: 100%;
