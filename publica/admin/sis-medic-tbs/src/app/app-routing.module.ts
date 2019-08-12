@@ -27,7 +27,10 @@ import { NewReservationComponent} from './new-reservation/new-reservation.compon
 import { ProximamenteComponent } from './proximamente/proximamente.component';
 import { OdontogramaComponent } from './odontograma/odontograma.component';
 import { OdontogramanewComponent } from './odontogramanew/odontogramanew.component';
+import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
 import {CitasmedicoComponent} from './citasmedico/citasmedico.component';
+import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+
 
 
 
@@ -54,8 +57,11 @@ const routes: Routes = [
   {path: 'edit-reservation',canActivate:[AuthGuard],component:EditReservationComponent},
   {path: 'add-exa',canActivate:[AuthGuard],component:AddExaComponent},
   {path: 'edit-user',canActivate:[AuthGuard], component:EditUserComponent},
+  {path: 'odontograma',canActivate:[AuthGuard], component:OdontogramaComponent},
   {path: 'new-reservation',canActivate:[AuthGuard], component:NewReservationComponent},
-  {path: 'not-found',canActivate:[AuthGuard],component: ProximamenteComponent},
+  {path: 'odontograma-ver',canActivate:[AuthGuard], component:OdontogramaVerComponent},
+  {path: 'not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
+  {path: 'page-not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
   {path: '#',canActivate:[AuthGuard],redirectTo: 'not-found'}
 ];
 
