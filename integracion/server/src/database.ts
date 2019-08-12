@@ -1,13 +1,7 @@
-// import mysql from 'promise-mysql';
-
-// import keys from './keys';
-
-// const pool = mysql.createPool(keys.database);
-
-// pool.getConnection()
-//     .then(connection => {
-//         pool.releaseConnection(connection);
-//         console.log('DB is Connected');
-//     });
-
-// export default pool;
+const mongoose = require("mongoose");
+mongoose.connect(process.env.MONGODB_URI,{
+    useNewUrlParser: true
+}).then((db:any) =>{ console.log("db is connected")}).
+catch((err:any) => {
+    console.error(err);
+})

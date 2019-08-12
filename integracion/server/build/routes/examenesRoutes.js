@@ -11,13 +11,13 @@ class IndexRoutes {
         this.config();
     }
     config() {
-        this.router.get("/top10/:token", examenesController_1.default.top10);
-        this.router.get("/filtro/:parametro&:token", examenesController_1.default.filtroParametro);
-        this.router.put("/update/:datos&:token", examenesController_1.default.update);
-        this.router.delete("/delete/:id&:token", examenesController_1.default.delete);
-        this.router.post("/new/:datos&:token", examenesController_1.default.new);
-        this.router.get("/pacienteId/:id&:token", examenesController_1.default.getById);
-        this.router.get("/pacienteCedula/:cedula&:token", examenesController_1.default.getByCedula);
+        this.router.get("/:cedula&:token", examenesController_1.default.home);
+        this.router.get("/top10/", examenesController_1.default.top10);
+        this.router.get("/filtro/", examenesController_1.default.filtroParametro); //falta
+        this.router.delete("/delete/:id", examenesController_1.default.delete);
+        this.router.post("/new/:cedula&:token", examenesController_1.default.new);
+        this.router.get("/pacienteId/:id", examenesController_1.default.getById);
+        this.router.get("/pacienteCedula/:cedula", examenesController_1.default.getByCedula);
     }
 }
 const indexRoutes = new IndexRoutes();

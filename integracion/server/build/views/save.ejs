@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <title>Guardar Examen</title>
+</head>
+<body>
+    <div class="container mt-5 mx-auto">
+      <div class="card">
+        <div class="card-body">
+            <form method="POST" enctype="multipart/form-data" action="/api/examenes/consultar/new/<%= cedula %>&<%= token %>" class="text-center">
+              <div class="input-group input-group-lg">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">Descripción:</span>
+                </div>
+                <textarea name="descripcion" class="form-control" aria-label="Descripción" required></textarea>
+              </div>
+              <div class="input-group my-3">
+                <div class="custom-file">
+                  <input required name="imagen" accept="image/*" type="file" class="custom-file-input" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04">
+                  <label class="custom-file-label" for="inputGroupFile04">Elija el examen.</label>
+                </div>
+                
+              </div>
+                <button type="submit" class="btn btn-primary mx-auto">Guardar</button>
+              </form>
+        </div>
+      </div>
+            
+    </div>
+</body>
+</html>

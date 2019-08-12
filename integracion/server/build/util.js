@@ -12,10 +12,11 @@ class util {
         let clave = "71bec6b99ebd7fbd65d44410eeaf17852de12204f176635b200c17986534d8cfbbab73a34baf7f91f567b90f76d74d61ab6e30f097ed4f49f24d11581527b89a";
         let retorno = "";
         if (tipo == 1) {
-            retorno = AES.encrypt(cadena, clave).toString();
+            retorno = AES.encrypt(cadena, clave).toString().replace(/\//gi, "-");
         }
         else {
-            let bytes = AES.decrypt(cadena, clave);
+            let cade = cadena.replace(/-/gi, "/");
+            let bytes = AES.decrypt(cade, clave);
             retorno = bytes.toString(CryptoJS.enc.Utf8);
         }
         return retorno;

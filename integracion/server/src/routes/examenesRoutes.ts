@@ -8,13 +8,13 @@ class IndexRoutes {
     this.config();
   }
   config():void {
-    this.router.get("/top10/:token",appController.top10);
-    this.router.get("/filtro/:parametro&:token",appController.filtroParametro);
-    this.router.put("/update/:datos&:token",appController.update);
-    this.router.delete("/delete/:id&:token",appController.delete);
-    this.router.post("/new/:datos&:token",appController.new);
-    this.router.get("/pacienteId/:id&:token",appController.getById);
-    this.router.get("/pacienteCedula/:cedula&:token",appController.getByCedula);
+    this.router.get("/:cedula&:token",appController.home);
+    this.router.get("/top10/",appController.top10);
+    this.router.get("/filtro/",appController.filtroParametro);//falta
+    this.router.delete("/delete/:id",appController.delete);
+    this.router.post("/new/:cedula&:token",appController.new);
+    this.router.get("/pacienteId/:id",appController.getById);
+    this.router.get("/pacienteCedula/:cedula",appController.getByCedula);
   }
 }
 const indexRoutes = new IndexRoutes();

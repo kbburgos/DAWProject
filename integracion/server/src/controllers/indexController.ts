@@ -4,11 +4,11 @@ const roles = db.roles;
 const users = db.usersistems
 class IndexController {
   public index(req: Request,res: Response){
-    
-    roles.findAll()
+    res.send("hola");
+    /*roles.findAll()
     .then(function (users:any) {
       res.json(users);
-    });
+    });*/
 
     // users.findAll()
     // .then(function (users:any) {
