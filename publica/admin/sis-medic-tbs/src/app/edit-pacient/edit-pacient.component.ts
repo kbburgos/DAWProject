@@ -38,7 +38,7 @@ export class EditPacientComponent implements OnInit {
   loadPatient(message:string){
     this._services.getPatientByParameter(String(message)).subscribe(data=>{
       this.paciente = data[0]
-      console.log(this.paciente);
+      
       
     },err=>{
       this.errorHandler(err);
