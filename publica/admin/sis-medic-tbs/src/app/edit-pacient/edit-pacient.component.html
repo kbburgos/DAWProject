@@ -32,7 +32,7 @@
             <span class="help-block" *ngIf="cedula.errors?.required && cedula.touched">
               Cedula is required
               </span>
-              <span class="help-block" *ngIf="cedula.errors?.pattern && email.touched">
+              <span class="help-block" *ngIf="cedula.errors?.pattern && cedula.touched">
               Cedula no es valida
               </span>
           </div>

@@ -23,9 +23,11 @@ export class EditPacientComponent implements OnInit {
   }
   ngOnInit() {
     this.data.currentMessage.subscribe ( message => {
-      if(message==="vacio") this._router.navigate(["./patients"])
+      let rg = new RegExp("^([0-9]){10,10}$")
+      if(rg.test(message))  this.loadPatient(message)
       
-      else this.loadPatient(message)
+      
+      else this._router.navigate(["./patients"])
 
     }
       
@@ -49,7 +51,7 @@ export class EditPacientComponent implements OnInit {
     this.isvisible = true;
     console.log(this.paciente)
       this._services.updatePatient(this.paciente.cedula,this.paciente).subscribe(data=>{
-        console.log(data);
+        this.data.changeMessage("El Paciente se Actualizo Correctamente")
         this._router.navigate(["/patients"])
         
       },err=>{

@@ -43,7 +43,9 @@ import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { ProximamenteComponent } from './proximamente/proximamente.component';
 import { TallerComponent } from './taller/taller.component';
-
+import { SnackMessageComponent } from './snack-message/snack-message.component';
+import { DialogService } from './services/dialogService'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 // servicios
 
 
@@ -58,6 +60,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 @NgModule({
   declarations: [
+    SnackMessageComponent,
     AppComponent,
     MenuComponent,
     LoginComponent,
@@ -97,10 +100,12 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
     MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule, BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [DataService, ConfigService, AuthService, TokenInterceptorService, AuthGuard, AuthGuardLogin,AllServices,DataService,
+  entryComponents:[SnackMessageComponent],
+  providers: [DataService, ConfigService, AuthService, TokenInterceptorService, AuthGuard, AuthGuardLogin,AllServices,DataService,DialogService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

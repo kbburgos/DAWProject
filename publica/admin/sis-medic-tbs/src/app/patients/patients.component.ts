@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { AllServices } from "./../services/AllServices"; //EN CADA MODULO DONDE VAYAN USAR ALGUN SERVICIO DEBEN IMPORTAR ESTO
 import { DataService } from "./../services/data.services";
 import { AuthService } from "../services/loginUtils/auth.service";
+import {DialogService}from './../services/dialogService'
 
 @Component({
   selector: "app-patients",
@@ -14,10 +15,16 @@ export class PatientsComponent implements OnInit {
   pacientes: any[];
   isvisible = true;
   errLog = "";
-  constructor(private _services: AllServices, private login: AuthService,private data:DataService ) {} // ESTOS PARAMETROS DEBEN IR EN EL CONSTRUCTOR
+  constructor(private _services: AllServices, private login: AuthService,private data:DataService, private popup:DialogService ) {} // ESTOS PARAMETROS DEBEN IR EN EL CONSTRUCTOR
 
   ngOnInit() {
     this.top10(); // al iniciar la pag se carga el top10
+    this.data.currentMessage.subscribe(message => {
+      console.log(message)
+      if(message.indexOf("Paciente se Actualizo")>-1||message.indexOf('Paciente se Creo')>-1){
+        this.popup.openConfirmDialog(message);
+      }
+    })
   }
 
   public search(parametro: string) {

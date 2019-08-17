@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
 import {Router} from '@angular/router';
+import {AuthService} from './loginUtils/auth.service'
 
 @Injectable()
 export class AllServices{
     private _urlglobal = "http://localhost:3000/api";
     private _urlPatient = "/pacientes/consultar";
 
-    constructor(private http: HttpClient, private router: Router ) {
+    constructor(private http: HttpClient, private router: Router, private login:AuthService ) {
    
 
     }
@@ -30,6 +31,6 @@ export class AllServices{
     }
 
 
-    
+  
 
 }
