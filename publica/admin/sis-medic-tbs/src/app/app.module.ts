@@ -6,9 +6,10 @@ import {MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, Mat
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/loginUtils/auth.service';
+import {AllServices} from './services/AllServices'
 import {AuthGuard} from './services/loginUtils/auth.guard';
 import {AuthGuardLogin} from './services/loginUtils/auth.guard.login';
-
+import { DataService } from "./services/data.services";
 import { TokenInterceptorService } from './services/loginUtils/token-interceptor';
 
 // imports de modulos
@@ -44,7 +45,7 @@ import { ProximamenteComponent } from './proximamente/proximamente.component';
 import { TallerComponent } from './taller/taller.component';
 
 // servicios
-import { DataService } from './data.service';
+
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
@@ -99,7 +100,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule, BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [DataService, ConfigService, AuthService, TokenInterceptorService, AuthGuard, AuthGuardLogin,
+  providers: [DataService, ConfigService, AuthService, TokenInterceptorService, AuthGuard, AuthGuardLogin,AllServices,DataService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,

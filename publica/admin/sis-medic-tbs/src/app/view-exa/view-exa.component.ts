@@ -15,7 +15,7 @@ export class ViewExaComponent implements OnInit {
   constructor(  private configJson: ConfigService) { }
 
   ngOnInit() {
-    console.log("hoola")
+    
     this.configJson.getConfig().subscribe(data=> this.examenes = data);
 
   }

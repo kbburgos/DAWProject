@@ -1,50 +1,66 @@
 <div class="container-fluid" id="container-height">
 	<app-menu></app-menu>
 	<div class="container-fluid">
+		<div class="row">
 		<div class="col-md-12">
 			<h1 class="text-center">Nuevo Paciente</h1>
 		</div>
+	</div>
 		<br>
 		<form>
 			<div class="form-row">
 				<div class="col-md-6 mb-4">
-					<label for="validationDefault01">Nombres</label>
-					<input type="text" class="form-control" id="validationDefault01" placeholder="Nombres" value="" required>
+					<label for="nombres">Nombres*</label>
+					<input type="text" class="form-control" id="nombres" placeholder="Nombres" #nombres required>
 				</div>
 				<div class="col-md-6 mb-4">
-					<label for="validationDefault02">Apellidos</label>
-					<input type="text" class="form-control" id="validationDefault02" placeholder="Apellidos" value="" required>
+					<label for="apellidos">Apellidos*</label>
+					<input type="text" class="form-control" id="apellidos" placeholder="Apellidos" #apellidos  required>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="col-md-12 mb-4">
-					<label for="validationDefault03">CI*</label>
-					<input type="text" class="form-control" id="validationDefault03" placeholder="C.I." required>
+					<label for="cedula">CI*</label>
+					<input type="text" class="form-control" id="cedula" placeholder="C.I." #cedula required>
 				</div>
 			</div>
-			<div class="form-row">
+			<div class="form-row" [class.has-error]="email.invalid && email.touched"  [class.has-success]="email.valid">
 				<div class="col-md-12 mb-4">
 					<label for="validationDefaultUsername">Email</label>
 					<div class="input-group">
 						<div class="input-group-prepend">
-							<span class="input-group-text" id="inputGroupPrepend2">@</span>
+							<span class="input-group-text" >@</span>
 						</div>
-						<input type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
+						<input type="email" [(ngModel)]="paciente.email"  #email="ngModel" class="form-control" name="email" placeholder="Email"  aria-describedby="inputGroupPrepend2" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" required>
+						<span class="help-block" *ngIf="email.errors?.pattern && email.touched">
+							Email is Invalid
+						</span>
+						  <span class="help-block" *ngIf="email.errors?.required && email.touched">
+							Email is required
+						  </span>
+					
 					</div>
 				</div>
 			</div>
 			<div class="form-row">
 				<div class="col-md-6 mb-4">
-					<label for="validationDefault04">Dirección</label>
-					<input type="text" class="form-control" id="validationDefault04" placeholder="Dirección" required>
+					<label for="direccion">Dirección</label>
+					<input type="text" class="form-control" id="direccion" placeholder="Dirección" #direccion required>
 				</div>
 				<div class="col-md-6 mb-4">
-					<label for="validationDefault05">Teléfono</label>
-					<input type="text" class="form-control" id="validationDefault05" placeholder="Teléfono" required>
+					<label for="phone">Teléfono</label>
+					<input type="text" class="form-control" id="phone" placeholder="Teléfono" #phone required>
 				</div>
 			</div>
-			<button class="btn btn-primary mx-auto justify-content-center d-flex" type="submit">Agregar paciente</button>
+			<div class="form-row" [ngClass]= "{ 'd-none': isvisible }">
+				<div class="col-md-12 mb-4">
+					<p class="text-danger text-center">{{errLog}}</p>
+				</div>
+			</div>
+			<button class="btn btn-primary mx-auto justify-content-center d-flex" type="submit" (click)="createPacient(nombres.value,apellidos.value,cedula.value,phone.value,email.value)">Agregar paciente</button>
 		</form>
+
+	
 	</div>
 </div>
 <app-footer></app-footer>

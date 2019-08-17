@@ -48,9 +48,7 @@ export class LoginComponent implements OnInit {
           this._router.navigate(["/home"]);
         },
         err => {
-          console.log(err);
-          console.log(err.status);
-          console.log(err.error);
+          
           this._router.navigate(["/"]);
           this.isvisible = true;
           this.log = err.error.log;

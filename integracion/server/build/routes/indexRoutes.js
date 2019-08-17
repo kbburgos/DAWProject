@@ -11,7 +11,7 @@ class IndexRoutes {
         this.config();
     }
     config() {
-        this.router.get("/", indexController_1.default.index);
+        this.router.get("/getallcomidas", indexController_1.default.index);
     }
 }
 const indexRoutes = new IndexRoutes();
