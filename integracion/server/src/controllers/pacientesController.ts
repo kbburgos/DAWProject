@@ -102,7 +102,7 @@ class PacientesController {
   }
 
   public async update(req: Request,res: Response): Promise<void>{
-    let { id } = req.params.id;
+    let id  = req.params.id;
     let token = req.header("Authorization");
     if (id == null||req.body.cedula===undefined||req.body.nombre===undefined||req.body.apellido===undefined) {
       res.status(400).json({ log: "Debe ingresar datos validos" });

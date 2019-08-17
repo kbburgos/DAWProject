@@ -25,18 +25,10 @@ export class NewPacientComponent implements OnInit {
 
   }
 
-  createPacient(nombres:string,apellidos:string,ci:string,phone:string,email:string){ // crea el paciente revicen el html
-    if(nombres===""||apellidos===""||ci===""){
-      this.isvisible=false;
-      this.errLog = "Ingrese Datos Validos";
-    }else{
-      
+  //createPacient(nombres:string,apellidos:string,ci:string,phone:string,email:string){ // crea el paciente revicen el html
+  createPacient(){
+
       this.isvisible = true;
-      this.paciente.nombre=nombres;
-      this.paciente.apellido=apellidos;
-      this.paciente.cedula=ci;
-      this.paciente.phone=phone;
-      this.paciente.email=email;
       this._services.createPacient(this.paciente).subscribe(data=>{
         console.log(data);
         this._router.navigate(["/patients"])
@@ -48,7 +40,7 @@ export class NewPacientComponent implements OnInit {
     }
      
 
-  }
+  
 
 }
   

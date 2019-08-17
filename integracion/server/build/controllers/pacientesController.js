@@ -103,7 +103,7 @@ class PacientesController {
     }
     update(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let { id } = req.params.id;
+            let id = req.params.id;
             let token = req.header("Authorization");
             if (id == null || req.body.cedula === undefined || req.body.nombre === undefined || req.body.apellido === undefined) {
                 res.status(400).json({ log: "Debe ingresar datos validos" });

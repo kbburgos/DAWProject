@@ -8,7 +8,7 @@ class IndexRoutes {
     this.config();
   }
   config():void {
-    this.router.get("/getallcomidas", indexController.index);
+    this.router.get("/", indexController.index);
     
   }
 }

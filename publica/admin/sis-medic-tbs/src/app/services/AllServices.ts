@@ -22,7 +22,14 @@ export class AllServices{
         return this.http.post<any>(this._urlglobal+this._urlPatient+"/newPacient",paciente);
     }
     deletePatient(id:String){
-        return this.http.delete(this._urlglobal+this._urlPatient+"/delete/"+id)
+        return this.http.delete<any>(this._urlglobal+this._urlPatient+"/delete/"+id)
     }
+
+    updatePatient(id:String,body:any){
+        return this.http.put<any>(this._urlglobal+this._urlPatient+"/update/"+id,body);
+    }
+
+
+    
 
 }
