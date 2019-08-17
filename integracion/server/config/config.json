@@ -1,7 +1,7 @@
 {
   "development": {
-    "username": "medicina",
-    "password": "medicina",
+    "username": "root",
+    "password": "root",
     "database": "sistemmedico",
     "host": "127.0.0.1",
     "dialect": "mysql",

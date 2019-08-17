@@ -10,42 +10,66 @@
       <br>
       <form>
         <div class="form-row">
-          <div class="col-md-6 mb-4">
-            <label for="validationDefault01">Nombres</label>
-            <input type="text" class="form-control" id="validationDefault01" placeholder="Nombres" value="" required>
+          <div class="col-md-6 mb-4" [class.has-error]="nombres.invalid && nombres.touched"  [class.has-success]="nombres.valid">
+            <label for="nombres">Nombres*</label>
+            <input type="text" class="form-control" name="nombres" placeholder="Nombres"  [(ngModel)]="paciente.nombre" #nombres="ngModel" required>
+            <span class="help-block" *ngIf="nombres.errors?.required && nombres.touched">
+              Nombres is required
+              </span>
           </div>
-          <div class="col-md-6 mb-4">
-            <label for="validationDefault02">Apellidos</label>
-            <input type="text" class="form-control" id="validationDefault02" placeholder="Apellidos" value="" required>
+          <div class="col-md-6 mb-4" [class.has-error]="apellidos.invalid && apellidos.touched"  [class.has-success]="apellidos.valid">
+            <label for="apellidos">Apellidos*</label>
+            <input type="text" class="form-control" name="apellidos" placeholder="Apellidos" #apellidos="ngModel"  [(ngModel)]="paciente.apellido" required>
+            <span class="help-block" *ngIf="apellidos.errors?.required && apellidos.touched">
+              Apellidos is required
+              </span>
           </div>
         </div>
         <div class="form-row">
-          <div class="col-md-12 mb-4">
+          <div class="col-md-12 mb-4" [class.has-error]="cedula.invalid && cedula.touched"  [class.has-success]="cedula.valid">
+            <label for="cedula">CI*</label>
+            <input type="text" disabled class="form-control" name="cedula" placeholder="C.I."  [(ngModel)]="paciente.cedula" #cedula="ngModel" required pattern="^([0-9]){10,10}$">
+            <span class="help-block" *ngIf="cedula.errors?.required && cedula.touched">
+              Cedula is required
+              </span>
+              <span class="help-block" *ngIf="cedula.errors?.pattern && cedula.touched">
+              Cedula no es valida
+              </span>
+          </div>
+        </div>
+        <div class="form-row" >
+          <div class="col-md-12 mb-4" >
             <label for="validationDefaultUsername">Email</label>
-            <div class="input-group">
+            <div class="input-group" [class.has-error]="email.invalid && email.touched"  [class.has-success]="email.valid">
               <div class="input-group-prepend">
-                <span class="input-group-text" id="inputGroupPrepend2">@</span>
+                <span class="input-group-text" >@</span>
               </div>
-              <input type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
+              <input type="email" [(ngModel)]="paciente.email"  #email="ngModel" class="form-control" name="email" placeholder="Email"  aria-describedby="inputGroupPrepend2" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" required>
+              <span class="help-block" *ngIf="email.errors?.pattern && email.touched">
+                Email is Invalid
+              </span>
+                <span class="help-block" *ngIf="email.errors?.required && email.touched">
+                Email is required
+                </span>
+            
             </div>
           </div>
-          <div class="col-md-12 mb-4">
-            <label for="validationDefault02">Identificación</label>
-            <input type="text" class="form-control" id="validationDefault02" placeholder="Identificacion" value="" required>
-          </div>
         </div>
         <div class="form-row">
-          <div class="col-md-6 mb-4">
-            <label for="validationDefault03">Dirección</label>
-            <input type="text" class="form-control" id="validationDefault03" placeholder="Dirección" required>
-          </div>
-          <div class="col-md-6 mb-4">
-            <label for="validationDefault04">Teléfono</label>
-            <input type="text" class="form-control" id="validationDefault04" placeholder="Teléfono" required>
+          
+          <div class="col-md-12 mb-4">
+            <label for="phone">Teléfono</label>
+            <input type="text" class="form-control" name="phone" placeholder="Teléfono" #phone="ngModel"  [(ngModel)]="paciente.phone" required>
           </div>
         </div>
-        <button class="btn btn-primary mx-auto justify-content-center d-flex" type="submit">Agregar Médico</button>
+        <div class="form-row" [ngClass]= "{ 'd-none': isvisible }">
+          <div class="col-md-12 mb-4">
+            <p class="text-danger text-center">{{errLog}}</p>
+          </div>
+        </div>
+        <button class="btn btn-primary mx-auto justify-content-center d-flex" [disabled] = "(email.invalid && nombres.invalid && apellidos.invalid && cedula.invalid)" type="submit" (click)="updatePatient()">Actualizar Paciente</button>
       </form>
+  
    
 </div>
 <app-footer></app-footer>

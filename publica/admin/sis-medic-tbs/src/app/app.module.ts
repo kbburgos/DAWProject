@@ -6,9 +6,10 @@ import {MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, Mat
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/loginUtils/auth.service';
+import {AllServices} from './services/AllServices'
 import {AuthGuard} from './services/loginUtils/auth.guard';
 import {AuthGuardLogin} from './services/loginUtils/auth.guard.login';
-
+import { DataService } from "./services/data.services";
 import { TokenInterceptorService } from './services/loginUtils/token-interceptor';
 
 // imports de modulos
@@ -42,10 +43,16 @@ import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { ProximamenteComponent } from './proximamente/proximamente.component';
 import { TallerComponent } from './taller/taller.component';
-
+import { SnackMessageComponent } from './snack-message/snack-message.component';
+import { DialogService } from './services/dialogService'
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 // servicios
+<<<<<<< HEAD
 import { DataService } from './data.service';
 import { AutonomoService } from './autonomo.service';
+=======
+
+>>>>>>> e836d47244cf20b4e74a4af31a161d45c7621bbe
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
@@ -59,6 +66,7 @@ import { AutonomoComponent } from './autonomo/autonomo.component';
 
 @NgModule({
   declarations: [
+    SnackMessageComponent,
     AppComponent,
     MenuComponent,
     LoginComponent,
@@ -99,10 +107,12 @@ import { AutonomoComponent } from './autonomo/autonomo.component';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
     MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule, BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [DataService, ConfigService, AuthService, TokenInterceptorService, AuthGuard, AuthGuardLogin,
+  entryComponents:[SnackMessageComponent],
+  providers: [DataService, ConfigService, AuthService, TokenInterceptorService, AuthGuard, AuthGuardLogin,AllServices,DataService,DialogService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
