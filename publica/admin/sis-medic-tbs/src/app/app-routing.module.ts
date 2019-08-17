@@ -30,11 +30,13 @@ import { OdontogramanewComponent } from './odontogramanew/odontogramanew.compone
 import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
 import {CitasmedicoComponent} from './citasmedico/citasmedico.component';
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
+import { AutonomoComponent } from './autonomo/autonomo.component';
 
 
 
 
 const routes: Routes = [
+  {path: "autonomo", component: AutonomoComponent},
   {path: '',canActivate:[AuthGuardLogin], component: LoginComponent},
   {path: 'view-exa',canActivate:[AuthGuard], component: ViewExaComponent},
   {path: 'medic', canActivate:[AuthGuard],component: MedicComponent},

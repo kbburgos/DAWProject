@@ -47,7 +47,8 @@ import { SnackMessageComponent } from './snack-message/snack-message.component';
 import { DialogService } from './services/dialogService'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 // servicios
-
+import { DataService } from './data.service';
+import { AutonomoService } from './autonomo.service';
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
@@ -56,6 +57,7 @@ import { OdontogramanewComponent } from './odontogramanew/odontogramanew.compone
 import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
 import { CitasmedicoComponent } from './citasmedico/citasmedico.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AutonomoComponent } from './autonomo/autonomo.component';
 
 
 @NgModule({
@@ -94,6 +96,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CitasmedicoComponent,
     OdontogramaVerComponent,
     PageNotFoundComponent,
+    AutonomoComponent,
   ],
   imports: [
     BrowserModule,
@@ -110,7 +113,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }],
+    }, AutonomoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
