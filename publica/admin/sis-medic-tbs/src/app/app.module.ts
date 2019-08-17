@@ -2,7 +2,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule} from '@angular/material';
+import {
+  MatStepperModule,
+  MatInputModule,
+  MatButtonModule,
+  MatSelectModule,
+  MatIconModule,
+  MatExpansionModule, MatCheckboxModule, MatRadioModule, MatCardModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/loginUtils/auth.service';
@@ -56,6 +63,7 @@ import { OdontogramanewComponent } from './odontogramanew/odontogramanew.compone
 import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
 import { CitasmedicoComponent } from './citasmedico/citasmedico.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { PerfilComponent } from './perfil/perfil.component';
 
 
 @NgModule({
@@ -94,6 +102,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     CitasmedicoComponent,
     OdontogramaVerComponent,
     PageNotFoundComponent,
+    PerfilComponent
   ],
   imports: [
     BrowserModule,
@@ -101,8 +110,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule, BrowserAnimationsModule,
-    HttpClientModule
+    MatStepperModule, MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, BrowserAnimationsModule,
+    HttpClientModule, MatExpansionModule, MatCheckboxModule, MatRadioModule, MatCardModule
   ],
   entryComponents:[SnackMessageComponent],
   providers: [DataService, ConfigService, AuthService, TokenInterceptorService, AuthGuard, AuthGuardLogin,AllServices,DataService,DialogService,

@@ -1,6 +1,6 @@
 /*a:link { color: white; text-decoration: none }
 a:active { color: red; text-decoration: none }*/
-a:visited { color: white; text-decoration: none }
+a:visited { color: grey; text-decoration: none }
 a:hover { color: blue; text-decoration: underline }
 
 
@@ -8,16 +8,29 @@ a:hover { color: blue; text-decoration: underline }
 .parallelogram{
   background: #2d303a;
 }
-.button {
-  background:#2d303a;
+
+/*
+button {
+  background-color: #cce5ff;
   color: white;
   text-shadow: 4px 4px 4px black;
 
   display:inline-block;
   font-size:2em;
   padding:.5em 2em;
-  /*text-decoration:none;*/
   align-self: center;
+}*/
+
+.material-icons{
+  margin-top: 20px;
+  margin-left: 20px;
+  background-color:white;
+  border-radius: 50px;
+  width: 40px;
+  align-items: center;
+  alignment: center;
+  align-content: center;
+  text-align: center;
 }
 
 .button:hover {
@@ -94,12 +107,4 @@ div {
 
   }
 }
-
-
-
-
-
-
-
-
 
