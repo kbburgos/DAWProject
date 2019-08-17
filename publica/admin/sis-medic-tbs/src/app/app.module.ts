@@ -42,13 +42,11 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { ProximamenteComponent } from './proximamente/proximamente.component';
-import { TallerComponent } from './taller/taller.component';
 import { SnackMessageComponent } from './snack-message/snack-message.component';
 import { DialogService } from './services/dialogService'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 // servicios
-import { DataService } from './data.service';
-import { AutonomoService } from './autonomo.service';
+
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
@@ -57,7 +55,7 @@ import { OdontogramanewComponent } from './odontogramanew/odontogramanew.compone
 import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
 import { CitasmedicoComponent } from './citasmedico/citasmedico.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AutonomoComponent } from './autonomo/autonomo.component';
+
 
 
 @NgModule({
@@ -89,14 +87,14 @@ import { AutonomoComponent } from './autonomo/autonomo.component';
     EditExamenComponent,
     VerExamenComponent,
     ProximamenteComponent,
-    TallerComponent,
+   
     FilterExamPipe,
     OdontogramaComponent,
     OdontogramanewComponent,
     CitasmedicoComponent,
     OdontogramaVerComponent,
     PageNotFoundComponent,
-    AutonomoComponent,
+   
   ],
   imports: [
     BrowserModule,
@@ -113,7 +111,7 @@ import { AutonomoComponent } from './autonomo/autonomo.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }, AutonomoService],
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
