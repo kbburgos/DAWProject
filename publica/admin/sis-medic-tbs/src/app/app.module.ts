@@ -47,12 +47,8 @@ import { SnackMessageComponent } from './snack-message/snack-message.component';
 import { DialogService } from './services/dialogService'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 // servicios
-<<<<<<< HEAD
 import { DataService } from './data.service';
 import { AutonomoService } from './autonomo.service';
-=======
-
->>>>>>> e836d47244cf20b4e74a4af31a161d45c7621bbe
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
