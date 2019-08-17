@@ -1,49 +1,93 @@
-<div class="container-fluid"  id="container-height">
+<div class="container-fluid" id="container-height">
 	<app-menu></app-menu>
-	<div class="row mt-2 ml-2 mr-2 mx-auto">
-		<div class="col-sm-12">
-			<a href="./oldreservations" class="btn btn-outline-primary float-right">Citas Anteriores</a>
-					<h1>Citas</h1>
-		</div>
-		<div class="col-sm-10 mx-auto mb-4">
-			<form class="form-inline" action="#" method="post">
-				<div class="input-group mb-3">
-			    <div class="input-group-prepend">
-			      <span class="input-group-text"><i class="fas fa-search"></i></span>
-						 <input type="text" class="form-control mr-4" placeholder="Palabra clave">
-						 <span class="input-group-text"><i class="fas fa-life-ring"></i></span>
-	 						<select name="medic_id" class="form-control mr-4" value="Medico">
-	 						<option value="" disabled selected >MÉDICO</option>
-	 						</select>
-							<button type="submit" class="btn btn-outline-primary">Buscar</button>
-			    </div>
-			  </div>
-			</form>
-		</div>
-		<div class="table-responsive">
-			<table class="table table-bordered">
-	    <thead class="thead-dark text-center">
-				<th>Asunto</th>
-				<th>Paciente</th>
-				<th>Médico</th>
-				<th>Fecha</th>
-				<th>Operaciones</th>
-	    </thead>
-	    <tbody class="text-center">
-				<tr class="text-center">
-				<td></td>
-				<td></td>
-				<td></td>
-				<td></td>
-				<td class="text-center mx-auto">
-				<a routerLink="/edit-reservation" class="btn btn-warning text-center mt-1">Editar</a>
-				 <a href="#" class="btn btn-danger text-center ml-2 mt-1">Eliminar</a>
-				</td>
-				</tr>
+	<div class="row mt-2 ml-2 mr-2  mb-4 mx-auto">
+		<div class="col-sm-12 mb-3">
+			<div class="row  text-center">
+				<div class="col-lg-3 col-md-12">
+					<h1 class="float-lg-left">Citas</h1>
+				</div>
+				<div class="col-md-12 col-lg-6 mx-auto">
 
-	    </tbody>
-	</table>
+					<!-- <form class="form-inline" action="#" method="post">
+						<div class="input-group mb-3">
+							<div class="input-group-prepend">
+								<span class="input-group-text"><i class="fas fa-search"></i></span>
+								<input type="text" class="form-control mr-4" placeholder="Palabra clave">
+								<span class="input-group-text"><i class="fas fa-life-ring"></i></span>
+								<select name="medic_id" class="form-control mr-4" value="Medico">
+									<option value="" disabled selected>MÉDICO</option>
+								</select>
+								
+							</div>
+						</div>
+					</form> -->
+
+					<div class="form-row">
+						<div class="col-lg-4 col-md-12 ">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-search"></i></span>
+								</div>
+								<input type="text" class="form-control mr-4" placeholder="Palabra clave">
+							</div>
+
+
+						</div>
+						<div class="col-lg-4 col-md-12 ">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text"><i class="fas fa-life-ring"></i></span>
+								</div>
+								
+								<select class="selectpicker form-control mr-4"  title="Medicos" data-live-search="true" >
+										<option>Hot Dog, Fries and a Soda</option>
+										
+									  </select>
+									  
+							</div>
+
+
+						</div>
+						<div class="col-lg-4 col-md-12">
+							<button type="submit" class="btn btn-outline-primary">Buscar</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4">
+					<a href="./oldreservations" class="btn btn-outline-primary float-lg-right">Citas Anteriores</a>
+
+				</div>
+			</div>
 		</div>
+	
+		<div class="container-fluid">
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<thead class="thead-dark text-center">
+						<th>Asunto</th>
+						<th>Paciente</th>
+						<th>Médico</th>
+						<th>Fecha</th>
+						<th>Operaciones</th>
+					</thead>
+					<tbody class="text-center">
+						<tr class="text-center">
+							<td></td>
+							<td></td>
+							<td></td>
+							<td></td>
+							<td class="text-center mx-auto">
+								<a routerLink="/edit-reservation" class="btn btn-warning text-center mt-1">Editar</a>
+								<a href="#" class="btn btn-danger text-center ml-2 mt-1">Eliminar</a>
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+
 	</div>
 </div>
 <app-footer></app-footer>

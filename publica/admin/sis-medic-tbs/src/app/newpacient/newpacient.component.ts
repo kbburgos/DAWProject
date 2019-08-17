@@ -31,7 +31,7 @@ export class NewPacientComponent implements OnInit {
 
       this.isvisible = true;
       this._services.createPacient(this.paciente).subscribe(data=>{
-        console.log(data);
+        
         this.data.changeMessage("El Paciente se Creo Correctamente")
         this._router.navigate(["/patients"])
         

@@ -20,7 +20,7 @@ export class PatientsComponent implements OnInit {
   ngOnInit() {
     this.top10(); // al iniciar la pag se carga el top10
     this.data.currentMessage.subscribe(message => {
-      console.log(message)
+     
       if(message.indexOf("Paciente se Actualizo")>-1||message.indexOf('Paciente se Creo')>-1){
         this.popup.openConfirmDialog(message);
       }

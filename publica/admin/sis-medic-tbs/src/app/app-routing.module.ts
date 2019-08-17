@@ -35,7 +35,9 @@ import {PerfilComponent} from "./perfil/perfil.component";
 
 
 
+
 const routes: Routes = [
+  
   {path: '',canActivate:[AuthGuardLogin], component: LoginComponent},
   {path: 'view-exa',canActivate:[AuthGuard], component: ViewExaComponent},
   {path: 'medic', canActivate:[AuthGuard],component: MedicComponent},

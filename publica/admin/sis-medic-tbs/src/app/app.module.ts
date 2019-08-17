@@ -49,7 +49,6 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { ProximamenteComponent } from './proximamente/proximamente.component';
-import { TallerComponent } from './taller/taller.component';
 import { SnackMessageComponent } from './snack-message/snack-message.component';
 import { DialogService } from './services/dialogService'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -64,6 +63,7 @@ import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.compo
 import { CitasmedicoComponent } from './citasmedico/citasmedico.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PerfilComponent } from './perfil/perfil.component';
+
 
 
 @NgModule({
@@ -95,7 +95,6 @@ import { PerfilComponent } from './perfil/perfil.component';
     EditExamenComponent,
     VerExamenComponent,
     ProximamenteComponent,
-    TallerComponent,
     FilterExamPipe,
     OdontogramaComponent,
     OdontogramanewComponent,
@@ -104,6 +103,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     PageNotFoundComponent,
     PerfilComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
