@@ -1,85 +1,92 @@
 <div class="container-fluid" id="container-height">
 	<app-menu></app-menu>
-	<div class="row mt-2 ml-2 mr-2  mb-4 mx-auto">
+	<div class="row mt-2 ml-2 mr-2  mb-3 mx-auto">
 		<div class="col-sm-12 mb-3">
-			<div class="row  text-center">
-				<div class="col-lg-3 col-md-12">
+			<div class="row  text-center mb-2">
+				<div class="col-lg-6 col-md-12">
 					<h1 class="float-lg-left">Citas</h1>
 				</div>
-				<div class="col-md-12 col-lg-6 mx-auto">
 
-					<!-- <form class="form-inline" action="#" method="post">
-						<div class="input-group mb-3">
-							<div class="input-group-prepend">
-								<span class="input-group-text"><i class="fas fa-search"></i></span>
-								<input type="text" class="form-control mr-4" placeholder="Palabra clave">
-								<span class="input-group-text"><i class="fas fa-life-ring"></i></span>
-								<select name="medic_id" class="form-control mr-4" value="Medico">
-									<option value="" disabled selected>MÉDICO</option>
-								</select>
-								
-							</div>
-						</div>
-					</form> -->
-
-					<div class="form-row">
-						<div class="col-lg-4 col-md-12 ">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fas fa-search"></i></span>
-								</div>
-								<input type="text" class="form-control mr-4" placeholder="Palabra clave">
-							</div>
-
-
-						</div>
-						<div class="col-lg-4 col-md-12 ">
-							<div class="input-group">
-								<div class="input-group-prepend">
-									<span class="input-group-text"><i class="fas fa-life-ring"></i></span>
-								</div>
-								
-								<select class="selectpicker form-control mr-4"  title="Medicos" data-live-search="true" >
-										<option>Hot Dog, Fries and a Soda</option>
-										
-									  </select>
-									  
-							</div>
-
-
-						</div>
-						<div class="col-lg-4 col-md-12">
-							<button type="submit" class="btn btn-outline-primary">Buscar</button>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4">
+				
+				<div class="col-lg-6 col-md-12 pt-2">
 					<a href="./oldreservations" class="btn btn-outline-primary float-lg-right">Citas Anteriores</a>
 
 				</div>
 			</div>
+			<div class="row  text-center">
+				<div class="col-md-12 col-lg-3 mx-auto">
+
+					<div class="input-group md-form form-sm form-2 pt-2">
+						<input class="form-control" (keyup.enter) = "search()"   [formControl]="paramPac" type="text" placeholder="Nombre, Apellido o CI del Paciente"
+							aria-label="Search" />
+
+					</div>
+				</div>
+				<div *ngIf = "userID.RolId==2" class="col-md-12 col-lg-3 mx-auto">
+
+					<div class="input-group md-form form-sm form-2 pt-2">
+						<input class="form-control" (keyup.enter) = "search()"  [formControl]="paramMed"  type="text" placeholder="Nombre, Apellido o CI del Medico"
+							aria-label="Search" />
+
+					</div>
+				</div>
+				<div class="col-md-12 col-lg-2 mx-auto">
+					<mat-form-field>
+						<input matInput [matDatepicker]="dpDesde" placeholder="Fecha Desde"  [formControl]="dateDesde" disabled>
+						<mat-datepicker-toggle matSuffix [for]="dpDesde"></mat-datepicker-toggle>
+						<mat-datepicker #dpDesde disabled="false"></mat-datepicker>
+					</mat-form-field>
+				</div>
+				<div class="col-md-12 col-lg-2 mx-auto">
+					<mat-form-field>
+						<input matInput [matDatepicker]="dpHasta" placeholder="Fecha Hasta"  [formControl]="dateHasta" disabled>
+						<mat-datepicker-toggle matSuffix [for]="dpHasta"></mat-datepicker-toggle>
+						<mat-datepicker #dpHasta disabled="false"></mat-datepicker>
+					</mat-form-field>
+				</div>
+
+				<div class="col-md-12 col-lg-1 mx-auto">
+					<div class=" pt-2">
+						<a ><button type="button" class="btn btn-outline-primary" (click)="search()">Buscar</button></a>
+					</div>
+
+				</div>
+				<div class="col-md-12 col-lg-1 mx-auto">
+					<div class=" pt-2">
+						<button class="btn btn-outline-primary" (click)="reloadData()">Refresh</button>
+					</div>
+
+				</div>
+			</div>
+			<div class="text-center col-sm-12" [ngClass]= "{ 'd-none': isvisible }">
+				<p class="text-danger">{{errLog}}</p> 
+			  </div>
 		</div>
-	
+
 		<div class="container-fluid">
 			<div class="table-responsive">
 				<table class="table table-bordered">
 					<thead class="thead-dark text-center">
 						<th>Asunto</th>
 						<th>Paciente</th>
-						<th>Médico</th>
+						<th *ngIf = "userID.RolId==2">Médico</th>
 						<th>Fecha</th>
+						<th>Atendida</th>
 						<th>Operaciones</th>
 					</thead>
 					<tbody class="text-center">
-						<tr class="text-center">
-							<td></td>
-							<td></td>
-							<td></td>
-							<td></td>
-							<td class="text-center mx-auto">
-								<a routerLink="/edit-reservation" class="btn btn-warning text-center mt-1">Editar</a>
-								<a href="#" class="btn btn-danger text-center ml-2 mt-1">Eliminar</a>
-							</td>
+						<tr class="text-center" *ngFor="let cita of citas">
+							<td>{{cita.titulo}}</td>
+							<td>{{cita.paciente.nombre+" "+cita.paciente.apellido}}</td>
+							<td *ngIf = "userID.RolId==2">{{cita.usersistem.nombreUser+ " "+cita.usersistem.apellidoUser}}</td>
+							<td>{{cita.fecha}}</td>
+							<th>{{cita.is_active===1?'SI':'NO'}}</th>
+							<td><a routerLink="/edit-reservation"><button type="button" class="btn btn-warning mt-1"
+										(click)="pasToUpdate(cita.id)">Atender</button></a>
+								<button type="button" class="btn btn-danger mt-1 ml-2" mwlConfirmationPopover
+									[popoverTitle]="'Eliminar'"
+									[popoverMessage]="'Esta seguro de que desea eliminar al Cita?'" (cancel)="true"
+									(confirm)="deleteCita(paciente.cedula)">Eliminar</button></td>
 						</tr>
 
 					</tbody>

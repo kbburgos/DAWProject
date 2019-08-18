@@ -1,4 +1,4 @@
-import {Request, Response } from "express";
+import { Request, Response } from "express";
 import util from './../util';
 const Op = require("sequelize").Op;
 const citas = require("./../../models").citas;
@@ -7,9 +7,9 @@ const pacientes = require("./../../models").pacientes
 
 class CitasController {
 
-  public async newCita(req: Request,res: Response): Promise<void>{
+  public async newCita(req: Request, res: Response): Promise<void> {
     let token = req.header("Authorization");
-    if (req.body.cedula===undefined||req.body.titulo===undefined||req.body.id_paciente===undefined||req.body.id_medico===undefined) {
+    if (req.body.cedula === undefined || req.body.titulo === undefined || req.body.id_paciente === undefined || req.body.id_medico === undefined) {
       res.status(400).json({ log: "Debe ingresar datos validos" });
       return;
     }
@@ -35,74 +35,40 @@ class CitasController {
       id_paciente: req.body.id_paciente,
       id_medico: req.body.id_medico,
       createdAt: new Date()
-    }).then((data:any)=>{
-      if(data.titulo == null){
-        res.status(401).json({log: "No se insertaron los datos"});
+    }).then((data: any) => {
+      if (data.titulo == null) {
+        res.status(401).json({ log: "No se insertaron los datos" });
         return;
       }
-      res.status(200).json({log: "se insertaron con exito los datos."});
-        return;
-    },
-    (err: any) => {
-      console.log(err);
-      res.status(500).json({ log: "Error del servidor" });
+      res.status(200).json({ log: "se insertaron con exito los datos." });
       return;
-    })
+    },
+      (err: any) => {
+        console.log(err);
+        res.status(500).json({ log: "Error del servidor" });
+        return;
+      })
   }
 
-  public async filtrarPorfecha(req: Request,res: Response): Promise<void>{
-   let {finicio,ffin}= req.params;
-   if(finicio===undefined||ffin===undefined){
-    res.status(400).json({ log: "Debe ingresar datos validos" });
-    return;
-   }
-   let dateI = Date.parse(finicio);
-   let dateF = Date.parse(ffin);
-   if(dateI===NaN||dateF===NaN){
-    res.status(400).json({ log: "La fecha ingresada no tiene formato valido" });
-    return;
-   }
-   
-   let token = req.header("Authorization");
-   if (token == null) {
-    res
-      .status(400)
-      .json({
-        log:
-          "La informacion enviada no es valida, el token de autenticacion no fue enviado"
-      });
-    return;
-  }
-  let tokenjson = util.validarToken(token);
-  if (!tokenjson.valido) {
-    res
-      .status(401)
-      .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
-    return;
-  }
+  public async filtrarPorfechaParametro(req: Request, res: Response): Promise<void> {
+    let { finicio, ffin, paramMed, paramPac } = req.body;
+    console.log("hola: " + "\"" + paramMed + "\"")
+    if (finicio === undefined || ffin === undefined) {
+      res.status(400).json({ log: "Debe ingresar datos validos" });
+      return;
+    }
+    let dateI = Date.parse(finicio);
+    let dateF = Date.parse(ffin);
+    if (dateI === NaN || dateF === NaN) {
+      res.status(400).json({ log: "La fechas ingresadas no tiene formato valido" });
+      return;
+    }
+    if (dateI > dateF || dateF < dateI) {
+      res.status(400).json({ log: "La fechas ingresadas no forman un rango valido" });
+      return;
+    }
 
-  citas.findAll({
-  where:{
-   fecha:{ [Op.between]:[new Date(dateI),new Date(dateF)]
-  }}
-
-}).then((data:any)=>{
-  if (data.length == 0) {
-    res.status(400).json({ log: "No hay datos que coincidan para mostrar" });
-    return;
-  }
-  res.status(200).json(data);
-  return;
-},
-(err: any) => {
-  console.log(err);
-  res.status(500).json({ log: "Error del servidor" });
-  return;});
-  }
-
-  public async listarCitas(req: Request,res: Response): Promise<void>{
     let token = req.header("Authorization");
-    
     if (token == null) {
       res
         .status(400)
@@ -119,34 +85,105 @@ class CitasController {
         .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
       return;
     }
-    citas.findAll({include:[{
-      model: medicos,
-      required: true
-    },{
-      model:pacientes,
-      required: true
-    }]
-    
-  
-  }).then((data:any)=>{
-    if (data.length == 0) {
-      res.status(400).json({ log: "No hay datos que coincidan para mostrar" });
+    let pasIsReq = paramPac != "";
+    let medIsReq = paramMed != "";
+    citas.findAll({
+      include: [{
+        model: medicos,
+        required: medIsReq,
+        where: {
+          [Op.or]: [
+            { cedula: { [Op.like]: "%" + paramMed + "%" } },
+            { nombreUser: { [Op.like]: "%" + paramMed + "%" } },
+            { apellidoUser: { [Op.like]: "%" + paramMed + "%" } }
+          ]
+        }
+      }, {
+        model: pacientes,
+        required: pasIsReq,
+        where: {
+          [Op.or]: [
+            { cedula: { [Op.like]: "%" + paramPac + "%" } },
+            { nombre: { [Op.like]: "%" + paramPac + "%" } },
+            { apellido: { [Op.like]: "%" + paramPac + "%" } }
+          ]
+        }
+
+      }],
+      where: {
+
+        fecha: {
+          [Op.between]: [new Date(dateI), new Date(dateF)]
+        }
+      }
+
+    }).then((data: any) => {
+      if (data.length == 0) {
+        res.status(400).json({ log: "No hay datos que coincidan para mostrar" });
+        return;
+      }
+
+      res.status(200).json(data);
+      return;
+    },
+      (err: any) => {
+        console.log("error " + err);
+        res.status(500).json({ log: "Error del servidor" });
+        return;
+      });
+  }
+
+  public async listarCitas(req: Request, res: Response): Promise<void> {
+    let token = req.header("Authorization");
+
+    if (token == null) {
+      res
+        .status(400)
+        .json({
+          log:
+            "La informacion enviada no es valida, el token de autenticacion no fue enviado"
+        });
       return;
     }
-    res.status(200).json(data);
-    return;
-  },
-  (err: any) => {
-    console.log(err);
-    res.status(500).json({ log: "Error del servidor" });
-    return;});
+    let tokenjson = util.validarToken(token);
+    if (!tokenjson.valido) {
+      res
+        .status(401)
+        .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+      return;
+    }
+    citas.findAll({
+      include: [{
+        model: medicos,
+        required: true,
+
+      }, {
+        model: pacientes,
+        required: true
+      }], limit: 10,
+      order: [["createdAt", "DESC"]]
+
+
+    }).then((data: any) => {
+      if (data.length == 0) {
+        res.status(400).json({ log: "No hay datos que coincidan para mostrar" });
+        return;
+      }
+      res.status(200).json(data);
+      return;
+    },
+      (err: any) => {
+        console.log(err);
+        res.status(500).json({ log: "Error del servidor" });
+        return;
+      });
 
   }
 
-  public async listarHistoricoUsuario(req: Request,res: Response): Promise<void>{
+  public async listarHistoricoUsuario(req: Request, res: Response): Promise<void> {
     let token = req.header("Authorization");
     let id = req.params.cedula;
-    if (token == null||id===undefined) {
+    if (token == null || id === undefined) {
       res
         .status(400)
         .json({
@@ -164,10 +201,10 @@ class CitasController {
     }
 
     citas.findAll({
-      where:{
-        id_paciente:id
+      where: {
+        id_paciente: id
       }
-    }).then((resp:any)=>{
+    }).then((resp: any) => {
       if (resp.length == 0) {
         res.status(400).json({ log: "No hay datos que coincidan para mostrar" });
         return;
@@ -175,52 +212,64 @@ class CitasController {
       res.status(200).json(resp);
       return;
     },
-    (err: any) => {
-      console.log(err);
-      res.status(500).json({ log: "Error del servidor" });
-      return;});
+      (err: any) => {
+        console.log(err);
+        res.status(500).json({ log: "Error del servidor" });
+        return;
+      });
   }
 
-  public async filtrarDoctorViejas(req: Request,res: Response): Promise<void>{
+  public async filtrarDoctorViejas(req: Request, res: Response): Promise<void> {
     let id = req.params.cedDoctor;
     let token = req.header("Authorization");
-    if(id===undefined){
-      res.status(400).json({log:"Debe ingresar datos validos"})
+    if (id === undefined) {
+      res.status(400).json({ log: "Debe ingresar datos validos" })
       return
     }
-    if(token===undefined){
-      res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
+    if (token === undefined) {
+      res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" })
       return
     }
     let validador = util.validarToken(token);
-    if(!validador.valido){
-      res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
+    if (!validador.valido) {
+      res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" })
       return
     }
     citas.findAll({
-    where:{
-      is_active:0,
-      id_medico:id
-    }
-  
-  }).then((data:any)=>{
-    if (data.length == 0) {
-      res.status(400).json({ log: "No hay datos que coincidan para mostrar" });
+      include: [{
+        model: medicos,
+        required: true,
+        where: {
+          cedula: id
+        }
+      }, {
+        model: pacientes,
+        required: true
+      }], limit: 10,
+      order: [["createdAt", "DESC"]],
+      where: {
+        is_active: 0
+      }
+
+    }).then((data: any) => {
+      if (data.length == 0) {
+        res.status(400).json({ log: "No hay datos que coincidan para mostrar" });
+        return;
+      }
+      res.status(200).json(data);
       return;
-    }
-    res.status(200).json(data);
-    return;
-  },
-  (err: any) => {
-    console.log(err);
-    res.status(500).json({ log: "Error del servidor" });
-    return;});
+    },
+      (err: any) => {
+        console.log(err);
+        res.status(500).json({ log: "Error del servidor" });
+        return;
+      });
   }
 
-  public async citaById(req: Request,res: Response): Promise<void>{
+  public async citaById(req: Request, res: Response): Promise<void> {
     let token = req.header("Authorization");
     let id = req.params.id;
-    if (token == null||id===undefined) {
+    if (token == null || id === undefined) {
       res
         .status(400)
         .json({
@@ -238,143 +287,157 @@ class CitasController {
     }
 
     citas.findOne({
-      where:{
+      where: {
         codigo: id
       }
-    }).then(function(data:any){
-      if(data===null){
-        res.status(401).json({log:"La cita no existe, verifique los datos ingresados"});
+    }).then(function (data: any) {
+      if (data === null) {
+        res.status(400).json({ log: "La cita no existe, verifique los datos ingresados" });
         return
-  
+
       }
-      
-      else{
-        
+
+      else {
+
         res.status(200).json(data)
         return
       }
     },
-    (err: any) => {
-      console.log(err);
-      res.status(500).json({ log: "Error del servidor" });
-      return;});
+      (err: any) => {
+        console.log(err);
+        res.status(500).json({ log: "Error del servidor" });
+        return;
+      });
   }
 
-  public async citasDelDoctor(req: Request,res: Response): Promise<void>{
-    let id = req.params.cedDoctor;
+  public async citasDelDoctor(req: Request, res: Response): Promise<void> {
+    let { id, active } = req.params;
     let token = req.header("Authorization");
-    if(id===undefined){
-      res.status(400).json({log:"Debe ingresar datos validos"})
+    if (id === undefined) {
+      res.status(400).json({ log: "Debe ingresar datos validos" })
       return
     }
-    if(token===undefined){
-      res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
+    if (token === undefined) {
+      res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" })
       return
     }
     let validador = util.validarToken(token);
-    if(!validador.valido){
-      res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
+    if (!validador.valido) {
+      res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" })
       return
     }
     citas.findAll({
-    where:{
-      is_active:1,
-      id_medico:id
-    }
-  
-  }).then((data:any)=>{
-    if (data.length == 0) {
-      res.status(400).json({ log: "No hay datos que coincidan para mostrar" });
-      return;
-    }
-    res.status(200).json(data);
-    return;
-  },
-  (err: any) => {
-    console.log(err);
-    res.status(500).json({ log: "Error del servidor" });
-    return;});
+      include: [{
+        model: medicos,
+        required: true,
+        where: {
+          cedula: id
+        }
+      }, {
+        model: pacientes,
+        required: true
+      }], limit: 10,
+      order: [["createdAt", "DESC"]],
+      where: {
+        is_active: Number(active)
 
-  
+      }
+    }).then((data: any) => {
+      if (data.length == 0) {
+        res.status(400).json({ log: "No hay datos que coincidan para mostrar" });
+        return;
+      }
+      res.status(200).json(data);
+      return;
+    },
+      (err: any) => {
+        console.log(err);
+        res.status(500).json({ log: "Error del servidor" });
+        return;
+      });
+
+
 
 
   }
 
-  public async deleteCita(req: Request,res: Response): Promise<void>{
+  public async deleteCita(req: Request, res: Response): Promise<void> {
     let id = req.params.id;
     let token = req.header("Authorization");
-    if(id===undefined){
-      res.status(400).json({log:"Debe ingresar datos validos"})
+    if (id === undefined) {
+      res.status(400).json({ log: "Debe ingresar datos validos" })
       return
     }
-    if(token===undefined){
-      res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
+    if (token === undefined) {
+      res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" })
       return
     }
     let validador = util.validarToken(token);
-    if(!validador.valido){
-      res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
+    if (!validador.valido) {
+      res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" })
       return
     }
     citas.destroy({
-      where:{
-        codigo:id
+      where: {
+        codigo: id
       }
-    }).then((d:any)=>{
-      if(d===1){
-        res.status(200).json({log:"La cita se elimino con exito"})
+    }).then((d: any) => {
+      if (d === 1) {
+        res.status(200).json({ log: "La cita se elimino con exito" })
         return
       }
-      res.status(400).json({log:"La cita no se elimino, no existe cita registrados con esas credenciales"})
+      res.status(400).json({ log: "La cita no se elimino, no existe cita registrados con esas credenciales" })
       return
     },
-    (err: any) => {
-      console.log(err);
-      res.status(500).json({ log: "Error del servidor" });
-      return;
-    })
+      (err: any) => {
+        console.log(err);
+        res.status(500).json({ log: "Error del servidor" });
+        return;
+      })
   }
 
-  public async updateCita(req: Request,res: Response): Promise<void>{
+  public async updateCita(req: Request, res: Response): Promise<void> {
     let id = req.params.id;
     let token = req.header("Authorization");
-    if(id===undefined||req.body.nota===undefined){
-      res.status(400).json({log:"Debe ingresar datos validos"})
+    if (id === undefined || req.body.nota === undefined) {
+      res.status(400).json({ log: "Debe ingresar datos validos" })
       return
     }
-    if(token===undefined){
-      res.status(400).json({log:"La informacion enviada no es valida, el token de autenticacion no fue enviado"})
+    if (token === undefined) {
+      res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" })
       return
     }
     let validador = util.validarToken(token);
-    if(!validador.valido){
-      res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
+    if (!validador.valido) {
+      res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" })
       return
     }
     let today = new Date();
     citas.update({
-      
-        nota:req.body.nota,
-        updatedAt:today,
-        fecha: new Date(today.getFullYear(),today.getMonth(),today.getDate()),
-        hora: today.toTimeString().split(" ")[0] //  time: 13:36:47 GMT-0500 (hora de Ecuador)
-    
-      },{where:{
+      is_active:0,
+      nota: req.body.nota,
+      updatedAt: today,
+      fecha: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
+      hora: today.toTimeString().split(" ")[0] //  time: 13:36:47 GMT-0500 (hora de Ecuador)
+
+    }, {
+      where: {
         codigo: id
-      
-    }}).then((rs:any)=>{
-      if(rs[0]===1){
-        res.status(200).json({log:"La cita fue actualizada"})
-      return
+
       }
-      res.status(400).json({log:"La cita no existe"})
-      return
-    },
-    (err: any) => {
-      console.log(err);
-      res.status(500).json({ log: "Error del servidor" });
-      return;
-    })
+      }).then((rs: any) => {
+        if (rs[0] === 1) {
+          res.status(200).json({ log: "La cita fue actualizada" })
+          return
+        }
+        res.status(400).json({ log: "La cita no existe" })
+        return
+      },
+        (err: any) => {
+          console.log(err);
+          res.status(500).json({ log: "Error del servidor" });
+          return;
+        })
 
   }
 }

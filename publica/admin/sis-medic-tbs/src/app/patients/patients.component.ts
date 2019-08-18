@@ -10,7 +10,7 @@ import {DialogService}from './../services/dialogService'
   styleUrls: ["./patients.component.css"]
 })
 export class PatientsComponent implements OnInit {
-
+  
   // TODOS LOS SERVICIOS QUE VAYAN A USAR PONGANLOS EN EL ARCHIVO QUE SE LLAMA ALLSERVICES ALLI ESTAN TODOS, POR LO MENOS LOS QUE YO ESTOY USANDO 
   pacientes: any[];
   isvisible = true;
@@ -71,6 +71,7 @@ export class PatientsComponent implements OnInit {
 
   public deletePatient(id:String){
         this._services.deletePatient(id).subscribe(data=>{
+         
           this.top10();
           // cuando se elimine el paciente se recargara ek top10
 

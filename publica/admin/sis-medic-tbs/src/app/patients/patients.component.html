@@ -54,7 +54,8 @@
             <td>{{paciente.phone}}</td>
             <!-- <td></td> -->
             <td><a routerLink="/edit-patient"><button type="button" class="btn btn-warning mt-1" (click)="pasToUpdate(paciente.cedula)">Modificar</button></a>
-              <button type="button" class="btn btn-danger mt-1 ml-2" (click)="deletePatient(paciente.cedula)">Eliminar</button></td>
+              <button type="button" class="btn btn-danger mt-1 ml-2" mwlConfirmationPopover  [popoverTitle]="'Eliminar'"
+              [popoverMessage]="'Esta seguro de que desea eliminar al usuario?'"  (cancel)="true" (confirm)="deletePatient(paciente.cedula)">Eliminar</button></td>
           </tr>
         </tbody>
       </table>

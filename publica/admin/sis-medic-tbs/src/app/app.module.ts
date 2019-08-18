@@ -11,7 +11,9 @@ import {AuthGuard} from './services/loginUtils/auth.guard';
 import {AuthGuardLogin} from './services/loginUtils/auth.guard.login';
 import { DataService } from "./services/data.services";
 import { TokenInterceptorService } from './services/loginUtils/token-interceptor';
-
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule}  from '@angular/material/';
 // imports de modulos
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -102,8 +104,14 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule, BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ConfirmationPopoverModule.forRoot({
+      
+      confirmButtonType: 'danger' // set defaults here
+    })
   ],
   entryComponents:[SnackMessageComponent],
   providers: [DataService, ConfigService, AuthService, TokenInterceptorService, AuthGuard, AuthGuardLogin,AllServices,DataService,DialogService,
