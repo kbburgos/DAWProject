@@ -29,7 +29,7 @@ class util {
         let tiempo_actual = new Date();
         let tokenC = this.cifrar(2, token);
         let arreglo = tokenC.split(",");
-        if ((parseInt(arreglo[0]) - tiempo_actual.getTime()) <= constantes_1.default.tiempoDoctor.tiempo) {
+        if ((tiempo_actual.getTime() - parseInt(arreglo[0])) <= constantes_1.default.tiempoDoctor.tiempo) {
             return { valido: true, rol: arreglo[2] };
         }
         return ({ valido: false });

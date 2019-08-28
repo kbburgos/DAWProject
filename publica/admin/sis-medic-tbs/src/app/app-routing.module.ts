@@ -59,7 +59,7 @@ const routes: Routes = [
   {path: 'edit-reservation',canActivate:[AuthGuard],component:EditReservationComponent},
   {path: 'add-exa',canActivate:[AuthGuard],component:AddExaComponent},
   {path: 'edit-user',canActivate:[AuthGuard], component:EditUserComponent},
-  {path: 'odontograma',canActivate:[AuthGuard], component:OdontogramaComponent},
+  {path: 'odontograma/:cedula',canActivate:[AuthGuard], component:OdontogramaComponent},
   {path: 'new-reservation',canActivate:[AuthGuard], component:NewReservationComponent},
   {path: 'odontograma-ver',canActivate:[AuthGuard], component:OdontogramaVerComponent},
   {path: 'not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},

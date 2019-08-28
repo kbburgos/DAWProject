@@ -25,10 +25,9 @@ export default class util {
 
   public static validarToken(token:String):any {
     let tiempo_actual = new Date();
-
     let tokenC = this.cifrar(2,token);
     let arreglo = tokenC.split(",");
-    if((parseInt(arreglo[0])-tiempo_actual.getTime()) <= constantes.tiempoDoctor.tiempo){
+    if((tiempo_actual.getTime()-parseInt(arreglo[0])) <= constantes.tiempoDoctor.tiempo){
       return {valido : true, rol: arreglo[2]}
     }
     return ({valido : false});

@@ -7,13 +7,23 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-// import pool from "../database";
+const util_1 = __importDefault(require("./../util"));
 class AppController {
     index(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            // let rows = await pool.query("select * from medic");
-            // res.json(rows);
+            let token = util_1.default.crearToken("0924995426");
+            res.send(token);
+        });
+    }
+    validar(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let val = util_1.default.validarToken(req.params.token);
+            console.log(val);
+            res.send("hola");
         });
     }
 }

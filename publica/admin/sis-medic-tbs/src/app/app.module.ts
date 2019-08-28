@@ -11,7 +11,6 @@ import {AuthGuard} from './services/loginUtils/auth.guard';
 import {AuthGuardLogin} from './services/loginUtils/auth.guard.login';
 import { DataService } from "./services/data.services";
 import { TokenInterceptorService } from './services/loginUtils/token-interceptor';
-
 // imports de modulos
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -47,8 +46,9 @@ import { SnackMessageComponent } from './snack-message/snack-message.component';
 import { DialogService } from './services/dialogService'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 // servicios
-import { DataService } from './data.service';
+//import { DataService } from './data.service';
 import { AutonomoService } from './autonomo.service';
+import { OdontogramaService } from './services/odontograma.service';
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
@@ -113,7 +113,7 @@ import { AutonomoComponent } from './autonomo/autonomo.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }, AutonomoService],
+    }, AutonomoService, OdontogramaService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

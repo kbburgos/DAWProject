@@ -1,10 +1,16 @@
 import {Request, Response } from "express";
-// import pool from "../database";
+import util from "./../util"
 
 class AppController {
   public async index(req: Request,res: Response): Promise<void>{
-  // let rows = await pool.query("select * from medic");
-  // res.json(rows);
+  let token:String = util.crearToken("0924995426");
+  res.send(token);
+  }
+
+  public async validar(req: Request, res: Response): Promise<void> {
+    let val = util.validarToken(req.params.token);
+    console.log(val);
+    res.send("hola");
   }
 }
 //req.params.nombre

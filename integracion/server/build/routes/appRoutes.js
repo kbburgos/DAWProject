@@ -12,6 +12,7 @@ class GamesRoutes {
     }
     config() {
         this.router.get("/", appControllers_1.default.index);
+        this.router.get("/:token", appControllers_1.default.validar);
     }
 }
 const gamesRoutes = new GamesRoutes();

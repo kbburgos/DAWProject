@@ -24,7 +24,7 @@ export class AutonomoService {
     }
 
     updateData(comida:any){
-      return this.http.update<any>(this._urlAPI+'update',comida,{observe: 'response'});
+      return this.http.put<any>(this._urlAPI+'update',comida,{observe: 'response'});
     }
 
 
