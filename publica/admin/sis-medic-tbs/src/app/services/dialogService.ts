@@ -8,6 +8,8 @@ import { MatSnackBar, MatSnackBarConfig,MatSnackBarRef } from '@angular/material
 export class DialogService {
   
   constructor(private dialog: MatSnackBar) { }
+
+  
   private configSuccess: MatSnackBarConfig = {
     
     duration: 10000,

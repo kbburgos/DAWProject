@@ -2,7 +2,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule} from '@angular/material';
+import {
+  MatStepperModule,
+  MatInputModule,
+  MatButtonModule,
+  MatSelectModule,
+  MatIconModule,
+  MatExpansionModule, MatCheckboxModule, MatRadioModule, MatCardModule
+} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/loginUtils/auth.service';
@@ -11,6 +18,12 @@ import {AuthGuard} from './services/loginUtils/auth.guard';
 import {AuthGuardLogin} from './services/loginUtils/auth.guard.login';
 import { DataService } from "./services/data.services";
 import { TokenInterceptorService } from './services/loginUtils/token-interceptor';
+<<<<<<< HEAD
+=======
+import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule}  from '@angular/material/';
+>>>>>>> 539de3474529b169edb9d1a76283fb9eff2193b8
 // imports de modulos
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -41,14 +54,17 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { EditExamenComponent } from './edit-examen/edit-examen.component';
 import { VerExamenComponent } from './ver-examen/ver-examen.component';
 import { ProximamenteComponent } from './proximamente/proximamente.component';
-import { TallerComponent } from './taller/taller.component';
 import { SnackMessageComponent } from './snack-message/snack-message.component';
 import { DialogService } from './services/dialogService'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 // servicios
+<<<<<<< HEAD
 //import { DataService } from './data.service';
 import { AutonomoService } from './autonomo.service';
 import { OdontogramaService } from './services/odontograma.service';
+=======
+
+>>>>>>> 539de3474529b169edb9d1a76283fb9eff2193b8
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
@@ -57,7 +73,8 @@ import { OdontogramanewComponent } from './odontogramanew/odontogramanew.compone
 import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
 import { CitasmedicoComponent } from './citasmedico/citasmedico.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AutonomoComponent } from './autonomo/autonomo.component';
+import { PerfilComponent } from './perfil/perfil.component';
+
 
 
 @NgModule({
@@ -89,23 +106,31 @@ import { AutonomoComponent } from './autonomo/autonomo.component';
     EditExamenComponent,
     VerExamenComponent,
     ProximamenteComponent,
-    TallerComponent,
     FilterExamPipe,
     OdontogramaComponent,
     OdontogramanewComponent,
     CitasmedicoComponent,
     OdontogramaVerComponent,
     PageNotFoundComponent,
-    AutonomoComponent,
+    PerfilComponent
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule, BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    ConfirmationPopoverModule.forRoot({
+      
+      confirmButtonType: 'danger' // set defaults here
+    }),
+    MatStepperModule, MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, BrowserAnimationsModule,
+    HttpClientModule, MatExpansionModule, MatCheckboxModule, MatRadioModule, MatCardModule
   ],
   entryComponents:[SnackMessageComponent],
   providers: [DataService, ConfigService, AuthService, TokenInterceptorService, AuthGuard, AuthGuardLogin,AllServices,DataService,DialogService,
@@ -113,7 +138,11 @@ import { AutonomoComponent } from './autonomo/autonomo.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
+<<<<<<< HEAD
     }, AutonomoService, OdontogramaService],
+=======
+    }],
+>>>>>>> 539de3474529b169edb9d1a76283fb9eff2193b8
   bootstrap: [AppComponent]
 })
 export class AppModule { }

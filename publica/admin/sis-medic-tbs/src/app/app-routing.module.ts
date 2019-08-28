@@ -30,13 +30,14 @@ import { OdontogramanewComponent } from './odontogramanew/odontogramanew.compone
 import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
 import {CitasmedicoComponent} from './citasmedico/citasmedico.component';
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
-import { AutonomoComponent } from './autonomo/autonomo.component';
+import {PerfilComponent} from "./perfil/perfil.component";
+
 
 
 
 
 const routes: Routes = [
-  {path: "autonomo", component: AutonomoComponent},
+  
   {path: '',canActivate:[AuthGuardLogin], component: LoginComponent},
   {path: 'view-exa',canActivate:[AuthGuard], component: ViewExaComponent},
   {path: 'medic', canActivate:[AuthGuard],component: MedicComponent},
@@ -64,7 +65,8 @@ const routes: Routes = [
   {path: 'odontograma-ver',canActivate:[AuthGuard], component:OdontogramaVerComponent},
   {path: 'not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
   {path: 'page-not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
-  {path: '#',canActivate:[AuthGuard],redirectTo: 'not-found'}
+  {path: 'perfil',canActivate:[AuthGuard],component: PerfilComponent},
+  {path: '#',canActivate:[AuthGuard],redirectTo: 'page-not-found'}
 ];
 
 @NgModule({

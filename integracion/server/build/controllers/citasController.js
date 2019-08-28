@@ -58,9 +58,10 @@ class CitasController {
             });
         });
     }
-    filtrarPorfecha(req, res) {
+    filtrarPorfechaParametro(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let { finicio, ffin } = req.params;
+            let { finicio, ffin, paramMed, paramPac } = req.body;
+            console.log("hola: " + "\"" + paramMed + "\"");
             if (finicio === undefined || ffin === undefined) {
                 res.status(400).json({ log: "Debe ingresar datos validos" });
                 return;
@@ -68,7 +69,11 @@ class CitasController {
             let dateI = Date.parse(finicio);
             let dateF = Date.parse(ffin);
             if (dateI === NaN || dateF === NaN) {
-                res.status(400).json({ log: "La fecha ingresada no tiene formato valido" });
+                res.status(400).json({ log: "La fechas ingresadas no tiene formato valido" });
+                return;
+            }
+            if (dateI > dateF || dateF < dateI) {
+                res.status(400).json({ log: "La fechas ingresadas no forman un rango valido" });
                 return;
             }
             let token = req.header("Authorization");
@@ -87,9 +92,33 @@ class CitasController {
                     .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
+            let pasIsReq = paramPac != "";
+            let medIsReq = paramMed != "";
             citas.findAll({
+                include: [{
+                        model: medicos,
+                        required: medIsReq,
+                        where: {
+                            [Op.or]: [
+                                { cedula: { [Op.like]: "%" + paramMed + "%" } },
+                                { nombreUser: { [Op.like]: "%" + paramMed + "%" } },
+                                { apellidoUser: { [Op.like]: "%" + paramMed + "%" } }
+                            ]
+                        }
+                    }, {
+                        model: pacientes,
+                        required: pasIsReq,
+                        where: {
+                            [Op.or]: [
+                                { cedula: { [Op.like]: "%" + paramPac + "%" } },
+                                { nombre: { [Op.like]: "%" + paramPac + "%" } },
+                                { apellido: { [Op.like]: "%" + paramPac + "%" } }
+                            ]
+                        }
+                    }],
                 where: {
-                    fecha: { [Op.between]: [new Date(dateI), new Date(dateF)]
+                    fecha: {
+                        [Op.between]: [new Date(dateI), new Date(dateF)]
                     }
                 }
             }).then((data) => {
@@ -100,7 +129,7 @@ class CitasController {
                 res.status(200).json(data);
                 return;
             }, (err) => {
-                console.log(err);
+                console.log("error " + err);
                 res.status(500).json({ log: "Error del servidor" });
                 return;
             });
@@ -124,13 +153,15 @@ class CitasController {
                     .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
-            citas.findAll({ include: [{
+            citas.findAll({
+                include: [{
                         model: medicos,
-                        required: true
+                        required: true,
                     }, {
                         model: pacientes,
                         required: true
-                    }]
+                    }], limit: 10,
+                order: [["createdAt", "DESC"]]
             }).then((data) => {
                 if (data.length == 0) {
                     res.status(400).json({ log: "No hay datos que coincidan para mostrar" });
@@ -200,9 +231,19 @@ class CitasController {
                 return;
             }
             citas.findAll({
+                include: [{
+                        model: medicos,
+                        required: true,
+                        where: {
+                            cedula: id
+                        }
+                    }, {
+                        model: pacientes,
+                        required: true
+                    }], limit: 10,
+                order: [["createdAt", "DESC"]],
                 where: {
-                    is_active: 0,
-                    id_medico: id
+                    is_active: 0
                 }
             }).then((data) => {
                 if (data.length == 0) {
@@ -243,7 +284,7 @@ class CitasController {
                 }
             }).then(function (data) {
                 if (data === null) {
-                    res.status(401).json({ log: "La cita no existe, verifique los datos ingresados" });
+                    res.status(400).json({ log: "La cita no existe, verifique los datos ingresados" });
                     return;
                 }
                 else {
@@ -259,7 +300,7 @@ class CitasController {
     }
     citasDelDoctor(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let id = req.params.cedDoctor;
+            let { id, active } = req.params;
             let token = req.header("Authorization");
             if (id === undefined) {
                 res.status(400).json({ log: "Debe ingresar datos validos" });
@@ -275,9 +316,19 @@ class CitasController {
                 return;
             }
             citas.findAll({
+                include: [{
+                        model: medicos,
+                        required: true,
+                        where: {
+                            cedula: id
+                        }
+                    }, {
+                        model: pacientes,
+                        required: true
+                    }], limit: 10,
+                order: [["createdAt", "DESC"]],
                 where: {
-                    is_active: 1,
-                    id_medico: id
+                    is_active: Number(active)
                 }
             }).then((data) => {
                 if (data.length == 0) {
@@ -347,13 +398,16 @@ class CitasController {
             }
             let today = new Date();
             citas.update({
+                is_active: 0,
                 nota: req.body.nota,
                 updatedAt: today,
                 fecha: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
                 hora: today.toTimeString().split(" ")[0] //  time: 13:36:47 GMT-0500 (hora de Ecuador)
-            }, { where: {
+            }, {
+                where: {
                     codigo: id
-                } }).then((rs) => {
+                }
+            }).then((rs) => {
                 if (rs[0] === 1) {
                     res.status(200).json({ log: "La cita fue actualizada" });
                     return;
