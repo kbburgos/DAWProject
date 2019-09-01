@@ -15,6 +15,7 @@ class IndexRoutes {
         this.router.put("/chancePass/:id", loginController_1.default.changePass);
         this.router.post("/newUser", loginController_1.default.newUser);
         this.router.delete("/deleteUser/:id", loginController_1.default.deleteUser);
+        this.router.get("/top10", loginController_1.default.top10);
         this.router.get("/perfil/:id", loginController_1.default.getById);
     }
 }
