@@ -13,6 +13,7 @@ class IndexRoutes {
     this.router.put("/update/:datos&:token",appController.update);
     this.router.delete("/delete/:id",appController.delete);
     this.router.post("/new/:shaJSON",appController.newMedic);
+    this.router.get("/allmedics",appController.getallmedics);
   }
 }
 const indexRoutes = new IndexRoutes();

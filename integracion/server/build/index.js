@@ -75,7 +75,6 @@ class Server {
     start() {
         this.app.listen(this.app.get("port"), () => {
             console.log("server on port: ", this.app.get("port"));
-            //console.log(Date.parse("09-08mn h2019"))
             //db.sequelize.sync();
         });
     }

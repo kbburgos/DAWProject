@@ -54,6 +54,39 @@ class PacientesController {
             });
         });
     }
+    getallpacientes(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let token = req.header("Authorization");
+            if (token == null) {
+                res
+                    .status(400)
+                    .json({
+                    log: "La informacion enviada no es valida, el token de autenticacion no fue enviado"
+                });
+                return;
+            }
+            let tokenjson = util_1.default.validarToken(token);
+            if (!tokenjson.valido) {
+                res
+                    .status(401)
+                    .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+                return;
+            }
+            pacientes
+                .findAll({ attributes: ["cedula", "nombre", "apellido"] }).then((data) => {
+                if (data.length == 0) {
+                    res.status(400).json({ log: "No hay datos para mostrar" });
+                    return;
+                }
+                res.status(200).json(data);
+                return;
+            }, (err) => {
+                console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
+                return;
+            });
+        });
+    }
     filtroParametro(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let { parametro } = req.params;

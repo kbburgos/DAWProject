@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as moment from 'moment';
 import { AllServices } from "./../services/AllServices"; //EN CADA MODULO DONDE VAYAN USAR ALGUN SERVICIO DEBEN IMPORTAR ESTO
 import { DataService } from "./../services/data.services";
 import { AuthService } from "../services/loginUtils/auth.service";
@@ -10,22 +11,48 @@ import {FormControl} from '@angular/forms';
   styleUrls: ['./reservations.component.css']
 })
 export class ReservationsComponent implements OnInit {
-
-  constructor(private _services: AllServices, private login: AuthService,private data:DataService, private popup:DialogService ) { }
+  
+  constructor(private _services: AllServices, private login: AuthService,private data:DataService, private popup:DialogService ) { 
+    
+  }
   citas: any[];
+  selected :  { startDate :  moment.Moment , endDate :  moment.Moment }  ;
+
+  arrdate(op:number){
+    moment.locale('es');
+    
+    if(op===1){
+      return moment.weekdaysMin()
+    }
+    return  moment.monthsShort()
+  }
+
+  local:any={
+    format: 'YYYY-MM-DD',
+    direction: 'ltr', // could be rtl
+    weekLabel: 'W',
+    separator: ' a ', // default is ' - '
+    //cancelLabel: 'Cancelar', // detault is 'Cancel'
+    applyLabel: 'Okay', // detault is 'Apply'
+    clearLabel: 'Cerrar', // detault is 'Clear'
+    daysOfWeek: this.arrdate(1),
+    monthNames:this.arrdate(0),
+    firstDay: 1, // first day is monday
+    Position:"Center",
+    showRangeLabelOnInput:true
+
+}
   isvisible = true;
   errLog = "";
   paramMed =new FormControl("");
   paramPac=new FormControl("");
-  dateDesde = new FormControl({value: new Date(), disabled: true});
-  dateHasta = new FormControl({value: new Date(), disabled: true});
   userID = this.login.getloginData()
   param = {
     finicio:"",
     ffin:"",
     paramMed:"",
-    paramPac:""
-    
+    paramPac:"",
+    active:1
   }
   ngOnInit() {
     if(this.userID.RolId!=2) {
@@ -33,6 +60,12 @@ export class ReservationsComponent implements OnInit {
       
     } 
     this.top10()
+    this.data.currentMessage.subscribe(message => {
+     
+      if(message.indexOf("Cita se Actualizo")>-1){
+        this.popup.openConfirmDialog(message);
+      }
+    })
   }
 
   private top10() { // carga el top 10
@@ -45,11 +78,13 @@ export class ReservationsComponent implements OnInit {
       })
     }
     else{
-      this._services.getTop10Citas().subscribe(
+      this._services.getTop10Citas("1").subscribe(
         data => {
          
           this.isvisible = true;
           this.citas = data;
+          
+          
         },
         err => {
           this.errorHandler(err);
@@ -68,9 +103,8 @@ export class ReservationsComponent implements OnInit {
       this.errLog = err.error.log;
     }
   }
-  public pasToUpdate(id:string){
-
-    this.data.changeMessage(id); // este metod aun no esta listo es para la actualizacion, en teoria esto permite cominicar o enviar info de un modulo a otro
+  public pasToUpdate(id:any){
+    this.data.changeMessage(JSON.stringify(id)); // este metod aun no esta listo es para la actualizacion, en teoria esto permite cominicar o enviar info de un modulo a otro
     
   }
 
@@ -87,23 +121,45 @@ export class ReservationsComponent implements OnInit {
 }
 
 
-public reloadData() {
-  
+public reloadData(obj:any) {
+  obj.value="";
   this.paramMed.setValue("");
   this.paramPac.setValue("");
-  this.dateDesde.setValue(new Date());
-  this.dateHasta.setValue(new Date());
+  this.selected.endDate=null;
+  this.selected.startDate=null;
   this.top10();
 
 }
 
-public search(){
+public search(obj:any){
+    if(obj.value!=""){
+      
+      if(Date.parse(obj.value.split(" a ")[0])===NaN||Date.parse(obj.value.split(" a ")[1])===NaN){
+        
+        this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
+        this.errLog = "Los campos de fecha tienen caracteres incorrectos";
+        return;
+       }
+    }
     this.isvisible = true;
     this.param.paramMed = this.paramMed.value;
     this.param.paramPac = this.paramPac.value;
-    this.param.finicio = this.dateDesde.value.toISOString().split("T")[0];
-    this.param.ffin = this.dateHasta.value.toISOString().split("T")[0];
+
+    this.param.finicio = (this.selected.startDate!=null&&obj.value!="")?this.selected.startDate.toISOString().split("T")[0]:"";
+    this.param.ffin =(this.selected.endDate!=null&&obj.value!="")?this.selected.endDate.toISOString().split("T")[0]:"";
     
+    let val =this.param.paramPac ==="" &&this.param.finicio===""&&this.param.ffin===""
+    if(this.userID.RolId!=2&&val){
+      this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
+      this.errLog = "Campos de busqueda vacios";
+      return;
+    }
+    if(this.param.paramMed===""&&val){
+      this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
+      this.errLog = "Campos de busqueda vacios";
+      return;
+    }
+   
     
     this._services.getCitasbyParamDate(this.param).subscribe(rs =>{
       this.isvisible = true;

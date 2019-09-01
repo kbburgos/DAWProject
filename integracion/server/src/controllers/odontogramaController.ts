@@ -4,7 +4,8 @@ const odontograma = require("./../../models").odontograma;
 const caras = require("./../../models").caradientes;
 const tratamientos = require("./../../models").tratamientoodontogramas;
 class OdontogramaController {
-  public async getByUser(req: Request, res: Response): Promise<void>{
+  
+  public async  getByUser(req: Request, res: Response): Promise<void>{
     let { ced } = req.params;
     let token = req.header("Authorization");
     if(ced == null){

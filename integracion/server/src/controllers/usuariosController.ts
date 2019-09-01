@@ -101,6 +101,8 @@ class UsuariosController {
       );
   }
 
+  
+
   public async update(req: Request,res: Response): Promise<void>{
     let id = req.params.id;
     let token = req.header("Authorization");

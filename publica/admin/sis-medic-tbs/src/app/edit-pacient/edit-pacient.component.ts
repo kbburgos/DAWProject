@@ -49,7 +49,7 @@ export class EditPacientComponent implements OnInit {
 
   updatePatient(){
     this.isvisible = true;
-    console.log(this.paciente)
+    
       this._services.updatePatient(this.paciente.cedula,this.paciente).subscribe(data=>{
         this.data.changeMessage("El Paciente se Actualizo Correctamente")
         this._router.navigate(["/patients"])

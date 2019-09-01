@@ -9,7 +9,7 @@ class IndexRoutes {
   }
   config():void {
     this.router.post("/newcita", appController.newCita);
-    this.router.get("/top10",appController.listarCitas);
+    this.router.get("/top10/:active",appController.listarCitas);
     this.router.post("/filtrar",appController.filtrarPorfechaParametro);
     this.router.get("/usuario/:cedula",appController.listarHistoricoUsuario);
     this.router.get("/doctor/:cedDoctor",appController.filtrarDoctorViejas);

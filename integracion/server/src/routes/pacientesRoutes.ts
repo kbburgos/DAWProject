@@ -13,6 +13,7 @@ class IndexRoutes {
     this.router.put("/update/:id",appController.update);
     this.router.delete("/delete/:id",appController.delete);
     this.router.post("/newPacient",appController.newPacient);
+    this.router.get("/getallpacientes",appController.getallpacientes);
   }
 }
 const indexRoutes = new IndexRoutes();
