@@ -2,10 +2,10 @@ import express, {Application} from "express";
 if(process.env.NODE_ENV != "production"){
   require("dotenv").config();
 }
-//require("./database");
+require("./database");
 import morgan from "morgan";
 import cors from "cors";
-const bodyParser =  require("body-parser");
+//const bodyParser =  require("body-parser");
 const multer = require("multer");
 const path = require("path");
 const uuid = require("uuid/v4");

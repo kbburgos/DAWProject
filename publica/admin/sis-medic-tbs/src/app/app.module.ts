@@ -18,12 +18,9 @@ import {AuthGuard} from './services/loginUtils/auth.guard';
 import {AuthGuardLogin} from './services/loginUtils/auth.guard.login';
 import { DataService } from "./services/data.services";
 import { TokenInterceptorService } from './services/loginUtils/token-interceptor';
-<<<<<<< HEAD
-=======
 import { ConfirmationPopoverModule } from 'angular-confirmation-popover';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatNativeDateModule}  from '@angular/material/';
->>>>>>> 539de3474529b169edb9d1a76283fb9eff2193b8
 // imports de modulos
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -58,13 +55,9 @@ import { SnackMessageComponent } from './snack-message/snack-message.component';
 import { DialogService } from './services/dialogService'
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 // servicios
-<<<<<<< HEAD
 //import { DataService } from './data.service';
 import { AutonomoService } from './autonomo.service';
 import { OdontogramaService } from './services/odontograma.service';
-=======
-
->>>>>>> 539de3474529b169edb9d1a76283fb9eff2193b8
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
@@ -138,11 +131,7 @@ import { PerfilComponent } from './perfil/perfil.component';
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-<<<<<<< HEAD
     }, AutonomoService, OdontogramaService],
-=======
-    }],
->>>>>>> 539de3474529b169edb9d1a76283fb9eff2193b8
   bootstrap: [AppComponent]
 })
 export class AppModule { }
