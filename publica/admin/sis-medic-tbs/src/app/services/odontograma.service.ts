@@ -17,4 +17,12 @@ export class OdontogramaService {
   addTratatiento(tratamiento:any){
     return this.httpClient.post<any>(this.url_base+"add",tratamiento);
   }
+
+  getTratamientosOdontograma(){
+    return this.httpClient.get<any>(this.url_base+"tratamientos");
+  }
+
+  getCaras(){
+    return this.httpClient.get<any>(this.url_base+"caras");
+  }
 }

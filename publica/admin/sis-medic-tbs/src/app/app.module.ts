@@ -61,7 +61,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 //import { DataService } from './data.service';
 import { AutonomoService } from './autonomo.service';
 import { OdontogramaService } from './services/odontograma.service';
+<<<<<<< HEAD
 
+=======
+>>>>>>> 72f133e4e55194ea27ae2609d1ab2491b46abe6d
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
@@ -139,7 +142,10 @@ import { PerfilComponent } from './perfil/perfil.component';
       useClass: TokenInterceptorService,
       multi: true
     }, AutonomoService, OdontogramaService],
+<<<<<<< HEAD
    
+=======
+>>>>>>> 72f133e4e55194ea27ae2609d1ab2491b46abe6d
   bootstrap: [AppComponent]
 })
 export class AppModule { }
