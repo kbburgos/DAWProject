@@ -7,7 +7,7 @@ const express_1 = __importDefault(require("express"));
 if (process.env.NODE_ENV != "production") {
     require("dotenv").config();
 }
-require("./database");
+//require("./database");
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
 //const bodyParser =  require("body-parser");

@@ -17,7 +17,7 @@
 
             </mat-form-field>
             <mat-form-field appearance="outline" class="my-1">
-              <mat-label>Medico Asignado*</mat-label>
+              <mat-label>Medico Asignado (Cedula)*</mat-label>
               <mat-select [(ngModel)]="selectMedico" formControlName="medico_select" id="ciudades_laar">
                 <mat-option>
                   <ngx-mat-select-search [placeholderLabel]="'Seleccione el Medico'" formControlName="medico_search"
@@ -25,13 +25,13 @@
                   </ngx-mat-select-search>
                 </mat-option>
                 <mat-option *ngFor="let medico of filtroMedicos()" [value]="medico.cedula">
-                  {{ medico.nombreUser+" "+medico.apellidoUser+"("+medico.cedula+")" }}
+                  {{ medico.nombreUser+" "+medico.apellidoUser+" ("+medico.cedula+")" }}
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="hasError('medico_select', 'required')">Medico is required</mat-error>
             </mat-form-field>
             <mat-form-field appearance="outline" class="my-1">
-              <mat-label>Paciente Asignado*</mat-label>
+              <mat-label>Paciente Asignado (Cedula)*</mat-label>
               <mat-select [(ngModel)]="selectPaciente" formControlName="paciente_select" id="ciudades_laar">
                 <mat-option>
                   <ngx-mat-select-search [placeholderLabel]="'Seleccione el Medico'" formControlName="paciente_search"
@@ -39,7 +39,7 @@
                   </ngx-mat-select-search>
                 </mat-option>
                 <mat-option *ngFor="let paciente of filtroPacientes()" [value]="paciente.cedula">
-                  {{ paciente.nombre+" "+paciente.apellido+"("+paciente.cedula+")" }}
+                  {{ paciente.nombre+" "+paciente.apellido+" ("+paciente.cedula+")" }}
                 </mat-option>
               </mat-select>
               <mat-error *ngIf="hasError('paciente_select', 'required')">Paciente is required</mat-error>
