@@ -16,6 +16,7 @@ class IndexRoutes {
         this.router.put("/update/:id", pacientesController_1.default.update);
         this.router.delete("/delete/:id", pacientesController_1.default.delete);
         this.router.post("/newPacient", pacientesController_1.default.newPacient);
+        this.router.get("/getallpacientes", pacientesController_1.default.getallpacientes);
     }
 }
 const indexRoutes = new IndexRoutes();

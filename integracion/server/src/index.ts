@@ -2,7 +2,7 @@ import express, {Application} from "express";
 if(process.env.NODE_ENV != "production"){
   require("dotenv").config();
 }
-require("./database");
+//require("./database");
 import morgan from "morgan";
 import cors from "cors";
 //const bodyParser =  require("body-parser");
@@ -76,7 +76,7 @@ class Server {
   start(): void {
     this.app.listen(this.app.get("port"), () => {
       console.log("server on port: ", this.app.get("port"));
-      //console.log(Date.parse("09-08mn h2019"))
+      
       //db.sequelize.sync();
     });
   }

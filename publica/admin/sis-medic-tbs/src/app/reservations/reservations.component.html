@@ -3,65 +3,78 @@
 	<div class="row mt-2 ml-2 mr-2  mb-3 mx-auto">
 		<div class="col-sm-12 mb-3">
 			<div class="row  text-center mb-2">
-				<div class="col-lg-6 col-md-12">
+				<div class="col-lg-8 col-md-12">
 					<h1 class="float-lg-left">Citas</h1>
 				</div>
+				<div class="col-md-12 col-lg-2 mx-auto">
+					<div class=" pt-2">
+						<button class="btn btn-outline-primary float-lg-right"
+							(click)="reloadData(rangedate)">Refresh</button>
+					</div>
 
-				
-				<div class="col-lg-6 col-md-12 pt-2">
+				</div>
+
+				<div class="col-lg-2 col-md-12 pt-2">
 					<a href="./oldreservations" class="btn btn-outline-primary float-lg-right">Citas Anteriores</a>
 
 				</div>
 			</div>
 			<div class="row  text-center">
-				<div class="col-md-12 col-lg-3 mx-auto">
+
+				<div class="col-md-12  mx-auto" [ngClass]="{'col-lg-3': userID.RolId==2, 'col-lg-4':userID.RolId!=2}">
 
 					<div class="input-group md-form form-sm form-2 pt-2">
-						<input class="form-control" (keyup.enter) = "search()"   [formControl]="paramPac" type="text" placeholder="Nombre, Apellido o CI del Paciente"
-							aria-label="Search" />
+						<input class="form-control"  (keyup.enter)="search(rangedate)" [formControl]="paramPac"
+							type="text" placeholder="Nombre, Apellido o CI del Paciente" aria-label="Search" />
 
 					</div>
 				</div>
-				<div *ngIf = "userID.RolId==2" class="col-md-12 col-lg-3 mx-auto">
+				<div *ngIf="userID.RolId==2" class="col-md-12 col-lg-3 mx-auto">
 
 					<div class="input-group md-form form-sm form-2 pt-2">
-						<input class="form-control" (keyup.enter) = "search()"  [formControl]="paramMed"  type="text" placeholder="Nombre, Apellido o CI del Medico"
-							aria-label="Search" />
+						<input class="form-control" (keyup.enter)="search(rangedate)" [formControl]="paramMed"
+							type="text" placeholder="Nombre, Apellido o CI del Medico" aria-label="Search" />
+
 
 					</div>
 				</div>
-				<div class="col-md-12 col-lg-2 mx-auto">
-					<mat-form-field>
-						<input matInput [matDatepicker]="dpDesde" placeholder="Fecha Desde"  [formControl]="dateDesde" disabled>
-						<mat-datepicker-toggle matSuffix [for]="dpDesde"></mat-datepicker-toggle>
-						<mat-datepicker #dpDesde disabled="false"></mat-datepicker>
-					</mat-form-field>
-				</div>
-				<div class="col-md-12 col-lg-2 mx-auto">
-					<mat-form-field>
-						<input matInput [matDatepicker]="dpHasta" placeholder="Fecha Hasta"  [formControl]="dateHasta" disabled>
-						<mat-datepicker-toggle matSuffix [for]="dpHasta"></mat-datepicker-toggle>
-						<mat-datepicker #dpHasta disabled="false"></mat-datepicker>
-					</mat-form-field>
+
+				<div class="col-md-12" [ngClass]="{'col-lg-5': userID.RolId==2, 'col-lg-6':userID.RolId!=2}">
+					<div class="pt-2">
+						<input type="text" ngxDaterangepickerMd placeholder="Seleccione un rango de Fechas..."
+							 startKey="startDate" #rangedate class="form-control"
+							
+							[alwaysShowCalendars]="true"
+							
+							[linkedCalendars]="true"
+							
+							[showClearButton]="true"
+							endKey="endDate" (keyup.enter)="search(rangedate)" [(ngModel)]="selected" [locale]="local">
+
+					</div>
+
 				</div>
 
-				<div class="col-md-12 col-lg-1 mx-auto">
+				<div class="col-md-12 mx-auto " [ngClass]="{'col-lg-1': userID.RolId==2, 'col-lg-2':userID.RolId!=2}">
 					<div class=" pt-2">
-						<a ><button type="button" class="btn btn-outline-primary" (click)="search()">Buscar</button></a>
+						<a><button type="button" class="btn btn-outline-primary float-lg-right"
+								(click)="search(rangedate)">Buscar</button></a>
 					</div>
 
 				</div>
-				<div class="col-md-12 col-lg-1 mx-auto">
-					<div class=" pt-2">
-						<button class="btn btn-outline-primary" (click)="reloadData()">Refresh</button>
-					</div>
 
+
+			</div>
+
+		</div>
+		<div class="container-fluid">
+			<div class="row text-center">
+				<div class=" col-sm-12 mb-1" [ngClass]="{ 'd-none': isvisible }">
+					<p class="text-danger">{{errLog}}</p>
 				</div>
 			</div>
-			<div class="text-center col-sm-12" [ngClass]= "{ 'd-none': isvisible }">
-				<p class="text-danger">{{errLog}}</p> 
-			  </div>
 		</div>
+
 
 		<div class="container-fluid">
 			<div class="table-responsive">
@@ -69,7 +82,7 @@
 					<thead class="thead-dark text-center">
 						<th>Asunto</th>
 						<th>Paciente</th>
-						<th *ngIf = "userID.RolId==2">Médico</th>
+						<th *ngIf="userID.RolId==2">Médico</th>
 						<th>Fecha</th>
 						<th>Atendida</th>
 						<th>Operaciones</th>
@@ -78,15 +91,16 @@
 						<tr class="text-center" *ngFor="let cita of citas">
 							<td>{{cita.titulo}}</td>
 							<td>{{cita.paciente.nombre+" "+cita.paciente.apellido}}</td>
-							<td *ngIf = "userID.RolId==2">{{cita.usersistem.nombreUser+ " "+cita.usersistem.apellidoUser}}</td>
+							<td *ngIf="userID.RolId==2">{{cita.usersistem.nombreUser+ " "+cita.usersistem.apellidoUser}}
+							</td>
 							<td>{{cita.fecha}}</td>
-							<th>{{cita.is_active===1?'SI':'NO'}}</th>
+							<th>{{cita.is_active?'NO':'SI'}}</th>
 							<td><a routerLink="/edit-reservation"><button type="button" class="btn btn-warning mt-1"
-										(click)="pasToUpdate(cita.id)">Atender</button></a>
+										(click)="pasToUpdate(cita)">Editar</button></a>
 								<button type="button" class="btn btn-danger mt-1 ml-2" mwlConfirmationPopover
 									[popoverTitle]="'Eliminar'"
 									[popoverMessage]="'Esta seguro de que desea eliminar al Cita?'" (cancel)="true"
-									(confirm)="deleteCita(paciente.cedula)">Eliminar</button></td>
+									(confirm)="deleteCita(cita.codigo)">Eliminar</button></td>
 						</tr>
 
 					</tbody>

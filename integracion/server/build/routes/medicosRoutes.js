@@ -16,6 +16,7 @@ class IndexRoutes {
         this.router.put("/update/:datos&:token", medicosController_1.default.update);
         this.router.delete("/delete/:id", medicosController_1.default.delete);
         this.router.post("/new/:shaJSON", medicosController_1.default.newMedic);
+        this.router.get("/allmedics", medicosController_1.default.getallmedics);
     }
 }
 const indexRoutes = new IndexRoutes();

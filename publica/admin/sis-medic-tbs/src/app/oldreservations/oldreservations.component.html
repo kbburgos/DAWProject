@@ -1,35 +1,100 @@
 <div class="container-fluid" id="container-height">
 	<app-menu></app-menu>
-	<div class="row ml-1 mr-1 ">
-		<div class="col-sm-12">
-			<h1 class="text-center" id="datos">Histórico de citas</h1>
+	<div class="row mt-2 ml-2 mr-2  mb-3 mx-auto">
+
+		<div class="col-sm-12 mb-3">
+			<div class="row text-center mb-2">
+				<div class="col-lg-6 col-md-12">
+					<h1 class="float-lg-left">Citas Atendidas</h1>
+				</div>
+				<div class="col-md-12 col-lg-6 mx-auto">
+					<div class=" pt-2">
+						<button class="btn btn-outline-primary float-lg-right"
+							(click)="reloadData(rangedate)">Refresh</button>
+					</div>
+
+				</div>
+			</div>
+			<div class="row  text-center">
+
+				<div class="col-md-12  mx-auto" [ngClass]="{'col-lg-3': userID.RolId==2, 'col-lg-4':userID.RolId!=2}">
+
+					<div class="input-group md-form form-sm form-2 pt-2">
+						<input class="form-control" (keyup.enter)="search(rangedate)" [formControl]="paramPac"
+							type="text" placeholder="Nombre, Apellido o CI del Paciente" aria-label="Search" />
+
+					</div>
+				</div>
+				<div *ngIf="userID.RolId==2" class="col-md-12 col-lg-3 mx-auto">
+
+					<div class="input-group md-form form-sm form-2 pt-2">
+						<input class="form-control" (keyup.enter)="search(rangedate)" [formControl]="paramMed"
+							type="text" placeholder="Nombre, Apellido o CI del Medico" aria-label="Search" />
+
+
+					</div>
+				</div>
+
+				<div class="col-md-12" [ngClass]="{'col-lg-5': userID.RolId==2, 'col-lg-6':userID.RolId!=2}">
+					<div class="pt-2">
+						<input type="text" ngxDaterangepickerMd placeholder="Seleccione un rango de Fechas..."
+							[showClearButton]="true" startKey="startDate" #rangedate class="form-control"
+							endKey="endDate" (keyup.enter)="search(rangedate)" [(ngModel)]="selected" [locale]="local">
+
+					</div>
+
+				</div>
+
+				<div class="col-md-12 mx-auto " [ngClass]="{'col-lg-1': userID.RolId==2, 'col-lg-2':userID.RolId!=2}">
+					<div class=" pt-2">
+						<a><button type="button" class="btn btn-outline-primary float-lg-right"
+								(click)="search(rangedate)">Buscar</button></a>
+					</div>
+
+				</div>
+
+
+			</div>
 		</div>
-		<div class="col-sm-12">
+		<div class="container-fluid">
+			<div class="row text-center">
+				<div class=" col-sm-12 mb-1" [ngClass]="{ 'd-none': isvisible }">
+					<p class="text-danger">{{errLog}}</p>
+				</div>
+			</div>
 		</div>
-	</div>
-	<br>
-	<div class="container-fluid">
-		<div class="table-responsive">
-			<table class="table table-bordered table-hover text-center">
-				<thead>
-					<tr>
-						<th> Asunto </th>
-						<th> Paciente </th>
-						<th> Médico</th>
-						<th> Fecha </th>
-						<th> Operaciones </th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td> </td>
-						<td> </td>
-						<td> </td>
-						<td> </td>
-						<th><a class="btn btn-danger btn-xs" href=""> Eliminar </a> </th>
-					</tr>
-				</tbody>
-			</table>
+
+
+
+		<div class="container-fluid">
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<thead class="thead-dark text-center">
+						<th>Asunto</th>
+						<th>Paciente</th>
+						<th *ngIf="userID.RolId==2">Médico</th>
+						<th>Fecha</th>
+						<th>Atendida</th>
+						<th>Operaciones</th>
+					</thead>
+					<tbody class="text-center">
+						<tr class="text-center" *ngFor="let cita of citas">
+							<td>{{cita.titulo}}</td>
+							<td>{{cita.paciente.nombre+" "+cita.paciente.apellido}}</td>
+							<td *ngIf="userID.RolId==2">{{cita.usersistem.nombreUser+ " "+cita.usersistem.apellidoUser}}
+							</td>
+							<td>{{cita.fecha}}</td>
+							<th>{{cita.is_active?'NO':'SI'}}</th>
+							<td>
+								<button type="button" class="btn btn-danger mt-1 ml-2" mwlConfirmationPopover
+									[popoverTitle]="'Eliminar'"
+									[popoverMessage]="'Esta seguro de que desea eliminar al Cita?'" (cancel)="true"
+									(confirm)="deleteCita(cita.codigo)">Eliminar</button></td>
+						</tr>
+
+					</tbody>
+				</table>
+			</div>
 		</div>
 	</div>
 </div>

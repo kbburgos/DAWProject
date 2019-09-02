@@ -8,17 +8,30 @@ export class AllServices{
     private _urlglobal = "http://localhost:3000/api";
     private _urlPatient = "/pacientes/consultar";
     private _urlCitas = "/citas/consultar";
+    private _urlmedics= "/medicos/consultar";
+    private _urlUser = "/login";
+    private _urlUser1 = "/usuarios/consultar";
 
     constructor(private http: HttpClient, private router: Router, private login:AuthService ) {
-   
+
 
     }
+
+    getTop10User(){
+      return this.http.get<any>(this._urlglobal+this._urlUser+"/top10");
+   }
 
     getTop10Patient(){
        return this.http.get<any>(this._urlglobal+this._urlPatient+"/top10");
     }
     getPatientByParameter(parametro:String){
         return this.http.get<any>(this._urlglobal+this._urlPatient+"/filtro/"+parametro);
+    }
+    getUserByParameter(parametro:String){
+      return this.http.get<any>(this._urlglobal+this._urlUser1+"/filtro/"+parametro);
+  }
+    createUser(usuario:any){
+      return this.http.post<any>(this._urlglobal+this._urlUser+"/newUser",usuario);
     }
     createPacient(paciente:any){
         return this.http.post<any>(this._urlglobal+this._urlPatient+"/newPacient",paciente);
@@ -31,10 +44,17 @@ export class AllServices{
         return this.http.put<any>(this._urlglobal+this._urlPatient+"/update/"+id,body);
     }
 
-    getTop10Citas(){
-        return this.http.get<any>(this._urlglobal+this._urlCitas+"/top10");
+    getTop10Citas(active:string){
+        return this.http.get<any>(this._urlglobal+this._urlCitas+"/top10/"+active);
     }
 
+    getallPacientes(){
+        return this.http.get<any>(this._urlglobal+this._urlPatient+"/getallpacientes");
+    }
+
+    getallMedics(){
+        return this.http.get<any>(this._urlglobal+this._urlmedics+"/allmedics");
+    }
     deleteCita(id:String){
         return this.http.delete<any>(this._urlglobal+this._urlCitas+"/delete/"+id)
     }
@@ -47,6 +67,13 @@ export class AllServices{
         return this.http.get<any>(this._urlglobal+this._urlCitas+"/historial/"+id+"&"+active);
     }
 
-  
+    updateCita(id:string,cita:any){
+        return this.http.put<any>(this._urlglobal+this._urlCitas+"/update/"+id,cita);
+    }
+    updateUser(id:String,body:any){
+      return this.http.put<any>(this._urlglobal+this._urlUser1+"/update/"+id,body);
+  }
+
+
 
 }

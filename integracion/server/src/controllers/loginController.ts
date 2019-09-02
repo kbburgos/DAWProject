@@ -6,6 +6,49 @@ const roles = db.roles;
 const users = db.usersistems
 
 class LoginController {
+
+  public async top10(req: Request,res: Response): Promise<void>{
+    let token = req.header("Authorization");
+    if (token == null) {
+      res
+        .status(400)
+        .json({
+          log:
+            "La informacion enviada no es valida, el token de autenticacion no fue enviado"
+        });
+      return;
+    }
+    let tokenjson = util.validarToken(token);
+    if (!tokenjson.valido) {
+      res
+        .status(401)
+        .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+      return;
+    }
+    users
+      .findAll({
+        limit: 10,
+        order: [["createdAt", "DESC"]]
+      })
+      .then(
+        (data: any) => {
+          if (data.length===0) {
+            res
+              .status(401)
+              .json({ log: "No hay datos de usuarios para mostrar" });
+            return;
+          }
+          res.status(200).json(data);
+          return;
+        },
+        (err: any) => {
+          console.log(err);
+          res.status(500).json({ log: "Error del servidor" });
+          return;
+        }
+      );
+  }
+
   //no admin
   public async ingresar(req: Request,resp: Response): Promise<void>{
   let cedula = req.body.username;

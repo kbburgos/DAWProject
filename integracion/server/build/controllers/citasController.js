@@ -60,22 +60,7 @@ class CitasController {
     }
     filtrarPorfechaParametro(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let { finicio, ffin, paramMed, paramPac } = req.body;
-            console.log("hola: " + "\"" + paramMed + "\"");
-            if (finicio === undefined || ffin === undefined) {
-                res.status(400).json({ log: "Debe ingresar datos validos" });
-                return;
-            }
-            let dateI = Date.parse(finicio);
-            let dateF = Date.parse(ffin);
-            if (dateI === NaN || dateF === NaN) {
-                res.status(400).json({ log: "La fechas ingresadas no tiene formato valido" });
-                return;
-            }
-            if (dateI > dateF || dateF < dateI) {
-                res.status(400).json({ log: "La fechas ingresadas no forman un rango valido" });
-                return;
-            }
+            let { finicio, ffin, paramMed, paramPac, active } = req.body;
             let token = req.header("Authorization");
             if (token == null) {
                 res
@@ -94,6 +79,55 @@ class CitasController {
             }
             let pasIsReq = paramPac != "";
             let medIsReq = paramMed != "";
+            if ((ffin === undefined && finicio === undefined) || (ffin === "" && finicio === "")) {
+                citas.findAll({
+                    include: [{
+                            model: medicos,
+                            required: medIsReq,
+                            where: {
+                                [Op.or]: [
+                                    { cedula: { [Op.like]: "%" + paramMed + "%" } },
+                                    { nombreUser: { [Op.like]: "%" + paramMed + "%" } },
+                                    { apellidoUser: { [Op.like]: "%" + paramMed + "%" } }
+                                ]
+                            }
+                        }, {
+                            model: pacientes,
+                            required: pasIsReq,
+                            where: {
+                                [Op.or]: [
+                                    { cedula: { [Op.like]: "%" + paramPac + "%" } },
+                                    { nombre: { [Op.like]: "%" + paramPac + "%" } },
+                                    { apellido: { [Op.like]: "%" + paramPac + "%" } }
+                                ]
+                            }
+                        }], where: {
+                        is_active: active
+                    }
+                }).then((data) => {
+                    if (data.length == 0) {
+                        res.status(400).json({ log: "No hay datos que coincidan para mostrar" });
+                        return;
+                    }
+                    res.status(200).json(data);
+                    return;
+                }, (err) => {
+                    console.log("error: " + err);
+                    res.status(500).json({ log: "Error del servidor" });
+                    return;
+                });
+                return;
+            }
+            let dateI = Date.parse(finicio);
+            let dateF = Date.parse(ffin);
+            if (dateI === NaN || dateF === NaN) {
+                res.status(400).json({ log: "La fechas ingresadas no tiene formato valido" });
+                return;
+            }
+            if (dateI > dateF || dateF < dateI) {
+                res.status(400).json({ log: "La fechas ingresadas no forman un rango valido" });
+                return;
+            }
             citas.findAll({
                 include: [{
                         model: medicos,
@@ -119,7 +153,8 @@ class CitasController {
                 where: {
                     fecha: {
                         [Op.between]: [new Date(dateI), new Date(dateF)]
-                    }
+                    },
+                    is_active: active
                 }
             }).then((data) => {
                 if (data.length == 0) {
@@ -129,15 +164,17 @@ class CitasController {
                 res.status(200).json(data);
                 return;
             }, (err) => {
-                console.log("error " + err);
+                console.log("error: " + err);
                 res.status(500).json({ log: "Error del servidor" });
                 return;
             });
+            return;
         });
     }
     listarCitas(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let token = req.header("Authorization");
+            let active = Number(req.params.active);
             if (token == null) {
                 res
                     .status(400)
@@ -160,7 +197,11 @@ class CitasController {
                     }, {
                         model: pacientes,
                         required: true
-                    }], limit: 10,
+                    }],
+                where: {
+                    is_active: active
+                },
+                limit: 10,
                 order: [["createdAt", "DESC"]]
             }).then((data) => {
                 if (data.length == 0) {
@@ -396,13 +437,15 @@ class CitasController {
                 res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
-            let today = new Date();
+            let date = new Date(Date.parse(req.body.fecha));
             citas.update({
-                is_active: 0,
                 nota: req.body.nota,
-                updatedAt: today,
-                fecha: new Date(today.getFullYear(), today.getMonth(), today.getDate()),
-                hora: today.toTimeString().split(" ")[0] //  time: 13:36:47 GMT-0500 (hora de Ecuador)
+                titulo: req.body.titulo,
+                id_medico: req.body.id_medico,
+                id_paciente: req.body.id_paciente,
+                updatedAt: new Date(),
+                fecha: date.toDateString(),
+                hora: date.toTimeString().split(" ")[0] //  time: 13:36:47 GMT-0500 (hora de Ecuador)
             }, {
                 where: {
                     codigo: id

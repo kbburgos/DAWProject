@@ -1,0 +1,11 @@
+.form-container {
+    display: flex;
+    
+    flex-wrap: wrap;
+   
+  }
+  .form-container > * {
+    width: 100%;
+    
+  }
+

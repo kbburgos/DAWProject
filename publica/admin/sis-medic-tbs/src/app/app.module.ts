@@ -2,6 +2,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
 import {
   MatStepperModule,
   MatInputModule,
@@ -10,6 +11,8 @@ import {
   MatIconModule,
   MatExpansionModule, MatCheckboxModule, MatRadioModule, MatCardModule
 } from '@angular/material';
+import { MatFormFieldModule } from '@angular/material';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthService } from './services/loginUtils/auth.service';
@@ -58,6 +61,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 //import { DataService } from './data.service';
 import { AutonomoService } from './autonomo.service';
 import { OdontogramaService } from './services/odontograma.service';
+
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
@@ -109,7 +113,10 @@ import { PerfilComponent } from './perfil/perfil.component';
   ],
 
   imports: [
+    NgxDaterangepickerMd.forRoot(),
     BrowserModule,
+    MatFormFieldModule,
+    NgxMatSelectSearchModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -132,6 +139,7 @@ import { PerfilComponent } from './perfil/perfil.component';
       useClass: TokenInterceptorService,
       multi: true
     }, AutonomoService, OdontogramaService],
+   
   bootstrap: [AppComponent]
 })
 export class AppModule { }

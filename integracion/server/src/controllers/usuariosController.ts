@@ -78,8 +78,8 @@ class UsuariosController {
         where: {
           [Op.or]: [
             { cedula: { [Op.like]: "%" + parametro + "%" } },
-            { nombre: { [Op.like]: "%" + parametro + "%" } },
-            { apellido: { [Op.like]: "%" + parametro + "%" } }
+            { nombreUser: { [Op.like]: "%" + parametro + "%" } },
+            { apellidoUser: { [Op.like]: "%" + parametro + "%" } }
           ]
         }
       })
@@ -117,11 +117,12 @@ class UsuariosController {
     }
     users.update({
       cedula:req.body.cedula,
-     
+      pasword:req.body.password,
       nombreUser:req.body.nombreUser,
       apellidoUser:req.body.apellidoUser,
       email:req.body.email,
       phone:req.body.phone,
+      is_active:req.body.is_active,
       rol: req.body.rol,
       updatedAt:new Date()
     },{where:{

@@ -12,7 +12,7 @@ class IndexRoutes {
     }
     config() {
         this.router.post("/newcita", citasController_1.default.newCita);
-        this.router.get("/top10", citasController_1.default.listarCitas);
+        this.router.get("/top10/:active", citasController_1.default.listarCitas);
         this.router.post("/filtrar", citasController_1.default.filtrarPorfechaParametro);
         this.router.get("/usuario/:cedula", citasController_1.default.listarHistoricoUsuario);
         this.router.get("/doctor/:cedDoctor", citasController_1.default.filtrarDoctorViejas);
