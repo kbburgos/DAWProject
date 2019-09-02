@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { OdontogramaService } from "./../services/odontograma.service";
 import { MatSnackBar } from '@angular/material/snack-bar';
+import {Router} from '@angular/router';
+
 
 //declare var jQuery:any;
 //declare var $:any;
@@ -18,7 +20,7 @@ export class OdontogramaComponent implements OnInit {
   private tratamientos = new Map();
   private caras = new Map();
 
-  constructor(private rutaActiva: ActivatedRoute, private _service: OdontogramaService, private _snackBar: MatSnackBar) {
+  constructor(private router: Router,private rutaActiva: ActivatedRoute, private _service: OdontogramaService, private _snackBar: MatSnackBar) {
   }
 
   updateDataForm(id: string) {
@@ -60,6 +62,20 @@ export class OdontogramaComponent implements OnInit {
       for (let i = 0; i < data.length; i++) {
         this.caras.set(data[i].nombre, data[i]);
       }
+    }, (err: any) => {
+      if (err.log) {
+        this._snackBar.open(err.log, "OK", {
+          duration: 10000,
+        });
+      }
+      else {
+        this._snackBar.open("Algo salio mal vuelva a iniciar sesión.", "OK", {
+          duration: 10000,
+        });
+      }
+      /*if(err.status && err.status==401){
+        this.router.navigate(['/'])
+      }*/
     })
 
   }
@@ -74,6 +90,20 @@ export class OdontogramaComponent implements OnInit {
       for (let i = 0; i < data.length; i++) {
         this.tratamientos.set(data[i].nombre, data[i]);
       }
+    }, (err: any) => {
+      if (err.log) {
+        this._snackBar.open(err.log, "OK", {
+          duration: 10000,
+        });
+      }
+      else {
+        this._snackBar.open("Algo salio mal vuelva a iniciar sesión.", "OK", {
+          duration: 10000,
+        });
+      }
+      /*if(err.status && err.status==401){
+        this.router.navigate(['/'])
+      }*/
     });
   }
 
@@ -112,7 +142,7 @@ export class OdontogramaComponent implements OnInit {
       cod = this.tratamientos.get("caries").codigo;
     }
     else {
-      cod = this.tratamientos.get("restauracion").codigo;
+      cod = this.tratamientos.get("restauración").codigo;
     }
     let cara: Array<number> = [];
     if ($('#customCheck').prop('checked')) {
@@ -142,16 +172,14 @@ export class OdontogramaComponent implements OnInit {
       }
       this._service.addTratatiento(tratamiento).subscribe(data => {
         this._snackBar.open(data.log, "OK", {
-          duration: 1000,
+          duration: 2000,
         });
       },
         err => {
           console.log(err);
         });
-
     }
     return;
-
   }
 
   guardarDatos() {
@@ -160,18 +188,19 @@ export class OdontogramaComponent implements OnInit {
         duration: 3000,
       });
     }
-    else{
+    else {
       if (this.bandera) {
         this.guardarCarieUObturacion();
-        return;
+      }else{
+        let clave = "" + $('select[name=cars]').val();
+        clave = clave.toLowerCase();
+        this.guardarOtrosTratamientosOdontograma(clave);
       }
-      let clave = "" + $('select[name=cars]').val();
-      clave = clave.toLowerCase();
-      this.guardarOtrosTratamientosOdontograma(clave);
       $('.custom-control-input').prop('checked', false);
       $('#id1').show();
       $('#id2').hide();
       $('#entrada').val("");
+      this.bandera = false;
     }
   }
 

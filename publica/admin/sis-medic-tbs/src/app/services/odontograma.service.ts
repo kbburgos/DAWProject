@@ -1,17 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Odontogramas } from './../objetos/Odontograma';
 import constantes from "./../constantes";
 
 @Injectable({
   providedIn: 'root'
 })
 export class OdontogramaService {
-  private url_base: string = constantes.url_api_odontograma;
+  private url_base: String = constantes.url_api_odontograma;
   constructor(private httpClient: HttpClient) { }
 
-  getDatosById(cedula: number){
-    return this.httpClient.get<Odontogramas>(this.url_base+"user/"+cedula);
+  getDatosById(cedula: String){
+    return this.httpClient.get<any>(this.url_base+"user/"+cedula);
   }
 
   addTratatiento(tratamiento:any){
@@ -24,5 +23,13 @@ export class OdontogramaService {
 
   getCaras(){
     return this.httpClient.get<any>(this.url_base+"caras");
+  }
+
+  getDientes(cedula: String){
+    return this.httpClient.get<any>(this.url_base+"dientes/"+cedula);
+  }
+
+  delTratamiento(id:String){
+    return this.httpClient.delete<any>(this.url_base+"delete/"+id);
   }
 }

@@ -88,7 +88,7 @@ class OdontogramaController {
       console.log(err);
       res.status(500).json({ log: "Algo salio mal." })
     })
-    odontograma.findAll({
+    await odontograma.findAll({
       where: {
         cara: req.body.cara,
         tratamiento: req.body.tratamiento,

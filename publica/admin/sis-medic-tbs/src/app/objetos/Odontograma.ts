@@ -1,4 +1,4 @@
-interface Odontograma {
+interface odonto {
     "Codigo": number;
     "Cara_codigo": String;
     "Tratamiento_codigo": number;
@@ -8,6 +8,6 @@ interface Odontograma {
     "Cara_nombre": string;
   }
 
-  export interface Odontogramas {
-    "Odontogramas" : Array<Odontograma>;
+  export interface Odontograma {
+    "odontograma" : Array<odonto>;
   }
