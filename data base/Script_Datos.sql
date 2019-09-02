@@ -1,10 +1,13 @@
 use sistemmedico;
 
 
-insert into caradientes (nombre, createdAt, updatedAt) values('diente1',now(),now());
-insert into caradientes (nombre, createdAt, updatedAt) values('diente2',now(),now());
-insert into caradientes (nombre, createdAt, updatedAt) values('diente3',now(),now());
-insert into caradientes (nombre, createdAt, updatedAt) values('diente4',now(),now());
+insert into caradientes (nombre, createdAt, updatedAt) values('O',now(),now());
+insert into caradientes (nombre, createdAt, updatedAt) values('L',now(),now());
+insert into caradientes (nombre, createdAt, updatedAt) values('D',now(),now());
+insert into caradientes (nombre, createdAt, updatedAt) values('P',now(),now());
+insert into caradientes (nombre, createdAt, updatedAt) values('M',now(),now());
+insert into caradientes (nombre, createdAt, updatedAt) values('V',now(),now());
+insert into caradientes (nombre, createdAt, updatedAt) values('default',now(),now());
 
 insert into tipotratamientos(nombre, descripcion, createdAt, updatedAt) values('blanqueamiento','con tus dientes',now(),now());
 insert into tipotratamientos(nombre, descripcion, createdAt, updatedAt) values('profilagsis','tambien con tus dientes',now(),now());
@@ -34,9 +37,17 @@ insert into examen_pacientes (descripExamen, image, createdAt, updatedAt, id_pac
 insert into examen_pacientes (descripExamen, image, createdAt, updatedAt, id_paciente) values ('examen de sangre, prueba de azucar',null,now(),now(),'8523697412');
 
 
-insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('calce','ruta1',now(),now());
-insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('limpieza','ruta2',now(),now());
-insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('extraccion','ruta3',now(),now());
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('extracción', '/simbolosOdontograma/extraccion.png',now(),now());
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('sellante', '/simbolosOdontograma/sellante.png',now(),now());
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('corona', '/simbolosOdontograma/corona.png',now(),now());
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('prótesis removible', '/simbolosOdontograma/protesisR.png',now(),now());
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('caries', '/simbolosOdontograma/carie.png',now(),now());
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('restauración', '/simbolosOdontograma/restauracion.png',now(),now());
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('endodoncia', '/simbolosOdontograma/endodoncia.png',now(),now());
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('prótesis total', '/simbolosOdontograma/protesisT.png',now(),now());
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('extracción indicada', '/simbolosOdontograma/extraccionI.png',now(),now());
+insert into tratamientoodontogramas(nombre, ruta, createdAt, updatedAt)values('prótesis fija', '/simbolosOdontograma/protesisF.png',now(),now());
+
 
 insert into odontogramas (cara,tratamiento,pos,createdAt,updatedAt, cedula) values(1,1,1,now(),now(),'2014777458');
 insert into odontogramas (cara,tratamiento,pos,createdAt,updatedAt, cedula) values(2,2,3,now(),now(),'0214785963');
