@@ -5,6 +5,7 @@ import { DataService } from "./../services/data.services";
 import { AuthService } from "../services/loginUtils/auth.service";
 import {DialogService}from './../services/dialogService'
 import {FormControl} from '@angular/forms';
+import Encrypt from './../services/serealUtils/encrypt'
 @Component({
   selector: 'app-oldreservations',
   templateUrl: './oldreservations.component.html',
@@ -50,9 +51,10 @@ export class OldReservationsComponent implements OnInit {
     paramPac:"",
     active:0
   }
+  permiso = Encrypt.validadUser(this.userID.Rol);
 
   ngOnInit() {
-    if(this.userID.RolId!=2) {
+    if(!this.permiso) {
       this.paramMed.setValue(this.userID.cedula);
       
     } 
@@ -60,7 +62,7 @@ export class OldReservationsComponent implements OnInit {
   }
 
   private top10() { // carga el top 10
-    if(this.userID.RolId!=2){
+    if(!this.permiso){
       this._services.getTop10CitasbyMed(this.userID.Cedula,"0").subscribe(rs=>{
         this.isvisible = true;
         this.citas = rs;
@@ -138,7 +140,7 @@ public search(obj:any){
     this.param.finicio = (this.selected.startDate!=null&&obj.value!="")?this.selected.startDate.toISOString().split("T")[0]:"";
     this.param.ffin =(this.selected.endDate!=null&&obj.value!="")?this.selected.endDate.toISOString().split("T")[0]:"";
     let val =this.param.paramPac ==="" &&this.param.finicio===""&&this.param.ffin===""
-    if(this.userID.RolId!=2&&val){
+    if(!this.permiso&&val){
       this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
       this.errLog = "Campos de busqueda vacios";
       return;

@@ -52,9 +52,8 @@ class MedicosController {
       res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
       return
     }
-    users.findAll({attributes:["cedula","nombreUser","apellidoUser"], where:{
-      rol:3
-    }}) .then(
+    users.findAll({attributes:["cedula","nombreUser","apellidoUser"],  include: [{model: roles, required: true,
+      where : {nombre : "medico"}, attributes: ["codigo", "nombre"]}]}) .then(
         (data: any) => {
           
           if (data.length == 0) {

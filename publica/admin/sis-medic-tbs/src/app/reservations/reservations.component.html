@@ -21,7 +21,7 @@
 			</div>
 			<div class="row  text-center">
 
-				<div class="col-md-12  mx-auto" [ngClass]="{'col-lg-3': userID.RolId==2, 'col-lg-4':userID.RolId!=2}">
+				<div class="col-md-12  mx-auto" [ngClass]="{'col-lg-3': permiso, 'col-lg-4':!permiso}">
 
 					<div class="input-group md-form form-sm form-2 pt-2">
 						<input class="form-control"  (keyup.enter)="search(rangedate)" [formControl]="paramPac"
@@ -29,7 +29,7 @@
 
 					</div>
 				</div>
-				<div *ngIf="userID.RolId==2" class="col-md-12 col-lg-3 mx-auto">
+				<div *ngIf="permiso" class="col-md-12 col-lg-3 mx-auto">
 
 					<div class="input-group md-form form-sm form-2 pt-2">
 						<input class="form-control" (keyup.enter)="search(rangedate)" [formControl]="paramMed"
@@ -39,7 +39,7 @@
 					</div>
 				</div>
 
-				<div class="col-md-12" [ngClass]="{'col-lg-5': userID.RolId==2, 'col-lg-6':userID.RolId!=2}">
+				<div class="col-md-12" [ngClass]="{'col-lg-5': permiso, 'col-lg-6':!permiso}">
 					<div class="pt-2">
 						<input type="text" ngxDaterangepickerMd placeholder="Seleccione un rango de Fechas..."
 							 startKey="startDate" #rangedate class="form-control"
@@ -55,7 +55,7 @@
 
 				</div>
 
-				<div class="col-md-12 mx-auto " [ngClass]="{'col-lg-1': userID.RolId==2, 'col-lg-2':userID.RolId!=2}">
+				<div class="col-md-12 mx-auto " [ngClass]="{'col-lg-1': permiso, 'col-lg-2':!permiso}">
 					<div class=" pt-2">
 						<a><button type="button" class="btn btn-outline-primary float-lg-right"
 								(click)="search(rangedate)">Buscar</button></a>
@@ -82,7 +82,7 @@
 					<thead class="thead-dark text-center">
 						<th>Asunto</th>
 						<th>Paciente</th>
-						<th *ngIf="userID.RolId==2">Médico</th>
+						<th *ngIf="permiso">Médico</th>
 						<th>Fecha</th>
 						<th>Atendida</th>
 						<th>Operaciones</th>
@@ -91,7 +91,7 @@
 						<tr class="text-center" *ngFor="let cita of citas">
 							<td>{{cita.titulo}}</td>
 							<td>{{cita.paciente.nombre+" "+cita.paciente.apellido}}</td>
-							<td *ngIf="userID.RolId==2">{{cita.usersistem.nombreUser+ " "+cita.usersistem.apellidoUser}}
+							<td *ngIf="permiso">{{cita.usersistem.nombreUser+ " "+cita.usersistem.apellidoUser}}
 							</td>
 							<td>{{cita.fecha}}</td>
 							<th>{{cita.is_active?'NO':'SI'}}</th>
