@@ -1,51 +1,142 @@
 <div class="container-fluid" id="container-height">
   <app-menu></app-menu>
-  <!-- <div class="container-fluid"> -->
-    <div class="row">
-        <div class="col-md-12">
-            <h1 class="text-center">Editar Médico</h1>
-          </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center">Editar Médico</h1>
     </div>
-   
-    <br>
-    <form>
-      <div class="form-row">
-        <div class="col-md-6 mb-4">
-          <label for="validationDefault01">Nombres</label>
-          <input type="text" class="form-control" id="validationDefault01" placeholder="Nombres" value="" required>
-        </div>
-        <div class="col-md-6 mb-4">
-          <label for="validationDefault02">Apellidos</label>
-          <input type="text" class="form-control" id="validationDefault02" placeholder="Apellidos" value="" required>
-        </div>
+  </div>
+  <br>
+  <form>
+    <div class="form-row">
+      <div class="col-md-6 mb-4" [class.has-error]="nombre.invalid && nombre.touched">
+        <label for="nombres">Nombres</label>
+        <input type="text" class="form-control" name="nombre" placeholder="Nombres"  [(ngModel)]="usuario.nombreUser" #nombre="ngModel" required>
+        <span class="help-block" *ngIf="nombre.errors?.required && nombre.touched">
+						Los nombres son requeridos
+					</span>
       </div>
-      <div class="form-row">
-        <div class="col-md-12 mb-4">
-          <label for="validationDefaultUsername">Email</label>
-          <div class="input-group">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroupPrepend2">@</span>
-            </div>
-            <input type="email" class="form-control" id="validationDefaultUsername" placeholder="Email" aria-describedby="inputGroupPrepend2" required>
+      <div class="col-md-6 mb-4" [class.has-error]="apellido.invalid && apellido.touched"  [class.has-success]="apellido.valid">
+        <label for="apellido">Apellidos*</label>
+        <input type="text" class="form-control" name="apellido" placeholder="Apellidos" #apellido="ngModel"  [(ngModel)]="usuario.apellidoUser" required>
+        <span class="help-block" *ngIf="apellido.errors?.required && apellido.touched">
+						Los apellidos son requeridos
+					  </span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-md-6 mb-4" [class.has-error]="cedula.invalid && cedula.touched"  [class.has-success]="cedula.valid">
+        <label for="cedula">CI*</label>
+        <input type="text" disabled class="form-control" name="cedula" placeholder="C.I."  [(ngModel)]="usuario.cedula" #cedula="ngModel" required pattern="^([0-9]){10,10}$">
+        <span class="help-block" *ngIf="cedula.errors?.required && cedula.touched">
+						La cédula es requerida
+					  </span>
+        <span class="help-block" *ngIf="cedula.errors?.pattern && email.touched">
+						La cédula no es válida
+					  </span>
+      </div>
+      <div class="col-md-6 mb-4" >
+        <label for="validationDefaultUsername">Email</label>
+        <div class="input-group" [class.has-error]="email.invalid && email.touched"  [class.has-success]="email.valid">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >@</span>
           </div>
-        </div>
-        <div class="col-md-12 mb-4">
-          <label for="validationDefault02">Identificación</label>
-          <input type="text" class="form-control" id="validationDefault02" placeholder="Identificacion" value="" required>
-        </div>
-      </div>
-      <div class="form-row">
-        <div class="col-md-6 mb-4">
-          <label for="validationDefault03">Dirección</label>
-          <input type="text" class="form-control" id="validationDefault03" placeholder="Direccion" required>
-        </div>
-        <div class="col-md-6 mb-4">
-          <label for="validationDefault04">Teléfono</label>
-          <input type="text" class="form-control" id="validationDefault04" placeholder="Teléfono" required>
+          <input type="email" [(ngModel)]="usuario.email"  #email="ngModel" class="form-control" name="email" placeholder="Email"  aria-describedby="inputGroupPrepend2" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" required>
+          <span class="help-block" *ngIf="email.errors?.pattern && email.touched">
+							El email es inválido
+						</span>
+          <span class="help-block" *ngIf="email.errors?.required && email.touched">
+						  El email es requerido
+						  </span>
+
         </div>
       </div>
-      <button class="btn btn-primary mx-auto justify-content-center d-flex" type="submit">Agregar Médico</button>
-    </form>
-  <!-- </div> -->
+    </div>
+
+
+    <div class="form-row">
+      <div class="col-md-6 mb-4">
+        <input type="hidden" id="id4" name="pasword" class="form-control" id="validationDefault04" placeholder="Contrase&ntilde;a" [(ngModel)]="usuario.pasword" #paswordUser="ngModel" required pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$">
+
+
+        <label for="validationDefault04">*Contrase&ntilde;a</label>
+        <input type="password" name="pasword" class="form-control" id="validationDefault04" placeholder="Contrase&ntilde;a" [(ngModel)]="usuario.password" #paswordUser="ngModel" required pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$">
+        <span class="help-block" *ngIf="paswordUser.errors?.required && paswordUser.touched">
+            La contraseña es requerida
+          </span>
+        <span class="help-block" *ngIf="paswordUser.errors?.pattern && paswordUser.touched">
+            La contraseña debe tener al menos una letra minúscula y una mayúscula, al menos un dígito, mínimo 8 caracteres y máximo 16. No se permiten símbolos.
+          </span>
+
+
+      </div>
+      <div class="col-md-6 mb-4">
+        <label for="phone">Teléfono</label>
+        <input type="text" class="form-control" name="phone" placeholder="Teléfono" #phone="ngModel"  [(ngModel)]="usuario.phone" required>
+        <span class="help-block" *ngIf="phone.errors?.required && phone.touched">
+              Teléfono es requerido
+            </span>
+        <span class="help-block" *ngIf="phone.errors?.pattern && phone.touched">
+              Teléfono no es válido
+            </span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-md-6 mb-4">
+        <label for="validationDefault20">Rol</label>
+        <input type="rol" name="rol" class="form-control" id="validationDefault20" placeholder="Rol" [(ngModel)]="usuario.rol" #rolUser="ngModel" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="col-md-12 mb-4">
+            <span *ngIf="usuario.rol=='1'">
+              <p class="text-dark text-center bg-light"><b>Tipo de usuario: Administrador</b></p>
+            </span>
+        <span *ngIf="usuario.rol=='2'">
+              <p class="text-dark text-center bg-light"><b>Tipo de usuario: Normal</b></p>
+            </span>
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div id="id2" class="col-md-12 mb-4">
+        <p class="text-dark">¿Desea cambiar el tipo de usuario?</p>
+        <input type="radio" class="text-center" name="is_admin" value="1" [(ngModel)]="usuario.rol" #rolUser="ngModel" required>Administrador
+        <input type="radio" class="text-center" name="is_admin2" value="2" [(ngModel)]="usuario.rol" #rolUser="ngModel" required>Usuario Normal
+      </div>
+    </div>
+
+
+    <div class="form-row">
+      <div class="col-md-12 mb-4">
+            <span *ngIf="usuario.is_active=='1'">
+              <p class="text-dark text-center bg-light"><b>Activo: Sí</b></p>
+            </span>
+        <span *ngIf="usuario.is_active=='0'">
+              <p class="text-dark text-center bg-light"><b>Activo: No</b></p>
+            </span>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div id="id2" class="col-md-12 mb-4">
+        <p class="text-dark">¿Desea desabilitar al usuario?</p>
+        <input type="radio" class="text-center" name="is_activo" value="1" [(ngModel)]="usuario.is_active" #activoUser="ngModel" required>No
+        <input type="radio" class="text-center" name="is_activo2" value="0" [(ngModel)]="usuario.is_active" #activoUser="ngModel" required>Sí
+      </div>
+    </div>
+
+    <div class="form-row" [ngClass]= "{ 'd-none': isvisible }">
+      <div class="col-md-12 mb-4">
+        <p class="text-danger text-center">{{errLog}}</p>
+      </div>
+    </div>
+    <button class="btn btn-primary mx-auto d-flex justify-content-center" type="submit" [disabled] = "(email.invalid || nombre.invalid || apellido.invalid || cedula.invalid || phone.invalid  || paswordUser.invalid )" (click)="updateUser()">Actualizar Médico</button>
+  </form>
+
 </div>
+<br>
 <app-footer></app-footer>

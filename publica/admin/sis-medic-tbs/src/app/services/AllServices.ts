@@ -24,25 +24,44 @@ export class AllServices{
     getTop10Patient(){
        return this.http.get<any>(this._urlglobal+this._urlPatient+"/top10");
     }
+
+    getTop10Medic(){
+    return this.http.get<any>(this._urlglobal+this._urlmedics+"/top10");
+    }
+
+
     getPatientByParameter(parametro:String){
         return this.http.get<any>(this._urlglobal+this._urlPatient+"/filtro/"+parametro);
     }
+
+    getMedicByParameter(parametro:String){
+    return this.http.get<any>(this._urlglobal+this._urlmedics+"/filtro/"+parametro);
+    }
+
     getUserByParameter(parametro:String){
       return this.http.get<any>(this._urlglobal+this._urlUser1+"/filtro/"+parametro);
   }
     createUser(usuario:any){
       return this.http.post<any>(this._urlglobal+this._urlUser+"/newUser",usuario);
     }
+
     createPacient(paciente:any){
         return this.http.post<any>(this._urlglobal+this._urlPatient+"/newPacient",paciente);
     }
+
+
     deletePatient(id:String){
         return this.http.delete<any>(this._urlglobal+this._urlPatient+"/delete/"+id)
+    }
+
+    deleteMedic(id:String){
+    return this.http.delete<any>(this._urlglobal+this._urlmedics+"/delete/"+id)
     }
 
     updatePatient(id:String,body:any){
         return this.http.put<any>(this._urlglobal+this._urlPatient+"/update/"+id,body);
     }
+
 
     getTop10Citas(active:string){
         return this.http.get<any>(this._urlglobal+this._urlCitas+"/top10/"+active);
@@ -70,6 +89,7 @@ export class AllServices{
     updateCita(id:string,cita:any){
         return this.http.put<any>(this._urlglobal+this._urlCitas+"/update/"+id,cita);
     }
+
     updateUser(id:String,body:any){
       return this.http.put<any>(this._urlglobal+this._urlUser1+"/update/"+id,body);
   }
