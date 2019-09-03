@@ -78,7 +78,7 @@ class LoginController {
     }
     else{
       let token = util.crearToken(res.cedula+","+res.role.nombre);
-      resp.status(200).json({Nombre:res.nombreUser,Apellido:res.apellidoUser, Rol:res.role.nombre, RolId:res.rol, Cedula:res.cedula,Token:token})
+      resp.status(200).json({Nombre:res.nombreUser,Apellido:res.apellidoUser, Rol:util.cifrar(1,res.role.nombre), Cedula:res.cedula,Token:token})
       return
     }
   },
