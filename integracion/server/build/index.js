@@ -7,10 +7,11 @@ const express_1 = __importDefault(require("express"));
 if (process.env.NODE_ENV != "production") {
     require("dotenv").config();
 }
-//require("./database");
+require("./database");
+//require("./mail");
 const morgan_1 = __importDefault(require("morgan"));
 const cors_1 = __importDefault(require("cors"));
-//const bodyParser =  require("body-parser");
+const bodyParser = require("body-parser");
 const multer = require("multer");
 const path = require("path");
 const uuid = require("uuid/v4");
@@ -25,6 +26,7 @@ const usuariosRoutes_1 = __importDefault(require("./routes/usuariosRoutes"));
 const examenesRoutes_1 = __importDefault(require("./routes/examenesRoutes"));
 const odontogramaRoutes_1 = __importDefault(require("./routes/odontogramaRoutes"));
 const tratamientosRoutes_1 = __importDefault(require("./routes/tratamientosRoutes"));
+const mailRouter_1 = __importDefault(require("./routes/mailRouter"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -39,8 +41,10 @@ class Server {
         this.app.use(express_1.default.static(path.join(__dirname, '/public')));
         this.app.use(morgan_1.default("dev"));
         this.app.use(cors_1.default());
-        this.app.use(express_1.default.json());
-        this.app.use(express_1.default.urlencoded({ extended: false }));
+        this.app.use(bodyParser.json());
+        this.app.use(bodyParser.urlencoded({ extended: true }));
+        /*this.app.use(express.json());
+        this.app.use(express.urlencoded({extended: false}));*/
         let storage = multer.diskStorage({
             destination: path.join(__dirname, "public/uploads"),
             filename: (req, file, cb) => {
@@ -71,6 +75,7 @@ class Server {
         this.app.use("/api/examenes/consultar", examenesRoutes_1.default);
         this.app.use("/api/odontograma/consultar", odontogramaRoutes_1.default);
         this.app.use("/api/tratamientos/consultar", tratamientosRoutes_1.default);
+        this.app.use("/api/correo/consultar", mailRouter_1.default);
     }
     start() {
         this.app.listen(this.app.get("port"), () => {
