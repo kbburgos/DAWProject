@@ -2,10 +2,11 @@ import express, {Application} from "express";
 if(process.env.NODE_ENV != "production"){
   require("dotenv").config();
 }
-require("./database");
+//require("./database");
+//require("./mail");
 import morgan from "morgan";
 import cors from "cors";
-//const bodyParser =  require("body-parser");
+const bodyParser =  require("body-parser");
 const multer = require("multer");
 const path = require("path");
 const uuid = require("uuid/v4");
@@ -20,6 +21,7 @@ import usuariosRouter from "./routes/usuariosRoutes";
 import examenesRouter from "./routes/examenesRoutes";
 import odontogramaRouter from "./routes/odontogramaRoutes";
 import tratamientosRouter from "./routes/tratamientosRoutes";
+import mailRouter from "./routes/mailRouter";
 
 class Server {
   public app:Application;
@@ -36,8 +38,10 @@ class Server {
     this.app.use(express.static(path.join(__dirname, '/public')));
     this.app.use(morgan("dev"));
     this.app.use(cors());
-    this.app.use(express.json());
-    this.app.use(express.urlencoded({extended: false}));
+    this.app.use(bodyParser.json());
+    this.app.use(bodyParser.urlencoded({ extended: true }));
+    /*this.app.use(express.json());
+    this.app.use(express.urlencoded({extended: false}));*/
     let storage = multer.diskStorage({
       destination: path.join(__dirname, "public/uploads"),
       filename: (req:any, file:any, cb:any) => {
@@ -71,6 +75,7 @@ class Server {
     this.app.use("/api/examenes/consultar",examenesRouter);
     this.app.use("/api/odontograma/consultar", odontogramaRouter);
     this.app.use("/api/tratamientos/consultar", tratamientosRouter);
+    this.app.use("/api/correo/consultar",mailRouter);
   }
 
   start(): void {
