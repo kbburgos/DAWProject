@@ -9,10 +9,7 @@ class CitasController {
 
   public async newCita(req: Request, res: Response): Promise<void> {
     let token = req.header("Authorization");
-    if (req.body.cedula === undefined || req.body.titulo === undefined || req.body.id_paciente === undefined || req.body.id_medico === undefined) {
-      res.status(400).json({ log: "Debe ingresar datos validos" });
-      return;
-    }
+    
     if (token == null) {
       res
         .status(400)
@@ -29,13 +26,16 @@ class CitasController {
         .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
       return;
     }
-
+    let date = new Date(Date.parse(req.body.fecha))
     citas.create({
       titulo: req.body.titulo,
       id_paciente: req.body.id_paciente,
       id_medico: req.body.id_medico,
+      nota: req.body.nota,
+      fecha: date.toDateString(),
+      hora: date.toTimeString().split(" ")[0],
       createdAt: new Date()
-    }).then((data: any) => {
+          }).then((data: any) => {
       if (data.titulo == null) {
         res.status(401).json({ log: "No se insertaron los datos" });
         return;

@@ -20,10 +20,6 @@ class CitasController {
     newCita(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let token = req.header("Authorization");
-            if (req.body.cedula === undefined || req.body.titulo === undefined || req.body.id_paciente === undefined || req.body.id_medico === undefined) {
-                res.status(400).json({ log: "Debe ingresar datos validos" });
-                return;
-            }
             if (token == null) {
                 res
                     .status(400)
@@ -39,10 +35,14 @@ class CitasController {
                     .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
+            let date = new Date(Date.parse(req.body.fecha));
             citas.create({
                 titulo: req.body.titulo,
                 id_paciente: req.body.id_paciente,
                 id_medico: req.body.id_medico,
+                nota: req.body.nota,
+                fecha: date.toDateString(),
+                hora: date.toTimeString().split(" ")[0],
                 createdAt: new Date()
             }).then((data) => {
                 if (data.titulo == null) {
@@ -492,7 +492,7 @@ class CitasController {
                 }
             }).then((rs) => {
                 if (rs[0] === 1) {
-                    res.status(200).json({ log: "La cita fue actualizada" });
+                    res.status(200).json({ log: "La cita fue atendida." });
                     return;
                 }
                 res.status(400).json({ log: "La cita no existe" });

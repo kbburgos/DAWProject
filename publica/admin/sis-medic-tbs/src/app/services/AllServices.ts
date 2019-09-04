@@ -19,6 +19,10 @@ export class AllServices {
     }
 
 
+    createCita(cita:any){
+      return this.http.post<any>(this._urlglobal+this._urlCitas+"/newcita/",cita);
+    }
+
     getMedicByParameter(parametro:String){
     return this.http.get<any>(this._urlglobal+this._urlmedics+"/filtro/"+parametro);
     }

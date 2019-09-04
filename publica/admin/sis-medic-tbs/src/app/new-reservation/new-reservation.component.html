@@ -1,110 +1,152 @@
-
-
-
 <div class="container-fluid" id="container-height">
-    <app-menu></app-menu>
-    <div class="container-fluid">
+  <app-menu></app-menu>
 
-      <div class="col-md-12 col-sm-12">
-        <h1 class="text-center">Nueva Cita</h1>
+  <div class="row">
+      <div class="col-md-12">
+        <h1 class="text-center">Nuevo Paciente</h1>
       </div>
+    </div>
+
+  <div class="row">
+    <div class="col-md-12">
+
       <br>
-      
-      <div class="form-row">
-          <div class="col-md-12 mb-4">
-  <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
-    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
-  </button>
-  <mat-horizontal-stepper [linear]="isLinear" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
-        <ng-template matStepLabel>Asunto</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Asunto" formControlName="firstCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperNext>Siguiente</button>
-        </div>
-      </form>
-    </mat-step>
+      <div class="col-md-6">
+        <form  [formGroup]="editform">
+          <div class="form-container">
+            <mat-form-field appearance="outline" class="my-1">
+              <mat-label>Asunto*</mat-label>
+              <input matInput type="text" placeholder="Asunto" formControlName="asunto" />
+              <mat-error *ngIf="hasError('asunto', 'required')">Paciente is required</mat-error>
 
 
- 
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="my-1">
+              <mat-label>Seleccione el médico (Cedula)*</mat-label>
+              <mat-select [(ngModel)]="selectMedico" formControlName="medico_select" id="ciudades_laar">
+                <mat-option>
+                  <ngx-mat-select-search [placeholderLabel]="'Seleccione el Medico'" formControlName="medico_search"
+                    [noEntriesFoundLabel]="'No hay medicos que coincidan'">
+                  </ngx-mat-select-search>
+                </mat-option>
+                <mat-option *ngFor="let medico of filtroMedicos()" [value]="medico.cedula">
+                  {{ medico.nombreUser+" "+medico.apellidoUser+" ("+medico.cedula+")" }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="hasError('medico_select', 'required')">Medico is required</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="my-1">
+              <mat-label>Seleccione el paciente (Cedula)*</mat-label>
+              <mat-select [(ngModel)]="selectPaciente" formControlName="paciente_select" id="ciudades_laar">
+                <mat-option>
+                  <ngx-mat-select-search [placeholderLabel]="'Seleccione el Medico'" formControlName="paciente_search"
+                    [noEntriesFoundLabel]="'No hay pacientes que coincidan'">
+                  </ngx-mat-select-search>
+                </mat-option>
+                <mat-option *ngFor="let paciente of filtroPacientes()" [value]="paciente.cedula">
+                  {{ paciente.nombre+" "+paciente.apellido+" ("+paciente.cedula+")" }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="hasError('paciente_select', 'required')">Paciente is required</mat-error>
+            </mat-form-field>
 
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Paciente</ng-template>
-        <select name="pacient_id" id="validationDefault02" class="form-control" required>
-            <option value="">-- SELECCIONE --</option>
-            <option value=""></option>
-          </select>
-        <div>
-          <button mat-button matStepperPrevious>Atrás</button>
-          <button mat-button matStepperNext>Siguiente</button>
+
+
+            <mat-form-field appearance="outline" class="my-1">
+              <mat-label>Prescripcion de la cita*</mat-label>
+              <textarea matInput placeholder="Prescripcion de la cita*" formControlName="prescripcion"
+                id="descripcarga"></textarea>
+              <mat-error *ngIf="hasError('prescripcion', 'required')">Descripcion is required</mat-error>
+            </mat-form-field>
+
+
+
+
+          </div>
+          <!-- <div class="form-group">
+                <label for="inputEmail1" class="col-lg-2 control-label">Asunto*</label>
+                <div class="col-md-6">
+                  <input type="text" name="title" value="" required class="form-control" id="inputEmail1" placeholder="Asunto">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail1" class="col-lg-2 control-label">Paciente*</label>
+                <div class="col-md-6">
+                  <select name="pacient_id" class="form-control" required>
+                    <option value="">-- SELECCIONE --</option>
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail1" class="col-lg-2 control-label">Medico*</label>
+                <div class="col-md-6">
+                  <select name="medic_id" class="form-control" required>
+                    <option value="">-- SELECCIONE --</option>
+                    <option value=""></option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail1" class="col-lg-2 control-label">Fecha/Hora*</label>
+                <div class="col-md-6">
+                  <input type="date" name="date_at" value="" required class="form-control" id="inputEmail1" placeholder="Fecha">
+                </div>
+                <div class="col-md-6">
+                  <input type="time" name="time_at" value="" required class="form-control" id="inputEmail1" placeholder="Hora">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputEmail1" class="col-lg-2 control-label">Nota</label>
+                <div class="col-md-6">
+                  <textarea class="form-control" name="note" placeholder="Nota"></textarea>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <p class="alert alert-info">* Campos obligatorios</p>
+              </div>
+              <div class="form-group">
+                <div class="col-lg-offset-2 col-lg-10">
+                  <input type="hidden" name="id" value="">
+                  <button type="submit" class="btn btn-primary">Actualizar Cita</button>
+                </div>
+              </div> -->
+
+
+        </form>
+
+          <div class="form-group">
+              <div class="my-1">
+                  <input type="text" ngxDaterangepickerMd placeholder="Seleccione la fecha de atencion..."
+                    #rangedate class="form-control" [singleDatePicker]="true"
+                    [timePicker]="true" [timePickerSeconds]="true" [timePickerIncrement]="15" [timePicker24Hour]="true"
+                     [showClearButton]="true"  endKey="endDate" startKey="startDate"
+                    [(ngModel)]="selected" drops="up" [locale]="local">
+                </div>
+
+
+          </div>
+          <div class="container-fluid">
+              <div class="row text-center">
+                <div class=" col-sm-12 mb-1" [ngClass]="{ 'd-none': isvisible }">
+                  <p class="text-danger">{{errLog}}</p>
+                </div>
+              </div>
+            </div>
+          <div class="form-group text-center" >
+              <button class=" my-2"  mat-raised-button color="primary" style="margin-left: 10px" mat-button
+              [disabled]="!editform.valid&&!validarDate(rangedate)" (click)="crcita(rangedate)"
+              >Actualizar Datos de Cita
+
+            </button>
+          </div>
+
+
+
         </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Doctor</ng-template>
-        <select name="medic_id" id="validationDefault03" class="form-control" required>
-            <option value="">-- SELECCIONE --</option>
-            <option value=""></option>
-          </select>
-        <div>
-          <button mat-button matStepperPrevious>Atrás</button>
-          <button mat-button matStepperNext>Siguiente</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Fecha</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Fecha" formControlName="secondCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Atrás</button>
-          <button mat-button matStepperNext>Siguiente</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step [stepControl]="secondFormGroup">
-      <form [formGroup]="secondFormGroup">
-        <ng-template matStepLabel>Hora</ng-template>
-        <mat-form-field>
-          <input matInput placeholder="Hora" formControlName="secondCtrl" required>
-        </mat-form-field>
-        <div>
-          <button mat-button matStepperPrevious>Atrás</button>
-          <button mat-button matStepperNext>Siguiente</button>
-        </div>
-      </form>
-    </mat-step>
-    <mat-step>
-      <ng-template matStepLabel>Hecho</ng-template>
-      Completo
-      <div>
-        <button mat-button matStepperPrevious>Atrás</button>
-        <button mat-button (click)="stepper.reset()">Enviar</button>
-      </div>
-    </mat-step>
-  </mat-horizontal-stepper>
-  </div>
-  </div>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
     </div>
   </div>
-  <app-footer></app-footer>
-  <router-outlet></router-outlet>
-  
+</div>
+<app-footer></app-footer>
