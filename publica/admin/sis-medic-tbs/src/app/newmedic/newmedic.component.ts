@@ -3,6 +3,7 @@ import { Router } from "@angular/router";
 import {AllServices} from './../services/AllServices';
 import { AuthService } from "../services/loginUtils/auth.service";
 import { DataService } from "./../services/data.services";
+import Encrypt from "../services/serealUtils/encrypt";
 
 @Component({
   selector: 'app-newmedic',
@@ -16,6 +17,7 @@ export class NewmedicComponent implements OnInit {
     cedula:"",
     nombreUser:"",
     pasword: "",
+    password: "",
     apellidoUser:"",
     email:"",
     phone:"",
@@ -25,22 +27,25 @@ export class NewmedicComponent implements OnInit {
   }
   isvisible = true;
   errLog ="";
+  criptado= "";
+
   ngOnInit() {
-
-
+    this.criptado= Encrypt.cifrar( this.usuario.pasword);
+    this.usuario.pasword= this.criptado;
   }
 
   createUser(){
     this.isvisible = true;
+    let contra2 = ""+ $("#validationDefault04").val();
+    contra2= Encrypt.cifrar(contra2);
+    this.usuario.password= contra2;
     this._services.createUser(this.usuario).subscribe(data=>{
-      this._router.navigate(["/medic"])
-
+      //this._router.navigate(["/medic"])
     },err=>{
       console.log(err);
       this.isvisible = false
       this.errLog = err.error.log
     })
   }
-
 
 }

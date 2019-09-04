@@ -35,7 +35,7 @@ import { MyreservationComponent } from './myreservation/myreservation.component'
 
 
 const routes: Routes = [
-  
+
   {path: '',canActivate:[AuthGuardLogin], component: LoginComponent},
   {path: 'view-exa',canActivate:[AuthGuard], component: ViewExaComponent},
   {path: 'medic', canActivate:[AuthGuard],component: MedicComponent},
@@ -53,7 +53,7 @@ const routes: Routes = [
   {path: 'editmedic',canActivate:[AuthGuard],component:EditmedicComponent},
   {path: "proximamente",canActivate:[AuthGuard], component: ProximamenteComponent},
   {path: 'edit-exa',canActivate:[AuthGuard],component:EditExamenComponent},
-  {path: 'ver-examen',canActivate:[AuthGuard],component:VerExamenComponent},
+  {path: 'ver-examen/:id',canActivate:[AuthGuard],component:VerExamenComponent},
   {path: 'configuration',canActivate:[AuthGuard],component:ConfigurationComponent},
   {path: 'edit-reservation',canActivate:[AuthGuard],component:EditReservationComponent},
   {path: 'add-exa',canActivate:[AuthGuard],component:AddExaComponent},
@@ -64,7 +64,7 @@ const routes: Routes = [
   {path: 'not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
   {path: 'page-not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
   {path: 'perfil',canActivate:[AuthGuard],component: PerfilComponent},
-  {path: '#',canActivate:[AuthGuard],redirectTo: 'page-not-found'},
+  {path: '**',canActivate:[AuthGuard],redirectTo: 'page-not-found'},
   {path: "myReservation/:cedula/:id",canActivate:[AuthGuard], component: MyreservationComponent}
 ];
 

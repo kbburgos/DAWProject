@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -20,10 +21,6 @@ class CitasController {
     newCita(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let token = req.header("Authorization");
-            if (req.body.cedula === undefined || req.body.titulo === undefined || req.body.id_paciente === undefined || req.body.id_medico === undefined) {
-                res.status(400).json({ log: "Debe ingresar datos validos" });
-                return;
-            }
             if (token == null) {
                 res
                     .status(400)
@@ -39,10 +36,14 @@ class CitasController {
                     .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
+            let date = new Date(Date.parse(req.body.fecha));
             citas.create({
                 titulo: req.body.titulo,
                 id_paciente: req.body.id_paciente,
                 id_medico: req.body.id_medico,
+                nota: req.body.nota,
+                fecha: date.toDateString(),
+                hora: date.toTimeString().split(" ")[0],
                 createdAt: new Date()
             }).then((data) => {
                 if (data.titulo == null) {

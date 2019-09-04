@@ -16,6 +16,7 @@ class IndexRoutes {
     this.router.post("/new/:cedula&:token",appController.newExam);
     this.router.get("/pacienteId/:id",appController.getById);
     this.router.get("/pacienteCedula/:cedula",appController.getByCedula);
+    this.router.get("/getbyid/:id",appController.getById);
   }
 }
 const indexRoutes = new IndexRoutes();

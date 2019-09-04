@@ -32,7 +32,7 @@ export class MedicComponent implements OnInit {
     if (parametro === "") {
       this.top10(); //si el parametro de busqueda el vacio se carga el top 10 de pacientes
     } else {
-      this._services.getMedicByParameter(parametro).subscribe(
+      this._services.getUserByParameter(parametro).subscribe(
         data => {
           this.isvisible = true; // se muestra los pacientes que coincidan con la busqueda
           console.log(data);

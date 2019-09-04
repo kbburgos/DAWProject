@@ -145,8 +145,7 @@ class LoginController {
       res.status(401).json({log:"Su usuario no permite la transacción"})
       return
     }
-    //verificar sha debe coincidir, en el body enviar el sha del json
-    users.create({
+    let usuario= {
       cedula:req.body.cedula,
       pasword:req.body.password,
       nombreUser:req.body.nombreUser,
@@ -157,7 +156,12 @@ class LoginController {
       image:null,
       createdAt:new Date(),
       updatedAt:null
-    }).then((rs:any)=>{console.log(rs)
+    }
+    console.log(usuario);
+    //verificar sha debe coincidir, en el body enviar el sha del json
+    users.create(usuario
+
+    ).then((rs:any)=>{console.log(rs)
       res.status(200).json(rs)
       return
     },
