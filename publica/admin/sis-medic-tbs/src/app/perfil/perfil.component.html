@@ -1,138 +1,81 @@
+<div class="container-fluid" id="container-height">
 <app-menu></app-menu>
-<div>
-  <div class="container">
-    <div class="row profile">
-      <div class="col-md-3">
-        <div class="profile-sidebar">
-          <div class="profile-userpic" align="center">
-            <img src="https://static.change.org/profile-img/default-user-profile.svg" class="img-responsive" alt="middle">
-          </div>
-          <div class="profile-usertitle" align="center">
-            <div class="profile-usertitle-name">
-              <label>Nombre del usuario</label>
-            </div>
-            <div class="profile-usertitle-job" align="center">
-              <label>Perfil de usuario</label>
-            </div>
-          </div>
-          <div class="profile-userbuttons" align="center">
-            <button type="button" class="btn btn-success btn-sm">Cambiar imagen</button>
-          </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="text-center">Perfil de Usuario</h1>
+    </div>
+  </div>
 
-          <mat-expansion-panel>
-            <mat-expansion-panel-header id="numero1">
-              <mat-panel-title>
-                <mat-icon class="material-icons">home</mat-icon>
-              </mat-panel-title>
-              <mat-panel-description>
-                General
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-          </mat-expansion-panel>
+  <br>
+  <br>
 
-          <mat-expansion-panel>
-            <mat-expansion-panel-header id="numero2">
-              <mat-panel-title>
-                <mat-icon class="material-icons">person</mat-icon>
-              </mat-panel-title>
-              <mat-panel-description>
-                Configurar
-              </mat-panel-description>
-            </mat-expansion-panel-header>
-          </mat-expansion-panel>
-        </div>
+  <form>
+    <div class="form-row">
+      <div class="col-md-6 mb-4">
+        <label>Nombre</label>
+        <input type="text" class="form-control" name="nombre" placeholder="Nombre" >
       </div>
-
-
-      <div class="col-md-9" id="parainfo">
-        <div class="example-container">
-          <label>Nombres del Usuario</label>
-          <mat-form-field>
-            <input matInput placeholder="Nombres">
-          </mat-form-field>
-
-
-
-          <label>Apellidos del Usuario</label>
-          <mat-form-field>
-            <input matInput placeholder="Apellidos">
-          </mat-form-field>
-
-
-
-
-          <label>Email</label>
-          <mat-form-field>
-            <input matInput placeholder="Correo">
-          </mat-form-field>
-
-
-
-
-
-          <label>Teléfono</label>
-          <mat-form-field>
-            <input matInput placeholder="Teléfono">
-          </mat-form-field>
-
-
-
-
-          <label>Activo</label>
-          <mat-radio-group aria-label="Select an option">
-            <mat-radio-button value="1">isActive</mat-radio-button>
-          </mat-radio-group>
-
-
-
-          <label>Creado</label>
-          <mat-form-field>
-            <input matInput placeholder="Fecha">
-          </mat-form-field>
-        </div>
+      <div class="col-md-6 mb-4">
+        <label >Apellidos</label>
+        <input type="text" class="form-control" name="apellido" placeholder="Apellidos">
       </div>
+    </div>
 
-
-
-      <div class="col-md-9" id="paraconfiguracion">
-      <div class="example-container">
-        <label>Nombres del Usuario</label>
-        <mat-form-field>
-          <input matInput placeholder="Nombres">
-        </mat-form-field>
-
-        <label>Apellidos del Usuario</label>
-        <mat-form-field>
-          <input matInput placeholder="Apellidos">
-        </mat-form-field>
-
-        <label>Email</label>
-        <mat-form-field>
-          <input matInput placeholder="Correo">
-        </mat-form-field>
-
-        <label>Teléfono</label>
-        <mat-form-field>
-          <input matInput placeholder="Teléfono">
-        </mat-form-field>
-
-        <label>Activo</label>
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="1">isActive</mat-radio-button>
-        </mat-radio-group>
-
-        <button id="botoncito" align="center" mat-raised-button >Guardar datos</button>
+    <div class="form-row">
+      <div class="col-md-6 mb-4">
+        <label>CI</label>
+        <input type="text" class="form-control" name="CI" placeholder="CI" >
+      </div>
+      <div class="col-md-6 mb-4">
+        <label >Email</label>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text" >@</span>
+          </div>
+          <input type="email" class="form-control" name="email" placeholder="Email" >
+        </div>
 
       </div>
     </div>
 
+    <div class="form-row">
+      <div class="col-md-6 mb-4">
+        <label>*Contrase&ntilde;a</label>
+        <input type="password" name="pasword" class="form-control" id="validationDefault04" placeholder="Contrase&ntilde;a">
+      </div>
+      <div class="col-md-6 mb-4">
+        <label>Teléfono</label>
+        <input type="text" class="form-control" name="phone" placeholder="Teléfono">
+      </div>
+    </div>
 
+    <div class="form-row">
+      <div class="col-md-6 mb-4">
+        <label >Rol</label>
+        <input type="rol" name="rol" class="form-control" id="validationDefault20" placeholder="Rol">
+      </div>
+    </div>
 
-  </div>
-  </div>
+    <!--div class="form-row">
+      <div class="col-md-12 mb-4">
+            <span *ngIf="usuario.rol=='1'">
+              <p class="text-dark text-center bg-light"><b>Tipo de usuario: Administrador</b></p>
+            </span>
+        <span *ngIf="usuario.rol=='2'">
+              <p class="text-dark text-center bg-light"><b>Tipo de usuario: Normal</b></p>
+            </span>
+      </div>
+    </div -->
+    <br>
+    <div class="form-row">
+      <button class="btn btn-primary mx-auto d-flex justify-content-center" type="submit"  routerLink="/edit-user">Actualizar usuario</button>
+    </div>
+
+  </form>
+
 </div>
+
 <app-footer></app-footer>
-<router-outlet></router-outlet>
 
 
 
