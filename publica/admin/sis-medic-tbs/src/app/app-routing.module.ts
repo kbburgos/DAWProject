@@ -35,7 +35,7 @@ import { MyreservationComponent } from './myreservation/myreservation.component'
 
 
 const routes: Routes = [
-  
+
   {path: '',canActivate:[AuthGuardLogin], component: LoginComponent},
   {path: 'view-exa',canActivate:[AuthGuard], component: ViewExaComponent},
   {path: 'medic', canActivate:[AuthGuard],component: MedicComponent},
@@ -64,7 +64,7 @@ const routes: Routes = [
   {path: 'not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
   {path: 'page-not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
   {path: 'perfil',canActivate:[AuthGuard],component: PerfilComponent},
-  {path: '#',canActivate:[AuthGuard],redirectTo: 'page-not-found'},
+  {path: '**',canActivate:[AuthGuard],redirectTo: 'page-not-found'},
   {path: "myReservation/:cedula/:id",canActivate:[AuthGuard], component: MyreservationComponent}
 ];
 
