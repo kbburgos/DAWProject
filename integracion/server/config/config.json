@@ -1,23 +1,38 @@
 {
   "development": {
+<<<<<<< HEAD
     "username": "medicina",
     "password": "medicina",
+=======
+    "username": "root",
+    "password": "",
+>>>>>>> b61f8729ea5a15dd0119e71ca702fc85ca0d2317
     "database": "sistemmedico",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "test": {
+<<<<<<< HEAD
     "username": "medicina",
     "password": "medicina",
+=======
+    "username": "root",
+    "password": "r",
+>>>>>>> b61f8729ea5a15dd0119e71ca702fc85ca0d2317
     "database": "sistemmedico",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "production": {
+<<<<<<< HEAD
     "username": "medicina",
     "password": "medicina",
+=======
+    "username": "root",
+    "password": "",
+>>>>>>> b61f8729ea5a15dd0119e71ca702fc85ca0d2317
     "database": "sistemmedico",
     "host": "127.0.0.1",
     "dialect": "mysql",

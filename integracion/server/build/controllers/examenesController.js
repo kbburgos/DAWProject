@@ -51,15 +51,23 @@ class ExamenController {
                 res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
-            let data = yield examen.find().sort("-fecha").limit(10);
-            res.json(data);
+            try {
+                let data = yield examen.find().sort("-fecha").limit(10);
+                res.json(data);
+            }
+            catch (e) {
+                console.log(e);
+                res.status(500);
+            }
         });
     }
     filtroParametro(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { fechaI, fechaF, cedula } = req.body;
+            // const {fechaI, fechaF, cedula} = req.body;
+            let cedula = req.params.cedula;
             let token = req.header("Authorization");
-            if (fechaI == null || fechaF == null || cedula == null) {
+            // if(fechaI==null || fechaF==null || cedula==null){
+            if (cedula == null) {
                 res.status(400).json({ log: "La informacion enviada no es valida." });
                 return;
             }
@@ -72,16 +80,22 @@ class ExamenController {
                 res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
-            let exa_fech = yield examen.find({
-                fecha: { $gte: new Date(fechaI), $lte: new Date(fechaF) },
-                cedula: cedula
-            });
-            if (exa_fech.length == 0) {
-                res.status(200).json({ log: "No hay datos a mostrar." });
+            try {
+                let exa_fech = yield examen.find({
+                    //fecha: { $gte: new Date(fechaI), $lte: new Date(fechaF) },
+                    cedula: cedula
+                });
+                if (exa_fech.length == 0) {
+                    res.status(400).json({ log: "No hay datos a mostrar." });
+                    return;
+                }
+                res.status(200).json(exa_fech);
                 return;
             }
-            res.status(200).json(exa_fech);
-            return;
+            catch (e) {
+                console.log(e);
+                res.status(500);
+            }
         });
     }
     delete(req, res) {
@@ -112,7 +126,7 @@ class ExamenController {
             return;
         });
     }
-    new(req, res) {
+    newExam(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             const { cedula, token } = req.params;
             if (cedula == null || token == null) {
@@ -128,21 +142,26 @@ class ExamenController {
                 res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
-            let result = yield cloudinary.v2.uploader.upload(req.file.path);
-            let examen_new = new examen({
-                nota: req.body.descripcion,
-                cedula: cedula,
-                imageURL: result.url,
-                public_id: result.public_id,
-                fecha: new Date()
-            });
-            let mdc = yield examen_new.save();
-            yield fs.unlink(req.file.path);
-            if (mdc._id == null) {
-                res.send("No se pudo guardar el examen.");
-                return;
+            try {
+                let result = yield cloudinary.v2.uploader.upload(req.file.path);
+                let examen_new = new examen({
+                    nota: req.body.descripcion,
+                    cedula: cedula,
+                    imageURL: result.url,
+                    public_id: result.public_id,
+                    fecha: new Date()
+                });
+                let mdc = yield examen_new.save();
+                yield fs.unlink(req.file.path);
+                if (mdc._id == null) {
+                    res.send("No se pudo guardar el examen.");
+                    return;
+                }
+                res.send("Imagen guardada correctamente.");
             }
-            res.send("Imagen guardada correctamente.");
+            catch (e) {
+                console.log(e, 'error');
+            }
         });
     }
     getById(req, res) {

@@ -4,6 +4,7 @@ const Examen = new Schema({
     cedula: String,
     imageURL: String,
     public_id: String,
-    fecha: Date
+    fecha: Date,
+    paciente:String
 });
-module.exports = model("Examen",Examen);
+module.exports = model("examenes",Examen);

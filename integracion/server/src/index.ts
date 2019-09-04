@@ -2,7 +2,7 @@ import express, {Application} from "express";
 if(process.env.NODE_ENV != "production"){
   require("dotenv").config();
 }
-require("./database");
+//require("./database");
 //require("./mail");
 import morgan from "morgan";
 import cors from "cors";

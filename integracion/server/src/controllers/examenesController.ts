@@ -39,14 +39,22 @@ class ExamenController {
       res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
       return;
     }
-    let data = await examen.find().sort("-fecha").limit(10);
-    res.json(data);
+    try{
+      let data = await examen.find().sort("-fecha").limit(10);
+      res.json(data);
+    }catch(e){
+      console.log(e)
+      res.status(500);
+    }
+   
   }
 
   public async filtroParametro(req: Request,res: Response): Promise<void>{
-    const {fechaI, fechaF, cedula} = req.body;
+   // const {fechaI, fechaF, cedula} = req.body;
+   let  cedula = req.params.cedula;
     let token = req.header("Authorization");
-    if(fechaI==null || fechaF==null || cedula==null){
+   // if(fechaI==null || fechaF==null || cedula==null){
+    if(cedula==null){
       res.status(400).json({log:"La informacion enviada no es valida."})
       return;
     }
@@ -59,17 +67,25 @@ class ExamenController {
       res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
       return;
     }
-    let exa_fech = await examen.find({
-      fecha: { $gte: new Date(fechaI), $lte: new Date(fechaF) },
-      cedula: cedula
-    });
-    if(exa_fech.length==0){
-      res.status(200).json({log: "No hay datos a mostrar."});
-      return
+    try{
+      let exa_fech = await examen.find({
+        //fecha: { $gte: new Date(fechaI), $lte: new Date(fechaF) },
+        cedula: cedula
+      });
+      if(exa_fech.length==0){
+        res.status(400).json({log: "No hay datos a mostrar."});
+        return
+      }
+      res.status(200).json(exa_fech);
+      return;
+    }catch(e){
+      console.log(e)
+      res.status(500);
     }
-    res.status(200).json(exa_fech);
-    return;
+    
   }
+
+  
 
 
   public async delete(req: Request,res: Response): Promise<void>{
@@ -99,7 +115,7 @@ class ExamenController {
     return;
   }
 
-  public async new(req: Request,res: Response): Promise<void>{
+  public async newExam(req: Request,res: Response): Promise<void>{
     const { cedula, token } = req.params;
     if(cedula == null || token == null){
       res.send("Datos invalidos");
@@ -114,7 +130,9 @@ class ExamenController {
       res.status(401).json({log:"Su token a expirado, vuelva a iniciar sesion"})
       return;
     }
-    let result = await cloudinary.v2.uploader.upload(req.file.path);
+
+    try{
+      let result = await cloudinary.v2.uploader.upload(req.file.path);
     let examen_new = new examen({
         nota: req.body.descripcion,
         cedula: cedula,
@@ -129,6 +147,10 @@ class ExamenController {
       return;
     }
     res.send("Imagen guardada correctamente.");
+    } catch(e){
+      console.log(e,'error')
+    }
+    
   }
 
   public async getById(req: Request,res: Response): Promise<void>{
