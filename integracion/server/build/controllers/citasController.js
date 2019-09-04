@@ -492,7 +492,7 @@ class CitasController {
                 }
             }).then((rs) => {
                 if (rs[0] === 1) {
-                    res.status(200).json({ log: "La cita fue actualizada" });
+                    res.status(200).json({ log: "La cita fue atendida." });
                     return;
                 }
                 res.status(400).json({ log: "La cita no existe" });
