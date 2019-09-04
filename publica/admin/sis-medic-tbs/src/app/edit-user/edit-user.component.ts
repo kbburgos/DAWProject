@@ -42,12 +42,9 @@ export class EditUserComponent implements OnInit {
   loadUser(message:string){
     this._services.getUserByParameter(String(message)).subscribe(data=>{
       this.usuario = data[0]
-
-
     },err=>{
       this.errorHandler(err);
     }
-
     )
   }
 

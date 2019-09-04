@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "tsc": "tsc",
+
     "build": "tsc -w",
     "dev": "cross-env NODE_ENV=development nodemon build/index.js",
-    "start": "cross-env NODE_ENV=production node build/index.js",
-    "postinstall": "npm run tsc"
+    "start": "cross-env NODE_ENV=production node build/index.js"
+
   },
   "keywords": [],
   "author": "",

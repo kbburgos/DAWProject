@@ -13,18 +13,18 @@
     <div class="form-row">
       <div class="col-md-6 mb-4">
         <label>Nombre</label>
-        <input type="text" class="form-control" name="nombre" placeholder="Nombre" >
+        <input type="text" value="{{nombre}}" class="form-control" name="nombre" placeholder="Nombre" >
       </div>
       <div class="col-md-6 mb-4">
         <label >Apellidos</label>
-        <input type="text" class="form-control" name="apellido" placeholder="Apellidos">
+        <input type="text" value="{{apellido}}" class="form-control" name="apellido" placeholder="Apellidos">
       </div>
     </div>
 
     <div class="form-row">
       <div class="col-md-6 mb-4">
         <label>CI</label>
-        <input type="text" class="form-control" name="CI" placeholder="CI" >
+        <input type="text" value="{{cedula}}" class="form-control" name="CI" placeholder="CI" >
       </div>
       <div class="col-md-6 mb-4">
         <label >Email</label>
@@ -32,7 +32,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" >@</span>
           </div>
-          <input type="email" class="form-control" name="email" placeholder="Email" >
+          <input type="email" value="{{email}}" class="form-control" name="email" placeholder="Email" >
         </div>
 
       </div>
@@ -41,31 +41,21 @@
     <div class="form-row">
       <div class="col-md-6 mb-4">
         <label>*Contrase&ntilde;a</label>
-        <input type="password" name="pasword" class="form-control" id="validationDefault04" placeholder="Contrase&ntilde;a">
+        <input type="password" value="{{contra}}" name="pasword" class="form-control" id="validationDefault04" placeholder="Contrase&ntilde;a">
       </div>
       <div class="col-md-6 mb-4">
         <label>Teléfono</label>
-        <input type="text" class="form-control" name="phone" placeholder="Teléfono">
+        <input type="text" value="{{phone}}" class="form-control" name="phone" placeholder="Teléfono">
       </div>
     </div>
 
     <div class="form-row">
       <div class="col-md-6 mb-4">
         <label >Rol</label>
-        <input type="rol" name="rol" class="form-control" id="validationDefault20" placeholder="Rol">
+        <input type="rol" value="{{rol}}" name="rol" class="form-control" id="validationDefault20" placeholder="Rol">
       </div>
     </div>
 
-    <!--div class="form-row">
-      <div class="col-md-12 mb-4">
-            <span *ngIf="usuario.rol=='1'">
-              <p class="text-dark text-center bg-light"><b>Tipo de usuario: Administrador</b></p>
-            </span>
-        <span *ngIf="usuario.rol=='2'">
-              <p class="text-dark text-center bg-light"><b>Tipo de usuario: Normal</b></p>
-            </span>
-      </div>
-    </div -->
     <br>
     <div class="form-row">
       <button class="btn btn-primary mx-auto d-flex justify-content-center" type="submit"  routerLink="/edit-user">Actualizar usuario</button>
