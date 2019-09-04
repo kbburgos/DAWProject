@@ -236,9 +236,10 @@ class CitasController {
                     .json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
-            citas.findAll({
+            citas.findAll({ order: [["fecha", "DESC"]],
                 where: {
-                    id_paciente: id
+                    id_paciente: id,
+                    is_active: false
                 }
             }).then((resp) => {
                 if (resp.length == 0) {
@@ -446,6 +447,45 @@ class CitasController {
                 updatedAt: new Date(),
                 fecha: date.toDateString(),
                 hora: date.toTimeString().split(" ")[0] //  time: 13:36:47 GMT-0500 (hora de Ecuador)
+            }, {
+                where: {
+                    codigo: id
+                }
+            }).then((rs) => {
+                if (rs[0] === 1) {
+                    res.status(200).json({ log: "La cita fue actualizada" });
+                    return;
+                }
+                res.status(400).json({ log: "La cita no existe" });
+                return;
+            }, (err) => {
+                console.log(err);
+                res.status(500).json({ log: "Error del servidor" });
+                return;
+            });
+        });
+    }
+    updateCitaAtender(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let id = req.params.id;
+            let token = req.header("Authorization");
+            if (id === undefined || req.body.nota === undefined) {
+                res.status(400).json({ log: "Debe ingresar datos validos" });
+                return;
+            }
+            if (token === undefined) {
+                res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
+                return;
+            }
+            let validador = util_1.default.validarToken(token);
+            if (!validador.valido) {
+                res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+                return;
+            }
+            let date = new Date(Date.parse(req.body.fecha));
+            citas.update({
+                nota: req.body.nota,
+                is_active: false
             }, {
                 where: {
                     codigo: id

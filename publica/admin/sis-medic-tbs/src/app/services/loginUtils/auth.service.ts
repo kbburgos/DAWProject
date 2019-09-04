@@ -19,7 +19,6 @@ export class AuthService {
    loginUser(user:any){
     localStorage.removeItem('login');
     this._isLog=true;
-    console.log(user)
     return this.http.post<any>(this._urlAPI+'ingresar',user,{observe: 'response'});
   }
 

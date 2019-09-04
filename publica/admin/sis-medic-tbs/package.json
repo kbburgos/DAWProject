@@ -39,6 +39,8 @@
     "moment": "^2.24.0",
     "ngx-daterangepicker-material": "^2.1.8",
     "ngx-mat-select-search": "^1.8.0",
+    "ngx-paginate": "^2.0.1",
+    "ngx-pagination": "^4.1.0",
     "path": "^0.12.7",
     "popper.js": "^1.15.0",
     "rxjs": "~6.4.0",

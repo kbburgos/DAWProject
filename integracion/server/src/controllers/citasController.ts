@@ -253,9 +253,10 @@ class CitasController {
       return;
     }
 
-    citas.findAll({
+    citas.findAll({ order: [["fecha", "DESC"]],
       where: {
-        id_paciente: id
+        id_paciente: id,
+        is_active: false
       }
     }).then((resp: any) => {
       if (resp.length == 0) {
@@ -484,6 +485,47 @@ class CitasController {
       }).then((rs: any) => {
         if (rs[0] === 1) {
           res.status(200).json({ log: "La cita fue actualizada" })
+          return
+        }
+        res.status(400).json({ log: "La cita no existe" })
+        return
+      },
+        (err: any) => {
+          console.log(err);
+          res.status(500).json({ log: "Error del servidor" });
+          return;
+        })
+
+  }
+
+  public async updateCitaAtender(req: Request, res: Response): Promise<void> {
+    let id = req.params.id;
+    let token = req.header("Authorization");
+    if (id === undefined || req.body.nota === undefined) {
+      res.status(400).json({ log: "Debe ingresar datos validos" })
+      return
+    }
+    if (token === undefined) {
+      res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" })
+      return
+    }
+    let validador = util.validarToken(token);
+    if (!validador.valido) {
+      res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" })
+      return
+    }
+    let date = new Date(Date.parse(req.body.fecha))
+    citas.update({
+      nota: req.body.nota,
+      is_active: false
+    }, {
+      where: {
+        codigo: id
+
+      }
+      }).then((rs: any) => {
+        if (rs[0] === 1) {
+          res.status(200).json({ log: "La cita fue atendida." })
           return
         }
         res.status(400).json({ log: "La cita no existe" })

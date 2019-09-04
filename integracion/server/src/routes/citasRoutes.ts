@@ -17,6 +17,7 @@ class IndexRoutes {
     this.router.get("/historial/:id&:active",appController.citasDelDoctor);
     this.router.delete("/delete/:id",appController.deleteCita);
     this.router.put("/update/:id",appController.updateCita);
+    this.router.put("/atender/:id",appController.updateCitaAtender);
 
   }
 }

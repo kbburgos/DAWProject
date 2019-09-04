@@ -24,7 +24,7 @@
 				<div class="col-md-12  mx-auto" [ngClass]="{'col-lg-3': permiso, 'col-lg-4':!permiso}">
 
 					<div class="input-group md-form form-sm form-2 pt-2">
-						<input class="form-control"  (keyup.enter)="search(rangedate)" [formControl]="paramPac"
+						<input class="form-control" (keyup.enter)="search(rangedate)" [formControl]="paramPac"
 							type="text" placeholder="Nombre, Apellido o CI del Paciente" aria-label="Search" />
 
 					</div>
@@ -42,14 +42,9 @@
 				<div class="col-md-12" [ngClass]="{'col-lg-5': permiso, 'col-lg-6':!permiso}">
 					<div class="pt-2">
 						<input type="text" ngxDaterangepickerMd placeholder="Seleccione un rango de Fechas..."
-							 startKey="startDate" #rangedate class="form-control"
-							
-							[alwaysShowCalendars]="true"
-							
-							[linkedCalendars]="true"
-							
-							[showClearButton]="true"
-							endKey="endDate" (keyup.enter)="search(rangedate)" [(ngModel)]="selected" [locale]="local">
+							startKey="startDate" #rangedate class="form-control" [alwaysShowCalendars]="true"
+							[linkedCalendars]="true" [showClearButton]="true" endKey="endDate"
+							(keyup.enter)="search(rangedate)" [(ngModel)]="selected" [locale]="local">
 
 					</div>
 
@@ -95,12 +90,16 @@
 							</td>
 							<td>{{cita.fecha}}</td>
 							<th>{{cita.is_active?'NO':'SI'}}</th>
-							<td><a routerLink="/edit-reservation"><button type="button" class="btn btn-warning mt-1"
+							<td>
+								<a *ngIf="!permiso" routerLink="/myReservation/{{cita.paciente.cedula}}/{{cita.codigo}}"><button type="button"
+										class="btn btn-success mt-1 mr-1">Atender</button></a>
+								<a routerLink="/edit-reservation"><button type="button" class="btn btn-warning mt-1"
 										(click)="pasToUpdate(cita)">Editar</button></a>
 								<button type="button" class="btn btn-danger mt-1 ml-2" mwlConfirmationPopover
 									[popoverTitle]="'Eliminar'"
 									[popoverMessage]="'Esta seguro de que desea eliminar al Cita?'" (cancel)="true"
-									(confirm)="deleteCita(cita.codigo)">Eliminar</button></td>
+									(confirm)="deleteCita(cita.codigo)">Eliminar</button>
+							</td>
 						</tr>
 
 					</tbody>

@@ -42,7 +42,7 @@ export class ReservationsComponent implements OnInit {
     Position:"Center",
     showRangeLabelOnInput:true
 
-}
+}//true es admin false es medico 
   isvisible = true;
   errLog = "";
   paramMed =new FormControl("");
@@ -68,7 +68,6 @@ export class ReservationsComponent implements OnInit {
         this.popup.openConfirmDialog(message);
       }
     })
-    console.log(this.permiso,"hola");
     
   }
 

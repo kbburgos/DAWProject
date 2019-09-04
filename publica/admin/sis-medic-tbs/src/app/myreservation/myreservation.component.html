@@ -1,0 +1,73 @@
+<div class="container-fluid" id="container-height">
+        <app-menu></app-menu>
+    <div class="row mt-5">
+        <div class="col-md-10 mt-2">
+            <form class="card py-2">
+                <div class="input-group mb-3 input-group-sm col-md-12">
+                    <div class="input-group-prepend">
+                        <label for="validationTextarea" class="input-group-text">Titulo: </label>
+                    </div>
+                    <input type="text" class="form-control" disabled value="{{citaActual.titulo}}">
+                </div>
+                <div class="input-group mb-3 input-group-sm col-md-5">
+                    <div class="input-group-prepend">
+                        <label for="validationTextarea" class="input-group-text">Fecha: </label>
+                    </div>
+                    <input type="text" class="form-control text-center" disabled value="{{citaActual.fecha}}">
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label for="comment">Nota:</label>
+                    <textarea class="form-control" rows="5" id="comment" required></textarea>
+                </div>
+                <div class="form-group row justify-content-center col-md-12">
+                    <button type="submit" class="btn btn-primary" (click) = "atenderCita()">Guardar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2 mx-auto">
+            <div class="card px-1 py-2 mx-auto">
+                <h6 class="text-center">Exámenes</h6>
+                <a href="{{url_add_exa}}{{cedula}}&{{token}}" target="_blank" rel="noopener noreferrer"><button type="button" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>
+                    Agregar</button></a>
+                <br>
+                <a routerLink="/view-exa/{{cedula}}" target="_blank" rel="noopener noreferrer">
+                    <button type="button" class="btn btn-outline-info"><i class="fas fa-eye"></i> Ver Historico</button>
+                </a>
+            </div>
+            <div class="card px-1 py-2 mt-5 mx-auto">
+                <h6 class="text-center">Odontograma</h6>
+                <a routerLink="/odontograma/{{cedula}}" target="_blank" rel="noopener noreferrer"><button type="button" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>
+                    Agregar</button></a>
+                <br>
+                <a routerLink="/odontograma-ver/{{cedula}}" target="_blank" rel="noopener noreferrer">
+                    <button type="button" class="btn btn-outline-info"><i class="fas fa-eye"></i> Ver</button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-11 px-1 card mx-auto">
+            <h4 class="text-center">Histórico de citas.</h4>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Titulo</th>
+                        <th>Fecha</th>
+                        <th>Nota</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let cita of historico | paginate: {itemsPerPage: 10, currentPage: pageActual};">
+                        <td>{{cita.titulo}}</td>
+                        <td>{{cita.fecha}} {{cita.hora}}</td>
+                        <td>{{cita.nota}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <pagination-controls (pageChange)="pageActual = $event" previousLabel="Atras"
+    nextLabel="Siguiente"></pagination-controls>
+</div>
+<app-footer></app-footer>

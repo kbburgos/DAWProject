@@ -26,12 +26,10 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 import { NewReservationComponent} from './new-reservation/new-reservation.component';
 import { ProximamenteComponent } from './proximamente/proximamente.component';
 import { OdontogramaComponent } from './odontograma/odontograma.component';
-import { OdontogramanewComponent } from './odontogramanew/odontogramanew.component';
 import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
-import {CitasmedicoComponent} from './citasmedico/citasmedico.component';
 import {PageNotFoundComponent} from "./page-not-found/page-not-found.component";
 import {PerfilComponent} from "./perfil/perfil.component";
-
+import { MyreservationComponent } from './myreservation/myreservation.component';
 
 
 
@@ -66,7 +64,8 @@ const routes: Routes = [
   {path: 'not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
   {path: 'page-not-found',canActivate:[AuthGuard],component: PageNotFoundComponent},
   {path: 'perfil',canActivate:[AuthGuard],component: PerfilComponent},
-  {path: '#',canActivate:[AuthGuard],redirectTo: 'page-not-found'}
+  {path: '#',canActivate:[AuthGuard],redirectTo: 'page-not-found'},
+  {path: "myReservation/:cedula/:id",canActivate:[AuthGuard], component: MyreservationComponent}
 ];
 
 @NgModule({

@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NgxDaterangepickerMd } from 'ngx-daterangepicker-material';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {MatDialogModule} from '@angular/material/dialog';
 import {
   MatStepperModule,
   MatInputModule,
@@ -61,16 +63,17 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 //import { DataService } from './data.service';
 import { AutonomoService } from './autonomo.service';
 import { OdontogramaService } from './services/odontograma.service';
+import { MyReservationService } from "./services/myreservation.service";
 
 
 import { ConfigService } from './view-exa/config.json';
 import { FilterExamPipe } from './pipers/filter-exam.pipe';
 import { OdontogramaComponent } from './odontograma/odontograma.component';
-import { OdontogramanewComponent } from './odontogramanew/odontogramanew.component';
 import { OdontogramaVerComponent } from './odontograma-ver/odontograma-ver.component';
-import { CitasmedicoComponent } from './citasmedico/citasmedico.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PerfilComponent } from './perfil/perfil.component';
+import { MyreservationComponent } from './myreservation/myreservation.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 
 
 
@@ -105,14 +108,15 @@ import { PerfilComponent } from './perfil/perfil.component';
     ProximamenteComponent,
     FilterExamPipe,
     OdontogramaComponent,
-    OdontogramanewComponent,
-    CitasmedicoComponent,
     OdontogramaVerComponent,
     PageNotFoundComponent,
-    PerfilComponent
+    PerfilComponent,
+    MyreservationComponent,
+    ConfirmDialogComponent
   ],
 
   imports: [
+    MatDialogModule,
     NgxDaterangepickerMd.forRoot(),
     BrowserModule,
     MatFormFieldModule,
@@ -124,7 +128,7 @@ import { PerfilComponent } from './perfil/perfil.component';
     MatDatepickerModule,
     MatNativeDateModule,
     MatStepperModule, MatInputModule, MatButtonModule,  MatSelectModule, MatIconModule, BrowserAnimationsModule,
-    HttpClientModule,
+    HttpClientModule, NgxPaginationModule,
     ConfirmationPopoverModule.forRoot({
       
       confirmButtonType: 'danger' // set defaults here
@@ -132,13 +136,13 @@ import { PerfilComponent } from './perfil/perfil.component';
     MatStepperModule, MatInputModule, MatButtonModule, MatSelectModule, MatIconModule, BrowserAnimationsModule,
     HttpClientModule, MatExpansionModule, MatCheckboxModule, MatRadioModule, MatCardModule
   ],
-  entryComponents:[SnackMessageComponent],
+  entryComponents:[SnackMessageComponent,ConfirmDialogComponent],
   providers: [DataService, ConfigService, AuthService, TokenInterceptorService, AuthGuard, AuthGuardLogin,AllServices,DataService,DialogService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptorService,
       multi: true
-    }, AutonomoService, OdontogramaService],
+    }, AutonomoService, OdontogramaService, MyReservationService],
    
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container-fluid mt-2">
+        <div class="row">
+            <div class="col-md-10">
+                <form class="card py-2">
+                    <div class="input-group mb-3 input-group-sm col-md-12">
+                        <div class="input-group-prepend">
+                            <label for="validationTextarea" class="input-group-text">Titulo: </label>
+                        </div>
+                        <input type="text" class="form-control" disabled value="mi nota">
+                    </div>
+                    <div class="input-group mb-3 input-group-sm col-md-3">
+                        <div class="input-group-prepend">
+                            <label for="validationTextarea" class="input-group-text">Fecha: </label>
+                        </div>
+                        <input type="text" class="form-control text-center" disabled value="25/08/2019">
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <label for="comment">Nota:</label>
+                        <textarea class="form-control" rows="5" id="comment" required></textarea>
+                    </div>
+                    <div class="form-group row justify-content-center col-md-12">
+                        <button type="submit" class="btn btn-primary ">Guardar</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2 mx-auto">
+                <div class="card px-1 py-2">
+                    <h6 class="text-center">Exámenes</h6>
+                    <button type="button" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>
+                        Agregar</button>
+                    <br>
+                    <button type="button" class="btn btn-outline-info"><i class="fas fa-eye"></i> Ver Historico</button>
+                </div>
+                <div class="card px-1 py-2 mt-5">
+                    <h6 class="text-center">Odontograma</h6>
+                    <button type="button" class="btn btn-outline-success"><i class="fas fa-plus-circle"></i>
+                        Agregar</button>
+                    <br>
+                    <button type="button" class="btn btn-outline-info"><i class="fas fa-eye"></i> Ver Historico</button>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-11 px-1 card mx-auto">
+                <h4 class="text-center">Histórico de citas.</h4>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Fecha</th>
+                            <th>Nota</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td>lor</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="https://kit.fontawesome.com/52540fbc5c.js"></script>
+</body>
+
+</html>

@@ -20,6 +20,7 @@ class IndexRoutes {
         this.router.get("/historial/:id&:active", citasController_1.default.citasDelDoctor);
         this.router.delete("/delete/:id", citasController_1.default.deleteCita);
         this.router.put("/update/:id", citasController_1.default.updateCita);
+        this.router.put("/atender/:id", citasController_1.default.updateCitaAtender);
     }
 }
 const indexRoutes = new IndexRoutes();
