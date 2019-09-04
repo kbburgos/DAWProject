@@ -4,15 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "tsc": "tsc",
     "build": "tsc -w",
     "dev": "cross-env NODE_ENV=development nodemon build/index.js",
-    "start": "cross-env NODE_ENV=production node build/index.js"
+    "start": "cross-env NODE_ENV=production node build/index.js",
+    "postinstall": "npm run tsc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "typescript":"^3.6.2",
     "cloudinary": "^1.14.0",
     "cors": "^2.8.5",
     "cross-env": "^5.2.0",
@@ -38,5 +41,10 @@
     "@types/morgan": "^1.7.35",
     "@types/mysql": "^2.15.6",
     "nodemon": "^1.19.1"
-  }
+  },
+  "engines":{
+    "node":"10.16.0",
+    "npm":"6.9.0"
+ }
+
 }

@@ -53,7 +53,7 @@ const routes: Routes = [
   {path: 'editmedic',canActivate:[AuthGuard],component:EditmedicComponent},
   {path: "proximamente",canActivate:[AuthGuard], component: ProximamenteComponent},
   {path: 'edit-exa',canActivate:[AuthGuard],component:EditExamenComponent},
-  {path: 'ver-examen',canActivate:[AuthGuard],component:VerExamenComponent},
+  {path: 'ver-examen/:id',canActivate:[AuthGuard],component:VerExamenComponent},
   {path: 'configuration',canActivate:[AuthGuard],component:ConfigurationComponent},
   {path: 'edit-reservation',canActivate:[AuthGuard],component:EditReservationComponent},
   {path: 'add-exa',canActivate:[AuthGuard],component:AddExaComponent},

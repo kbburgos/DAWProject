@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -94,7 +95,7 @@ class ExamenController {
             }
             catch (e) {
                 console.log(e);
-                res.status(500);
+                res.status(500).json({ log: "Error interno del Servidor" });
             }
         });
     }
@@ -115,15 +116,21 @@ class ExamenController {
                 res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
-            let exa_del = yield examen.findByIdAndDelete(id);
-            if (exa_del._id == null) {
-                res.status(200).json({ log: "No se pudo eliminar el examen." });
+            try {
+                let exa_del = yield examen.findByIdAndDelete(id);
+                if (exa_del._id == null) {
+                    res.status(200).json({ log: "No se pudo eliminar el examen." });
+                    return;
+                }
+                //implementar algo para casos en los que no se elimine de cloudinary la foto, como volver a insertar el registro en la bd
+                yield cloudinary.v2.uploader.destroy(exa_del.public_id);
+                res.status(200).json({ log: "Se elimino el examen." });
                 return;
             }
-            //implementar algo para casos en los que no se elimine de cloudinary la foto, como volver a insertar el registro en la bd
-            yield cloudinary.v2.uploader.destroy(exa_del.public_id);
-            res.status(200).json({ log: "Se elimino el examen." });
-            return;
+            catch (e) {
+                console.log(e);
+                res.status(500).json({ log: "Error interno del Servidor" });
+            }
         });
     }
     newExam(req, res) {
@@ -161,6 +168,7 @@ class ExamenController {
             }
             catch (e) {
                 console.log(e, 'error');
+                res.status(500).json({ log: "Error interno del Servidor" });
             }
         });
     }
@@ -206,12 +214,49 @@ class ExamenController {
                 res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
                 return;
             }
-            let examenes_p = yield examen.find({ cedula: cedula }).sort("-fecha");
-            if (examenes_p.length == 0) {
-                res.status(200).json({ log: "No hay datos a mostrar" });
+            try {
+                let examenes_p = yield examen.find({ cedula: cedula }).sort("-fecha");
+                if (examenes_p.length == 0) {
+                    res.status(200).json({ log: "No hay datos a mostrar" });
+                    return;
+                }
+                res.status(200).json(examenes_p);
+            }
+            catch (e) {
+                console.log(e);
+                res.status(500).json({ log: "Error interno del Servidor" });
+            }
+        });
+    }
+    getByID(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let { id } = req.params;
+            let token = req.header("Authorization");
+            if (id == null) {
+                res.status(400).json({ log: "La informacion enviada no es valida." });
                 return;
             }
-            res.status(200).json(examenes_p);
+            if (token == null) {
+                res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" });
+                return;
+            }
+            let tokenjson = util_1.default.validarToken(token);
+            if (!tokenjson.valido) {
+                res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
+                return;
+            }
+            try {
+                let examenes_p = yield examen.findById(id);
+                if (examenes_p === null) {
+                    res.status(200).json({ log: "No hay datos a mostrar" });
+                    return;
+                }
+                res.status(200).json(examenes_p);
+            }
+            catch (e) {
+                console.log(e);
+                res.status(500).json({ log: "Error interno del Servidor" });
+            }
         });
     }
 }

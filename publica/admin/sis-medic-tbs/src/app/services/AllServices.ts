@@ -95,4 +95,12 @@ export class AllServices {
     filtrarExamen(cedula:string){
         return this.http.get<any>(this._urlglobal + this._urlExam +"/filtro/"+cedula);
     }
+
+    deleteExam(id:string){
+        return this.http.delete<any>(this._urlglobal+this._urlExam+"/delete/"+id);
+    }
+
+    getExamByCI(id:string){
+        return this.http.get<any>(this._urlglobal+this._urlExam+"/getbyid/"+id);
+    }
 }

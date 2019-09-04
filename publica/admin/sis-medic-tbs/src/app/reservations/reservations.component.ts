@@ -102,8 +102,9 @@ export class ReservationsComponent implements OnInit {
                               // y se lo reenvia al loguin
       this.login.logoutUser();
     } else {
-      this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
-      this.errLog = err.error.log;
+      // this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
+      // this.errLog = err.error.log;
+      this.popup.openConfirmDialog(err.error.log);
     }
   }
   public pasToUpdate(id:any){
@@ -139,8 +140,9 @@ public search(obj:any){
       
       if(Date.parse(obj.value.split(" a ")[0])===NaN||Date.parse(obj.value.split(" a ")[1])===NaN){
         
-        this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
-        this.errLog = "Los campos de fecha tienen caracteres incorrectos";
+        // this.isvisible = false; 
+        // this.errLog = "Los campos de fecha tienen caracteres incorrectos";
+        this.popup.openConfirmDialog('Los campos de fecha tienen caracteres incorrectos');
         return;
        }
     }
@@ -153,13 +155,14 @@ public search(obj:any){
     
     let val =this.param.paramPac ==="" &&this.param.finicio===""&&this.param.ffin===""
     if(!this.permiso&&val){
-      this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
-      this.errLog = "Campos de busqueda vacios";
+          // this.isvisible = false;
+          // this.errLog = "Campos de busqueda vacios";
+      this.popup.openConfirmDialog('Campos de busqueda vacios');
       return;
     }
     if(this.param.paramMed===""&&val){
-      this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
-      this.errLog = "Campos de busqueda vacios";
+    
+      this.popup.openConfirmDialog('Campos de busqueda vacios');
       return;
     }
    
