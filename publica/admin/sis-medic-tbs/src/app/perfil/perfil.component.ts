@@ -45,7 +45,6 @@ export class PerfilComponent implements OnInit {
         data => {
           this.isvisible = true;
           this.usuario = data[0];
-          console.log(data[0].pasword);
         }
       ).catch(err => {
         if (err.status === 401) {

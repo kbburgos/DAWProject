@@ -56,11 +56,11 @@
 
     <div class="form-row">
       <div class="col-md-6 mb-4">
-        <input type="hidden" id="id4" name="pasword" class="form-control" id="validationDefault04" placeholder="Contrase&ntilde;a" [(ngModel)]="usuario.pasword" #paswordUser="ngModel" required pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$">
+        <input type="hidden" id="id4" name="pasword" class="form-control" placeholder="Contrase&ntilde;a" [(ngModel)]="usuario.pasword" #paswordUser="ngModel" required pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$">
 
 
         <label for="validationDefault04">*Contrase&ntilde;a</label>
-        <input type="password" name="pasword" class="form-control" id="validationDefault04" placeholder="Contrase&ntilde;a" [(ngModel)]="usuario.password" #paswordUser="ngModel" required pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$">
+        <input type="password" name="pasword" class="form-control" id="validationDefault04" placeholder="Contrase&ntilde;a" [(ngModel)]="usuario.pasword" #paswordUser="ngModel" required pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$">
         <span class="help-block" *ngIf="paswordUser.errors?.required && paswordUser.touched">
             La contraseña es requerida
           </span>
@@ -88,27 +88,6 @@
         <input type="rol" name="rol" class="form-control" id="validationDefault20" placeholder="Rol" [(ngModel)]="usuario.rol" #rolUser="ngModel" required>
       </div>
     </div>
-
-    <div class="form-row">
-      <div class="col-md-12 mb-4">
-            <span *ngIf="usuario.rol=='1'">
-              <p class="text-dark text-center bg-light"><b>Tipo de usuario: Administrador</b></p>
-            </span>
-        <span *ngIf="usuario.rol=='2'">
-              <p class="text-dark text-center bg-light"><b>Tipo de usuario: Normal</b></p>
-            </span>
-      </div>
-    </div>
-
-
-    <div class="form-row">
-      <div id="id2" class="col-md-12 mb-4">
-        <p class="text-dark">¿Desea cambiar el tipo de usuario?</p>
-        <input type="radio" class="text-center" name="is_admin" value="1" [(ngModel)]="usuario.rol" #rolUser="ngModel" required>Administrador
-        <input type="radio" class="text-center" name="is_admin2" value="2" [(ngModel)]="usuario.rol" #rolUser="ngModel" required>Usuario Normal
-      </div>
-    </div>
-
 
     <div class="form-row">
       <div class="col-md-12 mb-4">

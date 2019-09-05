@@ -3,6 +3,7 @@ import { AllServices } from "./../services/AllServices";
 import { DataService } from "./../services/data.services";
 import { AuthService } from "../services/loginUtils/auth.service";
 import { Router } from "@angular/router";
+import Encrypt from "../services/serealUtils/encrypt";
 
 @Component({
   selector: 'app-edit-user',
@@ -17,6 +18,7 @@ export class EditUserComponent implements OnInit {
   usuario= {
     cedula:"",
     pasword:"",
+    password: "",
     nombreUser: "",
     apellidoUser:"",
     email:"",
@@ -50,8 +52,11 @@ export class EditUserComponent implements OnInit {
 
   updateUser(){
     this.isvisible = true;
-    //console.log(this.usuario)
-      this._services.updateUser(this.usuario.cedula,this.usuario).subscribe(data=>{
+    let contra2 = ""+ $("#validationDefault04").val();
+    contra2= Encrypt.cifrar(contra2);
+    this.usuario.password= contra2;
+
+    this._services.updateUser(this.usuario.cedula,this.usuario).subscribe(data=>{
         this.data.changeMessage("El Usuario se Actualizo Correctamente")
         this._router.navigate(["/user"])
 

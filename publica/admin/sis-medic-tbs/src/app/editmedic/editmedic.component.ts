@@ -3,6 +3,7 @@ import { AllServices } from "./../services/AllServices";
 import { DataService } from "./../services/data.services";
 import { AuthService } from "../services/loginUtils/auth.service";
 import { Router } from "@angular/router";
+import Encrypt from "../services/serealUtils/encrypt";
 
 @Component({
   selector: 'app-editmedic',
@@ -16,12 +17,13 @@ export class EditmedicComponent implements OnInit {
   errLog ="";
   usuario= {
     cedula:"",
-    pasword:"",
+    pasword: "",
+    password: "",
     nombreUser: "",
     apellidoUser:"",
     email:"",
     phone:"",
-    is_active:"1",
+    is_active:"",
     rol:"2"
   }
 
@@ -49,9 +51,11 @@ export class EditmedicComponent implements OnInit {
 
   updateUser(){
     this.isvisible = true;
-    //console.log(this.usuario)
+    let contra2 = ""+ $("#validationDefault04").val();
+    contra2= Encrypt.cifrar(contra2);
+    this.usuario.password= contra2;
     this._services.updateUser(this.usuario.cedula,this.usuario).subscribe(data=>{
-      this.data.changeMessage("El Medico se Actualizo Correctamente")
+      this.data.changeMessage("El Medico se Actualizó Correctamente")
       this._router.navigate(["/medic"])
 
     },err=>{
