@@ -19,7 +19,7 @@
           </div>
         </div>
         <div class="col-lg-3 col-sm-3 col-12 my-auto py-2 ">
-          <a   routerLink="/newpacient" class="btn btn-outline-primary float-lg-right "><i class="fas fa-male"></i> Nuevo Paciente</a>
+          <a *ngIf="permiso"  routerLink="/newpacient" class="btn btn-outline-primary float-lg-right "><i class="fas fa-male"></i> Nuevo Paciente</a>
         </div>
       </div>
     </div>

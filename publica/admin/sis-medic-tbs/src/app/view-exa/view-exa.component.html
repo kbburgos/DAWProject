@@ -16,7 +16,7 @@
 				<div class="form-container">
 					<mat-form-field appearance="outline">
 						<mat-label>Paciente (Cedula)*</mat-label>
-						<mat-select [(ngModel)]="selectPaciente" formControlName="paciente_select" >
+						<mat-select [(ngModel)]="selectPaciente" formControlName="paciente_select" [disabled]="cedulaX!=undefined" >
 							<mat-option>
 								<ngx-mat-select-search [placeholderLabel]="'Nombre, Apellido o CI del Paciente'"
 									formControlName="paciente_search"
@@ -27,7 +27,7 @@
 								{{ paciente.nombre+" "+paciente.apellido+" ("+paciente.cedula+")" }}
 							</mat-option>
 						</mat-select>
-						<button mat-icon-button matSuffix  aria-label="Clear" (click)="$event.stopPropagation(); search(); ">
+						<button mat-icon-button matSuffix  aria-label="Clear" [hidden]="cedulaX!=undefined" (click)="$event.stopPropagation(); search(); ">
 								<mat-icon> search </mat-icon>
 							</button>
 					</mat-form-field>
@@ -71,10 +71,10 @@
 						<td>{{examen.fecha.split("T")[0]}} </td>
 						<!-- <td>{{examen.tipo_exa}} </td> -->
 						<td> <img height="70" src="{{examen.imageURL}}" /> </td>
-						<th><a class="btn btn-warning btn-xs" routerLink="/edit-exa"> Modificar </a> </th>
+						<th><a class="btn btn-warning btn-xs" routerLink="/edit-exa/{{examen._id}}"> Modificar </a> </th>
 						<th><button type="button" class="btn btn-danger mt-1 ml-2" mwlConfirmationPopover  [popoverTitle]="'Eliminar'"
 						[popoverMessage]="'Esta seguro de que desea eliminar el Examen de forma permanente?'"  (cancel)="true" (confirm)="deleteExam(examen._id)">Eliminar</button></th>
-						<th><a target="_blank" class="btn btn-success btn-xs" routerLink="/ver-examen/{{examen._id}}" (click)="passData(examen.imageURL)"> Ver </a> </th>
+						<th><a target="_blank" class="btn btn-success btn-xs" routerLink="/ver-examen/{{examen._id}}" > Ver </a> </th>
 					</tr>
 				</tbody>
 			</table>

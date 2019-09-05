@@ -3,7 +3,7 @@ import { AllServices } from "./../services/AllServices";
 import { DataService } from "./../services/data.services";
 import { AuthService } from "../services/loginUtils/auth.service";
 import {DialogService}from './../services/dialogService'
-
+import Encrypt from './../services/serealUtils/encrypt'
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -13,9 +13,13 @@ export class UserComponent implements OnInit {
   usuarios: any[];
   isvisible = true;
   errLog = "";
+  private userID:any;
+  private permiso:any;
   constructor(private _services: AllServices, private login: AuthService,private data:DataService, private popup:DialogService) { }
 
   ngOnInit() {
+    this.userID = this.login.getloginData();
+    this.permiso = Encrypt.validadUser(this.userID.Rol);
     this.top10();
     this.data.currentMessage.subscribe(message => {
 

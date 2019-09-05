@@ -321,6 +321,10 @@ class CitasController {
                 return;
             }
             citas.findOne({
+                include: [{
+                        model: pacientes,
+                        required: true
+                    }],
                 where: {
                     codigo: id
                 }

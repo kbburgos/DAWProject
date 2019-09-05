@@ -6,6 +6,7 @@ import { DataService } from "./../services/data.services";
 import { AuthService } from "../services/loginUtils/auth.service";
 import { DialogService } from './../services/dialogService'
 import { Router } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 @Component({
   selector: 'app-view-exa',
@@ -16,12 +17,14 @@ export class ViewExaComponent implements OnInit {
   public searchform: FormGroup;
   public pacientes: any = [];
   exams: any = [];
-
+  cedulaX = this.rutaActiva.snapshot.params.cedula;
   selectPaciente: any;
-  constructor(private _services: AllServices, private login: AuthService, private data: DataService, private popup: DialogService) { }
+  constructor(private _services: AllServices,private rutaActiva: ActivatedRoute, private login: AuthService, private data: DataService, private popup: DialogService) { }
   isvisible = true;
   errLog = "";
   ngOnInit() {
+    
+    
     this.searchform = new FormGroup({
       paciente_select: new FormControl(""),
       paciente_search: new FormControl(""),
@@ -32,9 +35,15 @@ export class ViewExaComponent implements OnInit {
     }, err => {
       this.errorHandler(err);
     });
+    if(this.cedulaX!=undefined){
+      this.selectPaciente =this.cedulaX;
+      this.search();
 
-
-    this.top10()
+    }else{
+      this.top10()
+    }
+    
+    
 
   }
 
@@ -43,8 +52,9 @@ export class ViewExaComponent implements OnInit {
       // y se lo reenvia al loguin
       this.login.logoutUser();
     } else {
-      this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
-      this.errLog = err.error.log;
+      // this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
+      // this.errLog = err.error.log;
+      this.popup.openConfirmDialog(err.error.log);
     }
   }
 
@@ -63,6 +73,8 @@ export class ViewExaComponent implements OnInit {
     } else {
       this._services.filtrarExamen(this.selectPaciente).subscribe(
         data => {
+          
+         
           this.isvisible = true; // se muestra los pacientes que coincidan con la busqueda
           this.exams = data;
         },

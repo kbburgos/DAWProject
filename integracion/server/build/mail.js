@@ -18,7 +18,7 @@ class Mail {
             //let testAccount = await nodemailer.createTestAccount();
             // create reusable transporter object using the default SMTP transport
             let transporter = nodemailer.createTransport({
-                host: 'smtp.gmail.com',
+                host: 'smtp-mail.outlook.com',
                 port: 587,
                 secure: false,
                 auth: {
@@ -28,7 +28,7 @@ class Mail {
             });
             // send mail with defined transport object
             let info = yield transporter.sendMail({
-                from: '"Fred Foo 👻" ' + from,
+                from: '"Soporte, atención al cliente sis-medic-tbs 👻" ' + from,
                 to: to,
                 subject: 'Correo de contacto del sistema. ✔',
                 //text: 'Hello world?', // plain text body

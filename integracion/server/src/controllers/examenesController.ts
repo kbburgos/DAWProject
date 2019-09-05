@@ -10,8 +10,8 @@ cloudinary.config({
 });
 class ExamenController {
   public home(req: Request, res: Response): void {
-    const { cedula, token } = req.params;
-    if (cedula == null || token == null) {
+    const { cedula,nomb, token } = req.params;
+    if (cedula == null || token == null||nomb==null) {
       res.send("Datos invalidos");
       return;
     }
@@ -24,7 +24,7 @@ class ExamenController {
       res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" })
       return;
     }
-    res.render("save", { cedula: cedula, token: token });
+    res.render("save", { cedula: cedula, token: token,nomb:nomb });
     return;
   }
 
@@ -123,8 +123,8 @@ class ExamenController {
   }
 
   public async newExam(req: Request, res: Response): Promise<void> {
-    const { cedula, token } = req.params;
-    if (cedula == null || token == null) {
+    const { cedula, token,nomb } = req.params;
+    if (cedula == null || token == null||nomb==null) {
       res.send("Datos invalidos");
       return;
     }
@@ -143,6 +143,7 @@ class ExamenController {
       let examen_new = new examen({
         nota: req.body.descripcion,
         cedula: cedula,
+        paciente:nomb,
         imageURL: result.url,
         public_id: result.public_id,
         fecha: new Date()
@@ -161,8 +162,36 @@ class ExamenController {
 
   }
 
+  public async updatebyid(req: Request,res: Response){
+    let { id } = req.params;
+    let token = req.header("Authorization");
+    if (id == null) {
+      res.status(400).json({ log: "La informacion enviada no es valida." })
+      return;
+    }
+    if (token == null) {
+      res.status(400).json({ log: "La informacion enviada no es valida, el token de autenticacion no fue enviado" })
+      return;
+    }
+    let tokenjson = util.validarToken(token);
+    if (!tokenjson.valido) {
+      res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" })
+      return;
+    }
+
+    try{
+        
+        
+        let doc = await examen.update({"_id":req.params.id},req.body,{new: true});
+        res.status(200).json(doc)
+    }catch(err){
+        console.log(err)
+        res.status(500).json({ log: "Error interno del Servidor" });
+    }
+}
+
   public async getById(req: Request, res: Response): Promise<void> {
-    const { id } = req.params;
+    let { id } = req.params;
     let token = req.header("Authorization");
     if (id == null) {
       res.status(400).json({ log: "La informacion enviada no es valida." })

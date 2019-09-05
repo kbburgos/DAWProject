@@ -16,16 +16,16 @@
             <li class="nav-item li-ocultar">
               <a class="nav-link" routerLink="/reservations"><i class="fas fa-calendar-alt"></i> Citas</a>
             </li>
-            <li class="nav-item li-ocultar">
+            <li *ngIf="permiso" class="nav-item li-ocultar">
               <a class="nav-link" routerLink="/patients"><i class="fas fa-male"></i> Pacientes</a>
             </li>
-            <li class="nav-item li-ocultar">
+            <li *ngIf="permiso" class="nav-item li-ocultar">
               <a class="nav-link" routerLink="/medic"><i class="fas fa-user-md"></i> Médicos</a>
             </li>
-            <li class="nav-item li-ocultar">
+            <li *ngIf="permiso" class="nav-item li-ocultar">
               <a class="nav-link" routerLink="/user"><i class="fas fa-users"></i> Usuarios</a>
             </li>
-            <li class="nav-item li-ocultar">
+            <li *ngIf="permiso" class="nav-item li-ocultar">
               <div class="dropdown">
                 <a class="nav-link text-muted dropdown-toggle bg-dark" data-toggle="dropdown" (click)="DropExamen()">
                   <i class="fas fa-book"></i> Exámenes
@@ -79,26 +79,26 @@
             </a>
           </div>
 
-          <div class="card card-menu w3-hover-sepia float-left mr-4">
+          <div *ngIf="permiso" class="card card-menu w3-hover-sepia float-left mr-4">
             <a class="mt-2 text-center text-menu" routerLink="/patients"><i class="fas fa-male fa-5x"></i>
               <h6>Pacientes</h6>
             </a>
           </div>
 
-          <div class="card card-menu w3-hover-sepia float-left mr-4">
+          <div *ngIf="permiso" class="card card-menu w3-hover-sepia float-left mr-4">
             <a class="mt-2 text-center text-menu" routerLink="/medic"><i class="fas fa-user-md fa-5x"></i>
               <h6>Médicos</h6>
             </a>
 
           </div>
 
-          <div class="card card-menu w3-hover-sepia float-left mr-4">
+          <div *ngIf="permiso" class="card card-menu w3-hover-sepia float-left mr-4">
             <a class="mt-2 text-center text-menu" routerLink="/user"><i class="fas fa-users fa-5x"></i>
               <h6>Usuarios</h6>
             </a>
           </div>
 
-          <div class="card card-menu float-left mr-4">
+          <div *ngIf="permiso" class="card card-menu float-left mr-4">
             <a class="mt-2 text-center text-menu w3-hover-sepia" href="#"><i class="fas fa-book fa-5x"></i>
               <h6>Exámenes</h6>
             </a>
