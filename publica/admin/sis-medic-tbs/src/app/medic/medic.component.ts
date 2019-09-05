@@ -39,7 +39,7 @@ export class MedicComponent implements OnInit {
       this._services.getUserByParameter(parametro).subscribe(
         data => {
           this.isvisible = true; // se muestra los pacientes que coincidan con la busqueda
-          console.log(data);
+          //console.log(data);
           this.medicos = data;
         },
         err => {
