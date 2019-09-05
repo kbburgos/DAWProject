@@ -43,8 +43,9 @@ export class ViewExaComponent implements OnInit {
       // y se lo reenvia al loguin
       this.login.logoutUser();
     } else {
-      this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
-      this.errLog = err.error.log;
+      // this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
+      // this.errLog = err.error.log;
+      this.popup.openConfirmDialog(err.error.log);
     }
   }
 
@@ -65,7 +66,7 @@ export class ViewExaComponent implements OnInit {
       this._services.filtrarExamen(this.selectPaciente).subscribe(
         data => {
           this.isvisible = true; // se muestra los pacientes que coincidan con la busqueda 
-          console.log(data);
+         
           this.exams = data;
         },
         err => {

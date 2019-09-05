@@ -52,7 +52,7 @@ const routes: Routes = [
   {path: "edit-patient", canActivate:[AuthGuard],component:EditPacientComponent},
   {path: 'editmedic',canActivate:[AuthGuard],component:EditmedicComponent},
   {path: "proximamente",canActivate:[AuthGuard], component: ProximamenteComponent},
-  {path: 'edit-exa',canActivate:[AuthGuard],component:EditExamenComponent},
+  {path: 'edit-exa/:id',canActivate:[AuthGuard],component:EditExamenComponent},
   {path: 'ver-examen/:id',canActivate:[AuthGuard],component:VerExamenComponent},
   {path: 'configuration',canActivate:[AuthGuard],component:ConfigurationComponent},
   {path: 'edit-reservation',canActivate:[AuthGuard],component:EditReservationComponent},

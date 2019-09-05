@@ -71,10 +71,10 @@
 						<td>{{examen.fecha.split("T")[0]}} </td>
 						<!-- <td>{{examen.tipo_exa}} </td> -->
 						<td> <img height="70" src="{{examen.imageURL}}" /> </td>
-						<th><a class="btn btn-warning btn-xs" routerLink="/edit-exa"> Modificar </a> </th>
+						<th><a class="btn btn-warning btn-xs" routerLink="/edit-exa/{{examen._id}}"> Modificar </a> </th>
 						<th><button type="button" class="btn btn-danger mt-1 ml-2" mwlConfirmationPopover  [popoverTitle]="'Eliminar'"
 						[popoverMessage]="'Esta seguro de que desea eliminar el Examen de forma permanente?'"  (cancel)="true" (confirm)="deleteExam(examen._id)">Eliminar</button></th>
-						<th><a target="_blank" class="btn btn-success btn-xs" routerLink="/ver-examen/{{examen._id}}" (click)="passData(examen.imageURL)"> Ver </a> </th>
+						<th><a target="_blank" class="btn btn-success btn-xs" routerLink="/ver-examen/{{examen._id}}" > Ver </a> </th>
 					</tr>
 				</tbody>
 			</table>

@@ -19,6 +19,7 @@ class IndexRoutes {
         this.router.get("/pacienteId/:id", examenesController_1.default.getById);
         this.router.get("/pacienteCedula/:cedula", examenesController_1.default.getByCedula);
         this.router.get("/getbyid/:id", examenesController_1.default.getById);
+        this.router.put("/updateexam/:id", examenesController_1.default.updatebyid);
     }
 }
 const indexRoutes = new IndexRoutes();

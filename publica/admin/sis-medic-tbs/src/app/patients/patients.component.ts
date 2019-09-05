@@ -39,6 +39,8 @@ export class PatientsComponent implements OnInit {
         },
         err => {  
           this.errorHandler(err); // maanejo de errores en caso de que el status del response sea diferente de 200
+
+          
         }
       );
     }
@@ -64,8 +66,9 @@ export class PatientsComponent implements OnInit {
                               // y se lo reenvia al loguin
       this.login.logoutUser();
     } else {
-      this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
-      this.errLog = err.error.log;
+      // this.isvisible = false; // si el error es diferente se mostrara un mensajito en el front para ver el resultado busquen un paciente que no exista
+      // this.errLog = err.error.log;
+      this.popup.openConfirmDialog(err.error.log);
     }
   }
 

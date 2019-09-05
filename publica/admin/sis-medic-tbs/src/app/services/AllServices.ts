@@ -107,4 +107,14 @@ export class AllServices {
     getExamByCI(id:string){
         return this.http.get<any>(this._urlglobal+this._urlExam+"/getbyid/"+id);
     }
+
+    getExamByCedula(ced:string){
+        return this.http.get<any>(this._urlglobal+this._urlExam+"/pacienteCedula/"+ced);
+    }
+
+    updateExam(id:string,body:any){
+        return this.http.put<any>(this._urlglobal+this._urlExam+"/updateexam/"+id,body);
+    }
+
+    
 }
