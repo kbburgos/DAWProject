@@ -28,12 +28,9 @@ export class PerfilComponent implements OnInit {
   errLog ="";
 
   async ngOnInit() {
-    console.log(this.userID);
-    console.log(this.permiso);//es administrador
+
     //this.loadUser(this.userID);
     await this.search(this.userID.Cedula);
-    console.log(this.usuario);
-    console.log(this.usuario.pasword);
     this.contra = this.usuario.pasword;
     this.nombre =  this.usuario.nombreUser;
     this.apellido = this.usuario.apellidoUser;
@@ -47,7 +44,6 @@ export class PerfilComponent implements OnInit {
       await this._services.getUserByParameter(parametro).toPromise().then(
         data => {
           this.isvisible = true;
-          console.log(data);
           this.usuario = data[0];
           console.log(data[0].pasword);
         }
@@ -60,13 +56,5 @@ export class PerfilComponent implements OnInit {
         }
       })
   }
-
-
-  /*loadUser(message:string){
-    this._services.getUserByParameter(String(message)).subscribe(data=>{
-        this.usuario = data[0];
-      }
-    )
-  }*/
 
 }
