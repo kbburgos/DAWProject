@@ -12,6 +12,8 @@ export class AllServices {
     private _urlUser = "/login";
     private _urlUser1 = "/usuarios/consultar";
     private _urlExam = "/examenes/consultar";
+    private _urlEstadistica = "/estadisticas/consultar";
+
 
     constructor(private http: HttpClient, private router: Router, private login: AuthService) {
 
