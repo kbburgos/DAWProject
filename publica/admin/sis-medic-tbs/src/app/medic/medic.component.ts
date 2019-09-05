@@ -4,7 +4,7 @@ import { AllServices } from "./../services/AllServices"; //EN CADA MODULO DONDE 
 import { DataService } from "./../services/data.services";
 import { AuthService } from "../services/loginUtils/auth.service";
 import {DialogService}from './../services/dialogService'
-
+import Encrypt from './../services/serealUtils/encrypt'
 
 @Component({
   selector: 'app-medic',
@@ -16,9 +16,13 @@ export class MedicComponent implements OnInit {
   medicos: any[];
   isvisible = true;
   errLog = "";
+  private userID:any;
+  private permiso:any;
   constructor(private _services: AllServices, private login: AuthService,private data:DataService, private popup:DialogService ) {} // ESTOS PARAMETROS DEBEN IR EN EL CONSTRUCTOR
 
   ngOnInit() {
+    this.userID = this.login.getloginData();
+    this.permiso = Encrypt.validadUser(this.userID.Rol);
     this.top10(); // al iniciar la pag se carga el top10
     this.data.currentMessage.subscribe(message => {
 
@@ -35,7 +39,7 @@ export class MedicComponent implements OnInit {
       this._services.getUserByParameter(parametro).subscribe(
         data => {
           this.isvisible = true; // se muestra los pacientes que coincidan con la busqueda
-          console.log(data);
+          //console.log(data);
           this.medicos = data;
         },
         err => {

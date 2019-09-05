@@ -1,10 +1,9 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -167,10 +166,8 @@ class LoginController {
                 createdAt: new Date(),
                 updatedAt: null
             };
-            console.log(usuario);
             //verificar sha debe coincidir, en el body enviar el sha del json
             users.create(usuario).then((rs) => {
-                console.log(rs);
                 res.status(200).json(rs);
                 return;
             }, (err) => {
@@ -223,7 +220,6 @@ class LoginController {
     //no admin
     getById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.params);
             let token = req.header("Authorization");
             let id = req.params.id;
             if (id === undefined) {
