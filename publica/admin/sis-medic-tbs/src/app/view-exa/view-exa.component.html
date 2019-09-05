@@ -16,7 +16,7 @@
 				<div class="form-container">
 					<mat-form-field appearance="outline">
 						<mat-label>Paciente (Cedula)*</mat-label>
-						<mat-select [(ngModel)]="selectPaciente" formControlName="paciente_select" >
+						<mat-select [(ngModel)]="selectPaciente" formControlName="paciente_select" [disabled]="cedulaX!=undefined" >
 							<mat-option>
 								<ngx-mat-select-search [placeholderLabel]="'Nombre, Apellido o CI del Paciente'"
 									formControlName="paciente_search"
@@ -27,7 +27,7 @@
 								{{ paciente.nombre+" "+paciente.apellido+" ("+paciente.cedula+")" }}
 							</mat-option>
 						</mat-select>
-						<button mat-icon-button matSuffix  aria-label="Clear" (click)="$event.stopPropagation(); search(); ">
+						<button mat-icon-button matSuffix  aria-label="Clear" [hidden]="cedulaX!=undefined" (click)="$event.stopPropagation(); search(); ">
 								<mat-icon> search </mat-icon>
 							</button>
 					</mat-form-field>

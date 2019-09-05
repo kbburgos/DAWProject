@@ -1,9 +1,10 @@
 "use strict";
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
         function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
         function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : new P(function (resolve) { resolve(result.value); }).then(fulfilled, rejected); }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
@@ -22,8 +23,8 @@ cloudinary.config({
 });
 class ExamenController {
     home(req, res) {
-        const { cedula, token } = req.params;
-        if (cedula == null || token == null) {
+        const { cedula, nomb, token } = req.params;
+        if (cedula == null || token == null || nomb == null) {
             res.send("Datos invalidos");
             return;
         }
@@ -36,7 +37,7 @@ class ExamenController {
             res.status(401).json({ log: "Su token a expirado, vuelva a iniciar sesion" });
             return;
         }
-        res.render("save", { cedula: cedula, token: token });
+        res.render("save", { cedula: cedula, token: token, nomb: nomb });
         return;
     }
     top10(req, res) {
@@ -134,8 +135,8 @@ class ExamenController {
     }
     newExam(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { cedula, token } = req.params;
-            if (cedula == null || token == null) {
+            const { cedula, token, nomb } = req.params;
+            if (cedula == null || token == null || nomb == null) {
                 res.send("Datos invalidos");
                 return;
             }
@@ -153,6 +154,7 @@ class ExamenController {
                 let examen_new = new examen({
                     nota: req.body.descripcion,
                     cedula: cedula,
+                    paciente: nomb,
                     imageURL: result.url,
                     public_id: result.public_id,
                     fecha: new Date()

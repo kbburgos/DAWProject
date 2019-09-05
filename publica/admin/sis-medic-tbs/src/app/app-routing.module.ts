@@ -37,7 +37,8 @@ import { MyreservationComponent } from './myreservation/myreservation.component'
 const routes: Routes = [
 
   {path: '',canActivate:[AuthGuardLogin], component: LoginComponent},
-  {path: 'view-exa/:cedula?',canActivate:[AuthGuard], component: ViewExaComponent},
+  {path: 'view-exa/:cedula',canActivate:[AuthGuard], component: ViewExaComponent},
+  {path: 'view-exa',canActivate:[AuthGuard], component: ViewExaComponent},
   {path: 'medic', canActivate:[AuthGuard],component: MedicComponent},
   {path: 'newmedic',canActivate:[AuthGuard], component: NewmedicComponent},
   {path: 'user', canActivate:[AuthGuard],component: UserComponent},
