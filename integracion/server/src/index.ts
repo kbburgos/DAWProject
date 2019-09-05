@@ -22,6 +22,7 @@ import examenesRouter from "./routes/examenesRoutes";
 import odontogramaRouter from "./routes/odontogramaRoutes";
 import tratamientosRouter from "./routes/tratamientosRoutes";
 import mailRouter from "./routes/mailRouter";
+import estadisticaRoutes from "./routes/estadisticasRoutes";
 
 class Server {
   public app:Application;
@@ -76,6 +77,7 @@ class Server {
     this.app.use("/api/odontograma/consultar", odontogramaRouter);
     this.app.use("/api/tratamientos/consultar", tratamientosRouter);
     this.app.use("/api/correo/consultar",mailRouter);
+    this.app.use("/api/estadistica/consultar",estadisticaRoutes);
   }
 
   start(): void {

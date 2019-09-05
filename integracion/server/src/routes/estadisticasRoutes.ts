@@ -2,7 +2,7 @@ import {Router} from "express";
 import appController from "../controllers/estadisticasController";
 
 
-class IndexRoutes {
+class EstadisticaRoutes {
     public router: Router = Router();
   
     constructor() {
@@ -20,5 +20,5 @@ class IndexRoutes {
     }
   }
 
-  const indexRoutes = new IndexRoutes();
+  const indexRoutes = new EstadisticaRoutes();
   export default indexRoutes.router;

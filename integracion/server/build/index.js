@@ -27,6 +27,7 @@ const examenesRoutes_1 = __importDefault(require("./routes/examenesRoutes"));
 const odontogramaRoutes_1 = __importDefault(require("./routes/odontogramaRoutes"));
 const tratamientosRoutes_1 = __importDefault(require("./routes/tratamientosRoutes"));
 const mailRouter_1 = __importDefault(require("./routes/mailRouter"));
+const estadisticasRoutes_1 = __importDefault(require("./routes/estadisticasRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -76,6 +77,7 @@ class Server {
         this.app.use("/api/odontograma/consultar", odontogramaRoutes_1.default);
         this.app.use("/api/tratamientos/consultar", tratamientosRoutes_1.default);
         this.app.use("/api/correo/consultar", mailRouter_1.default);
+        this.app.use("/api/estadistica/consultar", estadisticasRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get("port"), () => {

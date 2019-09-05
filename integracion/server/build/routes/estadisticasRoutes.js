@@ -5,7 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const estadisticasController_1 = __importDefault(require("../controllers/estadisticasController"));
-class IndexRoutes {
+class EstadisticaRoutes {
     constructor() {
         this.router = express_1.Router();
         this.config();
@@ -18,5 +18,5 @@ class IndexRoutes {
         this.router.get("/top10", estadisticasController_1.default.top10);
     }
 }
-const indexRoutes = new IndexRoutes();
+const indexRoutes = new EstadisticaRoutes();
 exports.default = indexRoutes.router;

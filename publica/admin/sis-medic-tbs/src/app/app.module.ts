@@ -74,6 +74,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { PerfilComponent } from './perfil/perfil.component';
 import { MyreservationComponent } from './myreservation/myreservation.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { EstadisticaUsuariosComponent } from './estadistica-usuarios/estadistica-usuarios.component';
 
 
 
@@ -112,7 +113,8 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
     PageNotFoundComponent,
     PerfilComponent,
     MyreservationComponent,
-    ConfirmDialogComponent
+    ConfirmDialogComponent,
+    EstadisticaUsuariosComponent
   ],
 
   imports: [
