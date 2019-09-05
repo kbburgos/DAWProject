@@ -33,7 +33,6 @@ export class UserComponent implements OnInit {
       this._services.getUserByParameter(parametro).subscribe(
         data => {
           this.isvisible = true; // se muestra los pacientes que coincidan con la busqueda
-          console.log(data);
           this.usuarios = data;
         },
         err => {

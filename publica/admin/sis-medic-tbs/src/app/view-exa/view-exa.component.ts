@@ -51,7 +51,6 @@ export class ViewExaComponent implements OnInit {
   public top10() {
     this._services.getTop10Exam().subscribe(ex => {
       this.exams = ex;
-      console.log(ex);
 
     }, err => {
       this.errorHandler(err);
@@ -64,8 +63,7 @@ export class ViewExaComponent implements OnInit {
     } else {
       this._services.filtrarExamen(this.selectPaciente).subscribe(
         data => {
-          this.isvisible = true; // se muestra los pacientes que coincidan con la busqueda 
-          console.log(data);
+          this.isvisible = true; // se muestra los pacientes que coincidan con la busqueda
           this.exams = data;
         },
         err => {
@@ -102,6 +100,6 @@ export class ViewExaComponent implements OnInit {
     })
   }
 
-  
+
 
 }
