@@ -6,7 +6,7 @@ import {Router} from '@angular/router';
 @Injectable()
 export class AuthService {
   private _isLog=false;
-  private _urlAPI = "http://localhost:3000/api/login/";
+  private _urlAPI = "https://api-sis-medic-tbs.herokuapp.com/api/login/";
   
 
   constructor(private http: HttpClient, private router: Router ) {

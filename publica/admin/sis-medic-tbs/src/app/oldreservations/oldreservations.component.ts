@@ -61,7 +61,7 @@ export class OldReservationsComponent implements OnInit {
     this.top10()
   }
 
-  private top10() { // carga el top 10
+  public top10() { // carga el top 10
     if(!this.permiso){
       this._services.getTop10CitasbyMed(this.userID.Cedula,"0").subscribe(rs=>{
         this.isvisible = true;
@@ -85,7 +85,7 @@ export class OldReservationsComponent implements OnInit {
     
   }
 
-  private errorHandler(err: any) {
+  public errorHandler(err: any) {
     if (err.status === 401) { // si el status del response es 401 quiere decir que el usuario no esta autorizado o que la sesion caduco por lo que se cierra la secion
                               // y se lo reenvia al loguin
       this.login.logoutUser();

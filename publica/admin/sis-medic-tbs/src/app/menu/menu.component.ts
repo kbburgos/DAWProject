@@ -14,8 +14,8 @@ export class MenuComponent implements OnInit {
   dropExamen = false;
   dropOdonto = false;
   dropPerfil = false;
-  private userID:any;
-  private permiso:any;
+  public userID:any;
+  public permiso:any;
   constructor(private login: AuthService,fb: FormBuilder, private _auth: AuthService) {
     if(this._auth.loggedIn()){
       let data = this._auth.getloginData();

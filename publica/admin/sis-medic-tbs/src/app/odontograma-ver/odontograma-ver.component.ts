@@ -10,9 +10,9 @@ import url_base from "./../constantes";
   styleUrls: ['./odontograma-ver.component.css']
 })
 export class OdontogramaVerComponent implements OnInit {
-  private cedula: String = "";
-  private dientes_list: any;
-  private dientes_map = new Map();
+  public cedula: String = "";
+  public dientes_list: any;
+  public dientes_map = new Map();
   constructor(private rutaActiva: ActivatedRoute, private _service: OdontogramaService, private _snackBar: MatSnackBar) { }
 
   async ngOnInit() {
@@ -86,7 +86,7 @@ export class OdontogramaVerComponent implements OnInit {
 
   pintarTratamientos() {
     for (let i = 0; i < this.dientes_list.length; i++) {
-      $("#" + this.dientes_list[i].pos).addClass("pintar");
+      $("#" + String(this.dientes_list[i].pos)).addClass("pintar");
     }
 
   }
@@ -96,9 +96,10 @@ export class OdontogramaVerComponent implements OnInit {
     let diente = 0;
     $('.col-odonto').on('click', function () {
       diente = Number($(this).attr('id'));
+
       $(this).attr("data-toggle", "modal");
       $(this).attr("data-target", "#modaltratamiento");
-      $('#numeroDienteparrafo').text('Diente número:  ' + diente);
+      $('#numeroDienteparrafo').text('Diente número:  ' + String(diente));
       if (bandera) {
         $('#modaltratamiento').show();
         bandera = false;
@@ -117,10 +118,10 @@ export class OdontogramaVerComponent implements OnInit {
           for (let i = 0; i < value.length; i++) {
             let cara = "";
             if (value[i].cara != 7) {
-              cara += value[i].caradiente.nombre;
+              cara += String(value[i].caradiente.nombre);
             }
             let btn = $("<button></button>");
-            let id_t = value[i].codigo;
+            let id_t = String(value[i].codigo);
             btn.addClass("btn btn-danger");
             btn.text("Eliminar");
             btn.attr("type","button");

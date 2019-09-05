@@ -16,8 +16,8 @@ export class MedicComponent implements OnInit {
   medicos: any[];
   isvisible = true;
   errLog = "";
-  private userID:any;
-  private permiso:any;
+  public userID:any;
+  public permiso:any;
   constructor(private _services: AllServices, private login: AuthService,private data:DataService, private popup:DialogService ) {} // ESTOS PARAMETROS DEBEN IR EN EL CONSTRUCTOR
 
   ngOnInit() {

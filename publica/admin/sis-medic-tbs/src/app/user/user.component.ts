@@ -13,8 +13,8 @@ export class UserComponent implements OnInit {
   usuarios: any[];
   isvisible = true;
   errLog = "";
-  private userID:any;
-  private permiso:any;
+  public userID:any;
+  public permiso:any;
   constructor(private _services: AllServices, private login: AuthService,private data:DataService, private popup:DialogService) { }
 
   ngOnInit() {

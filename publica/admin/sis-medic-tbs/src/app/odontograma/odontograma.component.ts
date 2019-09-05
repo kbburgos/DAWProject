@@ -23,7 +23,7 @@ export class OdontogramaComponent implements OnInit {
   constructor(private router: Router,private rutaActiva: ActivatedRoute, private _service: OdontogramaService, private _snackBar: MatSnackBar) {
   }
 
-  updateDataForm(id: string) {
+  updateDataForm(id: any) {
     this.id = parseInt(id);
     $('#entrada').val(this.id);
     $("#id2").hide();

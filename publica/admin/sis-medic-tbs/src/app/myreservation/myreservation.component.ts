@@ -13,15 +13,15 @@ import { AuthService } from "../services/loginUtils/auth.service";
   styleUrls: ['./myreservation.component.css']
 })
 export class MyreservationComponent implements OnInit {
-  private historico:any;
-  private citaActual = {titulo: "titulo", fecha: "YYYY/MM/DD"};
-  private cedula:String;
-  private id_cita:String;
-  private pageActual:number = 1;
-  private url_add_exa = Constantes.url_api_add_examen;
-  private localStorage:any;
-  private token:any;
-  private paciente:string;
+  public historico:any;
+  public citaActual = {titulo: "titulo", fecha: "YYYY/MM/DD"};
+  public cedula:String;
+  public id_cita:String;
+  public pageActual:number = 1;
+  public url_add_exa = Constantes.url_api_add_examen;
+  public localStorage:any;
+  public token:any;
+  public paciente:string;
 
   constructor(private login: AuthService,private dialog: MatDialog,private router: Router,private rutaActiva: ActivatedRoute, private _service: MyReservationService, private _snackBar: MatSnackBar) { }
 

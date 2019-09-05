@@ -11,17 +11,17 @@ import { Router } from "@angular/router";
   styleUrls: ['./perfil.component.css']
 })
 export class PerfilComponent implements OnInit {
-  private usuario: any;
-  private isvisible = true;
-  private userID = this.login.getloginData();
-  private permiso = Encrypt.validadUser(this.userID.Rol);
-  private contra;
-  private nombre;
-  private apellido;
-  private email;
-  private phone;
-  private cedula;
-  private rol;
+  public usuario: any;
+  public isvisible = true;
+  public userID = this.login.getloginData();
+  public permiso = Encrypt.validadUser(this.userID.Rol);
+  public contra;
+  public nombre;
+  public apellido;
+  public email;
+  public phone;
+  public cedula;
+  public rol;
 
   constructor(private _services: AllServices, private login: AuthService, private data: DataService, private _router: Router) { }
 
