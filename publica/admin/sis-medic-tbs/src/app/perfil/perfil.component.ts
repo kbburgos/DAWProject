@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../services/loginUtils/auth.service";
-import {AllServices} from "../services/AllServices";
-import {DataService} from "../services/data.services";
+import { AuthService } from "../services/loginUtils/auth.service";
+import { AllServices } from "../services/AllServices";
+import { DataService } from "../services/data.services";
 import Encrypt from "../services/serealUtils/encrypt";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-perfil',
@@ -15,38 +15,41 @@ export class PerfilComponent implements OnInit {
   private isvisible = true;
   private userID = this.login.getloginData();
   private permiso = Encrypt.validadUser(this.userID.Rol);
-  private  contra;
+  private contra;
   private nombre;
-  private  apellido;
+  private apellido;
   private email;
   private phone;
   private cedula;
   private rol;
 
-  constructor(private _services: AllServices, private login: AuthService,private data:DataService, private _router:Router) { }
+  constructor(private _services: AllServices, private login: AuthService, private data: DataService, private _router: Router) { }
 
-  errLog ="";
+  errLog = "";
 
   async ngOnInit() {
 
     //this.loadUser(this.userID);
-    await this.search(this.userID.Cedula);
-    this.contra = this.usuario.pasword;
-    this.nombre =  this.usuario.nombreUser;
-    this.apellido = this.usuario.apellidoUser;
-    this.email =  this.usuario.email;
-    this.phone= this.usuario.phone;
-    this.cedula= this.usuario.cedula;
-    this.rol= this.usuario.rol;
+    this.search(this.userID.Cedula);
+
   }
 
-  async search(parametro: string) {
-      await this._services.getUserByParameter(parametro).toPromise().then(
-        data => {
-          this.isvisible = true;
-          this.usuario = data[0];
-        }
-      ).catch(err => {
+  search(parametro: string) {
+    this._services.getUserByParameter(parametro).subscribe(
+      data => {
+        console.log(data[0]);
+
+        this.isvisible = true;
+        this.usuario = data[0];
+        this.contra = this.usuario.pasword;
+        this.nombre = this.usuario.nombreUser;
+        this.apellido = this.usuario.apellidoUser;
+        this.email = this.usuario.email;
+        this.phone = this.usuario.phone;
+        this.cedula = this.usuario.cedula;
+        this.rol = this.usuario.rol;
+      }
+      , err => {
         if (err.status === 401) {
           this.login.logoutUser();
         } else {

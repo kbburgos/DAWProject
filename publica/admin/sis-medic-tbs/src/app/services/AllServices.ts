@@ -5,7 +5,7 @@ import { AuthService } from './loginUtils/auth.service'
 
 @Injectable()
 export class AllServices {
-    private _urlglobal = "http://localhost:3000/api";
+    private _urlglobal = "https://api-sis-medic-tbs.herokuapp.com/api";
     private _urlPatient = "/pacientes/consultar";
     private _urlCitas = "/citas/consultar";
     private _urlmedics = "/medicos/consultar";
