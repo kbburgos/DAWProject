@@ -18,6 +18,27 @@ export class AllServices {
 
     }
 
+    //Para las estadísticas
+    getCitasNoAtendidas() {
+      return this.http.get<any>(this._urlglobal + this._urlEstadistica + "/noatendidas");
+    }
+
+    //Para las estadísticas
+    getCitasAtendidas() {
+      return this.http.get<any>(this._urlglobal + this._urlEstadistica + "/atendidas");
+    }
+
+    //Para las estadísticas
+    getMedicos() {
+      return this.http.get<any>(this._urlglobal + this._urlEstadistica + "/medicos");
+    }
+
+        //Para las estadísticas
+
+    getAdmin() {
+      return this.http.get<any>(this._urlglobal + this._urlEstadistica + "/admin");
+    }
+
 
     createCita(cita:any){
       return this.http.post<any>(this._urlglobal+this._urlCitas+"/newcita/",cita);
