@@ -40,12 +40,14 @@ export class NewmedicComponent implements OnInit {
     contra2= Encrypt.cifrar(contra2);
     this.usuario.password= contra2;
     this._services.createUser(this.usuario).subscribe(data=>{
-      //this._router.navigate(["/medic"])
+      this._router.navigate(["/medic"])
     },err=>{
       console.log(err);
       this.isvisible = false
       this.errLog = err.error.log
     })
   }
+
+
 
 }
