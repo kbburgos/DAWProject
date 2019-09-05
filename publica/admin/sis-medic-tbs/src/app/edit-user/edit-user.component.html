@@ -60,7 +60,7 @@
 
 
           <label for="validationDefault04">*Contrase&ntilde;a</label>
-          <input type="password" name="pasword" class="form-control" id="validationDefault04" placeholder="Contrase&ntilde;a" [(ngModel)]="usuario.password" #paswordUser="ngModel" required pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$">
+          <input type="password" name="pasword" class="form-control" id="validationDefault04" placeholder="Contrase&ntilde;a" [(ngModel)]="usuario.pasword" #paswordUser="ngModel" required pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$">
           <span class="help-block" *ngIf="paswordUser.errors?.required && paswordUser.touched">
             La contraseña es requerida
           </span>
