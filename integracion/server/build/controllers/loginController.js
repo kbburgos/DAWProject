@@ -166,10 +166,8 @@ class LoginController {
                 createdAt: new Date(),
                 updatedAt: null
             };
-            console.log(usuario);
             //verificar sha debe coincidir, en el body enviar el sha del json
             users.create(usuario).then((rs) => {
-                console.log(rs);
                 res.status(200).json(rs);
                 return;
             }, (err) => {
@@ -222,7 +220,6 @@ class LoginController {
     //no admin
     getById(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            console.log(req.params);
             let token = req.header("Authorization");
             let id = req.params.id;
             if (id === undefined) {

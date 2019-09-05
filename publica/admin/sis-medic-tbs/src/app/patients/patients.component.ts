@@ -3,7 +3,7 @@ import { AllServices } from "./../services/AllServices"; //EN CADA MODULO DONDE 
 import { DataService } from "./../services/data.services";
 import { AuthService } from "../services/loginUtils/auth.service";
 import {DialogService}from './../services/dialogService'
-
+import Encrypt from './../services/serealUtils/encrypt'
 @Component({
   selector: "app-patients",
   templateUrl: "./patients.component.html",
@@ -15,9 +15,13 @@ export class PatientsComponent implements OnInit {
   pacientes: any[];
   isvisible = true;
   errLog = "";
+  private userID:any;
+  private permiso:any;
   constructor(private _services: AllServices, private login: AuthService,private data:DataService, private popup:DialogService ) {} // ESTOS PARAMETROS DEBEN IR EN EL CONSTRUCTOR
 
   ngOnInit() {
+    this.userID = this.login.getloginData();
+    this.permiso = Encrypt.validadUser(this.userID.Rol);
     this.top10(); // al iniciar la pag se carga el top10
     this.data.currentMessage.subscribe(message => {
      

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import { AuthService } from '../services/loginUtils/auth.service';
 import * as $ from 'jquery';
+import Encrypt from './../services/serealUtils/encrypt'
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -13,7 +14,9 @@ export class MenuComponent implements OnInit {
   dropExamen = false;
   dropOdonto = false;
   dropPerfil = false;
-  constructor(fb: FormBuilder, private _auth: AuthService) {
+  private userID:any;
+  private permiso:any;
+  constructor(private login: AuthService,fb: FormBuilder, private _auth: AuthService) {
     if(this._auth.loggedIn()){
       let data = this._auth.getloginData();
       this.user= data.Nombre+" "+data.Apellido;
@@ -31,6 +34,8 @@ export class MenuComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.userID = this.login.getloginData();
+    this.permiso = Encrypt.validadUser(this.userID.Rol);
   }
   DropExamen() {
     this.dropExamen = !this.dropExamen;
