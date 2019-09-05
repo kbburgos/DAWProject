@@ -37,7 +37,8 @@ import { MyreservationComponent } from './myreservation/myreservation.component'
 const routes: Routes = [
 
   {path: '',canActivate:[AuthGuardLogin], component: LoginComponent},
-  {path: 'view-exa/:cedula?',canActivate:[AuthGuard], component: ViewExaComponent},
+  {path: 'view-exa/:cedula',canActivate:[AuthGuard], component: ViewExaComponent},
+  {path: 'view-exa',canActivate:[AuthGuard], component: ViewExaComponent},
   {path: 'medic', canActivate:[AuthGuard],component: MedicComponent},
   {path: 'newmedic',canActivate:[AuthGuard], component: NewmedicComponent},
   {path: 'user', canActivate:[AuthGuard],component: UserComponent},
@@ -52,7 +53,7 @@ const routes: Routes = [
   {path: "edit-patient", canActivate:[AuthGuard],component:EditPacientComponent},
   {path: 'editmedic',canActivate:[AuthGuard],component:EditmedicComponent},
   {path: "proximamente",canActivate:[AuthGuard], component: ProximamenteComponent},
-  {path: 'edit-exa',canActivate:[AuthGuard],component:EditExamenComponent},
+  {path: 'edit-exa/:id',canActivate:[AuthGuard],component:EditExamenComponent},
   {path: 'ver-examen/:id',canActivate:[AuthGuard],component:VerExamenComponent},
   {path: 'configuration',canActivate:[AuthGuard],component:ConfigurationComponent},
   {path: 'edit-reservation',canActivate:[AuthGuard],component:EditReservationComponent},

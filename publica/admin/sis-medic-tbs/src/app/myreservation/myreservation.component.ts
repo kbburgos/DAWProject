@@ -21,7 +21,7 @@ export class MyreservationComponent implements OnInit {
   private url_add_exa = Constantes.url_api_add_examen;
   private localStorage:any;
   private token:any;
-
+  private paciente:string;
 
   constructor(private login: AuthService,private dialog: MatDialog,private router: Router,private rutaActiva: ActivatedRoute, private _service: MyReservationService, private _snackBar: MatSnackBar) { }
 
@@ -44,6 +44,8 @@ export class MyreservationComponent implements OnInit {
 
   async cargarCitaActual(id:String){
     await this._service.getCitaActual(id).toPromise().then(data=>{
+      console.log(data);
+      this.paciente = data.paciente.nombre+ " "+data.paciente.apellido;
       this.citaActual.fecha = data.fecha;
       this.citaActual.titulo = data.titulo;
     }).catch(err=>{

@@ -1,0 +1,29 @@
+
+
+.st{
+  background-color: #fafafa;
+  margin: 0.5rem;
+  padding: 0.5rem;
+  border: 2px solid #ccc;
+  /* IMPORTANTE */
+  text-align: center;
+}
+
+.t1{
+  background-color: #fafafa;
+  margin: 1rem;
+  padding: 1rem;
+  border: 2px solid #ccc;
+  /* IMPORTANTE text-align: center; */
+
+}
+
+.row {
+  display: flex;
+  justify-content: center;
+}
+.col-md-5 {
+  padding: 10px;
+  margin: 10px;
+  background-color:#e2f0fb;
+}

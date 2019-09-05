@@ -3,30 +3,30 @@
   <h1 class="text-center">Modificar datos del examen </h1>
   <form action="#" class="mb-3">
     <div class="form-group">
-      <label for="uname">Nombre:</label>
-      <input type="text" class="form-control" placeholder="Ingrese el nombre.." name="uname" required>
+      <label for="nombre">Nombre:</label>
+      <input type="text" class="form-control" placeholder="Ingrese el nombre.." [(ngModel)] = "exam.paciente" #paciente = "ngModel" name="nombre" >
     </div>
     <div class="form-group">
-      <label for="uname">CI.:</label>
-      <input type="text" class="form-control" placeholder="Ingrese la cédula..." name="uname" required pattern="[0-9]{10}">
+      <label for="cedula">CI.:</label>
+      <input type="text" class="form-control" placeholder="Ingrese la cédula..." name="cedula" #cedula="ngModel"  [(ngModel)]="exam.cedula"  >
     </div>
     <div class="form-group">
-      <label for="uname">Fecha de Ingreso:</label>
-      <input type="date" class="form-control" value="Seleccione la fecha.." name="uname" required>
+      <label for="fecha">Fecha de Ingreso:</label>
+      <input type="date" class="form-control" value="Seleccione la fecha.." #fecha="ngModel"  [(ngModel)]="exam.fecha"  name="fecha" required disabled>
     </div>
-    <div class="form-group">
+    <!-- <div class="form-group">
       <label> Seleccione el tipo de examen: </label>
       <select name="tipos" class="form-control mr-2" required>
         <option value="bandera" disabled>Seleccione un tipo de examen</option>
         <option value="radiografia">Radiografía</option>
         <option value="examen">Exagemen General.</option>
       </select>
-    </div>
-    <img class="d-flex justify-content-center mx-auto img-thumbnail mb-2" id="img-exa" src="https://irp-cdn.multiscreensite.com/519ccbfc/dms3rep/multi/mobile/form+i-693.jpg">
-    <div class="form-group">
+    </div> -->
+    <img class="d-flex justify-content-center mx-auto img-thumbnail mb-2" id="img-exa" src="{{exam.imageURL}}">
+    <!-- <div class="form-group">
       <input type="file" class="form-control-file border" required>
-    </div>
-    <button type="submit" class="btn btn-info d-flex mx-auto justify-content-center">Actualizar.</button>
+    </div> -->
+    <button type="submit" class="btn btn-info d-flex mx-auto justify-content-center" (click)="updateExam()">Actualizar.</button>
   </form>
 </div>
 <app-footer></app-footer>
